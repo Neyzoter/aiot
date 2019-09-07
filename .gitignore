@@ -1,0 +1,5 @@
+# folder
+/target/
+
+# file
+*.class
