@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="23c1b6a3-a88d-412b-a194-bead14c68f99" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iov/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/iov/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iov/src/main/java/cn/neyzoter/aiot/iov/biz/domain/vehicle/Vehicle.java" beforeDir="false" afterPath="$PROJECT_DIR$/iov/src/main/java/cn/neyzoter/aiot/iov/biz/domain/vehicle/Vehicle.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iov/src/main/java/cn/neyzoter/aiot/iov/web/controller/VehicleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/iov/src/main/java/cn/neyzoter/aiot/iov/web/controller/VehicleController.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -77,7 +75,7 @@
         <entry file="file://$PROJECT_DIR$/iov/src/main/java/cn/neyzoter/aiot/iov/web/controller/VehicleController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="495">
-              <caret line="33" column="83" selection-start-line="33" selection-start-column="83" selection-end-line="33" selection-end-column="83" />
+              <caret line="33" column="22" selection-start-line="33" selection-start-column="22" selection-end-line="33" selection-end-column="22" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#520#521#0" expanded="true" />
@@ -100,7 +98,7 @@
         <entry file="file://$PROJECT_DIR$/iov/src/main/java/cn/neyzoter/aiot/iov/biz/domain/vehicle/Vehicle.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="444">
-              <caret line="55" column="1" lean-forward="true" selection-start-line="55" selection-start-column="1" selection-end-line="55" selection-end-column="1" />
+              <caret line="55" column="1" selection-start-line="55" selection-start-column="1" selection-end-line="55" selection-end-column="1" />
               <folding>
                 <element signature="e#282#283#0" expanded="true" />
                 <element signature="e#316#317#0" expanded="true" />
@@ -167,7 +165,7 @@
       </MavenImportingSettings>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="55" />
     <option name="y" value="-4" />
     <option name="width" value="1865" />
@@ -234,29 +232,6 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="iov" type="462c0819:PsiDirectoryNode" />
               <item name="biz" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="aiot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="aiot" type="462c0819:PsiDirectoryNode" />
-              <item name="iov" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="iov" type="462c0819:PsiDirectoryNode" />
-              <item name="biz" type="462c0819:PsiDirectoryNode" />
-              <item name="domain" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="aiot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="aiot" type="462c0819:PsiDirectoryNode" />
-              <item name="iov" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="iov" type="462c0819:PsiDirectoryNode" />
-              <item name="biz" type="462c0819:PsiDirectoryNode" />
-              <item name="domain" type="462c0819:PsiDirectoryNode" />
-              <item name="vehicle" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="aiot" type="b2602c69:ProjectViewProjectNode" />
@@ -338,15 +313,24 @@
       <option name="presentableId" value="Default" />
       <updated>1567858143282</updated>
       <workItem from="1567858146128" duration="1917000" />
-      <workItem from="1567860098596" duration="6579000" />
+      <workItem from="1567860098596" duration="8331000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8496000" />
+    <option name="totallyTimeSpent" value="10248000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="55" y="-4" width="1865" height="1084" extended-state="6" />
+    <frame x="55" y="-4" width="1865" height="1084" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24958768" />
@@ -360,11 +344,11 @@
       <window_info anchor="bottom" id="Messages" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.2232416" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.45565748" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info active="true" anchor="bottom" id="TODO" order="6" visible="true" weight="0.2130479" />
       <window_info anchor="bottom" id="Spring" order="7" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.24057084" />
       <window_info anchor="bottom" id="Docker" order="9" />
@@ -453,7 +437,7 @@
     <entry file="file://$PROJECT_DIR$/iov/src/main/java/cn/neyzoter/aiot/iov/biz/domain/vehicle/Vehicle.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="444">
-          <caret line="55" column="1" lean-forward="true" selection-start-line="55" selection-start-column="1" selection-end-line="55" selection-end-column="1" />
+          <caret line="55" column="1" selection-start-line="55" selection-start-column="1" selection-end-line="55" selection-end-column="1" />
           <folding>
             <element signature="e#282#283#0" expanded="true" />
             <element signature="e#316#317#0" expanded="true" />
@@ -470,7 +454,7 @@
     <entry file="file://$PROJECT_DIR$/iov/src/main/java/cn/neyzoter/aiot/iov/web/controller/VehicleController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="495">
-          <caret line="33" column="83" selection-start-line="33" selection-start-column="83" selection-end-line="33" selection-end-column="83" />
+          <caret line="33" column="22" selection-start-line="33" selection-start-column="22" selection-end-line="33" selection-end-column="22" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#520#521#0" expanded="true" />
