@@ -48,4 +48,12 @@ public class RuntimeData implements Serializable {
     public int getEcuMaxTemp(){
         return this.ecuMaxTemp;
     }
+
+    @Override
+    public String toString(){
+        return "{"+
+                "speed="+speed + "," +
+                "ecuMaxTemp="+ecuMaxTemp+
+                "}";
+    }
 }

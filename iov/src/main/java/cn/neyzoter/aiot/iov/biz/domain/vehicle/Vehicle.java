@@ -8,8 +8,25 @@ import java.io.Serializable;
  * @date 2019/9/7
  */
 public class Vehicle implements Serializable {
+    private long app;
     private long id;
     private RuntimeData rtData;
+
+    /**
+     * set Application
+     * @param appId
+     */
+    public void setApplication(long appId){
+        this.app = appId;
+    }
+
+    /**
+     * get Application id
+     * @return
+     */
+    public long getApplication() {
+        return app;
+    }
 
     /**
      * set id
@@ -45,12 +62,10 @@ public class Vehicle implements Serializable {
 
     @Override
     public String toString(){
-        return "Vehicle{" +
+        return "{" +
                 "id=" + id + ","+
-                "data={" +
-                "speed="+rtData.speed + "," +
-                "ecuMaxTemp="+rtData.ecuMaxTemp+
-                "}"+
+                "rtData=" +
+                rtData.toString()+
                 "}";
     }
 }

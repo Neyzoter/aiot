@@ -1,6 +1,7 @@
 package cn.neyzoter.aiot.iov.web.controller;
 
 import cn.neyzoter.aiot.iov.biz.domain.vehicle.Vehicle;
+import cn.neyzoter.aiot.iov.biz.domain.vehicle.VehicleHttpPack;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -22,17 +23,24 @@ public class VehicleController {
         return "OK";
     }
 
+
     /**
      * server get vehicle data
      * @param vehicle
      * @return {@link String}
      */
     @RequestMapping(value = apiPrefix+"/sendData", method = RequestMethod.POST)
-    public Object sendData(@RequestBody Vehicle vehicle) {  //convert serialization
+    public Object sendData(@RequestBody VehicleHttpPack vehicleHttpPack) {  //convert serialization
 
         //TODO
         // dosomething
 
-        return vehicle.toString();
+        return vehicleHttpPack.toString();
     }
+
+    //    @RequestMapping(value = apiPrefix+"/sendData", method = RequestMethod.POST)
+//    public Object sendData(@RequestBody Vehicle vehicle) {  //convert serialization
+//
+//        return vehicle.toString();
+//    }
 }
