@@ -1,7 +1,9 @@
 package cn.neyzoter.aiot.iov.web.controller;
 
 
+import cn.neyzoter.aiot.iov.biz.domain.vehicle.RuntimeData;
 import cn.neyzoter.aiot.iov.biz.domain.vehicle.Vehicle;
+import org.springframework.boot.jackson.JsonObjectSerializer;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -24,23 +26,14 @@ public class VehicleController {
     }
 
     /**
-     * get vehicle data
-     * @param id
-     * @param speed
-     * @param ecuMaxTemp
-     * @return
+     * server get vehicle data
+     * @param vehicle
+     * @return {@link String}
      */
     @RequestMapping(value = apiPrefix+"/sendData", method = RequestMethod.POST)
-    public Object sendData(@RequestBody long id,
-                           @RequestBody int speed,
-                           @RequestBody int ecuMaxTemp) {
-        Vehicle vehicle = new Vehicle();
-        vehicle.setId(id);
-        vehicle.getData().setSpeed(speed);
-        vehicle.getData().setEcuMaxTemp(ecuMaxTemp);
+    public Object sendData(@RequestBody Vehicle vehicle) {  //convert serialization
 
         //dosomething
-
 
         return vehicle.toString();
     }
