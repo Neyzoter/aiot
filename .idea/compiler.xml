@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="common" />
+        <module name="dal" />
         <module name="iov" />
       </profile>
     </annotationProcessing>
@@ -15,6 +16,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="aiot" options="-parameters" />
       <module name="common" options="-parameters" />
+      <module name="dal" options="-parameters" />
       <module name="iov" options="-parameters" />
     </option>
   </component>
