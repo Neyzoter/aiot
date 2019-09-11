@@ -89,6 +89,22 @@ public class VehicleHttpPack implements Serializable {
     }
 
     /**
+     * set sign
+     * @param s
+     */
+    public void setSign(String s){
+        this.sign = s;
+    }
+
+    /**
+     * get sign
+     * @return
+     */
+    public String getSign(){
+        return this.sign;
+    }
+
+    /**
      * get vehicle
      * @return {@link Vehicle}
      */
@@ -106,6 +122,12 @@ public class VehicleHttpPack implements Serializable {
 
     @Override
     public String toString(){
+        System.out.println("{"+
+                "year="+this.year+"," +
+                "month="+this.month+"," +
+                "day="+this.day+"," +
+                "second="+this.second+"," +
+                "sign="+this.sign+"}");
         String str = "{"+
                 "year="+this.year+"," +
                 "month="+this.month+"," +
