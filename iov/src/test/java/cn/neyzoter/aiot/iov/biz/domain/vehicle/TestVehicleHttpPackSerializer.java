@@ -15,7 +15,7 @@ public class TestVehicleHttpPackSerializer {
         runtimeData.setEcuMaxTemp(40);runtimeData.setSpeed(100);
         vehicle.setId(100);vehicle.setRtData(runtimeData);
         vehicleHttpPack.setDay("1");vehicleHttpPack.setMonth("2");vehicleHttpPack.setSign("eakdiex");
-        vehicleHttpPack.setSecond("1234");vehicleHttpPack.setYear("2019");
+        vehicleHttpPack.setSecond("1234");vehicleHttpPack.setYear("2019");vehicleHttpPack.setVehicle(vehicle);
 
         VehicleHttpPackSerializer vehicleHttpPackSerializer = new VehicleHttpPackSerializer();
         byte[] vehicleHttpPackByte = vehicleHttpPackSerializer.serialize("vehicleHttpPack", vehicleHttpPack);
@@ -23,6 +23,7 @@ public class TestVehicleHttpPackSerializer {
         VehicleHttpPackDeserializer vehicleHttpPackDeserializer = new VehicleHttpPackDeserializer();
         VehicleHttpPack vehicleHttpPackDeserialized = vehicleHttpPackDeserializer.deserialize("vehicleHttpPack", vehicleHttpPackByte);
 
+//        logger.info(String.format("Application ID : %d\r\n",vehicleHttpPackDeserialized.getVehicle().getApplication()));
         logger.info(vehicleHttpPackDeserialized.toString());
     }
 

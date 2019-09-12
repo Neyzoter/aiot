@@ -51,9 +51,10 @@ public class RuntimeData implements Serializable {
 
     @Override
     public String toString(){
-        return "{"+
+        String str = "{"+
                 "speed="+speed + "," +
                 "ecuMaxTemp="+ecuMaxTemp+
                 "}";
+        return str;
     }
 }

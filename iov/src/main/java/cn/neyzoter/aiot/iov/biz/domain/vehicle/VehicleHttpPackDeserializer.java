@@ -26,6 +26,7 @@ public class VehicleHttpPackDeserializer implements Deserializer<VehicleHttpPack
             bais = new ByteArrayInputStream(bytes);
             ObjectInputStream ois = new ObjectInputStream(bais);
             tmpObject = (VehicleHttpPack)ois.readObject();
+            ois.close();
             return tmpObject;
         } catch (Exception e) {
             e.printStackTrace();

@@ -1,6 +1,5 @@
 package cn.neyzoter.aiot.iov.biz.domain.vehicle;
 
-import cn.neyzoter.aiot.iov.IovApplication;
 import org.apache.kafka.common.serialization.Serializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,9 +28,12 @@ public class VehicleHttpPackSerializer implements Serializer<VehicleHttpPack> {
             oos = new ObjectOutputStream(baos);
             oos.writeObject(vehicleHttpPack);
             byte[] bytes = baos.toByteArray();
+            oos.close();
             return bytes;
         }catch (Exception e){
             logger.error("",e);
+        }finally {
+
         }
         return null;
     }

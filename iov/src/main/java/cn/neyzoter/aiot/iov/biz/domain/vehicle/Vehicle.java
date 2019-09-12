@@ -62,10 +62,11 @@ public class Vehicle implements Serializable {
 
     @Override
     public String toString(){
-        return "{" +
-                "id=" + id + ","+
+        String str = "{" +
+                "id=" + this.id + ","+
                 "rtData=" +
-                rtData.toString()+
+                this.rtData.toString()+
                 "}";
+        return str;
     }
 }
