@@ -4,9 +4,8 @@ import cn.neyzoter.aiot.common.data.serialization.SerializationUtil;
 import org.apache.kafka.common.serialization.Serializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 
-import java.io.ByteArrayOutputStream;
-import java.io.ObjectOutputStream;
 import java.util.Map;
 
 /**
@@ -14,6 +13,7 @@ import java.util.Map;
  * @author Neyzoter Song
  * @date 2019/9/11
  */
+@Service
 public class VehicleHttpPackSerializer implements Serializer<VehicleHttpPack> {
     private final static Logger logger = LoggerFactory.getLogger(VehicleHttpPackSerializer.class);
     @Override
