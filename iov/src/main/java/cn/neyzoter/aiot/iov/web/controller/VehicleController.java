@@ -1,19 +1,10 @@
 package cn.neyzoter.aiot.iov.web.controller;
 
-import cn.neyzoter.aiot.iov.biz.domain.vehicle.Vehicle;
 import cn.neyzoter.aiot.iov.biz.domain.vehicle.VehicleHttpPack;
-import cn.neyzoter.aiot.iov.biz.domain.vehicle.VehicleHttpPackSerializer;
-import cn.neyzoter.aiot.iov.biz.service.kafka.impl.KafkaTemplateImpl;
-import org.apache.kafka.clients.producer.KafkaProducer;
-import org.apache.kafka.clients.producer.Producer;
-import org.apache.kafka.clients.producer.ProducerRecord;
-import org.apache.kafka.common.serialization.BytesSerializer;
-import org.apache.kafka.common.utils.Bytes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Properties;
 
 
 /**

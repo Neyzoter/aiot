@@ -11,7 +11,6 @@ import org.springframework.stereotype.Component;
  * @date 2019/9/6
  */
 @Component
-@PropertySource(value = "classpath:application-kafka-vehicle.properties")
 public class KafkaTemplateImpl {
     private final KafkaTemplate kafkaTemplate;
     @Autowired
