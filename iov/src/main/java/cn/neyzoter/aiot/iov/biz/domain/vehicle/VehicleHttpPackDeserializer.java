@@ -1,6 +1,9 @@
 package cn.neyzoter.aiot.iov.biz.domain.vehicle;
 
+import cn.neyzoter.aiot.common.data.serialization.SerializationUtil;
 import org.apache.kafka.common.serialization.Deserializer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.ByteArrayInputStream;
 import java.io.ObjectInputStream;
@@ -12,6 +15,7 @@ import java.util.Map;
  * @date 2019/9/11
  */
 public class VehicleHttpPackDeserializer implements Deserializer<VehicleHttpPack> {
+    private final static Logger logger = LoggerFactory.getLogger(VehicleHttpPackSerializer.class);
     @Override
     public void configure(Map<String, ?> configs, boolean isKey) {
         // do nothing
@@ -19,17 +23,10 @@ public class VehicleHttpPackDeserializer implements Deserializer<VehicleHttpPack
     }
     @Override
     public VehicleHttpPack deserialize(String topic, byte[] bytes) {
-        ByteArrayInputStream bais = null;
-        VehicleHttpPack tmpObject = null;
         try {
-            // Deserialize
-            bais = new ByteArrayInputStream(bytes);
-            ObjectInputStream ois = new ObjectInputStream(bais);
-            tmpObject = (VehicleHttpPack)ois.readObject();
-            ois.close();
-            return tmpObject;
+            return (VehicleHttpPack)SerializationUtil.deserialize(bytes);
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error("",e);
         }
         return null;
     }

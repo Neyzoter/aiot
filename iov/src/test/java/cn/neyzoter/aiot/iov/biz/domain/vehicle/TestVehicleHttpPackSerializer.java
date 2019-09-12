@@ -5,9 +5,21 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import static org.junit.Assert.assertEquals;
 
+
+/**
+ * test VehicleHttpPackSerializer and VehicleHttpPackDeserializer
+ * @author Neyzoter Song
+ * @date 2019/9/11
+ */
 public class TestVehicleHttpPackSerializer {
     private final static Logger logger = LoggerFactory.getLogger(IovApplication.class);
+
+    /**
+     * test for serialize and deserialize
+     * if original toString euqauls to vehicleHttpPackDeserialized.toString ,then correct
+     */
     @Test
     public void testSerialize(){
         VehicleHttpPack vehicleHttpPack = new VehicleHttpPack();
@@ -23,8 +35,10 @@ public class TestVehicleHttpPackSerializer {
         VehicleHttpPackDeserializer vehicleHttpPackDeserializer = new VehicleHttpPackDeserializer();
         VehicleHttpPack vehicleHttpPackDeserialized = vehicleHttpPackDeserializer.deserialize("vehicleHttpPack", vehicleHttpPackByte);
 
-//        logger.info(String.format("Application ID : %d\r\n",vehicleHttpPackDeserialized.getVehicle().getApplication()));
-        logger.info(vehicleHttpPackDeserialized.toString());
+        // if original toString euqauls to vehicleHttpPackDeserialized.toString
+        assertEquals(vehicleHttpPackDeserialized.toString(),vehicleHttpPack.toString());
+        logger.info("vehicleHttpPack.toString()             : " + vehicleHttpPack.toString());
+        logger.info("vehicleHttpPackDeserialized.toString() : " + vehicleHttpPackDeserialized.toString());
     }
 
 }
