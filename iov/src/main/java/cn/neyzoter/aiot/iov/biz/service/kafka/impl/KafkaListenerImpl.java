@@ -14,8 +14,9 @@ import org.springframework.stereotype.Component;
 @Component
 public class KafkaListenerImpl {
     private final static Logger logger = LoggerFactory.getLogger(KafkaListenerImpl.class);
-    @KafkaListener(topics = "VehicleHttpPack", groupId = "VehicleHttpPackageConsumerGroup")
-    public void processMsg(VehicleHttpPack content){
+
+    @KafkaListener(topics = "VehicleHttpPack", groupId = "VehicleHttpPackageConsumer")
+    public void processMsg0(VehicleHttpPack content){
         logger.info("Processing Kafka msg : " + content.toString());
     }
 }

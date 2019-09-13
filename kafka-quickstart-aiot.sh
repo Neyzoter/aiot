@@ -10,7 +10,7 @@ nohup bin/kafka-server-start.sh  config/server.properties &
 echo "Starting kafka server..."
 sleep 5s
 
-nohup bin/kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic VehicleHttpPack &
+nohup bin/kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 2 --topic VehicleHttpPack &
 echo "Creating topic..."
 sleep 5s
 
