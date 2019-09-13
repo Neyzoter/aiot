@@ -21,8 +21,5 @@ public class KafkaTemplateImpl {
     public KafkaTemplateImpl(KafkaTemplate kafkaTemplate) {
         this.kafkaTemplate = kafkaTemplate;
     }
-    @KafkaListener(topics = "VehicleHttpPack", groupId = "VehicleHttpPackageConsumer")
-    public void processMsg(VehicleHttpPack content){
-        logger.info("Processing Kafka msg0000 : " + content.toString());
-    }
+
 }

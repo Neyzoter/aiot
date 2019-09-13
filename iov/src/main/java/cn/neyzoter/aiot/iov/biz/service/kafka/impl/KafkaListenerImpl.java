@@ -15,8 +15,20 @@ import org.springframework.stereotype.Component;
 public class KafkaListenerImpl {
     private final static Logger logger = LoggerFactory.getLogger(KafkaListenerImpl.class);
 
+    /**
+     * Listen for partition's msg
+     * @param content {@link VehicleHttpPack}
+     */
     @KafkaListener(topics = "VehicleHttpPack", groupId = "VehicleHttpPackageConsumer")
     public void processMsg0(VehicleHttpPack content){
-        logger.info("Processing Kafka msg : " + content.toString());
+        logger.info("Processing Kafka msg0 : " + content.toString());
+    }
+    /**
+     * Listen for partition's msg
+     * @param content {@link VehicleHttpPack}
+     */
+    @KafkaListener(topics = "VehicleHttpPack", groupId = "VehicleHttpPackageConsumer")
+    public void processMsg1(VehicleHttpPack content){
+        logger.info("Processing Kafka msg2 : " + content.toString());
     }
 }
