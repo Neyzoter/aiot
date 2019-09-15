@@ -1,5 +1,6 @@
 package cn.neyzoter.aiot.iov.web.controller;
 
+import cn.neyzoter.aiot.dal.pojo.Vehicle2InfluxDb;
 import cn.neyzoter.aiot.iov.biz.domain.vehicle.VehicleHttpPack;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -18,6 +19,7 @@ public class VehicleController {
     @Autowired
     private KafkaTemplate kafkaTemplate;
 
+
     /**
      * http test( brower visit http://localhost:[port]/iov/api/vehicle/test)
      * @return {@link String}
@@ -35,6 +37,7 @@ public class VehicleController {
      */
     @RequestMapping(value = apiPrefix+"/sendData", method = RequestMethod.POST)
     public Object sendData(@RequestBody VehicleHttpPack vehicleHttpPack) {  //convert serialization
+
 
         // send to kafka-VehicleHttpPack
         kafkaTemplate.send("VehicleHttpPack", vehicleHttpPack);
