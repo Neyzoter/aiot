@@ -48,7 +48,7 @@ public class Vehicle implements Serializable {
      * get runtime data
      * @return {@link RuntimeData}
      */
-    public RuntimeData getData(){
+    public RuntimeData getRtData(){
         return this.rtData;
     }
 
