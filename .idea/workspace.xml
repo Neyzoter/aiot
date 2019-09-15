@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="23c1b6a3-a88d-412b-a194-bead14c68f99" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dal/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/dal/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iov/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/iov/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iov/src/main/java/cn/neyzoter/aiot/iov/biz/domain/vehicle/RuntimeData.java" beforeDir="false" afterPath="$PROJECT_DIR$/iov/src/main/java/cn/neyzoter/aiot/iov/biz/domain/vehicle/RuntimeData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iov/src/main/java/cn/neyzoter/aiot/iov/biz/domain/vehicle/Vehicle.java" beforeDir="false" afterPath="$PROJECT_DIR$/iov/src/main/java/cn/neyzoter/aiot/iov/biz/domain/vehicle/Vehicle.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iov/src/main/java/cn/neyzoter/aiot/iov/biz/service/kafka/impl/KafkaListenerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/iov/src/main/java/cn/neyzoter/aiot/iov/biz/service/kafka/impl/KafkaListenerImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iov/src/main/java/cn/neyzoter/aiot/iov/web/controller/VehicleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/iov/src/main/java/cn/neyzoter/aiot/iov/web/controller/VehicleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iov/src/test/java/cn/neyzoter/aiot/iov/biz/domain/vehicle/TestVehicleHttpPackSerializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/iov/src/test/java/cn/neyzoter/aiot/iov/biz/domain/vehicle/TestVehicleHttpPackSerializer.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -27,10 +27,60 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/iov/src/main/java/cn/neyzoter/aiot/iov/web/controller/VehicleController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="17" selection-start-line="17" selection-end-line="17" />
+            <state relative-caret-position="469">
+              <caret line="43" column="44" selection-start-line="43" selection-start-column="44" selection-end-line="43" selection-end-column="44" />
               <folding>
                 <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/iov/src/main/java/cn/neyzoter/aiot/iov/biz/domain/vehicle/VehicleHttpPackDeserializer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="28" column="20" selection-start-line="28" selection-start-column="20" selection-end-line="28" selection-end-column="20" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/iov/src/main/java/cn/neyzoter/aiot/iov/biz/service/kafka/impl/KafkaTemplateImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="17" column="4" lean-forward="true" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="90" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/iov/src/main/java/cn/neyzoter/aiot/iov/biz/service/kafka/impl/KafkaListenerImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="45">
+              <caret line="3" column="63" selection-start-line="3" selection-start-column="63" selection-end-line="3" selection-end-column="63" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/iov/src/main/java/cn/neyzoter/aiot/iov/biz/domain/vehicle/Vehicle.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="390">
+              <caret line="26" column="22" selection-start-line="26" selection-start-column="22" selection-end-line="26" selection-end-column="22" />
+              <folding>
+                <element signature="e#497#498#0" expanded="true" />
+                <element signature="e#523#524#0" expanded="true" />
+                <element signature="e#601#602#0" expanded="true" />
+                <element signature="e#631#632#0" expanded="true" />
+                <element signature="e#720#721#0" expanded="true" />
+                <element signature="e#750#751#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -39,8 +89,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/iov/src/test/java/cn/neyzoter/aiot/iov/biz/domain/vehicle/TestVehicleHttpPackSerializer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+            <state relative-caret-position="405">
+              <caret line="27" column="68" lean-forward="true" selection-start-line="27" selection-start-column="68" selection-end-line="27" selection-end-column="68" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -49,64 +99,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dal/src/main/java/cn/neyzoter/aiot/dal/pojo/Vehicle2InfluxDb.java">
+        <entry file="file://$PROJECT_DIR$/iov/src/main/resources/application.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="29" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="29" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1914#1915#0" expanded="true" />
-                <element signature="e#1956#1957#0" expanded="true" />
-                <element signature="e#3324#3325#0" expanded="true" />
-                <element signature="e#3360#3361#0" expanded="true" />
-                <element signature="e#3853#3854#0" expanded="true" />
-                <element signature="e#4014#4015#0" expanded="true" />
-                <element signature="e#4146#4147#0" expanded="true" />
-                <element signature="e#4322#4323#0" expanded="true" />
-                <element signature="e#4527#4528#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar:///usr/lib/jvm/jdk1.8.0_211/src.zip!/java/lang/String.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="65" column="6" selection-start-line="65" selection-start-column="6" selection-end-line="65" selection-end-column="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/iov/src/main/java/cn/neyzoter/aiot/iov/biz/service/kafka/impl/KafkaListenerImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="25" selection-start-line="25" selection-end-line="25" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/5.1.3.RELEASE/spring-web-5.1.3.RELEASE.jar!/org/springframework/web/client/RestTemplate.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="202" column="35" selection-start-line="202" selection-start-column="35" selection-end-line="202" selection-end-column="35" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dal/src/test/java/cn/neyzoter/aiot/dal/pojo/TestVehicle2InfluxDb.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="22" selection-start-line="22" selection-end-line="23" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="90">
+              <caret line="6" column="19" lean-forward="true" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -124,19 +120,25 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/iov/pom.xml">
+        <entry file="file://$PROJECT_DIR$/iov/src/main/java/cn/neyzoter/aiot/iov/biz/domain/vehicle/VehicleHttpPackSerializer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="338">
-              <caret line="35" selection-start-line="35" selection-end-line="38" selection-end-column="21" />
+            <state relative-caret-position="375">
+              <caret line="25" column="40" selection-start-line="25" selection-start-column="40" selection-end-line="25" selection-end-column="40" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dal/pom.xml">
+        <entry file="file://$PROJECT_DIR$/common/src/main/java/cn/neyzoter/aiot/common/data/serialization/SerializationUtil.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="495">
-              <caret line="33" selection-start-line="33" selection-end-line="33" />
+            <state relative-caret-position="-80">
+              <caret line="20" column="25" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="25" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -154,6 +156,7 @@
     <findStrings>
       <find>depth</find>
       <find>substring</find>
+      <find>long</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -171,11 +174,8 @@
         <option value="$PROJECT_DIR$/iov/src/main/java/cn/neyzoter/aiot/iov/biz/service/kafka/impl/KafkaListernImpl.java" />
         <option value="$PROJECT_DIR$/iov/src/test/java/cn/neyzoter/aiot/iov/biz/domain/vehicle/test/test.java" />
         <option value="$PROJECT_DIR$/iov/src/test/java/cn/neyzoter/aiot/iov/biz/domain/vehicle/test.java" />
-        <option value="$PROJECT_DIR$/iov/src/main/java/cn/neyzoter/aiot/iov/biz/domain/vehicle/Vehicle.java" />
-        <option value="$PROJECT_DIR$/iov/src/main/java/cn/neyzoter/aiot/iov/biz/domain/vehicle/RuntimeData.java" />
         <option value="$PROJECT_DIR$/iov/src/main/java/cn/neyzoter/aiot/iov/biz/domain/vehicle/VehicleHttpPack.java" />
         <option value="$PROJECT_DIR$/common/src/main/java/cn/neyzoter/aiot/common/data/serialization/SerializationUtil.java" />
-        <option value="$PROJECT_DIR$/iov/src/test/java/cn/neyzoter/aiot/iov/biz/domain/vehicle/TestVehicleHttpPackSerializer.java" />
         <option value="$PROJECT_DIR$/iov/src/main/java/cn/neyzoter/aiot/iov/biz/domain/vehicle/VehicleHttpPackSerializer.java" />
         <option value="$PROJECT_DIR$/springboot-kafka-basic-quickstart.sh" />
         <option value="$PROJECT_DIR$/iov/src/main/java/cn/neyzoter/aiot/iov/biz/domain/vehicle/VehicleHttpPackDeserializer.java" />
@@ -192,7 +192,10 @@
         <option value="$PROJECT_DIR$/dal/src/test/java/cn/neyzoter/aiot/dal/pojo/TestVehicle2InfluxDb.java" />
         <option value="$PROJECT_DIR$/dal/pom.xml" />
         <option value="$PROJECT_DIR$/dal/src/main/java/cn/neyzoter/aiot/dal/pojo/Vehicle2InfluxDb.java" />
+        <option value="$PROJECT_DIR$/iov/src/main/java/cn/neyzoter/aiot/iov/biz/domain/vehicle/RuntimeData.java" />
+        <option value="$PROJECT_DIR$/iov/src/test/java/cn/neyzoter/aiot/iov/biz/domain/vehicle/TestVehicleHttpPackSerializer.java" />
         <option value="$PROJECT_DIR$/iov/src/main/java/cn/neyzoter/aiot/iov/web/controller/VehicleController.java" />
+        <option value="$PROJECT_DIR$/iov/src/main/java/cn/neyzoter/aiot/iov/biz/domain/vehicle/Vehicle.java" />
         <option value="$PROJECT_DIR$/iov/src/main/java/cn/neyzoter/aiot/iov/biz/service/kafka/impl/KafkaListenerImpl.java" />
       </list>
     </option>
@@ -370,6 +373,29 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="iov" type="462c0819:PsiDirectoryNode" />
               <item name="biz" type="462c0819:PsiDirectoryNode" />
+              <item name="domain" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="aiot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="aiot" type="462c0819:PsiDirectoryNode" />
+              <item name="iov" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="iov" type="462c0819:PsiDirectoryNode" />
+              <item name="biz" type="462c0819:PsiDirectoryNode" />
+              <item name="domain" type="462c0819:PsiDirectoryNode" />
+              <item name="vehicle" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="aiot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="aiot" type="462c0819:PsiDirectoryNode" />
+              <item name="iov" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="iov" type="462c0819:PsiDirectoryNode" />
+              <item name="biz" type="462c0819:PsiDirectoryNode" />
               <item name="impl" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -454,7 +480,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.TestVehicle2InfluxDb">
+  <component name="RunManager" selected="Spring Boot.IovApplication">
     <configuration name="TestVehicle2InfluxDb" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="dal" />
       <extension name="coverage">
@@ -500,8 +526,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.TestVehicle2InfluxDb" />
         <item itemvalue="Spring Boot.IovApplication" />
+        <item itemvalue="JUnit.TestVehicle2InfluxDb" />
         <item itemvalue="JUnit.TestVehicleHttpPackSerializer" />
       </list>
     </recent_temporary>
@@ -524,7 +550,7 @@
       <workItem from="1568340322527" duration="3300000" />
       <workItem from="1568380477606" duration="5885000" />
       <workItem from="1568516934180" duration="2739000" />
-      <workItem from="1568533250042" duration="16223000" />
+      <workItem from="1568533250042" duration="19604000" />
     </task>
     <servers />
   </component>
@@ -561,7 +587,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="79923000" />
+    <option name="totallyTimeSpent" value="83304000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -586,7 +612,7 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32925585" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.27420998" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.29051986" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.32008156" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -598,7 +624,7 @@
       <window_info anchor="bottom" id="Java Enterprise" order="11" />
       <window_info anchor="bottom" id="Database Changes" order="12" />
       <window_info anchor="bottom" id="Version Control" order="13" />
-      <window_info anchor="bottom" id="Messages" order="14" />
+      <window_info anchor="bottom" id="Messages" order="14" weight="0.32925585" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -706,49 +732,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/iov/src/main/java/cn/neyzoter/aiot/iov/biz/domain/vehicle/RuntimeData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="53" column="15" selection-start-line="53" selection-start-column="15" selection-end-line="53" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/apache/kafka/kafka-clients/2.0.1/kafka-clients-2.0.1.jar!/org/apache/kafka/common/serialization/Serializer.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/iov/src/main/java/cn/neyzoter/aiot/iov/biz/domain/vehicle/Vehicle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="18" lean-forward="true" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common/src/main/java/cn/neyzoter/aiot/common/data/serialization/SerializationUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="45" column="31" lean-forward="true" selection-start-line="45" selection-start-column="31" selection-end-line="45" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/iov/src/main/java/cn/neyzoter/aiot/iov/biz/domain/vehicle/VehicleHttpPack.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="675">
-          <caret line="123" column="29" selection-start-line="123" selection-start-column="29" selection-end-line="123" selection-end-column="29" />
-          <folding>
-            <element signature="e#601#602#0" expanded="true" />
-            <element signature="e#633#634#0" expanded="true" />
-            <element signature="e#717#718#0" expanded="true" />
-            <element signature="e#746#747#0" expanded="true" />
-            <element signature="e#825#826#0" expanded="true" />
-            <element signature="e#858#859#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -807,26 +794,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/iov/src/main/java/cn/neyzoter/aiot/iov/biz/domain/vehicle/VehicleHttpPackDeserializer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="28" column="20" selection-start-line="28" selection-start-column="20" selection-end-line="28" selection-end-column="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/iov/src/main/java/cn/neyzoter/aiot/iov/biz/service/kafka/impl/KafkaTemplateImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="23" selection-start-line="23" selection-end-line="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
@@ -834,23 +801,6 @@
             <caret line="16" column="3" selection-start-line="16" selection-start-column="3" selection-end-line="16" selection-end-column="3" />
           </first_editor>
           <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/iov/src/main/resources/application.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="45" selection-start-line="1" selection-start-column="45" selection-end-line="1" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/iov/src/main/java/cn/neyzoter/aiot/iov/biz/domain/vehicle/VehicleHttpPackSerializer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="27" column="31" selection-start-line="27" selection-start-column="31" selection-end-line="27" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -938,10 +888,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/dal/src/test/java/cn/neyzoter/aiot/dal/pojo/TestVehicle2InfluxDb.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/dal/src/main/java/cn/neyzoter/aiot/dal/pojo/Vehicle2InfluxDb.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="29" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="29" />
+        <state relative-caret-position="363">
+          <caret line="276" column="34" selection-start-line="276" selection-start-column="34" selection-end-line="276" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1914#1915#0" expanded="true" />
@@ -957,6 +917,50 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/iov/src/main/java/cn/neyzoter/aiot/iov/biz/domain/vehicle/VehicleHttpPack.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="24" column="16" lean-forward="true" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="16" />
+          <folding>
+            <element signature="e#601#602#0" expanded="true" />
+            <element signature="e#633#634#0" expanded="true" />
+            <element signature="e#717#718#0" expanded="true" />
+            <element signature="e#746#747#0" expanded="true" />
+            <element signature="e#825#826#0" expanded="true" />
+            <element signature="e#858#859#0" expanded="true" />
+            <element signature="e#1746#1747#0" expanded="true" />
+            <element signature="e#1781#1782#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iov/src/main/java/cn/neyzoter/aiot/iov/biz/domain/vehicle/RuntimeData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/src/main/java/cn/neyzoter/aiot/common/data/serialization/SerializationUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-80">
+          <caret line="20" column="25" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iov/src/main/java/cn/neyzoter/aiot/iov/biz/domain/vehicle/VehicleHttpPackDeserializer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="28" column="20" selection-start-line="28" selection-start-column="20" selection-end-line="28" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/iov/src/main/java/cn/neyzoter/aiot/iov/IovApplication.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -967,30 +971,62 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/iov/src/main/java/cn/neyzoter/aiot/iov/web/controller/VehicleController.java">
+    <entry file="file://$PROJECT_DIR$/iov/src/main/resources/application.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="90">
+          <caret line="6" column="19" lean-forward="true" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/iov/src/test/java/cn/neyzoter/aiot/iov/biz/domain/vehicle/TestVehicleHttpPackSerializer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+        <state relative-caret-position="405">
+          <caret line="27" column="68" lean-forward="true" selection-start-line="27" selection-start-column="68" selection-end-line="27" selection-end-column="68" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dal/src/test/java/cn/neyzoter/aiot/dal/pojo/TestVehicle2InfluxDb.java">
+    <entry file="file://$PROJECT_DIR$/iov/src/main/java/cn/neyzoter/aiot/iov/biz/domain/vehicle/VehicleHttpPackSerializer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" selection-start-line="22" selection-end-line="23" />
+        <state relative-caret-position="375">
+          <caret line="25" column="40" selection-start-line="25" selection-start-column="40" selection-end-line="25" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iov/src/main/java/cn/neyzoter/aiot/iov/biz/domain/vehicle/Vehicle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="26" column="22" selection-start-line="26" selection-start-column="22" selection-end-line="26" selection-end-column="22" />
+          <folding>
+            <element signature="e#497#498#0" expanded="true" />
+            <element signature="e#523#524#0" expanded="true" />
+            <element signature="e#601#602#0" expanded="true" />
+            <element signature="e#631#632#0" expanded="true" />
+            <element signature="e#720#721#0" expanded="true" />
+            <element signature="e#750#751#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iov/src/main/java/cn/neyzoter/aiot/iov/web/controller/VehicleController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="469">
+          <caret line="43" column="44" selection-start-line="43" selection-start-column="44" selection-end-line="43" selection-end-column="44" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iov/src/main/java/cn/neyzoter/aiot/iov/biz/service/kafka/impl/KafkaTemplateImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="4" lean-forward="true" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="90" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -999,11 +1035,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/iov/src/main/java/cn/neyzoter/aiot/iov/biz/service/kafka/impl/KafkaListenerImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" selection-start-line="25" selection-end-line="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="45">
+          <caret line="3" column="63" selection-start-line="3" selection-start-column="63" selection-end-line="3" selection-end-column="63" />
         </state>
       </provider>
     </entry>

@@ -11,12 +11,12 @@ public class RuntimeData implements Serializable {
     /**
      * car speed
      */
-    protected int speed;
+    protected Integer speed;
 
     /**
      * car temperature
      */
-    protected int ecuMaxTemp;
+    protected Integer ecuMaxTemp;
 
     /**
      * set speed
@@ -29,7 +29,7 @@ public class RuntimeData implements Serializable {
      * get speed
      * @return
      */
-    public int getSpeed(){
+    public Integer getSpeed(){
         return this.speed;
     }
 
@@ -45,7 +45,7 @@ public class RuntimeData implements Serializable {
      * get ecuMaxTemp
      * @return
      */
-    public int getEcuMaxTemp(){
+    public Integer getEcuMaxTemp(){
         return this.ecuMaxTemp;
     }
 

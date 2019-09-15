@@ -25,7 +25,7 @@ public class TestVehicleHttpPackSerializer {
         VehicleHttpPack vehicleHttpPack = new VehicleHttpPack();
         Vehicle vehicle = new Vehicle();RuntimeData runtimeData = new RuntimeData();
         runtimeData.setEcuMaxTemp(40);runtimeData.setSpeed(100);
-        vehicle.setId(100);vehicle.setRtData(runtimeData);
+        vehicle.setId(new Long(100));vehicle.setRtData(runtimeData);
         vehicleHttpPack.setDay("1");vehicleHttpPack.setMonth("2");vehicleHttpPack.setSign("eakdiex");
         vehicleHttpPack.setSecond("1234");vehicleHttpPack.setYear("2019");vehicleHttpPack.setVehicle(vehicle);
 

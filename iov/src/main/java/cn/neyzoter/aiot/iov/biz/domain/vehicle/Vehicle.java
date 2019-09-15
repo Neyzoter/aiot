@@ -8,31 +8,31 @@ import java.io.Serializable;
  * @date 2019/9/7
  */
 public class Vehicle implements Serializable {
-    private long app;
-    private long id;
+    private Long app;
+    private Long id;
     private RuntimeData rtData;
-
-    /**
-     * set Application
-     * @param appId
-     */
-    public void setApplication(long appId){
-        this.app = appId;
-    }
 
     /**
      * get Application id
      * @return
      */
-    public long getApplication() {
-        return app;
+    public Long getApp() {
+        return this.app;
+    }
+
+    /**
+     * set appliacction id
+     * @param application
+     */
+    public void setApp(Long application) {
+        this.app = application;
     }
 
     /**
      * set id
      * @param identity
      */
-    public void setId(long identity){
+    public void setId(Long identity){
         this.id = identity;
     }
 
@@ -40,7 +40,7 @@ public class Vehicle implements Serializable {
      * get id
      * @return
      */
-    public long getId(){
+    public Long getId(){
         return this.id;
     }
 
@@ -63,6 +63,7 @@ public class Vehicle implements Serializable {
     @Override
     public String toString(){
         String str = "{" +
+                "app="+this.app + ","+
                 "id=" + this.id + ","+
                 "rtData=" +
                 this.rtData.toString()+
