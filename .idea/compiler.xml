@@ -9,9 +9,12 @@
         <module name="common" />
         <module name="dal" />
         <module name="iov" />
-        <module name="pop" />
+        <module name="uop" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="pop" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
@@ -20,6 +23,7 @@
       <module name="dal" options="-parameters" />
       <module name="iov" options="-parameters" />
       <module name="pop" options="-parameters" />
+      <module name="uop" options="-parameters" />
     </option>
   </component>
 </project>
