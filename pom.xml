@@ -12,6 +12,7 @@
         <module>iov</module>
         <module>common</module>
         <module>dal</module>
+        <module>pop</module>
     </modules>
 
     <parent>

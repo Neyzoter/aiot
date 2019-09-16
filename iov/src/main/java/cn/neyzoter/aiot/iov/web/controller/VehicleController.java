@@ -41,10 +41,14 @@ public class VehicleController {
      */
     @RequestMapping(value = apiPrefix+"/sendData", method = RequestMethod.POST)
     public Object sendData(@RequestBody VehicleHttpPack vehicleHttpPack) {  //convert serialization
-    logger.info(vehicleHttpPack.toString());
-
-        // send to kafka-VehicleHttpPack
-        kafkaTemplate.send("VehicleHttpPack", vehicleHttpPack);
+        //TODO
+        // if msg is safe(equals to summary of information in ) then
+        // md5 + salt
+        String infoSumm = "123";
+        if(vehicleHttpPack.getSign().equals(infoSumm)){
+            // send to kafka-VehicleHttpPack
+            kafkaTemplate.send("VehicleHttpPack", vehicleHttpPack);
+        }
 
         return "OK";
     }

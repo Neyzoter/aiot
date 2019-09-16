@@ -9,6 +9,7 @@
         <module name="common" />
         <module name="dal" />
         <module name="iov" />
+        <module name="pop" />
       </profile>
     </annotationProcessing>
   </component>
@@ -18,6 +19,7 @@
       <module name="common" options="-parameters" />
       <module name="dal" options="-parameters" />
       <module name="iov" options="-parameters" />
+      <module name="pop" options="-parameters" />
     </option>
   </component>
 </project>
