@@ -1,6 +1,7 @@
-package cn.neyzoter.aiot.iov.biz.domain.vehicle;
+package cn.neyzoter.aiot.iov.biz.service.kafka.serialization;
 
 import cn.neyzoter.aiot.common.data.serialization.SerializationUtil;
+import cn.neyzoter.aiot.dal.domain.vehicle.VehicleHttpPack;
 import org.apache.kafka.common.serialization.Serializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

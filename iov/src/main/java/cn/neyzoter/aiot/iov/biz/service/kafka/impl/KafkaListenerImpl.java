@@ -1,7 +1,7 @@
 package cn.neyzoter.aiot.iov.biz.service.kafka.impl;
 
-import cn.neyzoter.aiot.dal.dao.Vehicle2InfluxDb;
-import cn.neyzoter.aiot.iov.biz.domain.vehicle.VehicleHttpPack;
+import cn.neyzoter.aiot.dal.dao.vehicle.Vehicle2InfluxDb;
+import cn.neyzoter.aiot.dal.domain.vehicle.VehicleHttpPack;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.kafka.annotation.KafkaListener;

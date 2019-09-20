@@ -1,4 +1,4 @@
-package cn.neyzoter.aiot.iov.biz.domain.vehicle;
+package cn.neyzoter.aiot.dal.domain.vehicle;
 
 import java.io.Serializable;
 

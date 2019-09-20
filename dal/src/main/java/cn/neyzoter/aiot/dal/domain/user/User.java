@@ -1,4 +1,4 @@
-package cn.neyzoter.aiot.dal.domain;
+package cn.neyzoter.aiot.dal.domain.user;
 
 import java.io.Serializable;
 

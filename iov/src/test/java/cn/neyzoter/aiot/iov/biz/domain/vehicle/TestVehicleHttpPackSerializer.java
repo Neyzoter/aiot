@@ -1,6 +1,11 @@
 package cn.neyzoter.aiot.iov.biz.domain.vehicle;
 
+import cn.neyzoter.aiot.dal.domain.vehicle.RuntimeData;
+import cn.neyzoter.aiot.dal.domain.vehicle.Vehicle;
+import cn.neyzoter.aiot.dal.domain.vehicle.VehicleHttpPack;
 import cn.neyzoter.aiot.iov.IovApplication;
+import cn.neyzoter.aiot.iov.biz.service.kafka.serialization.VehicleHttpPackDeserializer;
+import cn.neyzoter.aiot.iov.biz.service.kafka.serialization.VehicleHttpPackSerializer;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,7 +28,8 @@ public class TestVehicleHttpPackSerializer {
     @Test
     public void testSerialize(){
         VehicleHttpPack vehicleHttpPack = new VehicleHttpPack();
-        Vehicle vehicle = new Vehicle();RuntimeData runtimeData = new RuntimeData();
+        Vehicle vehicle = new Vehicle();
+        RuntimeData runtimeData = new RuntimeData();
         runtimeData.setEcuMaxTemp(40);runtimeData.setSpeed(100);
         vehicle.setId(new Long(100));vehicle.setRtData(runtimeData);
         vehicleHttpPack.setDay("1");vehicleHttpPack.setMonth("2");vehicleHttpPack.setSign("eakdiex");
