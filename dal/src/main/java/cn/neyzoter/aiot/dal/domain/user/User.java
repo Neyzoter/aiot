@@ -54,7 +54,7 @@ public class User implements Serializable {
     @Override
     public String toString(){
         String str = "User = {"+
-                "userName:"+this.userName+"  "+
+                "userName:"+this.userName+","+
                 "password:"+this.password+
                 "}";
         return str;

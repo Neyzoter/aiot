@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.neyzoter.aiot.dal.dao.user.UserDao">
+    <!--return object-->
+    <resultMap id="User" type="cn.neyzoter.aiot.dal.domain.user.User">
+        <result column="userName" property="userName" />
+        <result column="password" property="password" />
+    </resultMap>
+
+    <sql id="User_Column_List">
+		userName, password
+	</sql>
+
+    <select id="finByName" resultMap="User" parameterType="java.lang.String">
+        select
+        <include refid="User_Column_List" />
+        from user
+        where userName = #{userName}
+    </select>
+
+</mapper>

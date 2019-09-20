@@ -1,0 +1,6 @@
+/home/scc/code/java/aiot/dal/src/main/java/cn/neyzoter/aiot/dal/domain/user/User.java
+/home/scc/code/java/aiot/dal/src/main/java/cn/neyzoter/aiot/dal/dao/user/UserDao.java
+/home/scc/code/java/aiot/dal/src/main/java/cn/neyzoter/aiot/dal/dao/vehicle/Vehicle2InfluxDb.java
+/home/scc/code/java/aiot/dal/src/main/java/cn/neyzoter/aiot/dal/domain/vehicle/VehicleHttpPack.java
+/home/scc/code/java/aiot/dal/src/main/java/cn/neyzoter/aiot/dal/domain/vehicle/RuntimeData.java
+/home/scc/code/java/aiot/dal/src/main/java/cn/neyzoter/aiot/dal/domain/vehicle/Vehicle.java
