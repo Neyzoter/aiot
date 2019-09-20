@@ -1,5 +1,6 @@
 package cn.neyzoter.aiot.dal.pojo;
 
+import cn.neyzoter.aiot.dal.dao.Vehicle2InfluxDb;
 import org.junit.Test;
 
 import java.util.HashMap;

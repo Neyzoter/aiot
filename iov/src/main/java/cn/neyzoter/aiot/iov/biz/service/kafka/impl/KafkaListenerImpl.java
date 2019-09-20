@@ -1,6 +1,6 @@
 package cn.neyzoter.aiot.iov.biz.service.kafka.impl;
 
-import cn.neyzoter.aiot.dal.pojo.Vehicle2InfluxDb;
+import cn.neyzoter.aiot.dal.dao.Vehicle2InfluxDb;
 import cn.neyzoter.aiot.iov.biz.domain.vehicle.VehicleHttpPack;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

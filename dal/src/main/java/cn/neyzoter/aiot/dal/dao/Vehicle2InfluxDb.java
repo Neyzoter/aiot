@@ -1,4 +1,4 @@
-package cn.neyzoter.aiot.dal.pojo;
+package cn.neyzoter.aiot.dal.dao;
 
 import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
