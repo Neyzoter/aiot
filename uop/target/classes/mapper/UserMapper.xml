@@ -11,7 +11,7 @@
 		userName, password
 	</sql>
 
-    <select id="finByName" resultMap="User" parameterType="java.lang.String">
+    <select id="findByName" resultMap="User" parameterType="java.lang.String">
         select
         <include refid="User_Column_List" />
         from user
