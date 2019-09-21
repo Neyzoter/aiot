@@ -1,6 +1,5 @@
 package cn.neyzoter.aiot.uop.biz.service.auth.impl;
 
-import cn.neyzoter.aiot.dal.dao.user.UserDao;
 import cn.neyzoter.aiot.dal.domain.user.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
