@@ -49,7 +49,7 @@ public class OAuth2ServerConfig {
         public void configure(HttpSecurity http) throws Exception {
             http
                     .authorizeRequests()
-                    .antMatchers("/order/**").authenticated();//配置order访问控制，必须认证过后才可以访问
+                    .antMatchers("/uop/api/**").authenticated();//配置order访问控制，必须认证过后才可以访问
 
         }
     }
@@ -59,8 +59,11 @@ public class OAuth2ServerConfig {
     @EnableAuthorizationServer
     protected static class AuthorizationServerConfiguration extends AuthorizationServerConfigurerAdapter {
 
+        /**
+         * AuthenticationManager support password grant type
+         */
         @Autowired
-        AuthenticationManager authenticationManager;
+        AuthenticationManager authenticationManager;git
         @Autowired
         RedisConnectionFactory redisConnectionFactory;
 
