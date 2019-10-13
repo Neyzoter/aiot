@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="23c1b6a3-a88d-412b-a194-bead14c68f99" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dal/src/main/resources/application-userMysql.properties" beforeDir="false" afterPath="$PROJECT_DIR$/dal/src/main/resources/application-userMysql.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dal/target/classes/application-userMysql.properties" beforeDir="false" afterPath="$PROJECT_DIR$/dal/target/classes/application-userMysql.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/uop/src/main/java/cn/neyzoter/aiot/uop/biz/service/auth/config/OAuth2ServerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/uop/src/main/java/cn/neyzoter/aiot/uop/biz/service/auth/config/OAuth2ServerConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uop/src/main/java/cn/neyzoter/aiot/uop/biz/service/auth/config/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/uop/src/main/java/cn/neyzoter/aiot/uop/biz/service/auth/config/SecurityConfiguration.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -539,7 +535,7 @@
       <workItem from="1569673222096" duration="550000" />
       <workItem from="1569673791915" duration="643000" />
       <workItem from="1569974196625" duration="2589000" />
-      <workItem from="1570947221136" duration="4900000" />
+      <workItem from="1570947221136" duration="5176000" />
     </task>
     <servers />
   </component>
@@ -576,7 +572,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="127285000" />
+    <option name="totallyTimeSpent" value="127561000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -591,7 +587,7 @@
     <frame x="55" y="-4" width="1865" height="1084" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20285872" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20285872" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -601,13 +597,13 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32925585" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.18552497" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.18552497" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.32008156" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.25280327" />
       <window_info anchor="bottom" id="Spring" order="7" weight="0.32925585" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49972513" weight="0.20285423" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" sideWeight="0.49972513" visible="true" weight="0.20285423" />
       <window_info anchor="bottom" id="Docker" order="9" weight="0.32925585" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5002749" side_tool="true" weight="0.2640163" />
       <window_info anchor="bottom" id="Java Enterprise" order="11" weight="0.32925585" />

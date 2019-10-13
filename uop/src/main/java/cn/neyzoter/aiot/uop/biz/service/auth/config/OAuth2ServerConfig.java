@@ -63,7 +63,7 @@ public class OAuth2ServerConfig {
          * AuthenticationManager support password grant type
          */
         @Autowired
-        AuthenticationManager authenticationManager;git
+        AuthenticationManager authenticationManager;
         @Autowired
         RedisConnectionFactory redisConnectionFactory;
 
