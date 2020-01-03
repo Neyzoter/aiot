@@ -12,4 +12,11 @@
     <artifactId>common</artifactId>
     <packaging>jar</packaging>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.tensorflow</groupId>
+            <artifactId>tensorflow</artifactId>
+            <version>1.13.1</version>
+        </dependency>
+    </dependencies>
 </project>

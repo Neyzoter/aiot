@@ -1,5 +1,5 @@
 # folder
-/target/
+target/
 
 # file
 *.class
