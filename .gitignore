@@ -1,5 +1,6 @@
 # folder
 target/
+tf_model/
 
 # file
 *.class
