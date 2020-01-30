@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="23c1b6a3-a88d-412b-a194-bead14c68f99" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/common/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/cn/neyzoter/aiot/common/tensorflow/ModelManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/cn/neyzoter/aiot/common/tensorflow/ModelManager.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -29,8 +30,26 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/common/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="21" column="10" selection-start-line="21" selection-start-column="10" selection-end-line="21" selection-end-column="10" />
+            <state relative-caret-position="360">
+              <caret line="24" column="21" selection-start-line="24" selection-start-column="21" selection-end-line="24" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dal/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="360">
+              <caret line="24" column="30" selection-start-line="24" selection-start-column="25" selection-end-line="24" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/iov/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="570">
+              <caret line="38" column="21" selection-start-line="38" selection-start-column="21" selection-end-line="38" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -38,17 +57,54 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/common/src/main/java/cn/neyzoter/aiot/common/tensorflow/ModelManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+            <state relative-caret-position="464">
+              <caret line="45" column="99" selection-start-line="45" selection-start-column="99" selection-end-line="45" selection-end-column="99" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1461#1462#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/common/src/main/java/cn/neyzoter/aiot/common/time/TimeUtil.java">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+            <state relative-caret-position="435">
+              <caret line="29" column="10" selection-start-line="29" selection-start-column="10" selection-end-line="29" selection-end-column="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/common/src/test/java/cn/neyzoter/aiot/common/tensorflow/TestModelManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="14" column="76" selection-start-line="14" selection-start-column="76" selection-end-line="14" selection-end-column="76" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/common/src/test/java/cn/neyzoter/aiot/common/tensorflow/TestRunner4tensorflow.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="315">
+              <caret line="21" column="1" lean-forward="true" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/uop/src/test/java/cn/neyzoter/aiot/uop/biz/service/auth/impl/TestAuthServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="18" column="28" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="28" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -72,6 +128,9 @@
       <find>AuthenticationManager</find>
       <find>requestMatcherConfigurer</find>
     </findStrings>
+    <dirStrings>
+      <dir>$PROJECT_DIR$/common/src/test/java</dir>
+    </dirStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -79,9 +138,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/iov/src/main/java/cn/neyzoter/aiot/iov/biz/service/kafka/impl/KafkaListernImpl.java" />
-        <option value="$PROJECT_DIR$/iov/src/test/java/cn/neyzoter/aiot/iov/biz/domain/vehicle/test/test.java" />
-        <option value="$PROJECT_DIR$/iov/src/test/java/cn/neyzoter/aiot/iov/biz/domain/vehicle/test.java" />
         <option value="$PROJECT_DIR$/iov/src/main/java/cn/neyzoter/aiot/iov/biz/domain/vehicle/VehicleHttpPack.java" />
         <option value="$PROJECT_DIR$/common/src/main/java/cn/neyzoter/aiot/common/data/serialization/SerializationUtil.java" />
         <option value="$PROJECT_DIR$/springboot-kafka-basic-quickstart.sh" />
@@ -128,6 +184,9 @@
         <option value="$PROJECT_DIR$/uop/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/uop/src/main/java/cn/neyzoter/aiot/uop/biz/service/auth/config/SecurityConfiguration.java" />
         <option value="$PROJECT_DIR$/iov/src/main/java/cn/neyzoter/aiot/iov/web/controller/VehicleController.java" />
+        <option value="$PROJECT_DIR$/common/src/test/java/cn/neyzoter/aiot/common/tensorflow/TestRunner.java" />
+        <option value="$PROJECT_DIR$/common/src/test/java/cn/neyzoter/aiot/common/tensorflow/TestRunner4tensorflow.java" />
+        <option value="$PROJECT_DIR$/common/src/test/java/cn/neyzoter/aiot/common/tensorflow/TestModelManager.java" />
         <option value="$PROJECT_DIR$/common/pom.xml" />
         <option value="$PROJECT_DIR$/common/src/main/java/cn/neyzoter/aiot/common/tensorflow/ModelManager.java" />
       </list>
@@ -165,6 +224,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -222,17 +283,106 @@
               <item name="aiot" type="462c0819:PsiDirectoryNode" />
               <item name="common" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="aiot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="aiot" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="aiot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="aiot" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="tensorflow" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="aiot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="aiot" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="tf_model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="aiot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="aiot" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="tf_model" type="462c0819:PsiDirectoryNode" />
+              <item name="pb" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="aiot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="aiot" type="462c0819:PsiDirectoryNode" />
+              <item name="iov" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="aiot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="aiot" type="462c0819:PsiDirectoryNode" />
+              <item name="uop" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="aiot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="aiot" type="462c0819:PsiDirectoryNode" />
+              <item name="uop" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="aiot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="aiot" type="462c0819:PsiDirectoryNode" />
+              <item name="uop" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="aiot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="aiot" type="462c0819:PsiDirectoryNode" />
+              <item name="uop" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-              <item name="time" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="aiot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="aiot" type="462c0819:PsiDirectoryNode" />
+              <item name="uop" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="uop" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="aiot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="aiot" type="462c0819:PsiDirectoryNode" />
+              <item name="uop" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="aiot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="aiot" type="462c0819:PsiDirectoryNode" />
+              <item name="uop" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="aiot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="aiot" type="462c0819:PsiDirectoryNode" />
+              <item name="uop" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="impl" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -277,7 +427,20 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.UopApplication">
+  <component name="RunManager" selected="Application.TestRunner4tensorflow">
+    <configuration name="TestRunner4tensorflow" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="cn.neyzoter.aiot.common.tensorflow.TestRunner4tensorflow" />
+      <module name="common" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cn.neyzoter.aiot.common.tensorflow.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="TestAuthServiceImpl" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="uop" />
       <extension name="coverage">
@@ -293,32 +456,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestUserDao.testUserDao" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="dal" />
+    <configuration name="TestModelManager" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="common" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="cn.neyzoter.aiot.dal.dao.user.*" />
+          <option name="PATTERN" value="cn.neyzoter.aiot.common.tensorflow.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="cn.neyzoter.aiot.dal.dao.user" />
-      <option name="MAIN_CLASS_NAME" value="cn.neyzoter.aiot.dal.dao.user.TestUserDao" />
-      <option name="METHOD_NAME" value="testUserDao" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestVehicleHttpPackSerializer" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="iov" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="cn.neyzoter.aiot.iov.biz.domain.vehicle.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="cn.neyzoter.aiot.iov.biz.domain.vehicle" />
-      <option name="MAIN_CLASS_NAME" value="cn.neyzoter.aiot.iov.biz.domain.vehicle.TestVehicleHttpPackSerializer" />
+      <option name="PACKAGE_NAME" value="cn.neyzoter.aiot.common.tensorflow" />
+      <option name="MAIN_CLASS_NAME" value="cn.neyzoter.aiot.common.tensorflow.TestModelManager" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -352,11 +499,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.TestRunner4tensorflow" />
+        <item itemvalue="JUnit.TestModelManager" />
         <item itemvalue="Spring Boot.UopApplication" />
         <item itemvalue="JUnit.TestAuthServiceImpl" />
         <item itemvalue="Spring Boot.IovApplication" />
-        <item itemvalue="JUnit.TestVehicleHttpPackSerializer" />
-        <item itemvalue="JUnit.TestUserDao.testUserDao" />
       </list>
     </recent_temporary>
   </component>
@@ -405,13 +552,18 @@
       <workItem from="1576061730608" duration="1223000" />
       <workItem from="1576434091791" duration="24000" />
       <workItem from="1578046578871" duration="5545000" />
+      <workItem from="1578230917232" duration="800000" />
+      <workItem from="1578625875295" duration="1198000" />
+      <workItem from="1578964453424" duration="1232000" />
+      <workItem from="1579094713254" duration="67000" />
+      <workItem from="1580200266990" duration="2068000" />
+      <workItem from="1580286431983" duration="18000" />
+      <workItem from="1580286495588" duration="2423000" />
+      <workItem from="1580370998339" duration="7456000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="TestAuthServiceImpl - 2019.09.20 at 21h 19m 10s.xml">
-      <configuration name="TestAuthServiceImpl" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="TestAuthServiceImpl - 2019.09.20 at 21h 22m 03s.xml">
       <configuration name="TestAuthServiceImpl" configurationId="JUnit" />
     </history-entry>
@@ -439,9 +591,12 @@
     <history-entry file="TestAuthServiceImpl - 2019.10.13 at 14h 23m 58s.xml">
       <configuration name="TestAuthServiceImpl" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="TestModelManager - 2020.01.30 at 16h 40m 46s.xml">
+      <configuration name="TestModelManager" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="155770000" />
+    <option name="totallyTimeSpent" value="171032000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -453,9 +608,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="55" y="-4" width="1865" height="1084" extended-state="6" />
+    <frame x="54" y="-11" width="1867" height="1092" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4977169" visible="true" weight="0.20835625" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4977169" visible="true" weight="0.22759758" />
       <window_info id="Structure" order="1" sideWeight="0.5006935" side_tool="true" weight="0.3095107" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -465,13 +621,13 @@
       <window_info id="Web" order="7" sideWeight="0.5011442" side_tool="true" weight="0.14018692" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32925585" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.25993884" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.19877675" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.32008156" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.25280327" />
       <window_info anchor="bottom" id="Spring" order="7" weight="0.18960245" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49972513" visible="true" weight="0.34352702" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49972513" weight="0.23445463" />
       <window_info anchor="bottom" id="Docker" order="9" weight="0.27930683" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5002749" side_tool="true" weight="0.2640163" />
       <window_info anchor="bottom" id="Java Enterprise" order="11" weight="0.32925585" />
@@ -500,21 +656,6 @@
     </SUITE>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/dal/src/main/resources/schema.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="2" lean-forward="true" selection-start-line="3" selection-start-column="2" selection-end-line="3" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/iov/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="27" selection-start-line="27" selection-end-line="34" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dal/src/test/java/cn/neyzoter/aiot/dal/dao/user/TestUserDao.java" />
     <entry file="file://$PROJECT_DIR$/iov/src/test/java/cn/neyzoter/aiot/iov/biz/domain/vehicle/TestVehicleHttpPackSerializer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
@@ -529,16 +670,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="15" column="4" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="93" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/uop/src/test/java/cn/neyzoter/aiot/uop/biz/service/auth/impl/TestAuthServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="18" lean-forward="true" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -566,34 +697,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/uop/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="775">
-          <caret line="59" column="21" selection-start-line="59" selection-start-column="21" selection-end-line="59" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="29" column="10" selection-start-line="29" selection-start-column="10" selection-end-line="29" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dal/src/main/resources/application-userMysql.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
           <caret line="3" column="68" selection-start-line="3" selection-start-column="68" selection-end-line="3" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/uop/src/main/java/cn/neyzoter/aiot/uop/UopApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="1" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -875,22 +982,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/dal/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="535">
-          <caret line="55" column="4" selection-start-line="55" selection-start-column="4" selection-end-line="55" selection-end-column="19" />
+        <state relative-caret-position="360">
+          <caret line="24" column="30" selection-start-line="24" selection-start-column="25" selection-end-line="24" selection-end-column="30" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
+    <entry file="file://$PROJECT_DIR$/iov/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="10" selection-start-line="21" selection-start-column="10" selection-end-line="21" selection-end-column="10" />
+        <state relative-caret-position="570">
+          <caret line="38" column="21" selection-start-line="38" selection-start-column="21" selection-end-line="38" selection-end-column="21" />
         </state>
       </provider>
     </entry>
@@ -901,10 +1001,76 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/uop/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="669">
+          <caret line="59" column="21" selection-start-line="59" selection-start-column="21" selection-end-line="59" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/uop/src/main/java/cn/neyzoter/aiot/uop/UopApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="23" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/uop/src/test/java/cn/neyzoter/aiot/uop/biz/service/auth/impl/TestAuthServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="28" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="29" column="10" selection-start-line="29" selection-start-column="10" selection-end-line="29" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="21" selection-start-line="24" selection-start-column="21" selection-end-line="24" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/src/test/java/cn/neyzoter/aiot/common/tensorflow/TestRunner4tensorflow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="1" lean-forward="true" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/src/test/java/cn/neyzoter/aiot/common/tensorflow/TestModelManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="76" selection-start-line="14" selection-start-column="76" selection-end-line="14" selection-end-column="76" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/common/src/main/java/cn/neyzoter/aiot/common/tensorflow/ModelManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+        <state relative-caret-position="464">
+          <caret line="45" column="99" selection-start-line="45" selection-start-column="99" selection-end-line="45" selection-end-column="99" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1461#1462#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
