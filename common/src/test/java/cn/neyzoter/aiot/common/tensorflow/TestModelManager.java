@@ -8,8 +8,8 @@ import org.junit.Test;
  * @date 2020-1-30
  */
 public class TestModelManager {
-//    ModelManager diagnosisModel = new ModelManager("/home/scc/code/java/aiot/common/tf_model/pb/frozen_model30.pb");
     ModelManager diagnosisModel = new ModelManager("/home/scc/code/java/aiot/common/tf_model/saved_model/","mytag");
+//    ModelManager diagnosisModel = new ModelManager("/home/scc/code/java/aiot/common/tf_model/model2/","mytag");
     @Test
     public void testDiagnosisModel () {
         System.out.println("Starting test.");

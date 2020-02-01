@@ -18,5 +18,6 @@ public class TestRunner4tensorflow {
             System.out.println(failure.toString());
         }
         System.out.println(result.wasSuccessful());
+
     }
 }
