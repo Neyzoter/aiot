@@ -2,6 +2,9 @@ package cn.neyzoter.aiot.common.tensorflow;
 
 import org.tensorflow.*;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
 import java.util.List;
 
 /**
@@ -49,29 +52,58 @@ public class ModelManager {
      *
      */
     public void testModelBundle () {
-        Session session = this.modelBundle.session();
-        float[][][][] a = new float[5][30][30][3];
-        Tensor input_x = Tensor.create(a);
-        List<Tensor<?>> out = session.runner().feed("data_input", input_x).fetch("data_output").run();
-        System.out.print(String.format("data_output is ") + out.toString() + "\n");
-
-        for (Tensor s : out) {
-            float[][][][] t = new float[1][30][30][3];
-            s.copyTo(t);
-            System.out.println("Output data : ");
-            for (int i = 0 ; i < 30; i++) {
-                for (int j = 0; j < 30; j ++) {
-                    for (int x = 0; x < 3; x ++) {
-                        boolean ifPrint = (i == 0 && j < 10) || (i == 29 && j > 20);
-                        if (ifPrint){
-                            System.out.println(String.format("[ %.4f, %.4f, %.4f]",t[0][i][j][0],t[0][i][j][1],t[0][i][j][2]));
-                        }
-                    }
+        try {
+            Session session = this.modelBundle.session();
+            float[][][][] a = new float[5][30][30][3];
+            FileInputStream fin = new FileInputStream("/home/scc/code/java/aiot/common/tf_model/saved_model/train_data_20_txt.txt");
+            InputStreamReader reader = new InputStreamReader(fin);
+            BufferedReader buffReader = new BufferedReader(reader);
+            String line = buffReader.readLine();
+            String[] data_str_float = line.split(",");
+            System.out.println("data_str_float len is " + data_str_float.length);
+            int x1 = 0,x2 = 0,x3 = 0, x4 = 0;
+            for (int i = 0 ; i < data_str_float.length ; i ++) {
+                float aFloat = Float.parseFloat(data_str_float[i]);
+                a[x1][x2][x3][x4] = aFloat;
+//                System.out.print(aFloat);
+//                System.out.print(", ");
+                x4 ++;
+                if (x4 == 3) {
+                    x4 = 0;
+                    x3 ++;
+//                    System.out.print("\n");
                 }
-                if (i !=0 && i != 29) {
-                    System.out.println("   .....     ");
+                if (x3 == 30) {
+                    x3 = 0;
+                    x2 ++;
+                }
+                if (x2 == 30) {
+                    x2 = 0;
+                    x1 ++;
                 }
             }
+            System.out.println(String.format("x1 : %d , x2 : %d , x3 : %d , x4 : %d",x1, x2,x3,x4));
+            Tensor input_x = Tensor.create(a);
+            List<Tensor<?>> out = session.runner().feed("data_input", input_x).fetch("data_output").run();
+            System.out.print(String.format("data_output is ") + out.toString() + "\n");
+            for (Tensor s : out) {
+                float[][][][] t = new float[1][30][30][3];
+                s.copyTo(t);
+                System.out.println("Output data : ");
+                for (int i = 0 ; i < 30; i++) {
+                    for (int j = 0; j < 30; j ++) {
+                        boolean ifPrint = (i == 0 && j < 10) || (i == 29 && j > 20);
+                        if (ifPrint){
+                            System.out.println(String.format("data_output[0][%d][%d][0:2] = [ %.4f, %.4f, %.4f]",i,j,t[0][i][j][0],t[0][i][j][1],t[0][i][j][2]));
+                        }
+                    }
+                    if (i !=0 && i != 29) {
+                        System.out.println("   .....     ");
+                    }
+                }
+            }
+        }catch (Exception e) {
+            System.err.println(e);
         }
     }
 }
