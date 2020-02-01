@@ -6,7 +6,6 @@
       <change beforePath="$PROJECT_DIR$/common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/common/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/src/main/java/cn/neyzoter/aiot/common/tensorflow/ModelManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/cn/neyzoter/aiot/common/tensorflow/ModelManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/src/test/java/cn/neyzoter/aiot/common/tensorflow/TestModelManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/test/java/cn/neyzoter/aiot/common/tensorflow/TestModelManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/test/java/cn/neyzoter/aiot/common/tensorflow/TestRunner4tensorflow.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/test/java/cn/neyzoter/aiot/common/tensorflow/TestRunner4tensorflow.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -32,16 +31,16 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/common/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="22" column="52" lean-forward="true" selection-start-line="22" selection-start-column="52" selection-end-line="22" selection-end-column="52" />
+            <state relative-caret-position="375">
+              <caret line="25" column="21" selection-start-line="25" selection-start-column="21" selection-end-line="25" selection-end-column="21" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/common/src/main/java/org/tensorflow/NativeLibrary.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
+            <state relative-caret-position="630">
               <caret line="69" column="96" selection-start-line="69" selection-start-column="96" selection-end-line="69" selection-end-column="96" />
               <folding>
                 <element signature="e#0#11686#0" expanded="true" />
@@ -51,15 +50,29 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/common/src/main/java/cn/neyzoter/aiot/common/tensorflow/ModelManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="795">
-              <caret line="53" column="31" selection-start-line="53" selection-start-column="31" selection-end-line="53" selection-end-column="31" />
+            <state relative-caret-position="383">
+              <caret line="60" column="46" selection-start-line="60" selection-start-column="46" selection-end-line="60" selection-end-column="46" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#5077#5078#0" expanded="true" />
-                <element signature="e#5116#5117#0" expanded="true" />
+                <element signature="e#819#820#0" expanded="true" />
+                <element signature="e#890#891#0" expanded="true" />
+                <element signature="e#997#998#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://$MAVEN_REPOSITORY$/org/tensorflow/libtensorflow/1.14.0/libtensorflow-1.14.0.jar!/org/tensorflow/Session.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="287">
+              <caret line="112" column="30" selection-start-line="112" selection-start-column="30" selection-end-line="112" selection-end-column="30" />
+              <folding>
+                <element signature="e#3378#3379#0" expanded="true" />
+                <element signature="e#3448#3449#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -68,7 +81,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="jar://$MAVEN_REPOSITORY$/org/tensorflow/libtensorflow/1.13.1/libtensorflow-1.13.1.jar!/org/tensorflow/Tensor.class">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
+            <state relative-caret-position="15">
               <caret line="33" column="28" selection-start-line="33" selection-start-column="28" selection-end-line="33" selection-end-column="28" />
             </state>
           </provider>
@@ -77,8 +90,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/common/src/test/java/cn/neyzoter/aiot/common/tensorflow/TestModelManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="9" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
+            <state relative-caret-position="225">
+              <caret line="15" column="41" lean-forward="true" selection-start-line="15" selection-start-column="41" selection-end-line="15" selection-end-column="41" />
             </state>
           </provider>
         </entry>
@@ -86,8 +99,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/common/src/test/java/cn/neyzoter/aiot/common/tensorflow/TestRunner4tensorflow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="21" column="5" lean-forward="true" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
+            <state relative-caret-position="270">
+              <caret line="18" column="9" lean-forward="true" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -125,6 +138,8 @@
       <find>OAuth2ServerConfig</find>
       <find>AuthenticationManager</find>
       <find>requestMatcherConfigurer</find>
+      <find>T</find>
+      <find>Output</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/common/src/test/java</dir>
@@ -182,11 +197,11 @@
         <option value="$PROJECT_DIR$/uop/src/main/java/cn/neyzoter/aiot/uop/biz/service/auth/config/SecurityConfiguration.java" />
         <option value="$PROJECT_DIR$/iov/src/main/java/cn/neyzoter/aiot/iov/web/controller/VehicleController.java" />
         <option value="$PROJECT_DIR$/common/src/test/java/cn/neyzoter/aiot/common/tensorflow/TestRunner.java" />
-        <option value="$PROJECT_DIR$/common/src/main/java/cn/neyzoter/aiot/common/tensorflow/ModelManager.java" />
         <option value="$PROJECT_DIR$/common/src/test/java/cn/neyzoter/aiot/common/tensorflow/TestRunner4tensorflow.java" />
-        <option value="$PROJECT_DIR$/common/src/test/java/cn/neyzoter/aiot/common/tensorflow/TestModelManager.java" />
-        <option value="$PROJECT_DIR$/common/pom.xml" />
         <option value="$PROJECT_DIR$/common/src/main/java/org/tensorflow/NativeLibrary.java" />
+        <option value="$PROJECT_DIR$/common/pom.xml" />
+        <option value="$PROJECT_DIR$/common/src/test/java/cn/neyzoter/aiot/common/tensorflow/TestModelManager.java" />
+        <option value="$PROJECT_DIR$/common/src/main/java/cn/neyzoter/aiot/common/tensorflow/ModelManager.java" />
       </list>
     </option>
   </component>
@@ -279,53 +294,7 @@
               <item name="aiot" type="462c0819:PsiDirectoryNode" />
               <item name="common" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="tensorflow" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="aiot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="aiot" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="aiot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="aiot" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="aiot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="aiot" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="tensorflow" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="aiot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="aiot" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-              <item name="tf_model" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="aiot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="aiot" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-              <item name="tf_model" type="462c0819:PsiDirectoryNode" />
-              <item name="model2" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="aiot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="aiot" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-              <item name="tf_model" type="462c0819:PsiDirectoryNode" />
-              <item name="saved_model" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="aiot" type="b2602c69:ProjectViewProjectNode" />
@@ -574,7 +543,7 @@
       <workItem from="1580286431983" duration="18000" />
       <workItem from="1580286495588" duration="2423000" />
       <workItem from="1580370998339" duration="20454000" />
-      <workItem from="1580543967271" duration="2189000" />
+      <workItem from="1580543967271" duration="7974000" />
     </task>
     <servers />
   </component>
@@ -611,7 +580,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="186219000" />
+    <option name="totallyTimeSpent" value="192004000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -626,7 +595,7 @@
     <frame x="55" y="-4" width="1865" height="1084" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4977169" visible="true" weight="0.22759758" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4977169" visible="true" weight="0.22759758" />
       <window_info id="Structure" order="1" sideWeight="0.5006935" side_tool="true" weight="0.3095107" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -636,13 +605,13 @@
       <window_info id="Web" order="7" sideWeight="0.5011442" side_tool="true" weight="0.14018692" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32925585" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.21916412" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.2864424" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.32008156" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.25280327" />
       <window_info anchor="bottom" id="Spring" order="7" weight="0.18960245" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49972513" weight="0.43323138" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49972513" weight="0.23037717" />
       <window_info anchor="bottom" id="Docker" order="9" weight="0.27930683" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5002749" side_tool="true" weight="0.2640163" />
       <window_info anchor="bottom" id="Java Enterprise" order="11" weight="0.32925585" />
@@ -671,20 +640,6 @@
     </SUITE>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/oauth/spring-security-oauth2/2.3.2.RELEASE/spring-security-oauth2-2.3.2.RELEASE.jar!/org/springframework/security/oauth2/provider/token/store/redis/RedisTokenStore.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="43" column="11" selection-start-line="43" selection-start-column="11" selection-end-line="43" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-beans/5.0.5.RELEASE/spring-beans-5.0.5.RELEASE.jar!/org/springframework/beans/factory/annotation/AutowiredAnnotationBeanPostProcessor.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="540" selection-start-line="540" selection-end-line="540" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dal/src/main/resources/application-userMysql.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
@@ -1014,25 +969,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/common/src/main/java/cn/neyzoter/aiot/common/tensorflow/ModelManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="795">
-          <caret line="53" column="31" selection-start-line="53" selection-start-column="31" selection-end-line="53" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#5077#5078#0" expanded="true" />
-            <element signature="e#5116#5117#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/tensorflow/libtensorflow/1.13.1/libtensorflow-1.13.1.jar!/org/tensorflow/Tensor.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="33" column="28" selection-start-line="33" selection-start-column="28" selection-end-line="33" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/uop/src/test/java/cn/neyzoter/aiot/uop/biz/service/auth/impl/TestAuthServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
@@ -1057,18 +993,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/common/src/test/java/cn/neyzoter/aiot/common/tensorflow/TestModelManager.java">
+    <entry file="file://$PROJECT_DIR$/common/src/main/java/org/tensorflow/NativeLibrary.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="9" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common/src/test/java/cn/neyzoter/aiot/common/tensorflow/TestRunner4tensorflow.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="5" lean-forward="true" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
+        <state relative-caret-position="630">
+          <caret line="69" column="96" selection-start-line="69" selection-start-column="96" selection-end-line="69" selection-end-column="96" />
           <folding>
+            <element signature="e#0#11686#0" expanded="true" />
             <element signature="imports" expanded="true" />
           </folding>
         </state>
@@ -1076,18 +1006,62 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/common/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="52" lean-forward="true" selection-start-line="22" selection-start-column="52" selection-end-line="22" selection-end-column="52" />
+        <state relative-caret-position="375">
+          <caret line="25" column="21" selection-start-line="25" selection-start-column="21" selection-end-line="25" selection-end-column="21" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/common/src/main/java/org/tensorflow/NativeLibrary.java">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/tensorflow/libtensorflow/1.14.0/libtensorflow-1.14.0.jar!/org/tensorflow/Output.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="69" column="96" selection-start-line="69" selection-start-column="96" selection-end-line="69" selection-end-column="96" />
+        <state relative-caret-position="448">
+          <caret line="56" column="10" selection-start-line="56" selection-start-column="4" selection-end-line="56" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/tensorflow/libtensorflow/1.13.1/libtensorflow-1.13.1.jar!/org/tensorflow/Tensor.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="33" column="28" selection-start-line="33" selection-start-column="28" selection-end-line="33" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/src/test/java/cn/neyzoter/aiot/common/tensorflow/TestModelManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="41" lean-forward="true" selection-start-line="15" selection-start-column="41" selection-end-line="15" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/tensorflow/libtensorflow/1.14.0/libtensorflow-1.14.0.jar!/org/tensorflow/Session.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="287">
+          <caret line="112" column="30" selection-start-line="112" selection-start-column="30" selection-end-line="112" selection-end-column="30" />
           <folding>
-            <element signature="e#0#11686#0" expanded="true" />
+            <element signature="e#3378#3379#0" expanded="true" />
+            <element signature="e#3448#3449#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/src/test/java/cn/neyzoter/aiot/common/tensorflow/TestRunner4tensorflow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="9" lean-forward="true" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
+          <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/src/main/java/cn/neyzoter/aiot/common/tensorflow/ModelManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="383">
+          <caret line="60" column="46" selection-start-line="60" selection-start-column="46" selection-end-line="60" selection-end-column="46" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#819#820#0" expanded="true" />
+            <element signature="e#890#891#0" expanded="true" />
+            <element signature="e#997#998#0" expanded="true" />
           </folding>
         </state>
       </provider>

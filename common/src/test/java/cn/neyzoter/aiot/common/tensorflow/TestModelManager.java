@@ -12,8 +12,8 @@ public class TestModelManager {
 //    ModelManager diagnosisModel = new ModelManager("/home/scc/code/java/aiot/common/tf_model/model2/","mytag");
     @Test
     public void testDiagnosisModel () {
-        System.out.println("Starting test.");
-        System.out.println(diagnosisModel.getModelBundle().session().toString());
+        System.out.println("==== testDiagnosisModel ====");
+        diagnosisModel.testModelBundle();
     }
 
 }
