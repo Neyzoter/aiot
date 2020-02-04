@@ -27,7 +27,8 @@ public class VehicleController {
      * @return {@link String}
      */
     @RequestMapping(value = apiPrefix+"/test", method = RequestMethod.GET)
-    public String test() {
+    public String test(@RequestParam(value = "vehicle_id",required = true) int vehicle_id) {
+        logger.info(String.format("vehicle id = %d", vehicle_id));
         return "OK";
     }
 
@@ -38,7 +39,8 @@ public class VehicleController {
      * @return {@link String}
      */
     @RequestMapping(value = apiPrefix+"/sendData", method = RequestMethod.POST)
-    public Object sendData(@RequestBody VehicleHttpPack vehicleHttpPack) {  //convert serialization
+    public Object sendData(@RequestParam(value = "vehicle_id",required = true) int vehicle_id,
+                           @RequestBody VehicleHttpPack vehicleHttpPack) {  //convert serialization
         //TODO
         // if msg is safe(equals to summary of information in ) then
         // md5 + salt
@@ -47,7 +49,6 @@ public class VehicleController {
             // send to kafka-VehicleHttpPack
             kafkaTemplate.send("VehicleHttpPack", vehicleHttpPack);
         }
-
         return "OK";
     }
 

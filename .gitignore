@@ -4,3 +4,6 @@ tf_model/
 
 # file
 *.class
+
+# http request
+httpRequests/
