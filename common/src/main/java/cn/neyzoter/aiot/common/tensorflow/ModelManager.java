@@ -1,7 +1,6 @@
 package cn.neyzoter.aiot.common.tensorflow;
 
 import org.tensorflow.*;
-import sun.awt.ModalityListener;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -20,26 +19,27 @@ public class ModelManager {
      */
     private SavedModelBundle modelBundle;
     /**
-     * alive time from last contact, when data sended , alive time will update to be 0
+     * alive time(minutes) from last contact, when data sended , alive time will update to be 0
      */
     private int aliveTime;
     /**
-     * model's max alive time from last contact
+     * model's max alive time(minutes) from last contact
      */
     private int maxAliveTime;
 
     /**
-     * Class ModelManager build,
+     * Class ModelManager build, maxAliveTime(minutes) is 2
      * @param path model's path
      * @param tag model's tag
      */
     public ModelManager (String path, String tag){
-        ModelManagerInit(path, tag, 100);
+        ModelManagerInit(path, tag, 2);
     }
     /**
      * Class ModelManager build
      * @param path model's path
      * @param tag model's tag
+     * @param maxAliveTime model's max alive time(minutes) from last contact
      */
     public ModelManager (String path, String tag, int maxAliveTime){
         ModelManagerInit(path,tag,maxAliveTime);
@@ -73,7 +73,7 @@ public class ModelManager {
     }
 
     /**
-     * 获取session
+     * get model bundle
      * @return
      */
     public SavedModelBundle getModelBundle() {
@@ -81,7 +81,7 @@ public class ModelManager {
     }
 
     /**
-     * 测试模型是否可以运行，只用于一个模型
+     * test model
      *
      */
     public void testModelBundle () {
