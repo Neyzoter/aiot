@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="23c1b6a3-a88d-412b-a194-bead14c68f99" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/cn/neyzoter/aiot/common/tensorflow/ModelManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/cn/neyzoter/aiot/common/tensorflow/ModelManager.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -47,7 +47,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="120">
@@ -59,7 +59,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/iov/src/main/java/cn/neyzoter/aiot/iov/biz/service/kafka/serialization/VehicleHttpPackDeserializer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
+            <state relative-caret-position="225">
               <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -68,15 +68,27 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/common/src/main/java/cn/neyzoter/aiot/common/tensorflow/ModelManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="17" selection-start-line="17" selection-end-line="17" />
+            <state relative-caret-position="510">
+              <caret line="87" column="51" selection-start-line="87" selection-start-column="51" selection-end-line="87" selection-end-column="51" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1055#1056#0" expanded="true" />
                 <element signature="e#1094#1095#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/common/src/test/java/cn/neyzoter/aiot/common/tensorflow/TestRunner4tensorflow.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -207,12 +219,12 @@
         <option value="$PROJECT_DIR$/common/src/main/java/org/tensorflow/NativeLibrary.java" />
         <option value="$PROJECT_DIR$/common/pom.xml" />
         <option value="$PROJECT_DIR$/common/src/test/java/cn/neyzoter/aiot/common/tensorflow/TestModelManager.java" />
-        <option value="$PROJECT_DIR$/common/src/main/java/cn/neyzoter/aiot/common/tensorflow/ModelManager.java" />
         <option value="$PROJECT_DIR$/common/src/test/java/cn/neyzoter/aiot/common/tensorflow/TestRunner4tensorflow.java" />
         <option value="$PROJECT_DIR$/iov/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/iov/src/main/java/cn/neyzoter/aiot/iov/biz/service/kafka/serialization/VehicleHttpPackSerializer.java" />
         <option value="$PROJECT_DIR$/iov/src/main/java/cn/neyzoter/aiot/iov/web/controller/VehicleController.java" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/common/src/main/java/cn/neyzoter/aiot/common/tensorflow/ModelManager.java" />
       </list>
     </option>
   </component>
@@ -258,7 +270,71 @@
             <path>
               <item name="aiot" type="b2602c69:ProjectViewProjectNode" />
               <item name="aiot" type="462c0819:PsiDirectoryNode" />
-              <item name=".idea" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="aiot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="aiot" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="aiot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="aiot" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="aiot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="aiot" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="aiot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="aiot" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="aiot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="aiot" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="tensorflow" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="aiot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="aiot" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="aiot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="aiot" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="aiot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="aiot" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="tensorflow" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="aiot" type="b2602c69:ProjectViewProjectNode" />
@@ -459,7 +535,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.IovApplication">
+  <component name="RunManager" selected="Application.TestRunner4tensorflow">
     <configuration name="TestRunner4tensorflow" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="cn.neyzoter.aiot.common.tensorflow.TestRunner4tensorflow" />
       <module name="common" />
@@ -531,8 +607,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.IovApplication" />
         <item itemvalue="Application.TestRunner4tensorflow" />
+        <item itemvalue="Spring Boot.IovApplication" />
         <item itemvalue="JUnit.TestAuthServiceImpl" />
         <item itemvalue="JUnit.TestModelManager" />
         <item itemvalue="Spring Boot.UopApplication" />
@@ -593,7 +669,7 @@
       <workItem from="1580286495588" duration="2423000" />
       <workItem from="1580370998339" duration="20454000" />
       <workItem from="1580543967271" duration="21655000" />
-      <workItem from="1580819280368" duration="161000" />
+      <workItem from="1580819280368" duration="1819000" />
     </task>
     <servers />
   </component>
@@ -630,7 +706,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="205846000" />
+    <option name="totallyTimeSpent" value="207504000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -645,7 +721,7 @@
     <frame x="54" y="-11" width="1867" height="1092" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4977169" visible="true" weight="0.22979659" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4977169" visible="true" weight="0.22979659" />
       <window_info id="Structure" order="1" sideWeight="0.5006935" side_tool="true" weight="0.3095107" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -655,14 +731,14 @@
       <window_info id="Web" order="7" sideWeight="0.5011442" side_tool="true" weight="0.14018692" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32925585" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.39449543" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.23037717" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.32008156" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="REST Client" order="6" weight="0.16921508" />
+      <window_info anchor="bottom" id="REST Client" order="6" weight="0.41182467" />
       <window_info anchor="bottom" id="TODO" order="7" weight="0.21202855" />
       <window_info anchor="bottom" id="Spring" order="8" weight="0.18960245" />
-      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49972513" visible="true" weight="0.38735983" />
+      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49972513" weight="0.5453619" />
       <window_info anchor="bottom" id="Docker" order="10" weight="0.27930683" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5002749" side_tool="true" weight="0.2640163" />
       <window_info anchor="bottom" id="Java Enterprise" order="12" weight="0.32925585" />
@@ -939,16 +1015,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/common/src/test/java/cn/neyzoter/aiot/common/tensorflow/TestRunner4tensorflow.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" selection-start-line="23" selection-end-line="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/common/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
@@ -1004,28 +1070,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="11" column="16" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/iov/src/main/java/cn/neyzoter/aiot/iov/biz/service/kafka/serialization/VehicleHttpPackDeserializer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common/src/main/java/cn/neyzoter/aiot/common/tensorflow/ModelManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1055#1056#0" expanded="true" />
-            <element signature="e#1094#1095#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1089,6 +1133,38 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iov/src/main/java/cn/neyzoter/aiot/iov/biz/service/kafka/serialization/VehicleHttpPackDeserializer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/src/test/java/cn/neyzoter/aiot/common/tensorflow/TestRunner4tensorflow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/src/main/java/cn/neyzoter/aiot/common/tensorflow/ModelManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="87" column="51" selection-start-line="87" selection-start-column="51" selection-end-line="87" selection-end-column="51" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1055#1056#0" expanded="true" />
+            <element signature="e#1094#1095#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

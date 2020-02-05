@@ -23,8 +23,9 @@ public class ModelManager {
     public ModelManager (String path, String tag){
         System.out.println(String.format("Start loading model: %s  tag: %s", path, tag));
         try {
+            long time = System.currentTimeMillis();
             this.loadModelBundle(path, tag);
-            System.out.println(String.format("Load model: %s  tag: %s finished", path, tag));
+            System.out.println(String.format("Load model: %s  tag: %s finished with %d ms", path, tag, System.currentTimeMillis() - time));
         } catch (Exception e) {
             System.err.println(e);
         }
@@ -53,6 +54,7 @@ public class ModelManager {
      */
     public void testModelBundle () {
         try {
+
             Session session = this.modelBundle.session();
             float[][][][] a = new float[5][30][30][3];
             FileInputStream fin = new FileInputStream("/home/scc/code/java/aiot/common/tf_model/saved_model/train_data_20_txt.txt");
@@ -83,9 +85,10 @@ public class ModelManager {
                 }
             }
             System.out.println(String.format("x1 : %d , x2 : %d , x3 : %d , x4 : %d",x1, x2,x3,x4));
+            long time = System.currentTimeMillis();
             Tensor input_x = Tensor.create(a);
             List<Tensor<?>> out = session.runner().feed("data_input", input_x).fetch("data_output").run();
-            System.out.print(String.format("data_output is ") + out.toString() + "\n");
+            System.out.print(String.format("data_output is %s , compute with %d ms\n" , out.toString() ,System.currentTimeMillis() - time) );
             for (Tensor s : out) {
                 float[][][][] t = new float[1][30][30][3];
                 s.copyTo(t);
