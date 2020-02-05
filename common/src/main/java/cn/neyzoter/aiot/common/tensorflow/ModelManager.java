@@ -1,6 +1,7 @@
 package cn.neyzoter.aiot.common.tensorflow;
 
 import org.tensorflow.*;
+import sun.awt.ModalityListener;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -14,29 +15,60 @@ import java.util.List;
  */
 public class ModelManager {
 
+    /**
+     * model
+     */
     private SavedModelBundle modelBundle;
+    /**
+     * alive time from last contact, when data sended , alive time will update to be 0
+     */
+    private int aliveTime;
+    /**
+     * model's max alive time from last contact
+     */
+    private int maxAliveTime;
 
     /**
-     * 模型管理构造函数
-     * @param path 模型的路径
+     * Class ModelManager build,
+     * @param path model's path
+     * @param tag model's tag
      */
     public ModelManager (String path, String tag){
+        ModelManagerInit(path, tag, 100);
+    }
+    /**
+     * Class ModelManager build
+     * @param path model's path
+     * @param tag model's tag
+     */
+    public ModelManager (String path, String tag, int maxAliveTime){
+        ModelManagerInit(path,tag,maxAliveTime);
+    }
+
+    /**
+     * ModelManager init func
+     * @param path
+     * @param tag
+     * @param maxAliveTime
+     */
+    private void ModelManagerInit (String path, String tag, int maxAliveTime) {
         System.out.println(String.format("Start loading model: %s  tag: %s", path, tag));
         try {
             long time = System.currentTimeMillis();
             this.loadModelBundle(path, tag);
+            this.aliveTime = 0;
+            this.maxAliveTime = maxAliveTime;
             System.out.println(String.format("Load model: %s  tag: %s finished with %d ms", path, tag, System.currentTimeMillis() - time));
         } catch (Exception e) {
             System.err.println(e);
         }
-
     }
 
     /**
-     * 加载1个模型
+     * load a model
      * @param path
      */
-    public void loadModelBundle (String path, String tag) {
+    private void loadModelBundle (String path, String tag) {
             this.modelBundle = SavedModelBundle.load(path, tag);
     }
 
