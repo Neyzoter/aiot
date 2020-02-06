@@ -1,6 +1,7 @@
 package cn.neyzoter.aiot.iov.web.controller;
 
 import cn.neyzoter.aiot.dal.domain.vehicle.VehicleHttpPack;
+import cn.neyzoter.aiot.iov.biz.service.kafka.util.PartitionAllocator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,18 +37,35 @@ public class VehicleController {
     /**
      * server get vehicle data
      * @param @RequestBody VehicleHttpPack
+     * @param @Request
      * @return {@link String}
      */
+    /**
+     * server get vehicle data
+     * @param vehicle_id vehicle id
+     * @param data_type data type
+     * @param vehicleHttpPack VehicleHttpPack
+     * @return
+     */
     @RequestMapping(value = apiPrefix+"/sendData", method = RequestMethod.POST)
-    public Object sendData(@RequestParam(value = "vehicle_id",required = true) int vehicle_id,
+    public Object sendData(@RequestParam(value = "vehicle_id",required = true) String vehicle_id,
+                           @RequestParam(value = "data_type",required = true) String data_type,
                            @RequestBody VehicleHttpPack vehicleHttpPack) {  //convert serialization
         //TODO
         // if msg is safe(equals to summary of information in ) then
         // md5 + salt
         String infoSumm = "123";
         if(vehicleHttpPack.getSign().equals(infoSumm)){
-            // send to kafka-VehicleHttpPack
-            kafkaTemplate.send("VehicleHttpPack", vehicleHttpPack);
+            try{
+                // get the partition id
+                int partition = PartitionAllocator.allocateByRemainder(vehicle_id.hashCode(), kafkaTemplate.partitionsFor("VehicleHttpPack").size());
+                // send to kafka-VehicleHttpPack
+                // key determines the partition
+                kafkaTemplate.send("VehicleHttpPack" , partition ,data_type ,vehicleHttpPack);
+            } catch (Exception e) {
+                logger.error("",e);
+            }
+
         }
         return "OK";
     }
