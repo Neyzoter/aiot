@@ -2,10 +2,12 @@ package cn.neyzoter.aiot.iov.biz.service.kafka.impl;
 
 import cn.neyzoter.aiot.dal.dao.vehicle.Vehicle2InfluxDb;
 import cn.neyzoter.aiot.dal.domain.vehicle.VehicleHttpPack;
+import cn.neyzoter.aiot.iov.biz.service.kafka.constant.KafkaConsumerGroup;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
+import cn.neyzoter.aiot.iov.biz.service.kafka.constant.KafkaTopic;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -24,7 +26,7 @@ public class KafkaListenerImpl {
      * Listen for partition's msg
      * @param vehicleHttpPack {@link VehicleHttpPack}
      */
-    @KafkaListener(topics = "VehicleHttpPack", groupId = "VehicleHttpPackageConsumer")
+    @KafkaListener(topics = KafkaTopic.TOPIC_VEHICLE_HTTP_PACKET, groupId = KafkaConsumerGroup.GROUP_CONSUME_VEHICLE_HTTP_PACKET)
     public void processMsg(VehicleHttpPack vehicleHttpPack){
         logger.info("Processing Kafka msg : " + vehicleHttpPack.toString());
         Map<String, String> tags = new HashMap<>(20);

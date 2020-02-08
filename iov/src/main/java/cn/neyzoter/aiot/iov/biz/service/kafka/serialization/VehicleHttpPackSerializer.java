@@ -11,6 +11,7 @@ import java.util.Map;
 
 /**
  * VehicleHttpPack Serializer
+ * @deprecated
  * @author Neyzoter Song
  * @date 2019/9/11
  */
