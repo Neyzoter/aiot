@@ -6,6 +6,9 @@ import cn.neyzoter.aiot.iov.biz.service.kafka.constant.KafkaConsumerGroup;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.kafka.support.KafkaHeaders;
+import org.springframework.messaging.handler.annotation.Header;
+import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Component;
 import cn.neyzoter.aiot.iov.biz.service.kafka.constant.KafkaTopic;
 
@@ -22,8 +25,12 @@ public class KafkaListenerImpl {
     private final static Logger logger = LoggerFactory.getLogger(KafkaListenerImpl.class);
     private Vehicle2InfluxDb vehicle2InfluxDb = new Vehicle2InfluxDb("zju", "influxdb_bucket", "ms", "yzwAKztIXZLJNSvTPeUuFW7P9z4oWd_NLnGZNcIuoJMY7PCZEm1Lu1s-IIjloYFiSBVhRss7aMaDbh58WdlhGA==");
 
-    @KafkaListener(topics = KafkaTopic.TOPIC_VEHICLE_HTTP_PACKET, groupId = KafkaConsumerGroup.GROUP_CONSUME_VEHICLE_HTTP_PACKET)
-    public void processRtData (String jdata) {
+    @KafkaListener(topics = KafkaTopic.TOPIC_VEHICLE_HTTP_PACKET_NAME, groupId = KafkaConsumerGroup.GROUP_CONSUME_VEHICLE_HTTP_PACKET)
+    public void processRtData (@Payload String jdata,
+                               @Header(KafkaHeaders.RECEIVED_MESSAGE_KEY) Integer key,
+                               @Header(KafkaHeaders.RECEIVED_PARTITION_ID) int partition,
+                               @Header(KafkaHeaders.RECEIVED_TOPIC) String topic,
+                               @Header(KafkaHeaders.RECEIVED_TIMESTAMP) long ts) {
 
     }
 

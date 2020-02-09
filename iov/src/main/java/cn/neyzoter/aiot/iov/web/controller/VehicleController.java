@@ -24,6 +24,7 @@ public class VehicleController {
     private KafkaTemplate kafkaTemplate;
 
 
+
     /**
      * http test( brower visit http://localhost:[port]/iov/api/runtime-data/test)
      * @return {@link String}
@@ -31,7 +32,7 @@ public class VehicleController {
     @RequestMapping(value = IovRestHttpApi.VEHICLE_TEST, method = RequestMethod.GET)
     public String test(@RequestParam(value = "vehicle_id",required = true) int vehicle_id) {
         logger.info(String.format("vehicle id = %d", vehicle_id));
-        return "OK";
+        return IovHttpRtn.OK;
     }
 
     /**
@@ -46,8 +47,8 @@ public class VehicleController {
                            @RequestParam(value = "dtype",required = true) String dtype,
                            @RequestBody String jdata) {
         try {
-            int partition = PartitionAllocator.allocateByRemainder(vid.hashCode(), kafkaTemplate.partitionsFor(KafkaTopic.TOPIC_VEHICLE_HTTP_PACKET).size());
-            kafkaTemplate.send(KafkaTopic.TOPIC_VEHICLE_HTTP_PACKET , partition ,dtype ,jdata);
+            int partition = PartitionAllocator.allocateByRemainder(vid.hashCode(), kafkaTemplate.partitionsFor(KafkaTopic.TOPIC_VEHICLE_HTTP_PACKET_NAME).size());
+            kafkaTemplate.send(KafkaTopic.TOPIC_VEHICLE_HTTP_PACKET_NAME , partition ,dtype ,jdata);
             return IovHttpRtn.OK;
         } catch (Exception e) {
             logger.error("", e);
@@ -83,7 +84,7 @@ public class VehicleController {
             }
 
         }
-        return "OK";
+        return IovHttpRtn.OK;
     }
 
 }

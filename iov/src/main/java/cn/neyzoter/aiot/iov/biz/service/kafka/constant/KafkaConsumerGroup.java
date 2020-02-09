@@ -7,4 +7,5 @@ package cn.neyzoter.aiot.iov.biz.service.kafka.constant;
  */
 public class KafkaConsumerGroup {
     public final static String GROUP_CONSUME_VEHICLE_HTTP_PACKET = "VehicleHttpPackageConsumer";
+
 }
