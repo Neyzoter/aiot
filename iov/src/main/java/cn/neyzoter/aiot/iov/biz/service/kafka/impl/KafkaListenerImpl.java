@@ -36,22 +36,22 @@ public class KafkaListenerImpl {
      * @param topic
      * @param ts
      */
-    @KafkaListener(id = "listener1",topics = KafkaTopic.TOPIC_VEHICLE_HTTP_PACKET_NAME, groupId = KafkaConsumerGroup.GROUP_CONSUME_VEHICLE_HTTP_PACKET,containerFactory = "")
+    @KafkaListener(id = "listener1",topics = KafkaTopic.TOPIC_VEHICLE_HTTP_PACKET_NAME, groupId = KafkaConsumerGroup.GROUP_CONSUME_VEHICLE_HTTP_PACKET,containerFactory = "vehicleHttpPackBatchFactory")
     public void processRtData (@Payload List<VehicleHttpPack> vehicleHttpPack,
                                @Header(KafkaHeaders.RECEIVED_MESSAGE_KEY) String key,
                                @Header(KafkaHeaders.RECEIVED_PARTITION_ID) int partition,
                                @Header(KafkaHeaders.RECEIVED_TOPIC) String topic,
                                @Header(KafkaHeaders.RECEIVED_TIMESTAMP) long ts) {
 
-        logger.info(String.format("vehicleHttpPack : %s\n[listener 1]\nkey : %s\npartition : %d\ntopic : %s\ntime stamp : %d", vehicleHttpPack.toString(), key ,partition, topic, ts));
+        logger.info(String.format("\n[listener 1]\nvehicleHttpPack : %s\nkey : %s\npartition : %d\ntopic : %s\ntime stamp : %d", vehicleHttpPack.toString(), key ,partition, topic, ts));
     }
-    @KafkaListener(id = "listener2", topics = KafkaTopic.TOPIC_VEHICLE_HTTP_PACKET_NAME, groupId = KafkaConsumerGroup.GROUP_CONSUME_VEHICLE_HTTP_PACKET,containerFactory = "")
+    @KafkaListener(id = "listener2", topics = KafkaTopic.TOPIC_VEHICLE_HTTP_PACKET_NAME, groupId = KafkaConsumerGroup.GROUP_CONSUME_VEHICLE_HTTP_PACKET,containerFactory = "vehicleHttpPackBatchFactory")
     public void processData (@Payload List<VehicleHttpPack> vehicleHttpPack,
                                @Header(KafkaHeaders.RECEIVED_MESSAGE_KEY) String key,
                                @Header(KafkaHeaders.RECEIVED_PARTITION_ID) int partition,
                                @Header(KafkaHeaders.RECEIVED_TOPIC) String topic,
                                @Header(KafkaHeaders.RECEIVED_TIMESTAMP) long ts) {
-        logger.info(String.format("processData : vehicleHttpPack : %s\n[listener 2]\nkey : %s\npartition : %d\ntopic : %s\ntime stamp : %d", vehicleHttpPack.toString(), key ,partition, topic, ts));
+        logger.info(String.format("\n[listener 2]\nprocessData : vehicleHttpPack : %s\nkey : %s\npartition : %d\ntopic : %s\ntime stamp : %d", vehicleHttpPack.toString(), key ,partition, topic, ts));
     }
     /**
      * Listen for partition's msg
