@@ -5,6 +5,7 @@ import cn.neyzoter.aiot.dal.domain.vehicle.VehicleHttpPack;
 import cn.neyzoter.aiot.iov.biz.service.kafka.constant.KafkaConsumerGroup;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.support.KafkaHeaders;
 import org.springframework.messaging.handler.annotation.Header;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Component;
 import cn.neyzoter.aiot.iov.biz.service.kafka.constant.KafkaTopic;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -20,20 +22,37 @@ import java.util.Map;
  * @author Neyzoter Song
  * @date 2019/9/6
  */
+@ComponentScan("cn.neyzoter.aiot.iov.biz.service.kafka.constant")
 @Component
 public class KafkaListenerImpl {
     private final static Logger logger = LoggerFactory.getLogger(KafkaListenerImpl.class);
     private Vehicle2InfluxDb vehicle2InfluxDb = new Vehicle2InfluxDb("zju", "influxdb_bucket", "ms", "yzwAKztIXZLJNSvTPeUuFW7P9z4oWd_NLnGZNcIuoJMY7PCZEm1Lu1s-IIjloYFiSBVhRss7aMaDbh58WdlhGA==");
 
-    @KafkaListener(topics = KafkaTopic.TOPIC_VEHICLE_HTTP_PACKET_NAME, groupId = KafkaConsumerGroup.GROUP_CONSUME_VEHICLE_HTTP_PACKET)
-    public void processRtData (@Payload String jdata,
-                               @Header(KafkaHeaders.RECEIVED_MESSAGE_KEY) Integer key,
+    /**
+     * process real time data
+     * @param vehicleHttpPack
+     * @param key
+     * @param partition
+     * @param topic
+     * @param ts
+     */
+    @KafkaListener(id = "listener1",topics = KafkaTopic.TOPIC_VEHICLE_HTTP_PACKET_NAME, groupId = KafkaConsumerGroup.GROUP_CONSUME_VEHICLE_HTTP_PACKET,containerFactory = "")
+    public void processRtData (@Payload List<VehicleHttpPack> vehicleHttpPack,
+                               @Header(KafkaHeaders.RECEIVED_MESSAGE_KEY) String key,
                                @Header(KafkaHeaders.RECEIVED_PARTITION_ID) int partition,
                                @Header(KafkaHeaders.RECEIVED_TOPIC) String topic,
                                @Header(KafkaHeaders.RECEIVED_TIMESTAMP) long ts) {
 
+        logger.info(String.format("vehicleHttpPack : %s\n[listener 1]\nkey : %s\npartition : %d\ntopic : %s\ntime stamp : %d", vehicleHttpPack.toString(), key ,partition, topic, ts));
     }
-
+    @KafkaListener(id = "listener2", topics = KafkaTopic.TOPIC_VEHICLE_HTTP_PACKET_NAME, groupId = KafkaConsumerGroup.GROUP_CONSUME_VEHICLE_HTTP_PACKET,containerFactory = "")
+    public void processData (@Payload List<VehicleHttpPack> vehicleHttpPack,
+                               @Header(KafkaHeaders.RECEIVED_MESSAGE_KEY) String key,
+                               @Header(KafkaHeaders.RECEIVED_PARTITION_ID) int partition,
+                               @Header(KafkaHeaders.RECEIVED_TOPIC) String topic,
+                               @Header(KafkaHeaders.RECEIVED_TIMESTAMP) long ts) {
+        logger.info(String.format("processData : vehicleHttpPack : %s\n[listener 2]\nkey : %s\npartition : %d\ntopic : %s\ntime stamp : %d", vehicleHttpPack.toString(), key ,partition, topic, ts));
+    }
     /**
      * Listen for partition's msg
      * @deprecated

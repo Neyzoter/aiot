@@ -2,6 +2,7 @@ package cn.neyzoter.aiot.iov.web.controller;
 
 /**
  * restfull http api
+ * @deprecated
  * @author Neyzoter Song
  * @date 2020-2-8
  */
