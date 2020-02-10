@@ -6,6 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="fddp" />
         <module name="common" />
         <module name="dal" />
         <module name="iov" />
@@ -21,6 +22,7 @@
       <module name="aiot" options="-parameters" />
       <module name="common" options="-parameters" />
       <module name="dal" options="-parameters" />
+      <module name="fddp" options="-parameters" />
       <module name="iov" options="-parameters" />
       <module name="pop" options="-parameters" />
       <module name="uop" options="-parameters" />
