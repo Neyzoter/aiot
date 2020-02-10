@@ -43,7 +43,7 @@ public class VehicleController {
      * @param vehicleHttpPack json(String type) data
      * @return
      */
-    @RequestMapping(value = "/json", method = RequestMethod.POST)
+    @RequestMapping(value = "/vehicleHttpPack", method = RequestMethod.POST)
     public Object sendData(@RequestParam(value = "vid",required = true) String vid,
                            @RequestParam(value = "dtype",required = true) String dtype,
                            @RequestBody VehicleHttpPack vehicleHttpPack) {
@@ -56,36 +56,6 @@ public class VehicleController {
             logger.error("", e);
             return IovHttpRtn.ERROR;
         }
-
-
     }
-
-    /**
-     * server get vehicle data
-     * @param vehicle_id vehicle id
-     * @param data_type data type
-     * @param vehicleHttpPack VehicleHttpPack
-     * @return
-     */
-//    @RequestMapping(value = "/vehicle-http-pack", method = RequestMethod.POST)
-//    public Object sendData(@RequestParam(value = "vehicle_id",required = true) String vehicle_id,
-//                           @RequestParam(value = "data_type",required = true) String data_type,
-//                           @RequestBody VehicleHttpPack vehicleHttpPack) {  //convert serialization
-//
-//        String infoSumm = "123";
-//        // key check
-//        if(vehicleHttpPack.getSign().equals(infoSumm)){
-//            try{
-//                // get the partition id
-//                int partition = PartitionAllocator.allocateByRemainder(vehicle_id.hashCode(), kafkaTemplate.partitionsFor("VehicleHttpPack").size());
-//                // send to kafka-VehicleHttpPack
-//                kafkaTemplate.send("VehicleHttpPack" , partition ,data_type ,vehicleHttpPack);
-//            } catch (Exception e) {
-//                logger.error("",e);
-//            }
-//
-//        }
-//        return IovHttpRtn.OK;
-//    }
 
 }
