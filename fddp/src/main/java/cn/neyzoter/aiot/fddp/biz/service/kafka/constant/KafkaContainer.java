@@ -1,4 +1,4 @@
-package cn.neyzoter.aiot.iov.biz.service.kafka.constant;
+package cn.neyzoter.aiot.fddp.biz.service.kafka.constant;
 
 import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
 import org.springframework.context.annotation.Bean;

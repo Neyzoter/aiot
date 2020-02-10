@@ -1,8 +1,9 @@
-package cn.neyzoter.aiot.iov.biz.service.kafka.impl;
+package cn.neyzoter.aiot.fddp.biz.service.kafka.impl;
 
 import cn.neyzoter.aiot.dal.dao.vehicle.Vehicle2InfluxDb;
 import cn.neyzoter.aiot.dal.domain.vehicle.VehicleHttpPack;
-import cn.neyzoter.aiot.iov.biz.service.kafka.constant.KafkaConsumerGroup;
+import cn.neyzoter.aiot.fddp.biz.service.kafka.constant.KafkaConsumerGroup;
+import cn.neyzoter.aiot.fddp.biz.service.kafka.constant.KafkaTopic;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.ComponentScan;
@@ -11,7 +12,6 @@ import org.springframework.kafka.support.KafkaHeaders;
 import org.springframework.messaging.handler.annotation.Header;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Component;
-import cn.neyzoter.aiot.iov.biz.service.kafka.constant.KafkaTopic;
 
 import java.util.HashMap;
 import java.util.List;
@@ -22,7 +22,7 @@ import java.util.Map;
  * @author Neyzoter Song
  * @date 2019/9/6
  */
-@ComponentScan("cn.neyzoter.aiot.iov.biz.service.kafka.constant")
+@ComponentScan("cn.neyzoter.aiot.fddp.biz.service.kafka.constant")
 @Component
 public class KafkaListenerImpl {
     private final static Logger logger = LoggerFactory.getLogger(KafkaListenerImpl.class);
@@ -47,10 +47,10 @@ public class KafkaListenerImpl {
     }
     @KafkaListener(id = "listener2", topics = KafkaTopic.TOPIC_VEHICLE_HTTP_PACKET_NAME, groupId = KafkaConsumerGroup.GROUP_CONSUME_VEHICLE_HTTP_PACKET,containerFactory = "vehicleHttpPackBatchFactory")
     public void processData (@Payload List<VehicleHttpPack> vehicleHttpPack,
-                               @Header(KafkaHeaders.RECEIVED_MESSAGE_KEY) String key,
-                               @Header(KafkaHeaders.RECEIVED_PARTITION_ID) int partition,
-                               @Header(KafkaHeaders.RECEIVED_TOPIC) String topic,
-                               @Header(KafkaHeaders.RECEIVED_TIMESTAMP) long ts) {
+                             @Header(KafkaHeaders.RECEIVED_MESSAGE_KEY) String key,
+                             @Header(KafkaHeaders.RECEIVED_PARTITION_ID) int partition,
+                             @Header(KafkaHeaders.RECEIVED_TOPIC) String topic,
+                             @Header(KafkaHeaders.RECEIVED_TIMESTAMP) long ts) {
         logger.info(String.format("\n[listener 2]\nprocessData : vehicleHttpPack : %s\nkey : %s\npartition : %d\ntopic : %s\ntime stamp : %d", vehicleHttpPack.toString(), key ,partition, topic, ts));
     }
     /**

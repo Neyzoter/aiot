@@ -48,7 +48,6 @@ public class VehicleController {
                            @RequestParam(value = "dtype",required = true) String dtype,
                            @RequestBody VehicleHttpPack vehicleHttpPack) {
         try {
-
             int partition = PartitionAllocator.allocateByRemainder(vid.hashCode(), kafkaTemplate.partitionsFor(KafkaTopic.TOPIC_VEHICLE_HTTP_PACKET_NAME).size());
             kafkaTemplate.send(KafkaTopic.TOPIC_VEHICLE_HTTP_PACKET_NAME , partition ,dtype ,vehicleHttpPack);
             return IovHttpRtn.OK;
