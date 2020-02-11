@@ -50,6 +50,8 @@ public class VehicleController {
         try {
             int partition = PartitionAllocator.allocateByRemainder(vid.hashCode(), kafkaTemplate.partitionsFor(KafkaTopic.TOPIC_VEHICLE_HTTP_PACKET_NAME).size());
             kafkaTemplate.send(KafkaTopic.TOPIC_VEHICLE_HTTP_PACKET_NAME , partition ,dtype ,vehicleHttpPack);
+            // TODO
+            // 返回最近一次的故障诊断结果
             return IovHttpRtn.OK;
         } catch (Exception e) {
             logger.error("", e);
