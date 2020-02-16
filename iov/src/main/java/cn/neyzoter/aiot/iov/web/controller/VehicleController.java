@@ -39,7 +39,7 @@ public class VehicleController {
 
     /**
      * server get vehicle data
-     * @param vid vehicle id
+     * @param vid vehicle type id
      * @param dtype data type
      * @param vehicleHttpPack json(String type) data
      * @return
