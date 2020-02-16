@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="23c1b6a3-a88d-412b-a194-bead14c68f99" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/common/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fddp/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/fddp/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iov/src/main/java/cn/neyzoter/aiot/iov/web/controller/VehicleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/iov/src/main/java/cn/neyzoter/aiot/iov/web/controller/VehicleController.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -63,8 +61,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/fddp/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="658">
-              <caret line="49" column="47" lean-forward="true" selection-start-line="49" selection-start-column="47" selection-end-line="49" selection-end-column="47" />
+            <state relative-caret-position="178">
+              <caret line="34" column="8" selection-start-line="34" selection-start-column="8" selection-end-line="34" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -599,7 +597,7 @@
       <workItem from="1581590335460" duration="599000" />
       <workItem from="1581646642571" duration="598000" />
       <workItem from="1581730171453" duration="6370000" />
-      <workItem from="1581768341743" duration="10089000" />
+      <workItem from="1581768341743" duration="10668000" />
     </task>
     <servers />
   </component>
@@ -636,7 +634,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="291813000" />
+    <option name="totallyTimeSpent" value="292392000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -651,7 +649,7 @@
     <frame x="55" y="-4" width="1865" height="1084" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4977169" visible="true" weight="0.21990104" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4977169" visible="true" weight="0.21990104" />
       <window_info id="Structure" order="1" sideWeight="0.5006935" side_tool="true" weight="0.3095107" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -668,7 +666,7 @@
       <window_info anchor="bottom" id="REST Client" order="6" weight="0.35168195" />
       <window_info anchor="bottom" id="TODO" order="7" weight="0.21202855" />
       <window_info anchor="bottom" id="Spring" order="8" weight="0.18960245" />
-      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49917537" visible="true" weight="0.18450561" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" sideWeight="0.49917537" visible="true" weight="0.18450561" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50082463" side_tool="true" weight="0.25891948" />
       <window_info anchor="bottom" id="Docker" order="11" weight="0.26277372" />
       <window_info anchor="bottom" id="Java Enterprise" order="12" weight="0.32925585" />
@@ -1050,8 +1048,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/fddp/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="658">
-          <caret line="49" column="47" lean-forward="true" selection-start-line="49" selection-start-column="47" selection-end-line="49" selection-end-column="47" />
+        <state relative-caret-position="178">
+          <caret line="34" column="8" selection-start-line="34" selection-start-column="8" selection-end-line="34" selection-end-column="8" />
         </state>
       </provider>
     </entry>
