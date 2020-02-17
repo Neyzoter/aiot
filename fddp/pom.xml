@@ -33,6 +33,13 @@
             <artifactId>spring-boot</artifactId>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/org.apache.spark/spark-core -->
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-core_2.12</artifactId>
+            <version>2.4.3</version>
+        </dependency>
+
         <!-- https://mvnrepository.com/artifact/org.apache.spark/spark-streaming -->
         <dependency>
             <groupId>org.apache.spark</groupId>
@@ -46,8 +53,6 @@
             <artifactId>spark-streaming-kafka-0-10_2.12</artifactId>
             <version>2.4.3</version>
         </dependency>
-
-
 
         <dependency>
             <groupId>junit</groupId>

@@ -8,4 +8,6 @@ package cn.neyzoter.aiot.fddp.biz.service.kafka.constant;
 public class KafkaConsumerGroup {
     public final static String GROUP_CONSUME_VEHICLE_HTTP_PACKET = "VehicleHttpPackageConsumer";
 
+    public final static String COMSUMER_BOOTSTRAP_SERVER = "localhost:9093";
+
 }

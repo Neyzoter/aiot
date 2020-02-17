@@ -22,8 +22,8 @@ import java.util.Map;
  * @author Neyzoter Song
  * @date 2019/9/6
  */
-@ComponentScan("cn.neyzoter.aiot.fddp.biz.service.kafka.constant")
-@Component
+//@ComponentScan("cn.neyzoter.aiot.fddp.biz.service.kafka.constant")
+//@Component
 public class KafkaListenerImpl {
     private final static Logger logger = LoggerFactory.getLogger(KafkaListenerImpl.class);
     private Vehicle2InfluxDb vehicle2InfluxDb = new Vehicle2InfluxDb("zju", "influxdb_bucket", "ms", "yzwAKztIXZLJNSvTPeUuFW7P9z4oWd_NLnGZNcIuoJMY7PCZEm1Lu1s-IIjloYFiSBVhRss7aMaDbh58WdlhGA==");
