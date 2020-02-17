@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 /**
  * Vehicle http package body
+ * @deprecated
  * @author Neyzoter Song
  * @date 2019/9/8
  */
@@ -22,7 +23,7 @@ public class VehicleHttpPack implements Serializable {
     /**
      * vehicle infomation and runtime data
      */
-    private Vehicle vehicleTemp;
+    private Vehicle vehicle;
 
     /**
      * get year
@@ -109,7 +110,7 @@ public class VehicleHttpPack implements Serializable {
      * @return {@link Vehicle}
      */
     public Vehicle getVehicle(){
-        return this.vehicleTemp;
+        return this.vehicle;
     }
 
     /**
@@ -117,7 +118,7 @@ public class VehicleHttpPack implements Serializable {
      * @param v {@link Vehicle}
      */
     public void setVehicle(Vehicle v){
-        this.vehicleTemp = v;
+        this.vehicle = v;
     }
 
     @Override
@@ -129,7 +130,7 @@ public class VehicleHttpPack implements Serializable {
                 "second="+this.second+"," +
                 "sign="+this.sign+"," +
                 "vehicle="+
-                this.vehicleTemp.toString()+
+                this.vehicle.toString()+
                 "}";
         return str;
     }

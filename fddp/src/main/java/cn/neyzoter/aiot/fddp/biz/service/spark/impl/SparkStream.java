@@ -5,14 +5,12 @@ import java.util.HashSet;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.Set;
-import java.util.regex.Pattern;
 
 import cn.neyzoter.aiot.dal.domain.vehicle.VehicleHttpPack;
 import cn.neyzoter.aiot.fddp.biz.service.kafka.constant.KafkaConsumerGroup;
 import cn.neyzoter.aiot.fddp.biz.service.kafka.constant.KafkaTopic;
 import cn.neyzoter.aiot.fddp.biz.service.kafka.impl.serialization.VehicleHttpPackDeserializer;
 import cn.neyzoter.aiot.fddp.biz.service.spark.constant.SparkStreamingConf;
-import org.apache.spark.streaming.Time;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;

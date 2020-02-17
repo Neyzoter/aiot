@@ -3,7 +3,7 @@ package cn.neyzoter.aiot.dal.domain.vehicle;
 import java.io.Serializable;
 
 /**
- * Runtime data for vehicle
+ * All type runtime data for vehicle
  * @author Neyzoter Song
  * @date 2019/9/7
  */

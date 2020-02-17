@@ -9,8 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.TreeMap;
-
 
 /**
  * Vehicle-relative controller
@@ -32,9 +30,16 @@ public class VehicleController {
      * @return {@link String}
      */
     @RequestMapping(value = "/test", method = RequestMethod.GET)
-    public String test(@RequestParam(value = "vehicle_id",required = true) int vehicle_id) {
-        logger.info(String.format("vehicle id = %d", vehicle_id));
-        return IovHttpRtn.OK;
+    public String test(@RequestParam(value = "vid",required = true) String vid,
+                        @RequestParam(value = "vtype",required = true) String vtype,
+                        @RequestBody VehicleHttpPack vehicleHttpPack) {
+        try {
+            logger.info(vehicleHttpPack.toString());
+            return IovHttpRtn.OK;
+        } catch (Exception e) {
+            logger.error("", e);
+            return IovHttpRtn.ERROR;
+        }
     }
 
     /**

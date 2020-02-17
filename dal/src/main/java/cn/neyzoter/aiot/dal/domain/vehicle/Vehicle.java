@@ -1,6 +1,8 @@
 package cn.neyzoter.aiot.dal.domain.vehicle;
 
 import java.io.Serializable;
+import java.util.Iterator;
+import java.util.Map;
 
 /**
  * Vehicle class
@@ -10,7 +12,7 @@ import java.io.Serializable;
 public class Vehicle implements Serializable {
     private Long app;
     private Long id;
-    private RuntimeData rtData;
+    private Map<Integer, RuntimeData> rtDataMap;
 
     /**
      * get Application id
@@ -45,29 +47,38 @@ public class Vehicle implements Serializable {
     }
 
     /**
-     * get runtime data
-     * @return {@link RuntimeData}
+     * get rt data map
+     * @return
      */
-    public RuntimeData getRtData(){
-        return this.rtData;
+    public Map<Integer, RuntimeData> getRtDataMap () {
+        return this.rtDataMap;
     }
 
     /**
-     * set runtime data
+     * set rt data map
      * @param data
      */
-    public void setRtData(RuntimeData data){
-        this.rtData = data;
+    public void setRtDataMap (Map<Integer, RuntimeData> data) {
+        this.rtDataMap = data;
     }
 
     @Override
     public String toString(){
-        String str = "{" +
-                "app="+this.app + ","+
-                "id=" + this.id + ","+
-                "rtData=" +
-                this.rtData.toString()+
-                "}";
+        String str = new String();
+        try {
+            str += "{" +
+                    "app="+this.app + ","+
+                    "id=" + this.id + ","+
+                    "rtDataMap={";
+            Iterator it = rtDataMap.entrySet().iterator();
+            for (;it.hasNext();) {
+                Map.Entry data = (Map.Entry)it.next();
+                str += String.format("%d=%s%s",data.getKey(),data.getValue().toString(),it.hasNext()?",":"");
+            }
+            str += "}";
+        }catch (Exception e) {
+            System.err.println(e);
+        }
         return str;
     }
 }

@@ -10,6 +10,9 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import static org.junit.Assert.assertEquals;
 
 
@@ -31,7 +34,9 @@ public class TestVehicleHttpPackSerializer {
         Vehicle vehicle = new Vehicle();
         RuntimeData runtimeData = new RuntimeData();
         runtimeData.setEcuMaxTemp(40);runtimeData.setSpeed(100);
-        vehicle.setId(new Long(100));vehicle.setRtData(runtimeData);
+        Map<Integer, RuntimeData> rtDataMap = new HashMap();
+        rtDataMap.put(0, runtimeData);
+        vehicle.setId(new Long(100));vehicle.setRtDataMap(rtDataMap);vehicle.setApp((long)10);
         vehicleHttpPack.setDay("1");vehicleHttpPack.setMonth("2");vehicleHttpPack.setSign("eakdiex");
         vehicleHttpPack.setSecond("1234");vehicleHttpPack.setYear("2019");vehicleHttpPack.setVehicle(vehicle);
 
