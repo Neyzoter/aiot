@@ -63,8 +63,8 @@ public class KafkaListenerImpl {
         tags.put("vehicleId",vehicleHttpPack.getVehicle().getId().toString());
         tags.put("application", vehicleHttpPack.getVehicle().getApp().toString());
         Map<String, String> fields = new HashMap<>(20);
-        fields.put("ecuMaxTemp",vehicleHttpPack.getVehicle().getRtData().getEcuMaxTemp().toString());
-        fields.put("speed", vehicleHttpPack.getVehicle().getRtData().getSpeed().toString());
+        fields.put("ecuMaxTemp",vehicleHttpPack.getVehicle().getRtDataMap().toString());
+        fields.put("speed", vehicleHttpPack.getVehicle().getRtDataMap().toString());
         String timestamp = "";
         this.vehicle2InfluxDb.post2InfluxDb("vehicle", tags, fields, timestamp);
 

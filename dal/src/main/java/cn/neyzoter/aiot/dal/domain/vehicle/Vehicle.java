@@ -3,6 +3,7 @@ package cn.neyzoter.aiot.dal.domain.vehicle;
 import java.io.Serializable;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.SortedMap;
 
 /**
  * Vehicle class
@@ -12,7 +13,7 @@ import java.util.Map;
 public class Vehicle implements Serializable {
     private Long app;
     private Long id;
-    private Map<Integer, RuntimeData> rtDataMap;
+    private SortedMap<Integer, RuntimeData> rtDataMap;
 
     /**
      * get Application id
@@ -50,7 +51,7 @@ public class Vehicle implements Serializable {
      * get rt data map
      * @return
      */
-    public Map<Integer, RuntimeData> getRtDataMap () {
+    public SortedMap<Integer, RuntimeData> getRtDataMap () {
         return this.rtDataMap;
     }
 
@@ -58,7 +59,7 @@ public class Vehicle implements Serializable {
      * set rt data map
      * @param data
      */
-    public void setRtDataMap (Map<Integer, RuntimeData> data) {
+    public void setRtDataMap (SortedMap<Integer, RuntimeData> data) {
         this.rtDataMap = data;
     }
 

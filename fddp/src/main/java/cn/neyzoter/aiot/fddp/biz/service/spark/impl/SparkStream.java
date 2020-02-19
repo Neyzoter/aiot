@@ -10,6 +10,7 @@ import cn.neyzoter.aiot.dal.domain.vehicle.VehicleHttpPack;
 import cn.neyzoter.aiot.fddp.biz.service.kafka.constant.KafkaConsumerGroup;
 import cn.neyzoter.aiot.fddp.biz.service.kafka.constant.KafkaTopic;
 import cn.neyzoter.aiot.fddp.biz.service.kafka.impl.serialization.VehicleHttpPackDeserializer;
+import cn.neyzoter.aiot.fddp.biz.service.spark.algo.DataPreProcess;
 import cn.neyzoter.aiot.fddp.biz.service.spark.constant.SparkStreamingConf;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -42,7 +43,7 @@ public class SparkStream {
         try {
             sparkConf = new SparkConf().setAppName(SparkStreamingConf.SPARK_STREAMING_NAME);
             topicsSet = new HashSet<>(Arrays.asList(KafkaTopic.TOPIC_VEHICLE_HTTP_PACKET_NAME));
-            jssc = new JavaStreamingContext(sparkConf, Durations.seconds(5));
+            jssc = new JavaStreamingContext(sparkConf, Durations.seconds(20));
             kafkaParams = new HashMap<>();
             kafkaParams.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, KafkaConsumerGroup.COMSUMER_BOOTSTRAP_SERVER);
             kafkaParams.put(ConsumerConfig.GROUP_ID_CONFIG,KafkaConsumerGroup.GROUP_CONSUME_VEHICLE_HTTP_PACKET);
@@ -60,9 +61,14 @@ public class SparkStream {
 //
 //
 //                    });
-            JavaPairDStream<String, Integer> record = messages.mapToPair(x -> new Tuple2<>(x.key(), 1))
-                    .reduceByKey((x1,x2) -> (x1 + x2));
+            JavaPairDStream<String, VehicleHttpPack> record = messages.mapToPair(
+                    x -> new Tuple2<>(x.key() + x.value().getYear() + x.value().getMonth() + x.value().getDay(),
+                            x.value())).reduceByKey((x1, x2) -> DataPreProcess.compact(x1, x2));
             record.print();
+
+//            JavaPairDStream<String, Integer> record = messages.mapToPair(x -> new Tuple2<>(x.key(), 1))
+//                    .reduceByKey((x1,x2) -> (x1 + x2));
+//            record.print();
             // Start the computation
             jssc.start();
             jssc.awaitTermination();

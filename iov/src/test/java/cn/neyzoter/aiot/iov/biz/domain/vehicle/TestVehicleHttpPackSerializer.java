@@ -12,6 +12,8 @@ import org.slf4j.LoggerFactory;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.SortedMap;
+import java.util.TreeMap;
 
 import static org.junit.Assert.assertEquals;
 
@@ -34,11 +36,11 @@ public class TestVehicleHttpPackSerializer {
         Vehicle vehicle = new Vehicle();
         RuntimeData runtimeData = new RuntimeData();
         runtimeData.setEcuMaxTemp(40);runtimeData.setSpeed(100);
-        Map<Integer, RuntimeData> rtDataMap = new HashMap();
+        SortedMap<Integer, RuntimeData> rtDataMap = new TreeMap<>();
         rtDataMap.put(0, runtimeData);
         vehicle.setId(new Long(100));vehicle.setRtDataMap(rtDataMap);vehicle.setApp((long)10);
         vehicleHttpPack.setDay("1");vehicleHttpPack.setMonth("2");vehicleHttpPack.setSign("eakdiex");
-        vehicleHttpPack.setSecond("1234");vehicleHttpPack.setYear("2019");vehicleHttpPack.setVehicle(vehicle);
+        vehicleHttpPack.setYear("2019");vehicleHttpPack.setVehicle(vehicle);
 
         VehicleHttpPackSerializer vehicleHttpPackSerializer = new VehicleHttpPackSerializer();
         byte[] vehicleHttpPackByte = vehicleHttpPackSerializer.serialize("vehicleHttpPack", vehicleHttpPack);

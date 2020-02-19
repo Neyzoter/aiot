@@ -14,7 +14,6 @@ public class VehicleHttpPack implements Serializable {
     private String year;
     private String month;
     private String day;
-    private String second;
     /**
      * signature : used to certification
      */
@@ -73,22 +72,6 @@ public class VehicleHttpPack implements Serializable {
     }
 
     /**
-     * get second
-     * @return
-     */
-    public String getSecond(){
-        return this.second;
-    }
-
-    /**
-     * set second
-     * @param s
-     */
-    public void setSecond(String s){
-        this.second = s;
-    }
-
-    /**
      * set sign
      * @param s
      */
@@ -126,7 +109,6 @@ public class VehicleHttpPack implements Serializable {
                 "year="+this.year+"," +
                 "month="+this.month+"," +
                 "day="+this.day+"," +
-                "second="+this.second+"," +
                 "sign="+this.sign+"," +
                 "vehicle="+
                 this.vehicleTemp.toString()+
