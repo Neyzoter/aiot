@@ -50,10 +50,10 @@ public class Vehicle2InfluxDb {
     /**
      * Vehicle2InfluxDb constructor
      *
-     * @param org
-     * @param bucket
-     * @param precision
-     * @param token
+     * @param org org
+     * @param bucket bucket
+     * @param precision precision
+     * @param token token
      */
     public Vehicle2InfluxDb(String org, String bucket, String precision, String token) {
         this.restTemplate = new RestTemplate();
@@ -66,7 +66,7 @@ public class Vehicle2InfluxDb {
     /**
      * set org
      *
-     * @param org
+     * @param org org
      */
     public void setOrg(String org) {
         this.org = org;
@@ -75,7 +75,7 @@ public class Vehicle2InfluxDb {
     /**
      * get org
      *
-     * @return
+     * @return String
      */
     public String getOrg() {
         return this.org;
@@ -84,7 +84,7 @@ public class Vehicle2InfluxDb {
     /**
      * set bucket
      *
-     * @param bucket
+     * @param bucket bucket
      */
     public void setBucket(String bucket) {
         this.bucket = bucket;
@@ -93,7 +93,7 @@ public class Vehicle2InfluxDb {
     /**
      * get bucket
      *
-     * @return
+     * @return String
      */
     public String getBucket() {
         return this.bucket;
@@ -102,7 +102,7 @@ public class Vehicle2InfluxDb {
     /**
      * set precision
      *
-     * @param precision
+     * @param precision precision
      */
     public void setPrecision(String precision) {
         this.precision = precision;
@@ -111,7 +111,7 @@ public class Vehicle2InfluxDb {
     /**
      * get precision
      *
-     * @return
+     * @return String
      */
     public String getPrecision() {
         return this.precision;
@@ -120,7 +120,7 @@ public class Vehicle2InfluxDb {
     /**
      * set token
      *
-     * @param token
+     * @param token token
      */
     public void setToken(String token) {
         this.token = token;
@@ -138,7 +138,7 @@ public class Vehicle2InfluxDb {
     /**
      * set measurement
      *
-     * @param measurement
+     * @param measurement measurement
      */
     public void setMeasurement(String measurement) {
         this.measurement = measurement;
@@ -147,7 +147,7 @@ public class Vehicle2InfluxDb {
     /**
      * get measurement
      *
-     * @return
+     * @return String
      */
     public String getMeasurement() {
         return this.measurement;
@@ -180,7 +180,7 @@ public class Vehicle2InfluxDb {
     /**
      * get tag set
      *
-     * @return
+     * @return String
      */
     public String getTags() {
         return this.tags;
@@ -189,7 +189,7 @@ public class Vehicle2InfluxDb {
     /**
      * set field set
      *
-     * @param fields
+     * @param fields fields
      */
     public void setFields(String fields) {
         this.fields = fields;
@@ -198,7 +198,7 @@ public class Vehicle2InfluxDb {
     /**
      * set field set
      *
-     * @param fields
+     * @param fields fields
      */
     public void setFields(Map<String, ?> fields) {
         this.fields = "";
@@ -213,7 +213,7 @@ public class Vehicle2InfluxDb {
     /**
      * get field set
      *
-     * @return
+     * @return String
      */
     public String getFields() {
         return this.fields;
@@ -222,7 +222,7 @@ public class Vehicle2InfluxDb {
     /**
      * set timestammp
      *
-     * @param timestamp
+     * @param timestamp timestamp
      */
     public void setTimestamp(String timestamp) {
         this.timestamp = timestamp;
@@ -231,7 +231,7 @@ public class Vehicle2InfluxDb {
     /**
      * get timestamp
      *
-     * @return
+     * @return String
      */
     public String getTimestamp() {
         return this.timestamp;
@@ -268,13 +268,13 @@ public class Vehicle2InfluxDb {
     /**
      * post data to InfluxDB
      *
-     * @param measurement
-     * @param tags
-     * @param fields
-     * @param timestamp
-     * @return
+     * @param measurement measurement
+     * @param tags tags
+     * @param fields fields
+     * @param timestamp timestamp
+     * @return ResponseEntity<String>
      */
-    public ResponseEntity<String> post2InfluxDb(String measurement, Map<String, String> tags, Map<String, ?> fields, String timestamp) {
+    public ResponseEntity<String> postOnePoint2InfluxDb(String measurement, Map<String, String> tags, Map<String, ?> fields, String timestamp) {
         String url = String.format("http://localhost:9999/api/v2/write?org=%s&bucket=%s&precision=%s", org, bucket, precision);
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);

@@ -27,6 +27,8 @@ import org.apache.spark.streaming.kafka010.ConsumerStrategies;
 import org.apache.spark.streaming.kafka010.KafkaUtils;
 import org.apache.spark.streaming.kafka010.LocationStrategies;
 import org.apache.spark.streaming.Durations;
+
+
 /**
  * Spark Stream processor
  * @author Neyzoter Song
@@ -35,7 +37,8 @@ import org.apache.spark.streaming.Durations;
 @Component
 public class SparkStream {
     public final static Logger logger= LoggerFactory.getLogger(SparkStream.class);
-    public final static String KEY_SEPERATE = "_";
+    public final static String VID_KEY_PREFIX= "vid=";
+    public final static int SPARK_STEAMING_DURATION_SECOND = 20;
     SparkConf sparkConf;
     JavaStreamingContext jssc;
     Set<String> topicsSet;
@@ -45,7 +48,7 @@ public class SparkStream {
             // Configuration
             sparkConf = new SparkConf().setAppName(SparkStreamingConf.SPARK_STREAMING_NAME);
             topicsSet = new HashSet<>(Arrays.asList(KafkaTopic.TOPIC_VEHICLE_HTTP_PACKET_NAME));
-            jssc = new JavaStreamingContext(sparkConf, Durations.seconds(5));
+            jssc = new JavaStreamingContext(sparkConf, Durations.seconds(SPARK_STEAMING_DURATION_SECOND));
             kafkaParams = new HashMap<>();
             kafkaParams.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, KafkaConsumerGroup.COMSUMER_BOOTSTRAP_SERVER);
             kafkaParams.put(ConsumerConfig.GROUP_ID_CONFIG,KafkaConsumerGroup.GROUP_CONSUME_VEHICLE_HTTP_PACKET);
@@ -58,14 +61,21 @@ public class SparkStream {
                     LocationStrategies.PreferConsistent(),
                     ConsumerStrategies.Subscribe(topicsSet, kafkaParams));
             // compact packs group by vid_year_month_and_day
+//            JavaPairDStream<String, VehicleHttpPack> record = messages.mapToPair(
+//                    x -> new Tuple2<>(String.format(x.key().replace("\"","") + KEY_SEPERATE + x.value().getYear() +KEY_SEPERATE + x.value().getMonth() + KEY_SEPERATE + x.value().getDay()),
+//                            x.value())).reduceByKey((x1, x2) -> DataPreProcess.compact(x1, x2));
             JavaPairDStream<String, VehicleHttpPack> record = messages.mapToPair(
-                    x -> new Tuple2<>(String.format(x.key().replace("\"","") + KEY_SEPERATE + x.value().getYear() +KEY_SEPERATE + x.value().getMonth() + KEY_SEPERATE + x.value().getDay()),
+                    x -> new Tuple2<>(String.format(VID_KEY_PREFIX + x.key().replace("\"","")),
                             x.value())).reduceByKey((x1, x2) -> DataPreProcess.compact(x1, x2));
+            // missing values process
+            record = record.mapValues(x -> DataPreProcess.missingValueProcess(x));
+            // outlier values process
+            record = record.mapValues(x -> DataPreProcess.outlierHandling(x));
+            // multi Sampling Rate Process
+            record = record.mapValues(x -> DataPreProcess.multiSamplingRateProcess(x));
             record.print();
 
-//            JavaPairDStream<String, Integer> record = messages.mapToPair(x -> new Tuple2<>(x.key(), 1))
-//                    .reduceByKey((x1,x2) -> (x1 + x2));
-//            record.print();
+
             // Start the computation
             jssc.start();
             jssc.awaitTermination();

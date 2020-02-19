@@ -18,9 +18,9 @@ public class DataPreProcess {
     /**
      * compact two pack
      * @apiNote requir Year Month Day is the same
-     * @param pack1
-     * @param pack2
-     * @return
+     * @param pack1 {@link VehicleHttpPack}
+     * @param pack2 {@link VehicleHttpPack}
+     * @return {@link VehicleHttpPack}
      */
     public static VehicleHttpPack compact (VehicleHttpPack pack1, VehicleHttpPack pack2) throws IllVehicleHttpPackTime {
         if (!pack1.getDay().equals(pack2.getDay())) {
@@ -32,12 +32,42 @@ public class DataPreProcess {
         if (!pack1.getYear().equals(pack2.getYear())) {
             throw new IllVehicleHttpPackTime(IllVehicleHttpPackTime.ILL_YEAR);
         }
-        SortedMap<Integer, RuntimeData> pack1Map = pack1.getVehicle().getRtDataMap();
-        SortedMap<Integer, RuntimeData> pack2Map = pack2.getVehicle().getRtDataMap();
-        Set<Map.Entry<Integer, RuntimeData>> pack2MapSet= pack2Map.entrySet();
-        for (Map.Entry<Integer, RuntimeData> map : pack2MapSet) {
+        SortedMap<Long, RuntimeData> pack1Map = pack1.getVehicle().getRtDataMap();
+        SortedMap<Long, RuntimeData> pack2Map = pack2.getVehicle().getRtDataMap();
+        Set<Map.Entry<Long, RuntimeData>> pack2MapSet= pack2Map.entrySet();
+        for (Map.Entry<Long, RuntimeData> map : pack2MapSet) {
             pack1Map.put(map.getKey(),map.getValue());
         }
         return pack1;
+    }
+
+    /**
+     * outlier handling
+     * @param pack {@link VehicleHttpPack}
+     * @return {@link VehicleHttpPack}
+     */
+    public static VehicleHttpPack outlierHandling (VehicleHttpPack pack) {
+        // TODO
+        return pack;
+    }
+
+    /**
+     * missing value process
+     * @param pack {@link VehicleHttpPack}
+     * @return {@link VehicleHttpPack}
+     */
+    public static VehicleHttpPack missingValueProcess (VehicleHttpPack pack) {
+        // TODO
+        return pack;
+    }
+
+    /**
+     * multi sampling rate process
+     * @param pack VehicleHttpPack
+     * @return {@link VehicleHttpPack}
+     */
+    public static VehicleHttpPack multiSamplingRateProcess (VehicleHttpPack pack) {
+        // TODO
+        return pack;
     }
 }

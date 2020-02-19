@@ -60,13 +60,13 @@ public class KafkaListenerImpl {
     public void processMsg(VehicleHttpPack vehicleHttpPack){
         logger.info("Processing Kafka msg : " + vehicleHttpPack.toString());
         Map<String, String> tags = new HashMap<>(20);
-        tags.put("vehicleId",vehicleHttpPack.getVehicle().getVid());
+        tags.put("vid",vehicleHttpPack.getVehicle().getVid());
         tags.put("application", vehicleHttpPack.getVehicle().getApp().toString());
         Map<String, String> fields = new HashMap<>(20);
         fields.put("ecuMaxTemp",vehicleHttpPack.getVehicle().getRtDataMap().toString());
         fields.put("speed", vehicleHttpPack.getVehicle().getRtDataMap().toString());
         String timestamp = "";
-        this.vehicle2InfluxDb.post2InfluxDb("vehicle", tags, fields, timestamp);
+        this.vehicle2InfluxDb.postOnePoint2InfluxDb("vehicle", tags, fields, timestamp);
 
     }
 

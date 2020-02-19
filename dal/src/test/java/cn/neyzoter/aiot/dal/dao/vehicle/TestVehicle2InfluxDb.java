@@ -21,6 +21,6 @@ public class TestVehicle2InfluxDb {
         Map<String, Float> fields = new HashMap<>();fields.put("speed",new Float(43.21));
         String timestamp = "";
         Vehicle2InfluxDb vehicle2InfluxDb = new Vehicle2InfluxDb("zju", "influxdb_bucket", "s", "yzwAKztIXZLJNSvTPeUuFW7P9z4oWd_NLnGZNcIuoJMY7PCZEm1Lu1s-IIjloYFiSBVhRss7aMaDbh58WdlhGA==");
-        vehicle2InfluxDb.post2InfluxDb(measurement, tags,fields,timestamp);
+        vehicle2InfluxDb.postOnePoint2InfluxDb(measurement, tags,fields,timestamp);
     }
 }

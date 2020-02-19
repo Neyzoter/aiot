@@ -14,7 +14,10 @@ public class Vehicle implements Serializable {
     private Long app;
     private String vid;
     private String vtype;
-    private SortedMap<Integer, RuntimeData> rtDataMap;
+    /**
+     * runtime data map, key is millisecond , value is RuntimeData
+     */
+    private SortedMap<Long, RuntimeData> rtDataMap;
 
     /**
      * get Application id
@@ -26,7 +29,7 @@ public class Vehicle implements Serializable {
 
     /**
      * set appliacction id
-     * @param application
+     * @param application application
      */
     public void setApp(Long application) {
         this.app = application;
@@ -37,15 +40,15 @@ public class Vehicle implements Serializable {
      * get rt data map
      * @return
      */
-    public SortedMap<Integer, RuntimeData> getRtDataMap () {
+    public SortedMap<Long, RuntimeData> getRtDataMap () {
         return this.rtDataMap;
     }
 
     /**
      * set rt data map
-     * @param data
+     * @param data rt data
      */
-    public void setRtDataMap (SortedMap<Integer, RuntimeData> data) {
+    public void setRtDataMap (SortedMap<Long, RuntimeData> data) {
         this.rtDataMap = data;
     }
 
@@ -59,6 +62,7 @@ public class Vehicle implements Serializable {
 
     /**
      * set vehicle id
+     * @param id vehicle id
      */
     public void setVid (String id) {
         this.vid = id;
@@ -74,7 +78,7 @@ public class Vehicle implements Serializable {
 
     /**
      * set vehicle type
-     * @param type
+     * @param type vehicle type
      */
     public void setVtype (String type) {
         this.vtype = type;
