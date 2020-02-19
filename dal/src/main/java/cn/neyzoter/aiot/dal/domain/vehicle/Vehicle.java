@@ -12,7 +12,8 @@ import java.util.SortedMap;
  */
 public class Vehicle implements Serializable {
     private Long app;
-    private Long id;
+    private String vid;
+    private String vtype;
     private SortedMap<Integer, RuntimeData> rtDataMap;
 
     /**
@@ -31,21 +32,6 @@ public class Vehicle implements Serializable {
         this.app = application;
     }
 
-    /**
-     * set id
-     * @param identity
-     */
-    public void setId(Long identity){
-        this.id = identity;
-    }
-
-    /**
-     * get id
-     * @return
-     */
-    public Long getId(){
-        return this.id;
-    }
 
     /**
      * get rt data map
@@ -63,13 +49,45 @@ public class Vehicle implements Serializable {
         this.rtDataMap = data;
     }
 
+    /**
+     * get vehicle id
+     * @return vid
+     */
+    public String getVid () {
+        return this.vid;
+    }
+
+    /**
+     * set vehicle id
+     */
+    public void setVid (String id) {
+        this.vid = id;
+    }
+
+    /**
+     * get vehicle type
+     * @return
+     */
+    public String getVtype () {
+        return this.vtype;
+    }
+
+    /**
+     * set vehicle type
+     * @param type
+     */
+    public void setVtype (String type) {
+        this.vtype = type;
+    }
+
     @Override
     public String toString(){
         String str = new String();
         try {
             str += "{" +
                     "app="+this.app + ","+
-                    "id=" + this.id + ","+
+                    "vid=" + this.vid + ","+
+                    "vtype=" + this.vtype + "," +
                     "rtDataMap={";
             Iterator it = rtDataMap.entrySet().iterator();
             for (;it.hasNext();) {

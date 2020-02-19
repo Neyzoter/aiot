@@ -35,15 +35,17 @@ import org.apache.spark.streaming.Durations;
 @Component
 public class SparkStream {
     public final static Logger logger= LoggerFactory.getLogger(SparkStream.class);
+    public final static String KEY_SEPERATE = "_";
     SparkConf sparkConf;
     JavaStreamingContext jssc;
     Set<String> topicsSet;
     Map<String, Object> kafkaParams;
     public SparkStream() {
         try {
+            // Configuration
             sparkConf = new SparkConf().setAppName(SparkStreamingConf.SPARK_STREAMING_NAME);
             topicsSet = new HashSet<>(Arrays.asList(KafkaTopic.TOPIC_VEHICLE_HTTP_PACKET_NAME));
-            jssc = new JavaStreamingContext(sparkConf, Durations.seconds(20));
+            jssc = new JavaStreamingContext(sparkConf, Durations.seconds(5));
             kafkaParams = new HashMap<>();
             kafkaParams.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, KafkaConsumerGroup.COMSUMER_BOOTSTRAP_SERVER);
             kafkaParams.put(ConsumerConfig.GROUP_ID_CONFIG,KafkaConsumerGroup.GROUP_CONSUME_VEHICLE_HTTP_PACKET);
@@ -55,14 +57,9 @@ public class SparkStream {
                     jssc,
                     LocationStrategies.PreferConsistent(),
                     ConsumerStrategies.Subscribe(topicsSet, kafkaParams));
-
-//            JavaPairDStream<String, VehicleHttpPack> record = messages.mapToPair(x -> new Tuple2<>(x.key(), x.value()))
-//                    .reduceByKey((x1,x2) -> {
-//
-//
-//                    });
+            // compact packs group by vid_year_month_and_day
             JavaPairDStream<String, VehicleHttpPack> record = messages.mapToPair(
-                    x -> new Tuple2<>(x.key() + x.value().getYear() + x.value().getMonth() + x.value().getDay(),
+                    x -> new Tuple2<>(String.format(x.key().replace("\"","") + KEY_SEPERATE + x.value().getYear() +KEY_SEPERATE + x.value().getMonth() + KEY_SEPERATE + x.value().getDay()),
                             x.value())).reduceByKey((x1, x2) -> DataPreProcess.compact(x1, x2));
             record.print();
 

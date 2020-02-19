@@ -21,7 +21,7 @@ public class VehicleHttpPack implements Serializable {
     /**
      * vehicle infomation and runtime data
      */
-    private Vehicle vehicleTemp;
+    private Vehicle vehicle;
 
     /**
      * get year
@@ -92,7 +92,7 @@ public class VehicleHttpPack implements Serializable {
      * @return {@link Vehicle}
      */
     public Vehicle getVehicle(){
-        return this.vehicleTemp;
+        return this.vehicle;
     }
 
     /**
@@ -100,7 +100,7 @@ public class VehicleHttpPack implements Serializable {
      * @param v {@link Vehicle}
      */
     public void setVehicle(Vehicle v){
-        this.vehicleTemp = v;
+        this.vehicle = v;
     }
 
     @Override
@@ -111,7 +111,7 @@ public class VehicleHttpPack implements Serializable {
                 "day="+this.day+"," +
                 "sign="+this.sign+"," +
                 "vehicle="+
-                this.vehicleTemp.toString()+
+                this.vehicle.toString()+
                 "}";
         return str;
     }
