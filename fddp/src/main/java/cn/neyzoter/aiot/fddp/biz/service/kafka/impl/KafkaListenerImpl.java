@@ -22,7 +22,7 @@ import java.util.List;
  * @date 2019/9/6
  */
 @ComponentScan("cn.neyzoter.aiot.fddp.biz.service.kafka.constant,cn.neyzoter.aiot.fddp.biz.service.biz.service.influxdb")
-@Component
+//@Component
 public class KafkaListenerImpl {
     private final static Logger logger = LoggerFactory.getLogger(KafkaListenerImpl.class);
 

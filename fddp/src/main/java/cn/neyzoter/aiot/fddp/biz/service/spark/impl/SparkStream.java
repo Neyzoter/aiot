@@ -51,6 +51,7 @@ public class SparkStream {
         try {
             // Configuration
             sparkConf = new SparkConf().setAppName(SparkStreamingConf.SPARK_STREAMING_NAME);
+            sparkConf.setMaster(propertiesUtil.readValue(PropertiesLables.SPARK_MASTER));
             topicsSet = new HashSet<>(Arrays.asList(KafkaTopic.TOPIC_VEHICLE_HTTP_PACKET_NAME));
             jssc = new JavaStreamingContext(sparkConf, Durations.seconds(SPARK_STEAMING_DURATION_SECOND));
             kafkaParams = new HashMap<>();
@@ -68,14 +69,13 @@ public class SparkStream {
             JavaPairDStream<String, VehicleHttpPack> record = messages.mapToPair(
                     x -> new Tuple2<>(String.format(VID_KEY_PREFIX + x.key().replace("\"","")),
                             x.value())).reduceByKey((x1, x2) -> DataPreProcess.compact(x1, x2));
-            // missing values process
-            record = record.mapValues(x -> DataPreProcess.missingValueProcess(x));
-            // outlier values process
-            record = record.mapValues(x -> DataPreProcess.outlierHandling(x));
-            // multi Sampling Rate Process
-            record = record.mapValues(x -> DataPreProcess.multiSamplingRateProcess(x));
+//            // missing values process
+//            record = record.mapValues(x -> DataPreProcess.missingValueProcess(x));
+//            // outlier values process
+//            record = record.mapValues(x -> DataPreProcess.outlierHandling(x));
+//            // multi Sampling Rate Process
+//            record = record.mapValues(x -> DataPreProcess.multiSamplingRateProcess(x));
             record.print();
-
 
             // Start the computation
             jssc.start();

@@ -16,4 +16,6 @@ public class PropertiesLables {
     public static final String INFLUXDB_TOKEN = "influxdb.token";
 
     public static final String KAFKA_BOOTSTRAP_SERVER = "kafka.bootstrap-server";
+
+    public static final String SPARK_MASTER = "spark.master";
 }

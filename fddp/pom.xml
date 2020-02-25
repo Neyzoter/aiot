@@ -70,4 +70,53 @@
             <artifactId>jackson-databind</artifactId>
         </dependency>
     </dependencies>
+<!--    &lt;!&ndash;spring boot打包的话需要指定一个唯一的入门&ndash;&gt;-->
+<!--    <build>-->
+<!--        <plugins>-->
+<!--            <plugin>-->
+<!--                <groupId>org.springframework.boot</groupId>-->
+<!--                <artifactId>spring-boot-maven-plugin</artifactId>-->
+<!--                <configuration>-->
+<!--                    &lt;!&ndash; 指定该Main Class为全局的唯一入口 &ndash;&gt;-->
+<!--                    <mainClass>cn.neyzoter.aiot.fddp.FddpApplication</mainClass>-->
+<!--                    <layout>ZIP</layout>-->
+<!--                </configuration>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <goals>-->
+<!--                            <goal>repackage</goal>&lt;!&ndash;可以把依赖的包都打包到生成的Jar包中&ndash;&gt;-->
+<!--                        </goals>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--            </plugin>-->
+
+<!--            <plugin>-->
+<!--                <groupId>com.spotify</groupId>-->
+<!--                <artifactId>docker-maven-plugin</artifactId>-->
+<!--                <version>1.2.0</version>-->
+<!--                <configuration>-->
+<!--                    <serverId>docker-releases</serverId>-->
+<!--                    <registryUrl>https://${docker.repository}/repository/docker-releases/</registryUrl>-->
+<!--                    <imageName>${project.groupId}/${project.artifactId}:${project.version}</imageName>-->
+<!--                    <imageTags>-->
+<!--                        <imageTag>latest</imageTag>-->
+<!--                    </imageTags>-->
+<!--                    &lt;!&ndash; Dockerfile存放地址&ndash;&gt;-->
+<!--                    <dockerDirectory>${project.basedir}/src/main/docker</dockerDirectory>-->
+<!--                    &lt;!&ndash;<baseImage>java</baseImage>&ndash;&gt;-->
+<!--                    &lt;!&ndash;<entryPoint>["java", "-jar", "/${project.build.finalName}.jar"]</entryPoint>&ndash;&gt;-->
+<!--                    <dockerHost>localhost:2375</dockerHost>-->
+<!--                    <resources>-->
+<!--                        <resource>-->
+<!--                            <targetPath>/</targetPath>-->
+<!--                            &lt;!&ndash; jar包所在路径&ndash;&gt;-->
+<!--                            <directory>${project.build.directory}</directory>-->
+<!--                            &lt;!&ndash;jar包名称&ndash;&gt;-->
+<!--                            <include>${project.build.finalName}.jar</include>-->
+<!--                        </resource>-->
+<!--                    </resources>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
+<!--        </plugins>-->
+<!--    </build>-->
 </project>
