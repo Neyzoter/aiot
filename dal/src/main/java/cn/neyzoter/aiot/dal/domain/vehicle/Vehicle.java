@@ -112,7 +112,8 @@ public class Vehicle implements Serializable {
         return tags;
     }
     /**
-     * to tags fields timestamp , compatible to influx's "tag[,tag...] field[,field...] timestamp"
+     * to tags fields timestamp , compatible to influx's "tag[,tag...] field[,field...] timestamp" <br></>
+     * note that tag and field is "k=v", but timestamp is just a time num.
      * @return List<String>
      */
     public List<String> toTagsFieldsTimestamp () {

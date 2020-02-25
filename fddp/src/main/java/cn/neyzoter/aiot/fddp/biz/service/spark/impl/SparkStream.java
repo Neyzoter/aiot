@@ -6,7 +6,9 @@ import java.util.Arrays;
 import java.util.Map;
 import java.util.Set;
 
+import cn.neyzoter.aiot.common.util.PropertiesUtil;
 import cn.neyzoter.aiot.dal.domain.vehicle.VehicleHttpPack;
+import cn.neyzoter.aiot.fddp.biz.service.bean.PropertiesLables;
 import cn.neyzoter.aiot.fddp.biz.service.kafka.constant.KafkaConsumerGroup;
 import cn.neyzoter.aiot.fddp.biz.service.kafka.constant.KafkaTopic;
 import cn.neyzoter.aiot.fddp.biz.service.kafka.impl.serialization.VehicleHttpPackDeserializer;
@@ -14,6 +16,7 @@ import cn.neyzoter.aiot.fddp.biz.service.spark.algo.DataPreProcess;
 import cn.neyzoter.aiot.fddp.biz.service.spark.constant.SparkStreamingConf;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import scala.Tuple2;
 
@@ -43,14 +46,15 @@ public class SparkStream {
     JavaStreamingContext jssc;
     Set<String> topicsSet;
     Map<String, Object> kafkaParams;
-    public SparkStream() {
+    @Autowired
+    public SparkStream(PropertiesUtil propertiesUtil) {
         try {
             // Configuration
             sparkConf = new SparkConf().setAppName(SparkStreamingConf.SPARK_STREAMING_NAME);
             topicsSet = new HashSet<>(Arrays.asList(KafkaTopic.TOPIC_VEHICLE_HTTP_PACKET_NAME));
             jssc = new JavaStreamingContext(sparkConf, Durations.seconds(SPARK_STEAMING_DURATION_SECOND));
             kafkaParams = new HashMap<>();
-            kafkaParams.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, KafkaConsumerGroup.COMSUMER_BOOTSTRAP_SERVER);
+            kafkaParams.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, propertiesUtil.readValue(PropertiesLables.KAFKA_BOOTSTRAP_SERVER));
             kafkaParams.put(ConsumerConfig.GROUP_ID_CONFIG,KafkaConsumerGroup.GROUP_SPARK_CONSUME_VEHICLE_HTTP_PACKET);
             kafkaParams.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
             kafkaParams.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, VehicleHttpPackDeserializer.class);

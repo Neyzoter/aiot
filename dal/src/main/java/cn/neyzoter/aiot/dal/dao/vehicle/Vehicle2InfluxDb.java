@@ -4,6 +4,7 @@ import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
@@ -458,6 +459,33 @@ public class Vehicle2InfluxDb {
             int num = lines.length;
             for (int i = 0 ; i < num ; i++) {
                 lineProtoBody += lines[i];
+                // not last line , add \n
+                if (i != num - 1) {
+                    lineProtoBody += "\n";
+                }
+            }
+            HttpEntity<String> request = new HttpEntity<>(lineProtoBody, this.headers);
+            ResponseEntity<String> response = restTemplate.postForEntity(this.url, request, String.class);
+            return response;
+        } catch (Exception e) {
+            System.err.println(e);
+        } finally {
+            lock.readLock().unlock();
+        }
+        return null;
+    }
+    /**
+     * post multi lines to influxdb<br/> line must match "$measurement,$tags $field $tiemstamp"
+     * @param lines line Protocal list
+     * @return {@link ResponseEntity<>}
+     */
+    public ResponseEntity<String> postMultilines2InfluxDB(List<String> lines) {
+        lock.readLock().lock();
+        try {
+            String lineProtoBody="";
+            int num = lines.size();
+            for (int i = 0 ; i < num ; i++) {
+                lineProtoBody += lines.get(i);
                 // not last line , add \n
                 if (i != num - 1) {
                     lineProtoBody += "\n";

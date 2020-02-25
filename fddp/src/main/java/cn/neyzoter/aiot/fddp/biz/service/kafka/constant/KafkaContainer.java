@@ -1,8 +1,12 @@
 package cn.neyzoter.aiot.fddp.biz.service.kafka.constant;
 
 import cn.neyzoter.aiot.common.util.PropertiesUtil;
-import cn.neyzoter.aiot.fddp.biz.service.biz.service.influxdb.PropertiesLables;
+import cn.neyzoter.aiot.fddp.biz.service.bean.PropertiesLables;
+import cn.neyzoter.aiot.fddp.biz.service.kafka.impl.serialization.VehicleHttpPackDeserializer;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
+import org.apache.kafka.common.serialization.StringDeserializer;
+import org.apache.kafka.common.serialization.StringSerializer;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,14 +24,15 @@ import java.util.Map;
 @Configuration
 public class KafkaContainer {
     @Bean
-    public KafkaListenerContainerFactory<?> vehicleHttpPackBatchFactory(KafkaProperties properties) {
+    @Autowired
+    public KafkaListenerContainerFactory<?> vehicleHttpPackBatchFactory(KafkaProperties properties, PropertiesUtil propertiesUtil) {
         ConcurrentKafkaListenerContainerFactory<Integer, String> factory =
                 new ConcurrentKafkaListenerContainerFactory<>();
         Map<String, Object> props = properties.buildConsumerProperties();
-        // read properties from properties file
-        PropertiesUtil propertiesUtil = new PropertiesUtil(PropertiesLables.PROPERTIES_PATH);
         // bootstrap server
         props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG,propertiesUtil.readValue(PropertiesLables.KAFKA_BOOTSTRAP_SERVER));
+        props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
+        props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, VehicleHttpPackDeserializer.class);
         DefaultKafkaConsumerFactory defaultKafkaConsumerFactory = new DefaultKafkaConsumerFactory(props);
         factory.setConsumerFactory(defaultKafkaConsumerFactory);
         // batch listener can receive batch of msg

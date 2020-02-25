@@ -13,6 +13,4 @@ public class KafkaConsumerGroup {
      */
     public final static String GROUP_POST_VEHICLE_HTTP_PACKET = "VehicleHttpPackagePoster";
 
-    public final static String COMSUMER_BOOTSTRAP_SERVER = "localhost:9093";
-
 }

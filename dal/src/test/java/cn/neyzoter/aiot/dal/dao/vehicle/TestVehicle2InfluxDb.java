@@ -1,11 +1,13 @@
 package cn.neyzoter.aiot.dal.dao.vehicle;
 
+import cn.neyzoter.aiot.dal.domain.vehicle.RuntimeData;
+import cn.neyzoter.aiot.dal.domain.vehicle.Vehicle;
+import cn.neyzoter.aiot.dal.domain.vehicle.VehicleHttpPack;
 import org.junit.Test;
 
 import java.lang.reflect.Array;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -16,7 +18,7 @@ import org.slf4j.LoggerFactory;
  */
 public class TestVehicle2InfluxDb {
     private final static Logger logger = LoggerFactory.getLogger(TestVehicle2InfluxDb.class);
-    Vehicle2InfluxDb vehicle2InfluxDb = new Vehicle2InfluxDb("zju", "influxdb_bucket", "s", "yzwAKztIXZLJNSvTPeUuFW7P9z4oWd_NLnGZNcIuoJMY7PCZEm1Lu1s-IIjloYFiSBVhRss7aMaDbh58WdlhGA==","localhost");
+    Vehicle2InfluxDb vehicle2InfluxDb = new Vehicle2InfluxDb("zju", "influxdb_bucket", "ms", "yzwAKztIXZLJNSvTPeUuFW7P9z4oWd_NLnGZNcIuoJMY7PCZEm1Lu1s-IIjloYFiSBVhRss7aMaDbh58WdlhGA==","localhost");
     @Test
     public void testPostOnepoint2InfluxDb(){
         String measurement = "vehicle";
@@ -46,5 +48,26 @@ public class TestVehicle2InfluxDb {
         String[] timestamps = {"", "", ""};
 
         vehicle2InfluxDb.postMultipoints2InfluxDB(measurements, tagses,fieldses, timestamps);
+    }
+
+    @Test
+    public void testPostMultilines2InfluxDB () {
+        List<VehicleHttpPack> vl = new ArrayList<>();
+        VehicleHttpPack vtp1 = new VehicleHttpPack();vtp1.setDay("2");vtp1.setMonth("2");vtp1.setSign("100");vtp1.setYear("2020");
+        Vehicle v1 = new Vehicle();v1.setApp((long)1);v1.setVid("12");v1.setVtype("mazida100");
+        RuntimeData data1 = new RuntimeData();data1.setSpeed(100);data1.setEcuMaxTemp(50);
+        SortedMap<Long, RuntimeData> map1 = new TreeMap<>();map1.put(System.currentTimeMillis(), data1);
+        v1.setRtDataMap(map1);vtp1.setVehicle(v1);
+
+        VehicleHttpPack vtp2 = new VehicleHttpPack();vtp2.setDay("2");vtp2.setMonth("2");vtp2.setSign("100");vtp2.setYear("2020");
+        Vehicle v2 = new Vehicle();v2.setApp((long)1);v2.setVid("12");v2.setVtype("mazida100");
+        RuntimeData data2 = new RuntimeData();data2.setSpeed(70);data2.setEcuMaxTemp(40);
+        SortedMap<Long, RuntimeData> map2 = new TreeMap<>();map2.put(System.currentTimeMillis(), data2);
+        v2.setRtDataMap(map2);vtp2.setVehicle(v2);
+
+        vl.add(vtp1);vl.add(vtp2);
+
+        List<String> list = VehicleHttpPack.vhplToInfluxLinesProto(vl);
+        vehicle2InfluxDb.postMultilines2InfluxDB(list);
     }
 }

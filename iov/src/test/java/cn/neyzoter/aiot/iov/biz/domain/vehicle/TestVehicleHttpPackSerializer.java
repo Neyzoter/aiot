@@ -36,8 +36,8 @@ public class TestVehicleHttpPackSerializer {
         Vehicle vehicle = new Vehicle();
         RuntimeData runtimeData = new RuntimeData();
         runtimeData.setEcuMaxTemp(40);runtimeData.setSpeed(100);
-        SortedMap<Integer, RuntimeData> rtDataMap = new TreeMap<>();
-        rtDataMap.put(0, runtimeData);
+        SortedMap<Long, RuntimeData> rtDataMap = new TreeMap<>();
+        rtDataMap.put((long)0, runtimeData);
         vehicle.setRtDataMap(rtDataMap);vehicle.setApp((long)10);
         vehicleHttpPack.setDay("1");vehicleHttpPack.setMonth("2");vehicleHttpPack.setSign("eakdiex");
         vehicleHttpPack.setYear("2019");vehicleHttpPack.setVehicle(vehicle);

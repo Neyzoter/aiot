@@ -1,6 +1,7 @@
 package cn.neyzoter.aiot.dal.domain.vehicle;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -9,6 +10,7 @@ import java.util.List;
  * @date 2019/9/8
  */
 public class VehicleHttpPack implements Serializable {
+    public static final String INFLUXDB_MEASUREMENT = "vehicle";
     /**
      * frame timestamp
      */
@@ -120,7 +122,7 @@ public class VehicleHttpPack implements Serializable {
     /**
      * transform to "measurement tags fields timestamp"<br/>
      * "measurement tag[,tag...] field[,field...] timestamp"
-     * @return
+     * @return String[]
      */
     public String[] toInfluxLinesProto () {
         List<String> strs = this.getVehicle().toTagsFieldsTimestamp();
@@ -128,8 +130,25 @@ public class VehicleHttpPack implements Serializable {
         String[] lines = new String[size];
         for (int i = 0; i < size; i ++) {
             // "measurement tag[,tag...] field[,field...] timestamp"
-            lines[i] = "vehicle," + strs.get(i);
+            lines[i] = INFLUXDB_MEASUREMENT + "," + strs.get(i);
         }
         return lines;
+    }
+
+    /**
+     * transform VehicleHttpPack List to InfluxLinesProto
+     * @param packList packList
+     * @return List<String>
+     */
+    public static List<String> vhplToInfluxLinesProto (List<VehicleHttpPack> packList) {
+        List<String> linesList = new ArrayList<>();
+        for (VehicleHttpPack pack : packList) {
+            List<String> strs = pack.getVehicle().toTagsFieldsTimestamp();
+            int size = strs.size();
+            for (int i = 0 ; i < size ; i ++) {
+                linesList.add(INFLUXDB_MEASUREMENT + "," + strs.get(i));
+            }
+        }
+        return linesList;
     }
 }

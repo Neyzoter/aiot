@@ -1,8 +1,7 @@
 package cn.neyzoter.aiot.fddp.biz.service.kafka.impl;
 
-import cn.neyzoter.aiot.dal.dao.vehicle.Vehicle2InfluxDb;
 import cn.neyzoter.aiot.dal.domain.vehicle.VehicleHttpPack;
-import cn.neyzoter.aiot.fddp.biz.service.biz.service.influxdb.VPackInfluxPoster;
+import cn.neyzoter.aiot.fddp.biz.service.influxdb.VPackInfluxPoster;
 import cn.neyzoter.aiot.fddp.biz.service.kafka.constant.KafkaConsumerGroup;
 import cn.neyzoter.aiot.fddp.biz.service.kafka.constant.KafkaTopic;
 import org.slf4j.Logger;
@@ -15,9 +14,7 @@ import org.springframework.messaging.handler.annotation.Header;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Component;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Kafka listener implement
@@ -36,28 +33,29 @@ public class KafkaListenerImpl {
     }
     /**
      * process real time data
-     * @param vehicleHttpPack
-     * @param key
-     * @param partition
-     * @param topic
-     * @param ts
+     * @param vehicleHttpPack vehicleHttpPack
+     * @param key key
+     * @param partition partition
+     * @param topic topic
+     * @param ts timestamp
      */
     @KafkaListener(id = "listener1",topics = KafkaTopic.TOPIC_VEHICLE_HTTP_PACKET_NAME, groupId = KafkaConsumerGroup.GROUP_POST_VEHICLE_HTTP_PACKET,containerFactory = "vehicleHttpPackBatchFactory")
-    public void processRtData (@Payload List<VehicleHttpPack> vehicleHttpPack,
+    public void post2InfluxDbListener1 (@Payload List<VehicleHttpPack> vehicleHttpPack,
                                @Header(KafkaHeaders.RECEIVED_MESSAGE_KEY) String key,
                                @Header(KafkaHeaders.RECEIVED_PARTITION_ID) int partition,
                                @Header(KafkaHeaders.RECEIVED_TOPIC) String topic,
                                @Header(KafkaHeaders.RECEIVED_TIMESTAMP) long ts) {
-        // TODO
-        logger.info(String.format("\n[listener 1]\nvehicleHttpPack : %s\nkey : %s\npartition : %d\ntopic : %s\ntime stamp : %d", vehicleHttpPack.toString(), key ,partition, topic, ts));
+        vPackInfluxPoster.postVpack2InfluxDB(vehicleHttpPack);
+        System.out.println("\n===========\nlistener1\n===========\n");
     }
     @KafkaListener(id = "listener2", topics = KafkaTopic.TOPIC_VEHICLE_HTTP_PACKET_NAME, groupId = KafkaConsumerGroup.GROUP_POST_VEHICLE_HTTP_PACKET,containerFactory = "vehicleHttpPackBatchFactory")
-    public void processData (@Payload List<VehicleHttpPack> vehicleHttpPack,
+    public void post2InfluxDbListener2 (@Payload List<VehicleHttpPack> vehicleHttpPack,
                              @Header(KafkaHeaders.RECEIVED_MESSAGE_KEY) String key,
                              @Header(KafkaHeaders.RECEIVED_PARTITION_ID) int partition,
                              @Header(KafkaHeaders.RECEIVED_TOPIC) String topic,
                              @Header(KafkaHeaders.RECEIVED_TIMESTAMP) long ts) {
-        logger.info(String.format("\n[listener 2]\nprocessData : vehicleHttpPack : %s\nkey : %s\npartition : %d\ntopic : %s\ntime stamp : %d", vehicleHttpPack.toString(), key ,partition, topic, ts));
+        vPackInfluxPoster.postVpack2InfluxDB(vehicleHttpPack);
+        System.out.println("\n===========\nlistener2\n===========\n");
     }
 //    /**
 //     * Listen for partition's msg
