@@ -5,6 +5,8 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.Iterator;
 import java.util.Map;
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 /**
  * Vehicle pojo to InfluxDB
@@ -56,6 +58,14 @@ public class Vehicle2InfluxDb {
      */
     private String port;
 
+    /**
+     * url : come from this.host port org bucket precision
+     */
+    private String url;
+    /**
+     * read and write lock
+     */
+    private ReentrantReadWriteLock lock = new ReentrantReadWriteLock();
 
     /**
      * Vehicle2InfluxDb constructor
@@ -70,6 +80,7 @@ public class Vehicle2InfluxDb {
     public Vehicle2InfluxDb(String org, String bucket, String precision, String token, String host, String port) {
         this(org,bucket,precision,token,host);
         this.port = port;
+        this.updateUrl();
     }
 
     /**
@@ -90,6 +101,7 @@ public class Vehicle2InfluxDb {
         this.precision = precision;
         this.host = host;
         this.port = "9999";
+        this.updateUrl();
     }
 
     /**
@@ -98,7 +110,15 @@ public class Vehicle2InfluxDb {
      * @param org org
      */
     public void setOrg(String org) {
-        this.org = org;
+        lock.writeLock().lock();
+        try {
+            this.org = org;
+            this.updateUrl();
+        } catch (Exception e) {
+            System.err.println(e);
+        } finally {
+            lock.writeLock().unlock();
+        }
     }
 
     /**
@@ -116,7 +136,16 @@ public class Vehicle2InfluxDb {
      * @param bucket bucket
      */
     public void setBucket(String bucket) {
-        this.bucket = bucket;
+        lock.writeLock().lock();
+        try {
+            this.bucket = bucket;
+            this.updateUrl();
+        } catch (Exception e) {
+            System.err.println(e);
+        } finally {
+            lock.writeLock().unlock();
+        }
+
     }
 
     /**
@@ -134,7 +163,15 @@ public class Vehicle2InfluxDb {
      * @param precision precision
      */
     public void setPrecision(String precision) {
-        this.precision = precision;
+        lock.writeLock().lock();
+        try {
+            this.precision = precision;
+            this.updateUrl();
+        } catch (Exception e) {
+            System.err.println(e);
+        } finally {
+            lock.writeLock().unlock();
+        }
     }
 
     /**
@@ -152,7 +189,14 @@ public class Vehicle2InfluxDb {
      * @param token token
      */
     public void setHeaders(String token) {
-        this.headers.set(HEADERS_AUTHORIZATION, token);
+        lock.writeLock().lock();
+        try {
+            this.headers.set(HEADERS_AUTHORIZATION, token);
+        } catch (Exception e) {
+            System.err.println(e);
+        } finally {
+            lock.writeLock().unlock();
+        }
     }
 
     /**
@@ -226,7 +270,14 @@ public class Vehicle2InfluxDb {
      * @param restTemplate {@link RestTemplate}
      */
     public void setRestTemplate(RestTemplate restTemplate) {
-        this.restTemplate = restTemplate;
+        lock.writeLock().lock();
+        try {
+            this.restTemplate = restTemplate;
+        } catch (Exception e) {
+            System.err.println(e);
+        } finally {
+            lock.writeLock().unlock();
+        }
     }
 
     /**
@@ -241,7 +292,15 @@ public class Vehicle2InfluxDb {
      * @param host host (ip)
      */
     public void setHost(String host) {
-        this.host = host;
+        lock.writeLock().lock();
+        try {
+            this.host = host;
+            this.updateUrl();
+        } catch (Exception e) {
+            System.err.println(e);
+        } finally {
+            lock.writeLock().unlock();
+        }
     }
 
     /**
@@ -257,9 +316,74 @@ public class Vehicle2InfluxDb {
      * @param port pot
      */
     public void setPort(String port) {
-        this.port = port;
+        lock.writeLock().lock();
+        try {
+            this.port = port;
+            this.updateUrl();
+        } catch (Exception e) {
+            System.err.println(e);
+        } finally {
+            lock.writeLock().unlock();
+        }
     }
 
+    /**
+     * get url
+     * @return String
+     */
+    public String getUrl () {
+        return this.url;
+    }
+
+    /**
+     * update url by this.host port org bucket precision
+     * @return url
+     */
+    public String updateUrl () {
+        lock.writeLock().lock();
+        try {
+            this.url = String.format(INFLUXDB_V2_URL_FORMAT, this.host, this.port, this.org, this.bucket, this.precision);
+            return this.url;
+        } catch (Exception e) {
+            System.err.println(e);
+        } finally {
+            lock.writeLock().unlock();
+        }
+        return null;
+    }
+    /**
+     * set url
+     * @param url url
+     */
+    public void setUrl (String url) {
+        lock.writeLock().lock();
+        try {
+            this.url = url;
+        } catch (Exception e) {
+            System.err.println(e);
+        } finally {
+            lock.writeLock().unlock();
+        }
+    }
+
+    /**
+     * set url
+     * @param host host
+     * @param port port
+     * @param org org
+     * @param bucket bucket
+     * @param precision precision
+     */
+    public void setUrl (String host, String port, String org, String bucket, String precision) {
+        lock.writeLock().lock();
+        try {
+            this.url = String.format(INFLUXDB_V2_URL_FORMAT, host, port, org, bucket, precision);
+        } catch (Exception e) {
+            System.err.println(e);
+        } finally {
+            lock.writeLock().unlock();
+        }
+    }
 
     /**
      * post one point data to InfluxDB
@@ -270,29 +394,57 @@ public class Vehicle2InfluxDb {
      * @param timestamp timestamp
      * @return ResponseEntity<String>
      */
-    public ResponseEntity<String> postOnepoints2InfluxDb(String measurement, Map<String, String> tags, Map<String, String> fields, String timestamp) {
-        String url = String.format(INFLUXDB_V2_URL_FORMAT,this.host, this.port, this.org, this.bucket, this.precision);
-        String tagsStr = getTags(tags);
-        String fieldsStr = getFields(fields);
-        String lineProtoBody = String.format(INFLUXDB_V2_BODY_LINE_PROTO_FORMAT,measurement,tagsStr,fieldsStr,timestamp);
-        HttpEntity<String> request = new HttpEntity<>(lineProtoBody, headers);
-        ResponseEntity<String> response = restTemplate.postForEntity(url, request, String.class);
-        return response;
+    public ResponseEntity<String> postOnepoint2InfluxDb(String measurement, Map<String, String> tags, Map<String, String> fields, String timestamp) {
+        lock.readLock().lock();
+        try {
+            String tagsStr = getTags(tags);
+            String fieldsStr = getFields(fields);
+            String lineProtoBody = String.format(INFLUXDB_V2_BODY_LINE_PROTO_FORMAT,measurement,tagsStr,fieldsStr,timestamp);
+            HttpEntity<String> request = new HttpEntity<>(lineProtoBody, this.headers);
+            ResponseEntity<String> response = restTemplate.postForEntity(this.url, request, String.class);
+            return response;
+        } catch (Exception e) {
+            System.err.println(e);
+        } finally {
+            lock.readLock().unlock();
+        }
+        return null;
     }
-    public ResponseEntity<String> postMultipoints2InfluxDB(String[] measurements, Map<String, String>[] tagses, Map<String, String>[] fieldses, String[] timestamp) throws Exception{
-        int len = measurements.length;
-        if (len != tagses.length || len != fieldses.length || len != timestamp.length) {
-            throw new Exception("Length is not equal");
-        }
-        String lineProtoBody = "";
-        for (int i = 0 ; i < len ; i ++) {
-            String tagsStr = getTags(tagses[i]);
-            String fieldsStr = getFields(fieldses[i]);
-            lineProtoBody += String.format(INFLUXDB_V2_BODY_LINE_PROTO_FORMAT,measurements[i],tagsStr,fieldsStr,timestamp[i]);
-            if (i != len - 1) {
-                lineProtoBody += "\n";
+
+    /**
+     * post multi-points data to InfluxDB
+     * @param measurements measurement array
+     * @param tagses tags array
+     * @param fieldses fields array
+     * @param timestamp timestamp array
+     * @return {@link ResponseEntity}
+     * @throws Exception Length of the parameters arrays is not equal
+     */
+    public ResponseEntity<String> postMultipoints2InfluxDB(String[] measurements, Map<String, String>[] tagses, Map<String, String>[] fieldses, String[] timestamps) {
+        lock.readLock().lock();
+        try {
+            int len = measurements.length;
+            if (len != tagses.length || len != fieldses.length || len != timestamps.length) {
+                throw new Exception("Length is not equal");
             }
+            String lineProtoBody = "";
+            for (int i = 0 ; i < len ; i ++) {
+                String tagsStr = getTags(tagses[i]);
+                String fieldsStr = getFields(fieldses[i]);
+                lineProtoBody += String.format(INFLUXDB_V2_BODY_LINE_PROTO_FORMAT,measurements[i],tagsStr,fieldsStr,timestamps[i]);
+                if (i != len - 1) {
+                    lineProtoBody += "\n";
+                }
+            }
+            HttpEntity<String> request = new HttpEntity<>(lineProtoBody, this.headers);
+            ResponseEntity<String> response = restTemplate.postForEntity(this.url, request, String.class);
+            return response;
+        } catch (Exception e) {
+            System.err.println(e);
+        } finally {
+            lock.readLock().unlock();
         }
+        return null;
     }
     /**
      * post multi lines to influxdb<br/> line must match "$measurement,$tags $field $tiemstamp"
@@ -300,20 +452,25 @@ public class Vehicle2InfluxDb {
      * @return {@link ResponseEntity<>}
      */
     public ResponseEntity<String> postMultilines2InfluxDB(String[] lines) {
-        String url = String.format(INFLUXDB_V2_URL_FORMAT,this.host, this.port, this.org, this.bucket, this.precision);
-        String lineProtoBody="";
-        int num = lines.length;
-        for (int i = 0 ; i < num ; i++) {
-            lineProtoBody += lines[i];
-            // not last line , add \n
-            if (i != num - 1) {
-                lineProtoBody += "\n";
+        lock.readLock().lock();
+        try {
+            String lineProtoBody="";
+            int num = lines.length;
+            for (int i = 0 ; i < num ; i++) {
+                lineProtoBody += lines[i];
+                // not last line , add \n
+                if (i != num - 1) {
+                    lineProtoBody += "\n";
+                }
             }
+            HttpEntity<String> request = new HttpEntity<>(lineProtoBody, this.headers);
+            ResponseEntity<String> response = restTemplate.postForEntity(this.url, request, String.class);
+            return response;
+        } catch (Exception e) {
+            System.err.println(e);
+        } finally {
+            lock.readLock().unlock();
         }
-        HttpEntity<String> request = new HttpEntity<>(lineProtoBody, headers);
-        ResponseEntity<String> response = restTemplate.postForEntity(url, request, String.class);
-        return response;
+        return null;
     }
-
-
 }

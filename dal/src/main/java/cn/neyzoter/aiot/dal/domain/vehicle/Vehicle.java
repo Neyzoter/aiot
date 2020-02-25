@@ -1,9 +1,7 @@
 package cn.neyzoter.aiot.dal.domain.vehicle;
 
 import java.io.Serializable;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.SortedMap;
+import java.util.*;
 
 /**
  * Vehicle class
@@ -89,9 +87,7 @@ public class Vehicle implements Serializable {
         String str = new String();
         try {
             str += "{" +
-                    "app="+this.app + ","+
-                    "vid=" + this.vid + ","+
-                    "vtype=" + this.vtype + "," +
+                    this.toTags() + "," +
                     "rtDataMap={";
             Iterator it = rtDataMap.entrySet().iterator();
             for (;it.hasNext();) {
@@ -103,5 +99,32 @@ public class Vehicle implements Serializable {
             System.err.println(e);
         }
         return str;
+    }
+
+    /**
+     * get tags, compatible to influx
+     * @return tags
+     */
+    public String toTags () {
+        String tags = "app="+this.app + ","+
+                "vid=" + this.vid + ","+
+                "vtype=" + this.vtype;
+        return tags;
+    }
+    /**
+     * to tags fields timestamp , compatible to influx's "tag[,tag...] field[,field...] timestamp"
+     * @return List<String>
+     */
+    public List<String> toTagsFieldsTimestamp () {
+        List<String> influxStrs = new ArrayList<>();
+        String influxStr;
+        Iterator<Map.Entry<Long, RuntimeData>> iter = rtDataMap.entrySet().iterator();
+        for (;iter.hasNext();) {
+            Map.Entry<Long, RuntimeData> entry = iter.next();
+            // "tag[,tag...] field[,field...] timestamp"
+            influxStr = this.toTags() + " " + entry.getValue().toFields() + " " + entry.getKey();
+            influxStrs.add(influxStr);
+        }
+        return influxStrs;
     }
 }

@@ -51,10 +51,19 @@ public class RuntimeData implements Serializable {
 
     @Override
     public String toString(){
-        String str = "{"+
-                "speed="+speed + "," +
-                "ecuMaxTemp="+ecuMaxTemp+
+        String str = "{" +
+                this.toFields() +
                 "}";
+        return str;
+    }
+
+    /**
+     * transform to fields, compatible to influx
+     * @return String
+     */
+    public String toFields () {
+        String str = "speed=" + speed + "," +
+                "ecuMaxTemp=" + ecuMaxTemp;
         return str;
     }
 }

@@ -8,6 +8,9 @@ package cn.neyzoter.aiot.fddp.biz.service.kafka.constant;
 public class KafkaConsumerGroup {
     public final static String GROUP_SPARK_CONSUME_VEHICLE_HTTP_PACKET = "VehicleHttpPackageSparkConsumer";
 
+    /**
+     * post vhp to influxdb
+     */
     public final static String GROUP_POST_VEHICLE_HTTP_PACKET = "VehicleHttpPackagePoster";
 
     public final static String COMSUMER_BOOTSTRAP_SERVER = "localhost:9093";

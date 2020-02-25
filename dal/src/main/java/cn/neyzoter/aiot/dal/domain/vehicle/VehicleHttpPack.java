@@ -1,6 +1,7 @@
 package cn.neyzoter.aiot.dal.domain.vehicle;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Vehicle http package body
@@ -116,4 +117,19 @@ public class VehicleHttpPack implements Serializable {
         return str;
     }
 
+    /**
+     * transform to "measurement tags fields timestamp"<br/>
+     * "measurement tag[,tag...] field[,field...] timestamp"
+     * @return
+     */
+    public String[] toInfluxLinesProto () {
+        List<String> strs = this.getVehicle().toTagsFieldsTimestamp();
+        int size = strs.size();
+        String[] lines = new String[size];
+        for (int i = 0; i < size; i ++) {
+            // "measurement tag[,tag...] field[,field...] timestamp"
+            lines[i] = "vehicle," + strs.get(i);
+        }
+        return lines;
+    }
 }
