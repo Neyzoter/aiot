@@ -24,7 +24,7 @@ import java.util.Map;
 //@Component
 public class KafkaListenerImpl {
     private final static Logger logger = LoggerFactory.getLogger(KafkaListenerImpl.class);
-    private Vehicle2InfluxDb vehicle2InfluxDb = new Vehicle2InfluxDb("zju", "influxdb_bucket", "ms", "yzwAKztIXZLJNSvTPeUuFW7P9z4oWd_NLnGZNcIuoJMY7PCZEm1Lu1s-IIjloYFiSBVhRss7aMaDbh58WdlhGA==");
+    private Vehicle2InfluxDb vehicle2InfluxDb = new Vehicle2InfluxDb("zju", "influxdb_bucket", "ms", "yzwAKztIXZLJNSvTPeUuFW7P9z4oWd_NLnGZNcIuoJMY7PCZEm1Lu1s-IIjloYFiSBVhRss7aMaDbh58WdlhGA==","localhost");
 
     /**
      * process real time data
@@ -34,7 +34,7 @@ public class KafkaListenerImpl {
      * @param topic
      * @param ts
      */
-    @KafkaListener(id = "listener1",topics = KafkaTopic.TOPIC_VEHICLE_HTTP_PACKET_NAME, groupId = KafkaConsumerGroup.GROUP_CONSUME_VEHICLE_HTTP_PACKET,containerFactory = "vehicleHttpPackBatchFactory")
+    @KafkaListener(id = "listener1",topics = KafkaTopic.TOPIC_VEHICLE_HTTP_PACKET_NAME, groupId = KafkaConsumerGroup.GROUP_POST_VEHICLE_HTTP_PACKET,containerFactory = "vehicleHttpPackBatchFactory")
     public void processRtData (@Payload List<VehicleHttpPack> vehicleHttpPack,
                                @Header(KafkaHeaders.RECEIVED_MESSAGE_KEY) String key,
                                @Header(KafkaHeaders.RECEIVED_PARTITION_ID) int partition,
@@ -43,7 +43,7 @@ public class KafkaListenerImpl {
 
         logger.info(String.format("\n[listener 1]\nvehicleHttpPack : %s\nkey : %s\npartition : %d\ntopic : %s\ntime stamp : %d", vehicleHttpPack.toString(), key ,partition, topic, ts));
     }
-    @KafkaListener(id = "listener2", topics = KafkaTopic.TOPIC_VEHICLE_HTTP_PACKET_NAME, groupId = KafkaConsumerGroup.GROUP_CONSUME_VEHICLE_HTTP_PACKET,containerFactory = "vehicleHttpPackBatchFactory")
+    @KafkaListener(id = "listener2", topics = KafkaTopic.TOPIC_VEHICLE_HTTP_PACKET_NAME, groupId = KafkaConsumerGroup.GROUP_POST_VEHICLE_HTTP_PACKET,containerFactory = "vehicleHttpPackBatchFactory")
     public void processData (@Payload List<VehicleHttpPack> vehicleHttpPack,
                              @Header(KafkaHeaders.RECEIVED_MESSAGE_KEY) String key,
                              @Header(KafkaHeaders.RECEIVED_PARTITION_ID) int partition,
@@ -56,8 +56,8 @@ public class KafkaListenerImpl {
      * @deprecated
      * @param vehicleHttpPack {@link VehicleHttpPack}
      */
-//    @KafkaListener(topics = KafkaTopic.TOPIC_VEHICLE_HTTP_PACKET, groupId = KafkaConsumerGroup.GROUP_CONSUME_VEHICLE_HTTP_PACKET)
-    public void processMsg(VehicleHttpPack vehicleHttpPack){
+//    @KafkaListener(topics = KafkaTopic.TOPIC_VEHICLE_HTTP_PACKET, groupId = KafkaConsumerGroup.GROUP_POST_VEHICLE_HTTP_PACKET)
+    public void post2Influx(VehicleHttpPack vehicleHttpPack){
         logger.info("Processing Kafka msg : " + vehicleHttpPack.toString());
         Map<String, String> tags = new HashMap<>(20);
         tags.put("vid",vehicleHttpPack.getVehicle().getVid());
@@ -66,7 +66,7 @@ public class KafkaListenerImpl {
         fields.put("ecuMaxTemp",vehicleHttpPack.getVehicle().getRtDataMap().toString());
         fields.put("speed", vehicleHttpPack.getVehicle().getRtDataMap().toString());
         String timestamp = "";
-        this.vehicle2InfluxDb.postOnePoint2InfluxDb("vehicle", tags, fields, timestamp);
+        this.vehicle2InfluxDb.postOnepoints2InfluxDb("vehicle", tags, fields, timestamp);
 
     }
 

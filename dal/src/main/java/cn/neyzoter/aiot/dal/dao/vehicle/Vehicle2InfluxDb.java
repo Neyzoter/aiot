@@ -3,6 +3,7 @@ package cn.neyzoter.aiot.dal.dao.vehicle;
 import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.Iterator;
 import java.util.Map;
 
 /**
@@ -11,6 +12,23 @@ import java.util.Map;
  * @date 2019/9/15
  */
 public class Vehicle2InfluxDb {
+    public final static String HEADERS_AUTHORIZATION = "Authorization";
+    /**
+     * prefix of the token, note the last char (space)
+     */
+    public final static String HEADERS_AUTHORIZATION_TOKEN_PREFIX = "Token ";
+    /**
+     * influxdb format
+     */
+    public final static String INFLUXDB_V2_URL_FORMAT = "http://%s:%s/api/v2/write?org=%s&bucket=%s&precision=%s";
+
+    /**
+     * measurement,tag[,tag...] field[,field...] [timestamp]
+     */
+    public final static String INFLUXDB_V2_BODY_LINE_PROTO_FORMAT = "%s,%s %s %s";
+    /**
+     * rest template
+     */
     private RestTemplate restTemplate;
     /**
      * Organization
@@ -26,26 +44,18 @@ public class Vehicle2InfluxDb {
     private String precision;
 
     /**
-     * token
+     * header
      */
-    private String token;
+    private HttpHeaders headers;
     /**
-     * Measurement
+     * host ip
      */
-    private String measurement;
+    private String host;
     /**
-     * tag set
+     * port
      */
-    private String tags;
-    /**
-     * field set
-     */
-    private String fields;
+    private String port;
 
-    /**
-     * timestamp
-     */
-    private String timestamp;
 
     /**
      * Vehicle2InfluxDb constructor
@@ -54,13 +64,32 @@ public class Vehicle2InfluxDb {
      * @param bucket bucket
      * @param precision precision
      * @param token token
+     * @param host host
+     * @param port post
      */
-    public Vehicle2InfluxDb(String org, String bucket, String precision, String token) {
+    public Vehicle2InfluxDb(String org, String bucket, String precision, String token, String host, String port) {
+        this(org,bucket,precision,token,host);
+        this.port = port;
+    }
+
+    /**
+     * Vehicle2InfluxDb constructor <br/>port is 9999
+     * @param org org
+     * @param bucket bucket
+     * @param precision precision
+     * @param token token
+     * @param host host
+     */
+    public Vehicle2InfluxDb(String org, String bucket, String precision, String token, String host) {
         this.restTemplate = new RestTemplate();
+        this.headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+        headers.add(HEADERS_AUTHORIZATION, HEADERS_AUTHORIZATION_TOKEN_PREFIX + token);
         this.org = org;
         this.bucket = bucket;
         this.precision = precision;
-        this.token = token;
+        this.host = host;
+        this.port = "9999";
     }
 
     /**
@@ -122,8 +151,8 @@ public class Vehicle2InfluxDb {
      *
      * @param token token
      */
-    public void setToken(String token) {
-        this.token = token;
+    public void setHeaders(String token) {
+        this.headers.set(HEADERS_AUTHORIZATION, token);
     }
 
     /**
@@ -131,110 +160,55 @@ public class Vehicle2InfluxDb {
      *
      * @return
      */
-    public String getToken() {
-        return this.token;
+    public HttpHeaders getHeaders() {
+        return this.headers;
     }
 
-    /**
-     * set measurement
-     *
-     * @param measurement measurement
-     */
-    public void setMeasurement(String measurement) {
-        this.measurement = measurement;
-    }
 
     /**
-     * get measurement
-     *
-     * @return String
-     */
-    public String getMeasurement() {
-        return this.measurement;
-    }
-
-    /**
-     * set tag set
-     *
-     * @param tags {@link String}
-     */
-    public void setTags(String tags) {
-        this.tags = tags;
-    }
-
-    /**
-     * set tags
+     * get tags
      *
      * @param tags {@link Map<String,String>}
      */
-    public void setTags(Map<String, String> tags) {
-        this.tags = "";
-
-        for (String tagKey : tags.keySet()) {
-            this.tags += tagKey + "=" + tags.get(tagKey) + ",";
-        }
-        // remove last ","
-        this.tags = this.tags.substring(0, this.tags.length() - 1);
+    public static String getTags(Map<String, String> tags) {
+        return getFields(tags);
+//        String tagsStr = "";
+//        Iterator<Map.Entry<String, String>> iter = tags.entrySet().iterator();
+//        for (;iter.hasNext();) {
+//            Map.Entry<String, String> entry= iter.next();
+//            if (iter.hasNext()) {
+//                tagsStr += entry.getKey() + "=" + entry.getValue() + ",";
+//            } else {
+//                tagsStr += entry.getKey() + "=" + entry.getValue();
+//            }
+//        }
+//        return tagsStr;
     }
 
-    /**
-     * get tag set
-     *
-     * @return String
-     */
-    public String getTags() {
-        return this.tags;
-    }
-
-    /**
-     * set field set
-     *
-     * @param fields fields
-     */
-    public void setFields(String fields) {
-        this.fields = fields;
-    }
-
-    /**
-     * set field set
-     *
-     * @param fields fields
-     */
-    public void setFields(Map<String, ?> fields) {
-        this.fields = "";
-        for (String tagKey : fields.keySet()) {
-            this.fields += tagKey + "=" + fields.get(tagKey) + ",";
-        }
-        // remove last ","
-        this.fields = this.fields.substring(0, this.fields.length() - 1);
-
-    }
 
     /**
      * get field set
      *
-     * @return String
+     * @param fields fields
      */
-    public String getFields() {
-        return this.fields;
-    }
+    public static String getFields(Map<String, String> fields) {
+        String fieldsStr = "";
+        Iterator<Map.Entry<String, String>> iter = fields.entrySet().iterator();
+        for (;iter.hasNext();) {
+            Map.Entry<String, String> entry= iter.next();
+            if (iter.hasNext()) {
+                fieldsStr += entry.getKey() + "=" + entry.getValue() + ",";
+            } else {
+                fieldsStr += entry.getKey() + "=" + entry.getValue();
+            }
+        }
+        return fieldsStr;
+//        for (String tagKey : fields.keySet()) {
+//            fieldsStr += tagKey + "=" + fields.get(tagKey) + ",";
+//        }
+//        // remove last ","
+//        fieldsStr = fieldsStr.substring(0, fieldsStr.length() - 1);
 
-    /**
-     * set timestammp
-     *
-     * @param timestamp timestamp
-     */
-    public void setTimestamp(String timestamp) {
-        this.timestamp = timestamp;
-    }
-
-    /**
-     * get timestamp
-     *
-     * @return String
-     */
-    public String getTimestamp() {
-        return this.timestamp;
     }
 
     /**
@@ -256,17 +230,39 @@ public class Vehicle2InfluxDb {
     }
 
     /**
-     * clear body's data
+     * get host
      */
-    public void clearBody() {
-        this.measurement = "";
-        this.tags = "";
-        this.fields = "";
-        this.timestamp = "";
+    public String getHost() {
+        return host;
     }
 
     /**
-     * post data to InfluxDB
+     * set host
+     * @param host host (ip)
+     */
+    public void setHost(String host) {
+        this.host = host;
+    }
+
+    /**
+     * get port
+     * @return port
+     */
+    public String getPort() {
+        return port;
+    }
+
+    /**
+     * set pot
+     * @param port pot
+     */
+    public void setPort(String port) {
+        this.port = port;
+    }
+
+
+    /**
+     * post one point data to InfluxDB
      *
      * @param measurement measurement
      * @param tags tags
@@ -274,20 +270,50 @@ public class Vehicle2InfluxDb {
      * @param timestamp timestamp
      * @return ResponseEntity<String>
      */
-    public ResponseEntity<String> postOnePoint2InfluxDb(String measurement, Map<String, String> tags, Map<String, ?> fields, String timestamp) {
-        String url = String.format("http://localhost:9999/api/v2/write?org=%s&bucket=%s&precision=%s", org, bucket, precision);
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-        headers.add("Authorization", "Token " + token);
-
-        this.setMeasurement(measurement);
-        this.setTags(tags);
-        this.setFields(fields);
-        setTimestamp(timestamp);
-        String lineProtoBody = this.getMeasurement() + "," + this.getTags() + " " + this.fields + this.timestamp;
+    public ResponseEntity<String> postOnepoints2InfluxDb(String measurement, Map<String, String> tags, Map<String, String> fields, String timestamp) {
+        String url = String.format(INFLUXDB_V2_URL_FORMAT,this.host, this.port, this.org, this.bucket, this.precision);
+        String tagsStr = getTags(tags);
+        String fieldsStr = getFields(fields);
+        String lineProtoBody = String.format(INFLUXDB_V2_BODY_LINE_PROTO_FORMAT,measurement,tagsStr,fieldsStr,timestamp);
         HttpEntity<String> request = new HttpEntity<>(lineProtoBody, headers);
         ResponseEntity<String> response = restTemplate.postForEntity(url, request, String.class);
         return response;
     }
+    public ResponseEntity<String> postMultipoints2InfluxDB(String[] measurements, Map<String, String>[] tagses, Map<String, String>[] fieldses, String[] timestamp) throws Exception{
+        int len = measurements.length;
+        if (len != tagses.length || len != fieldses.length || len != timestamp.length) {
+            throw new Exception("Length is not equal");
+        }
+        String lineProtoBody = "";
+        for (int i = 0 ; i < len ; i ++) {
+            String tagsStr = getTags(tagses[i]);
+            String fieldsStr = getFields(fieldses[i]);
+            lineProtoBody += String.format(INFLUXDB_V2_BODY_LINE_PROTO_FORMAT,measurements[i],tagsStr,fieldsStr,timestamp[i]);
+            if (i != len - 1) {
+                lineProtoBody += "\n";
+            }
+        }
+    }
+    /**
+     * post multi lines to influxdb<br/> line must match "$measurement,$tags $field $tiemstamp"
+     * @param lines line Protocal
+     * @return {@link ResponseEntity<>}
+     */
+    public ResponseEntity<String> postMultilines2InfluxDB(String[] lines) {
+        String url = String.format(INFLUXDB_V2_URL_FORMAT,this.host, this.port, this.org, this.bucket, this.precision);
+        String lineProtoBody="";
+        int num = lines.length;
+        for (int i = 0 ; i < num ; i++) {
+            lineProtoBody += lines[i];
+            // not last line , add \n
+            if (i != num - 1) {
+                lineProtoBody += "\n";
+            }
+        }
+        HttpEntity<String> request = new HttpEntity<>(lineProtoBody, headers);
+        ResponseEntity<String> response = restTemplate.postForEntity(url, request, String.class);
+        return response;
+    }
+
 
 }

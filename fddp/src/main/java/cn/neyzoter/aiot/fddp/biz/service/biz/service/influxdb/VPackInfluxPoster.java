@@ -10,6 +10,7 @@ import cn.neyzoter.aiot.dal.domain.vehicle.VehicleHttpPack;
 public class VPackInfluxPoster {
     public static VehicleHttpPack postVpack2InfluxDB (VehicleHttpPack pack) {
         pack.getVehicle();
+
         return pack;
     }
 }
