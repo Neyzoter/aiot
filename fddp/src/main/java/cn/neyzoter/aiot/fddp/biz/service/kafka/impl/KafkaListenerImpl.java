@@ -46,7 +46,6 @@ public class KafkaListenerImpl {
                                @Header(KafkaHeaders.RECEIVED_TOPIC) String topic,
                                @Header(KafkaHeaders.RECEIVED_TIMESTAMP) long ts) {
         vPackInfluxPoster.postVpack2InfluxDB(vehicleHttpPack);
-        System.out.println("\n===========\nlistener1\n===========\n");
     }
     @KafkaListener(id = "listener2", topics = KafkaTopic.TOPIC_VEHICLE_HTTP_PACKET_NAME, groupId = KafkaConsumerGroup.GROUP_POST_VEHICLE_HTTP_PACKET,containerFactory = "vehicleHttpPackBatchFactory")
     public void post2InfluxDbListener2 (@Payload List<VehicleHttpPack> vehicleHttpPack,
@@ -55,7 +54,6 @@ public class KafkaListenerImpl {
                              @Header(KafkaHeaders.RECEIVED_TOPIC) String topic,
                              @Header(KafkaHeaders.RECEIVED_TIMESTAMP) long ts) {
         vPackInfluxPoster.postVpack2InfluxDB(vehicleHttpPack);
-        System.out.println("\n===========\nlistener2\n===========\n");
     }
 //    /**
 //     * Listen for partition's msg

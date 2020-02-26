@@ -37,7 +37,7 @@ import org.apache.spark.streaming.Durations;
  * @author Neyzoter Song
  * @date 2020-2-17
  */
-@Component
+//@Component
 public class SparkStream {
     public final static Logger logger= LoggerFactory.getLogger(SparkStream.class);
     public final static String VID_KEY_PREFIX= "vid=";
@@ -51,7 +51,9 @@ public class SparkStream {
         try {
             // Configuration
             sparkConf = new SparkConf().setAppName(SparkStreamingConf.SPARK_STREAMING_NAME);
-            sparkConf.setMaster(propertiesUtil.readValue(PropertiesLables.SPARK_MASTER));
+//            String spark_master = propertiesUtil.readValue(PropertiesLables.SPARK_MASTER);
+//            sparkConf.setMaster(spark_master);
+
             topicsSet = new HashSet<>(Arrays.asList(KafkaTopic.TOPIC_VEHICLE_HTTP_PACKET_NAME));
             jssc = new JavaStreamingContext(sparkConf, Durations.seconds(SPARK_STEAMING_DURATION_SECOND));
             kafkaParams = new HashMap<>();
