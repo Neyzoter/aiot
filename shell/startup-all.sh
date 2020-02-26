@@ -4,6 +4,10 @@
 
 echo "KAFKA_HOME = $KAFKA_HOME"
 
+#!/bin/bash
+# quick stark a kafka server
+# please check bootstrap-server IP and port parammeters in application.properties
+
 echo "Starting zookeeper..."
 nohup $KAFKA_HOME/bin/zookeeper-server-start.sh config/zookeeper.properties &
 echo "Started zookeeper"
