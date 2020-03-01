@@ -18,10 +18,11 @@ import java.util.List;
 
 /**
  * Kafka listener implement
+ * @deprecated
  * @author Neyzoter Song
  * @date 2019/9/6
  */
-@ComponentScan("cn.neyzoter.aiot.fddp.biz.service.kafka.constant,cn.neyzoter.aiot.fddp.biz.service.biz.service.influxdb")
+//@ComponentScan("cn.neyzoter.aiot.fddp.biz.service.kafka.constant,cn.neyzoter.aiot.fddp.biz.service.biz.service.influxdb")
 //@Component
 public class KafkaListenerImpl {
     private final static Logger logger = LoggerFactory.getLogger(KafkaListenerImpl.class);

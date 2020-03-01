@@ -55,53 +55,53 @@
         </dependency>
     </dependencies>
 
-<!--    <build>-->
-<!--        <plugins>-->
-<!--            <plugin>-->
-<!--                <groupId>org.springframework.boot</groupId>-->
-<!--                <artifactId>spring-boot-maven-plugin</artifactId>-->
-<!--                <configuration>-->
-<!--                    &lt;!&ndash; 指定该Main Class为全局的唯一入口 &ndash;&gt;-->
-<!--                    <mainClass>cn.neyzoter.aiot.iov.IovApplication</mainClass>-->
-<!--                    <layout>ZIP</layout>-->
-<!--                </configuration>-->
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        <goals>-->
-<!--                            <goal>repackage</goal>&lt;!&ndash;可以把依赖的包都打包到生成的Jar包中&ndash;&gt;-->
-<!--                        </goals>-->
-<!--                    </execution>-->
-<!--                </executions>-->
-<!--            </plugin>-->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <!-- 指定该Main Class为全局的唯一入口 -->
+                    <mainClass>cn.neyzoter.aiot.iov.IovApplication</mainClass>
+                    <layout>ZIP</layout>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal><!--可以把依赖的包都打包到生成的Jar包中-->
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
 
-<!--            <plugin>-->
-<!--                <groupId>com.spotify</groupId>-->
-<!--                <artifactId>docker-maven-plugin</artifactId>-->
-<!--                <version>1.2.0</version>-->
-<!--                <configuration>-->
-<!--                    <serverId>docker-releases</serverId>-->
-<!--                    <registryUrl>https://${docker.repository}/repository/docker-releases/</registryUrl>-->
-<!--                    <imageName>${project.groupId}/${project.artifactId}:${project.version}</imageName>-->
-<!--                    <imageTags>-->
-<!--                        <imageTag>latest</imageTag>-->
-<!--                    </imageTags>-->
-<!--                    &lt;!&ndash; Dockerfile存放地址&ndash;&gt;-->
-<!--                    <dockerDirectory>${project.basedir}/src/main/docker</dockerDirectory>-->
-<!--                    &lt;!&ndash;<baseImage>java</baseImage>&ndash;&gt;-->
-<!--                    &lt;!&ndash;<entryPoint>["java", "-jar", "/${project.build.finalName}.jar"]</entryPoint>&ndash;&gt;-->
-<!--                    <dockerHost>localhost:2375</dockerHost>-->
-<!--                    <resources>-->
-<!--                        <resource>-->
-<!--                            <targetPath>/</targetPath>-->
-<!--                            &lt;!&ndash; jar包所在路径&ndash;&gt;-->
-<!--                            <directory>${project.build.directory}</directory>-->
-<!--                            &lt;!&ndash;jar包名称&ndash;&gt;-->
-<!--                            <include>${project.build.finalName}.jar</include>-->
-<!--                        </resource>-->
-<!--                    </resources>-->
-<!--                </configuration>-->
-<!--            </plugin>-->
-<!--        </plugins>-->
-<!--    </build>-->
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>1.2.0</version>
+                <configuration>
+                    <serverId>docker-releases</serverId>
+                    <registryUrl>https://${docker.repository}/repository/docker-releases/</registryUrl>
+                    <imageName>${project.groupId}/${project.artifactId}:${project.version}</imageName>
+                    <imageTags>
+                        <imageTag>latest</imageTag>
+                    </imageTags>
+                    <!-- Dockerfile存放地址-->
+                    <dockerDirectory>${project.basedir}/src/main/docker</dockerDirectory>
+                    <!--<baseImage>java</baseImage>-->
+                    <!--<entryPoint>["java", "-jar", "/${project.build.finalName}.jar"]</entryPoint>-->
+                    <dockerHost>localhost:2375</dockerHost>
+                    <resources>
+                        <resource>
+                            <targetPath>/</targetPath>
+                            <!-- jar包所在路径-->
+                            <directory>${project.build.directory}</directory>
+                            <!--jar包名称-->
+                            <include>${project.build.finalName}.jar</include>
+                        </resource>
+                    </resources>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

@@ -3,7 +3,6 @@ package cn.neyzoter.aiot.fddp.biz.service.spark.algo;
 import cn.neyzoter.aiot.dal.domain.vehicle.RuntimeData;
 import cn.neyzoter.aiot.dal.domain.vehicle.VehicleHttpPack;
 import cn.neyzoter.aiot.fddp.biz.service.spark.exception.IllVehicleHttpPackTime;
-
 import java.util.Map;
 import java.util.Set;
 import java.util.SortedMap;

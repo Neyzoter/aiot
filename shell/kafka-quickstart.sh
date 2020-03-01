@@ -5,19 +5,19 @@
 echo "KAFKA_HOME = $KAFKA_HOME"
 
 echo "Starting zookeeper..."
-nohup $KAFKA_HOME/bin/zookeeper-server-start.sh config/zookeeper.properties &
+nohup $KAFKA_HOME/bin/zookeeper-server-start.sh $KAFKA_HOME/config/zookeeper.properties &
 echo "Started zookeeper"
 
 echo "Starting kafka server..."
-nohup $KAFKA_HOME/bin/kafka-server-start.sh  config/server.properties &
+nohup $KAFKA_HOME/bin/kafka-server-start.sh  $KAFKA_HOME/config/server.properties &
 echo "Started kafka server"
 
 echo "Starting kafka server-2..."
-nohup $KAFKA_HOME/bin/kafka-server-start.sh  config/server-2.properties &
+nohup $KAFKA_HOME/bin/kafka-server-start.sh  $KAFKA_HOME/config/server-2.properties &
 echo "Started kafka server-2..."
 
 echo "Starting kafka server-3..."
-nohup $KAFKA_HOME/bin/kafka-server-start.sh  config/server-3.properties &
+nohup $KAFKA_HOME/bin/kafka-server-start.sh  $KAFKA_HOME/config/server-3.properties &
 echo "Started kafka server-3..."
 
 echo "Topics : "

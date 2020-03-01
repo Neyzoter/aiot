@@ -9,6 +9,7 @@ import java.util.Set;
 import cn.neyzoter.aiot.common.util.PropertiesUtil;
 import cn.neyzoter.aiot.dal.domain.vehicle.VehicleHttpPack;
 import cn.neyzoter.aiot.fddp.biz.service.bean.PropertiesLables;
+import cn.neyzoter.aiot.fddp.biz.service.influxdb.VPackInfluxPoster;
 import cn.neyzoter.aiot.fddp.biz.service.kafka.constant.KafkaConsumerGroup;
 import cn.neyzoter.aiot.fddp.biz.service.kafka.constant.KafkaTopic;
 import cn.neyzoter.aiot.fddp.biz.service.kafka.impl.serialization.VehicleHttpPackDeserializer;
@@ -17,6 +18,7 @@ import cn.neyzoter.aiot.fddp.biz.service.spark.constant.SparkStreamingConf;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 import scala.Tuple2;
 
@@ -31,23 +33,28 @@ import org.apache.spark.streaming.kafka010.KafkaUtils;
 import org.apache.spark.streaming.kafka010.LocationStrategies;
 import org.apache.spark.streaming.Durations;
 
+import javax.xml.crypto.Data;
+
 
 /**
  * Spark Stream processor
  * @author Neyzoter Song
  * @date 2020-2-17
  */
-//@Component
+@ComponentScan("cn.neyzoter.aiot.fddp.biz.service.influxdb")
+@Component
 public class SparkStream {
     public final static Logger logger= LoggerFactory.getLogger(SparkStream.class);
     public final static String VID_KEY_PREFIX= "vid=";
     public final static int SPARK_STEAMING_DURATION_SECOND = 20;
+
+
     SparkConf sparkConf;
     JavaStreamingContext jssc;
     Set<String> topicsSet;
     Map<String, Object> kafkaParams;
     @Autowired
-    public SparkStream(PropertiesUtil propertiesUtil) {
+    public SparkStream(PropertiesUtil propertiesUtil, VPackInfluxPoster vPackInfluxPoster) {
         try {
             // Configuration
             sparkConf = new SparkConf().setAppName(SparkStreamingConf.SPARK_STREAMING_NAME);
@@ -71,13 +78,16 @@ public class SparkStream {
             JavaPairDStream<String, VehicleHttpPack> record = messages.mapToPair(
                     x -> new Tuple2<>(String.format(VID_KEY_PREFIX + x.key().replace("\"","")),
                             x.value())).reduceByKey((x1, x2) -> DataPreProcess.compact(x1, x2));
+            // post to influxdb
+            JavaPairDStream<String, VehicleHttpPack> record_post2Influx = record.mapValues(x -> vPackInfluxPoster.postVpack2InfluxDB(x));
 //            // missing values process
-//            record = record.mapValues(x -> DataPreProcess.missingValueProcess(x));
+//            record = record.mapValues(x -> this.dataPreProcess.missingValueProcess(x));
 //            // outlier values process
-//            record = record.mapValues(x -> DataPreProcess.outlierHandling(x));
+//            record = record.mapValues(x -> this.dataPreProcess.outlierHandling(x));
 //            // multi Sampling Rate Process
-//            record = record.mapValues(x -> DataPreProcess.multiSamplingRateProcess(x));
+//            record = record.mapValues(x -> this.dataPreProcess.multiSamplingRateProcess(x));
             record.print();
+            record_post2Influx.print();
 
             // Start the computation
             jssc.start();

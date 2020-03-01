@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: cn.neyzoter.aiot.dal.dao.vehicle.TestVehicle2InfluxDb
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.248 s - in cn.neyzoter.aiot.dal.dao.vehicle.TestVehicle2InfluxDb
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.327 s - in cn.neyzoter.aiot.dal.dao.vehicle.TestVehicle2InfluxDb

@@ -1,3 +1,6 @@
-cn/neyzoter/aiot/common/time/TimeUtil.class
+org/tensorflow/NativeLibrary.class
 cn/neyzoter/aiot/common/security/md5/SaltMd5.class
 cn/neyzoter/aiot/common/data/serialization/SerializationUtil.class
+cn/neyzoter/aiot/common/time/TimeUtil.class
+cn/neyzoter/aiot/common/tensorflow/ModelManager.class
+cn/neyzoter/aiot/common/util/PropertiesUtil.class

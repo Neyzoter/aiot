@@ -10,7 +10,6 @@ import java.util.Map;
 
 /**
  * VehicleHttpPack Deserializer
- * @deprecated
  * @author Neyzoter Song
  * @date 2019/9/11
  */

@@ -7,3 +7,6 @@ tf_model/
 
 # http request
 httpRequests/
+
+# out
+nohup.out

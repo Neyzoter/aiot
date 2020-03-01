@@ -1,8 +1,10 @@
 package cn.neyzoter.aiot.dal.dao.vehicle;
 
+import cn.neyzoter.aiot.dal.util.RestTemp;
+import com.sun.xml.internal.ws.developer.Serialization;
 import org.springframework.http.*;
-import org.springframework.web.client.RestTemplate;
 
+import java.io.Serializable;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -14,7 +16,7 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
  * @author Neyzoter Song
  * @date 2019/9/15
  */
-public class Vehicle2InfluxDb {
+public class Vehicle2InfluxDb implements Serializable {
     public final static String HEADERS_AUTHORIZATION = "Authorization";
     /**
      * prefix of the token, note the last char (space)
@@ -32,7 +34,7 @@ public class Vehicle2InfluxDb {
     /**
      * rest template
      */
-    private RestTemplate restTemplate;
+    private RestTemp restTemplate;
     /**
      * Organization
      */
@@ -93,7 +95,7 @@ public class Vehicle2InfluxDb {
      * @param host host
      */
     public Vehicle2InfluxDb(String org, String bucket, String precision, String token, String host) {
-        this.restTemplate = new RestTemplate();
+        this.restTemplate = new RestTemp();
         this.headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
         headers.add(HEADERS_AUTHORIZATION, HEADERS_AUTHORIZATION_TOKEN_PREFIX + token);
@@ -261,7 +263,7 @@ public class Vehicle2InfluxDb {
      *
      * @return restTemplate {@link RestTemplate}
      */
-    public RestTemplate getRestTemplate() {
+    public RestTemp getRestTemplate() {
         return restTemplate;
     }
 
@@ -270,7 +272,7 @@ public class Vehicle2InfluxDb {
      *
      * @param restTemplate {@link RestTemplate}
      */
-    public void setRestTemplate(RestTemplate restTemplate) {
+    public void setRestTemplate(RestTemp restTemplate) {
         lock.writeLock().lock();
         try {
             this.restTemplate = restTemplate;

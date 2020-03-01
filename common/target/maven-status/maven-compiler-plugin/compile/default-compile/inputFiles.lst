@@ -1,3 +1,6 @@
+/home/scc/code/java/aiot/common/src/main/java/cn/neyzoter/aiot/common/tensorflow/ModelManager.java
+/home/scc/code/java/aiot/common/src/main/java/cn/neyzoter/aiot/common/util/PropertiesUtil.java
 /home/scc/code/java/aiot/common/src/main/java/cn/neyzoter/aiot/common/time/TimeUtil.java
 /home/scc/code/java/aiot/common/src/main/java/cn/neyzoter/aiot/common/data/serialization/SerializationUtil.java
+/home/scc/code/java/aiot/common/src/main/java/org/tensorflow/NativeLibrary.java
 /home/scc/code/java/aiot/common/src/main/java/cn/neyzoter/aiot/common/security/md5/SaltMd5.java

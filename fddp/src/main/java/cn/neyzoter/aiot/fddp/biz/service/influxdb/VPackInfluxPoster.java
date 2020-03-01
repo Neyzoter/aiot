@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -19,7 +20,7 @@ import java.util.List;
  */
 @ComponentScan("cn.neyzoter.aiot.fddp.biz.service.bean")
 @Component
-public class VPackInfluxPoster {
+public class VPackInfluxPoster implements Serializable {
     public static final Logger logger = LoggerFactory.getLogger(VPackInfluxPoster.class);
 
     private Vehicle2InfluxDb vehicle2InfluxDb;
@@ -57,10 +58,10 @@ public class VPackInfluxPoster {
      * @param pack pack
      * @return bool
      */
-    public boolean postVpack2InfluxDB (VehicleHttpPack pack) {
+    public VehicleHttpPack postVpack2InfluxDB (VehicleHttpPack pack) {
         String[] lines = pack.toInfluxLinesProto();
         vehicle2InfluxDb.postMultilines2InfluxDB(lines);
-        return true;
+        return pack;
     }
 
     /**
@@ -68,9 +69,9 @@ public class VPackInfluxPoster {
      * @param packList List<VehicleHttpPack>
      * @return bool
      */
-    public boolean postVpack2InfluxDB (List<VehicleHttpPack> packList) {
+    public List<VehicleHttpPack> postVpack2InfluxDB (List<VehicleHttpPack> packList) {
         List<String> lines = VehicleHttpPack.vhplToInfluxLinesProto(packList);
         vehicle2InfluxDb.postMultilines2InfluxDB(lines);
-        return true;
+        return packList;
     }
 }
