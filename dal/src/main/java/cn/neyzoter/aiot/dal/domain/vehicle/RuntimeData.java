@@ -8,6 +8,7 @@ import java.io.Serializable;
  * @date 2019/9/7
  */
 public class RuntimeData implements Serializable {
+    private static final long serialVersionUID = 7876266795641274621L;
     /**
      * car speed
      */

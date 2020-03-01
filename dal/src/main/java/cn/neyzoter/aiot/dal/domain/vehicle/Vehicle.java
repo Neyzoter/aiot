@@ -9,6 +9,7 @@ import java.util.*;
  * @date 2019/9/7
  */
 public class Vehicle implements Serializable {
+    private static final long serialVersionUID = 3519879653978313723L;
     private Long app;
     private String vid;
     private String vtype;

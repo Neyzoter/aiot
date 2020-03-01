@@ -1,5 +1,7 @@
 cn/neyzoter/aiot/dal/domain/user/User.class
 cn/neyzoter/aiot/dal/domain/vehicle/Vehicle.class
+cn/neyzoter/aiot/dal/util/RestTemp.class
+cn/neyzoter/aiot/dal/domain/vehicle/VehicleCollector.class
 cn/neyzoter/aiot/dal/domain/vehicle/RuntimeData.class
 cn/neyzoter/aiot/dal/dao/user/UserDao.class
 cn/neyzoter/aiot/dal/domain/vehicle/VehicleHttpPack.class

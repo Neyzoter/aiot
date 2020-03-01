@@ -22,6 +22,7 @@ import java.util.List;
 @Component
 public class VPackInfluxPoster implements Serializable {
     public static final Logger logger = LoggerFactory.getLogger(VPackInfluxPoster.class);
+    private static final long serialVersionUID = -3057988379698940754L;
 
     private Vehicle2InfluxDb vehicle2InfluxDb;
 

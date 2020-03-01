@@ -1,14 +1,12 @@
 package cn.neyzoter.aiot.dal.dao.vehicle;
 
 import cn.neyzoter.aiot.dal.util.RestTemp;
-import com.sun.xml.internal.ws.developer.Serialization;
 import org.springframework.http.*;
 
 import java.io.Serializable;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 /**
@@ -17,6 +15,8 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
  * @date 2019/9/15
  */
 public class Vehicle2InfluxDb implements Serializable {
+    private static final long serialVersionUID = -7688376447776899417L;
+
     public final static String HEADERS_AUTHORIZATION = "Authorization";
     /**
      * prefix of the token, note the last char (space)

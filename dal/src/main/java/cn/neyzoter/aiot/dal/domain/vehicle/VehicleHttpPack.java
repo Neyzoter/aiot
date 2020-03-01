@@ -10,6 +10,8 @@ import java.util.List;
  * @date 2019/9/8
  */
 public class VehicleHttpPack implements Serializable {
+
+    private static final long serialVersionUID = 6141593762732181713L;
     public static final String INFLUXDB_MEASUREMENT = "vehicle";
     /**
      * frame timestamp

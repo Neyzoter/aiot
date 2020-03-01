@@ -20,6 +20,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
+import scala.Serializable;
 import scala.Tuple2;
 
 import org.apache.kafka.clients.consumer.ConsumerConfig;
@@ -33,7 +34,6 @@ import org.apache.spark.streaming.kafka010.KafkaUtils;
 import org.apache.spark.streaming.kafka010.LocationStrategies;
 import org.apache.spark.streaming.Durations;
 
-import javax.xml.crypto.Data;
 
 
 /**
@@ -41,13 +41,13 @@ import javax.xml.crypto.Data;
  * @author Neyzoter Song
  * @date 2020-2-17
  */
-@ComponentScan("cn.neyzoter.aiot.fddp.biz.service.influxdb")
+@ComponentScan("cn.neyzoter.aiot.fddp.biz.service.influxdb,cn.neyzoter.aiot.fddp.biz.service.bean")
 @Component
-public class SparkStream {
+public class SparkStream implements Serializable {
+    private static final long serialVersionUID = 8231463007986745839L;
     public final static Logger logger= LoggerFactory.getLogger(SparkStream.class);
     public final static String VID_KEY_PREFIX= "vid=";
-    public final static int SPARK_STEAMING_DURATION_SECOND = 20;
-
+    public final static int SPARK_STEAMING_DURATION_SECOND = 5;
 
     SparkConf sparkConf;
     JavaStreamingContext jssc;
@@ -58,8 +58,8 @@ public class SparkStream {
         try {
             // Configuration
             sparkConf = new SparkConf().setAppName(SparkStreamingConf.SPARK_STREAMING_NAME);
-//            String spark_master = propertiesUtil.readValue(PropertiesLables.SPARK_MASTER);
-//            sparkConf.setMaster(spark_master);
+            String spark_master = propertiesUtil.readValue(PropertiesLables.SPARK_MASTER);
+            sparkConf.setMaster(spark_master);
 
             topicsSet = new HashSet<>(Arrays.asList(KafkaTopic.TOPIC_VEHICLE_HTTP_PACKET_NAME));
             jssc = new JavaStreamingContext(sparkConf, Durations.seconds(SPARK_STEAMING_DURATION_SECOND));
