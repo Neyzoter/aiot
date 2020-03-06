@@ -261,7 +261,7 @@ public class Vehicle2InfluxDb implements Serializable {
     /**
      * get restTemplate
      *
-     * @return restTemplate {@link RestTemplate}
+     * @return restTemplate {@link RestTemp}
      */
     public RestTemp getRestTemplate() {
         return restTemplate;
@@ -270,7 +270,7 @@ public class Vehicle2InfluxDb implements Serializable {
     /**
      * set restTemplate
      *
-     * @param restTemplate {@link RestTemplate}
+     * @param restTemplate {@link RestTemp}
      */
     public void setRestTemplate(RestTemp restTemplate) {
         lock.writeLock().lock();
