@@ -29,10 +29,8 @@ public class VehicleController {
      * http test( brower visit http://localhost:[port]/iov/api/runtime-data/test)
      * @return {@link String}
      */
-    @RequestMapping(value = "/test", method = RequestMethod.GET)
-    public String test(@RequestParam(value = "vid",required = true) String vid,
-                        @RequestParam(value = "vtype",required = true) String vtype,
-                        @RequestBody VehicleHttpPack vehicleHttpPack) {
+    @RequestMapping(value = "/test", method = RequestMethod.POST)
+    public String test(@RequestBody VehicleHttpPack vehicleHttpPack) {
         try {
             logger.info(vehicleHttpPack.toString());
             return IovHttpRtn.OK;
@@ -44,18 +42,14 @@ public class VehicleController {
 
     /**
      * server get vehicle data
-     * @param vid vehicle id
-     * @param vtype vehicle type
      * @param vehicleHttpPack json(String type) data
      * @return
      */
     @RequestMapping(value = "/vehicleHttpPack", method = RequestMethod.POST)
-    public Object sendData(@RequestParam(value = "vid",required = true) String vid,
-                           @RequestParam(value = "vtype",required = true) String vtype,
-                           @RequestBody VehicleHttpPack vehicleHttpPack) {
+    public Object sendData(@RequestBody VehicleHttpPack vehicleHttpPack) {
         try {
-            int partition = PartitionAllocator.allocateByRemainder(vtype.hashCode(), kafkaTemplate.partitionsFor(KafkaTopic.TOPIC_VEHICLE_HTTP_PACKET_NAME).size());
-            kafkaTemplate.send(KafkaTopic.TOPIC_VEHICLE_HTTP_PACKET_NAME , partition ,vid ,vehicleHttpPack);
+            int partition = PartitionAllocator.allocateByRemainder(vehicleHttpPack.getVehicle().getVtype().hashCode(), kafkaTemplate.partitionsFor(KafkaTopic.TOPIC_VEHICLE_HTTP_PACKET_NAME).size());
+            kafkaTemplate.send(KafkaTopic.TOPIC_VEHICLE_HTTP_PACKET_NAME , partition ,vehicleHttpPack.getVehicle().getVid() ,vehicleHttpPack);
             // TODO
             // 返回最近一次的故障诊断结果
             return IovHttpRtn.OK;
