@@ -5,7 +5,6 @@ import lombok.Setter;
 import lombok.ToString;
 
 import java.io.Serializable;
-import java.lang.reflect.Field;
 
 /**
  * All type runtime data for vehicle
@@ -55,8 +54,8 @@ public class RuntimeData implements Serializable {
      */
     public String toFields () {
         String str = this.toString();
-        // match "RuntimeData(" or ")"
-        str = str.replaceAll("RuntimeData\\(|\\)","");
+        // match "RuntimeData(" or ")" or " "
+        str = str.replaceAll("RuntimeData\\(| |\\)","");
         return str;
     }
 }

@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="23c1b6a3-a88d-412b-a194-bead14c68f99" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dal/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/dal/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dal/src/main/java/cn/neyzoter/aiot/dal/dao/vehicle/Vehicle2InfluxDb.java" beforeDir="false" afterPath="$PROJECT_DIR$/dal/src/main/java/cn/neyzoter/aiot/dal/dao/vehicle/Vehicle2InfluxDb.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dal/src/main/java/cn/neyzoter/aiot/dal/domain/vehicle/RuntimeData.java" beforeDir="false" afterPath="$PROJECT_DIR$/dal/src/main/java/cn/neyzoter/aiot/dal/domain/vehicle/RuntimeData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dal/src/test/java/cn/neyzoter/aiot/dal/dao/vehicle/TestVehicle2InfluxDb.java" beforeDir="false" afterPath="$PROJECT_DIR$/dal/src/test/java/cn/neyzoter/aiot/dal/dao/vehicle/TestVehicle2InfluxDb.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -46,8 +42,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/dal/src/main/java/cn/neyzoter/aiot/dal/domain/vehicle/RuntimeData.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="372">
-              <caret line="57" column="38" selection-start-line="57" selection-start-column="38" selection-end-line="57" selection-end-column="38" />
+            <state relative-caret-position="477">
+              <caret line="56" column="42" selection-start-line="56" selection-start-column="42" selection-end-line="56" selection-end-column="42" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -738,14 +734,11 @@
       <workItem from="1583117024098" duration="1726000" />
       <workItem from="1583137362160" duration="1452000" />
       <workItem from="1583404588744" duration="2182000" />
-      <workItem from="1583459615430" duration="2191000" />
+      <workItem from="1583459615430" duration="2764000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="TestRuntimeData - 2020.03.06 at 10h 14m 38s.xml">
-      <configuration name="TestRuntimeData" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="TestRuntimeData_testRuntimeDataToFields - 2020.03.06 at 10h 17m 10s.xml">
       <configuration name="TestRuntimeData.testRuntimeDataToFields" configurationId="JUnit" />
     </history-entry>
@@ -773,9 +766,12 @@
     <history-entry file="TestRuntimeData_testRuntimeDataToFields - 2020.03.06 at 10h 29m 40s.xml">
       <configuration name="TestRuntimeData.testRuntimeDataToFields" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="TestRuntimeData_testRuntimeDataToFields - 2020.03.06 at 10h 39m 10s.xml">
+      <configuration name="TestRuntimeData.testRuntimeDataToFields" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="404117000" />
+    <option name="totallyTimeSpent" value="404690000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -800,14 +796,14 @@
       <window_info id="Web" order="7" sideWeight="0.5011442" side_tool="true" weight="0.14018692" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.34964323" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49807587" visible="true" weight="0.41488278" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49807587" visible="true" weight="0.35474005" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.420999" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="REST Client" order="6" weight="0.35168195" />
       <window_info anchor="bottom" id="TODO" order="7" weight="0.21202855" />
       <window_info anchor="bottom" id="Spring" order="8" weight="0.18960245" />
-      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.4986256" weight="0.43527013" />
+      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.4986256" weight="0.401631" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50192416" side_tool="true" weight="0.34760448" />
       <window_info anchor="bottom" id="Docker" order="11" weight="0.26277372" />
       <window_info anchor="bottom" id="Java Enterprise" order="12" weight="0.32925585" />
@@ -1230,8 +1226,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/dal/src/main/java/cn/neyzoter/aiot/dal/domain/vehicle/RuntimeData.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="372">
-          <caret line="57" column="38" selection-start-line="57" selection-start-column="38" selection-end-line="57" selection-end-column="38" />
+        <state relative-caret-position="477">
+          <caret line="56" column="42" selection-start-line="56" selection-start-column="42" selection-end-line="56" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
