@@ -59,8 +59,9 @@ public class SparkStream implements Serializable {
             // Configuration
             sparkConf = new SparkConf().setAppName(SparkStreamingConf.SPARK_STREAMING_NAME);
             String spark_master = propertiesUtil.readValue(PropertiesLables.SPARK_MASTER);
-            sparkConf.setMaster(spark_master);
-
+            if (!SparkStreamingConf.APP_TEST_ON_IDEA.equals(spark_master)) {
+                sparkConf.setMaster(spark_master);
+            }
             topicsSet = new HashSet<>(Arrays.asList(KafkaTopic.TOPIC_VEHICLE_HTTP_PACKET_NAME));
             jssc = new JavaStreamingContext(sparkConf, Durations.seconds(SPARK_STEAMING_DURATION_SECOND));
             kafkaParams = new HashMap<>();
@@ -78,16 +79,13 @@ public class SparkStream implements Serializable {
             JavaPairDStream<String, VehicleHttpPack> record = messages.mapToPair(
                     x -> new Tuple2<>(String.format(VID_KEY_PREFIX + x.key().replace("\"","")),
                             x.value())).reduceByKey((x1, x2) -> DataPreProcess.compact(x1, x2));
-            // post to influxdb
-            JavaPairDStream<String, VehicleHttpPack> record_post2Influx = record.mapValues(x -> vPackInfluxPoster.postVpack2InfluxDB(x));
-//            // missing values process
-//            record = record.mapValues(x -> this.dataPreProcess.missingValueProcess(x));
+            JavaDStream<Long> count = messages.count();
 //            // outlier values process
 //            record = record.mapValues(x -> this.dataPreProcess.outlierHandling(x));
 //            // multi Sampling Rate Process
 //            record = record.mapValues(x -> this.dataPreProcess.multiSamplingRateProcess(x));
             record.print();
-            record_post2Influx.print();
+            count.print();
 
             // Start the computation
             jssc.start();

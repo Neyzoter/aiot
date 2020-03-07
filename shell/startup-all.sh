@@ -7,4 +7,4 @@
 ./influxdb/influxdb-quickstart.sh
 
 # Quick start Spark
-./spark/spark-quickstart.sh
+#./spark/spark-quickstart.sh

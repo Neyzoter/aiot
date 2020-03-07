@@ -35,7 +35,7 @@ public class TestVehicleHttpPackSerializer {
         VehicleHttpPack vehicleHttpPack = new VehicleHttpPack();
         Vehicle vehicle = new Vehicle();
         RuntimeData runtimeData = new RuntimeData();
-        runtimeData.setEcuMaxTemp(40);runtimeData.setSpeed(100);
+        runtimeData.setVal1(40.0);runtimeData.setVal2(100.0);
         SortedMap<Long, RuntimeData> rtDataMap = new TreeMap<>();
         rtDataMap.put((long)0, runtimeData);
         vehicle.setRtDataMap(rtDataMap);vehicle.setApp((long)10);
