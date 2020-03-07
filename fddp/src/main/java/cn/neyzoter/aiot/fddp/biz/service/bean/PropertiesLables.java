@@ -18,4 +18,10 @@ public class PropertiesLables {
     public static final String KAFKA_BOOTSTRAP_SERVER = "kafka.bootstrap-server";
 
     public static final String SPARK_MASTER = "spark.master";
+
+    // scheduled executor running interval , the unit also can be set.
+    public static final String THREADPOOL_SCHEDULED_EXECUTOR_PERIOD = "threadpool.scheduled-executor.period";
+    public static final String THREADPOOL_SCHEDULED_EXECUTOR_UNIT = "threadpool.scheduled-executor.unit";
+
+
 }

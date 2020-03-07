@@ -5,6 +5,7 @@ import org.tensorflow.*;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -12,23 +13,23 @@ import java.util.List;
  * @author Neyzoter Song
  * @date 2020-01-05
  */
-public class ModelManager {
-
+public class ModelManager implements Serializable {
+    private static final long serialVersionUID = 4361723474900005046L;
     /**
      * model
      */
     private SavedModelBundle modelBundle;
     /**
-     * alive time(minutes) from last contact, when data sended , alive time will update to be 0
+     * alive time from last contact, when data sended , alive time will update to be 0
      */
     private int aliveTime;
     /**
-     * model's max alive time(minutes) from last contact
+     * model's max alive time from last contact
      */
     private int maxAliveTime;
 
     /**
-     * Class ModelManager build, maxAliveTime(minutes) is 2
+     * Class ModelManager build, maxAliveTime is 2
      * @param path model's path
      * @param tag model's tag
      */
@@ -39,7 +40,7 @@ public class ModelManager {
      * Class ModelManager build
      * @param path model's path
      * @param tag model's tag
-     * @param maxAliveTime model's max alive time(minutes) from last contact
+     * @param maxAliveTime model's max alive time from last contact
      */
     public ModelManager (String path, String tag, int maxAliveTime){
         ModelManagerInit(path,tag,maxAliveTime);
@@ -47,9 +48,9 @@ public class ModelManager {
 
     /**
      * ModelManager init func
-     * @param path
-     * @param tag
-     * @param maxAliveTime
+     * @param path path
+     * @param tag tag
+     * @param maxAliveTime maxAliveTime
      */
     private void ModelManagerInit (String path, String tag, int maxAliveTime) {
         System.out.println(String.format("Start loading model: %s  tag: %s", path, tag));
@@ -66,7 +67,7 @@ public class ModelManager {
 
     /**
      * load a model
-     * @param path
+     * @param path path
      */
     private void loadModelBundle (String path, String tag) {
             this.modelBundle = SavedModelBundle.load(path, tag);
@@ -74,11 +75,12 @@ public class ModelManager {
 
     /**
      * get model bundle
-     * @return
+     * @return {@link SavedModelBundle}
      */
     public SavedModelBundle getModelBundle() {
         return this.modelBundle;
     }
+
 
     /**
      * test model
@@ -140,5 +142,47 @@ public class ModelManager {
         }catch (Exception e) {
             System.err.println(e);
         }
+    }
+
+    /**
+     * if alive time is bigger than max alive time, that is timeout, need to be GC
+     * @return true or false
+     */
+    public boolean isTimeout () {
+        return this.aliveTime > this.maxAliveTime;
+    }
+    /**
+     * increase the alive time by 1
+     * @return alive time
+     */
+    public int aliveTimeInc () {
+        this.aliveTime ++;
+        return this.aliveTime;
+    }
+
+    /**
+     * increase the alive time by time
+     * @param time increase time
+     * @return alive time
+     */
+    public int aliveTimeInc (int time) {
+        this.aliveTime += time;
+        return this.aliveTime;
+    }
+
+    public int getAliveTime() {
+        return aliveTime;
+    }
+
+    public void setAliveTime(int aliveTime) {
+        this.aliveTime = aliveTime;
+    }
+
+
+    public int getMaxAliveTime() {
+        return maxAliveTime;
+    }
+    public void setMaxAliveTime(int maxAliveTime) {
+        this.maxAliveTime = maxAliveTime;
     }
 }

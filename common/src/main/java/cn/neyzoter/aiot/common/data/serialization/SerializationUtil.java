@@ -1,16 +1,15 @@
 package cn.neyzoter.aiot.common.data.serialization;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 
 /**
  * Serialization Utils
  * @author Neyzoter Song
  * @date 2019/9/12
  */
-public class SerializationUtil{
+public class SerializationUtil implements Serializable {
+
+    private static final long serialVersionUID = 1065846828160869484L;
 
     /**
      * serialize

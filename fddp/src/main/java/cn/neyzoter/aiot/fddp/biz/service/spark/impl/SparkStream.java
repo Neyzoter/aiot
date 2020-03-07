@@ -80,10 +80,10 @@ public class SparkStream implements Serializable {
                     x -> new Tuple2<>(String.format(VID_KEY_PREFIX + x.key().replace("\"","")),
                             x.value())).reduceByKey((x1, x2) -> DataPreProcess.compact(x1, x2));
             JavaDStream<Long> count = messages.count();
-//            // outlier values process
-//            record = record.mapValues(x -> this.dataPreProcess.outlierHandling(x));
-//            // multi Sampling Rate Process
-//            record = record.mapValues(x -> this.dataPreProcess.multiSamplingRateProcess(x));
+            // outlier values process
+            record = record.mapValues(x -> DataPreProcess.outlierHandling(x));
+            // multi Sampling Rate Process
+            record = record.mapValues(x -> DataPreProcess.multiSamplingRateProcess(x));
             record.print();
             count.print();
 
