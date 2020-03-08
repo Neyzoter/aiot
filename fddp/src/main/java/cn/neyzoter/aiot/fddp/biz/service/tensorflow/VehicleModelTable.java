@@ -81,28 +81,23 @@ public class VehicleModelTable implements Serializable {
     public List<String> aliveIncCheck () {
         Iterator<Map.Entry<String, ModelManager>> iter = modelMap.entrySet().iterator();
         List<String> rmList = new LinkedList<>();
+        // get max alive time from properties, properties update periodicity
         int maxAliveTime = getMaxAliveTime();
-        int incTime = getPeriod();
+        // get the scheduled executor's period
+        int incTime = getCheckPeriod();
         for (;iter.hasNext();) {
             ModelManager manager = iter.next().getValue();
-            manager.aliveTimeInc();
+            // inc the alive time
+            manager.aliveTimeInc(incTime);
             // if time out
             if (manager.isTimeout(maxAliveTime)) {
-                String key = iter.next().getKey();
+                String key = manager.getKey();
                 rmList.add(key);
                 // remove the model manager
                 modelMap.remove(key);
             }
         }
         return rmList;
-    }
-
-    /**
-     * refresh alive time, if alive time exceed the max alive time , this k-v will be GC
-     * @param key key
-     */
-    public void resetAliveTime (String key) {
-        modelMap.get(key).setAliveTime(0);
     }
 
     /**
@@ -125,7 +120,7 @@ public class VehicleModelTable implements Serializable {
         try {
             logger.info(String.format("Start loading model: %s  tag: %s", path, tag));
             long startime = System.currentTimeMillis();
-            ModelManager modelManager = new ModelManager(path, tag, time);
+            ModelManager modelManager = new ModelManager(path, tag,key, time);
             modelMap.put(key, modelManager);
             logger.info(String.format("Loaded model: %s  tag: %s finished in %d ms", path, tag, System.currentTimeMillis() - startime));
         } catch (Exception e) {
@@ -145,6 +140,26 @@ public class VehicleModelTable implements Serializable {
     }
 
     /**
+     * get ModelManager and Reset it's aliveTime to zero
+     * @param key key
+     * @return {@link ModelManager}
+     */
+    public ModelManager getModelManagerReset (String key) {
+        ModelManager modelManager = this.getModelManager(key);
+        // reset alive time
+        modelManager.setAliveTime(0);
+        return modelManager;
+    }
+
+    /**
+     * reset alive time to zero
+     * @param key key
+     */
+    public void resetAliveTime (String key) {
+        modelMap.get(key).setAliveTime(0);
+    }
+
+    /**
      * get model path
      * @param propertiesUtil properties util
      * @return model path
@@ -158,8 +173,8 @@ public class VehicleModelTable implements Serializable {
      * get time unit from properties file
      * @return {@link TimeUnit}
      */
-    public TimeUnit getTimeUnit () {
-        String unit = this.propertiesUtil.readValue(PropertiesLables.THREADPOOL_SCHEDULED_EXECUTOR_TF_MODEL_CHECK_UNIT);
+    public TimeUnit getCheckTimeUnit () {
+        String unit = this.propertiesUtil.readValue(PropertiesLables.TF_MODEL_CHECK_UNIT);
         unit = unit.trim();
         switch (unit) {
             case PropertiesValueRange.UNIT_HOUR:
@@ -179,8 +194,8 @@ public class VehicleModelTable implements Serializable {
      * get period
      * @return period
      */
-    public int getPeriod () {
-        String period = this.propertiesUtil.readValue(PropertiesLables.THREADPOOL_SCHEDULED_EXECUTOR_TF_MODEL_CHECK_PERIOD);
+    public int getCheckPeriod () {
+        String period = this.propertiesUtil.readValue(PropertiesLables.TF_MODEL_CHECK_PERIOD);
         return Integer.parseInt(period);
     }
 

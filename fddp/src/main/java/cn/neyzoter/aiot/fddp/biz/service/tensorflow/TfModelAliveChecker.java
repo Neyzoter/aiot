@@ -32,10 +32,11 @@ public class TfModelAliveChecker implements Runnable{
     }
     @Override
     public void run () {
+
         // check all manager is alive, if not, rm it
         List<String> rmList = vehicleModelTable.aliveIncCheck();
         for (String vtype : rmList) {
-            logger.info(String.format("GC model of %s", vtype));
+            logger.info(String.format("  %s ModelManager has been timeout", vtype));
         }
     }
 

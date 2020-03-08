@@ -65,10 +65,10 @@ public class PropertiesLables {
     /**
      * scheduled executor running interval , the unit also can be set.
      */
-    public static final String THREADPOOL_SCHEDULED_EXECUTOR_TF_MODEL_CHECK_PERIOD = "tensorflow.model.check-period";
+    public static final String TF_MODEL_CHECK_PERIOD = "tensorflow.model.check-period";
     /**
      * scheduled executor running unit
      */
-    public static final String THREADPOOL_SCHEDULED_EXECUTOR_TF_MODEL_CHECK_UNIT = "threadpool.model.check-unit";
+    public static final String TF_MODEL_CHECK_UNIT = "tensorflow.model.check-unit";
 
 }

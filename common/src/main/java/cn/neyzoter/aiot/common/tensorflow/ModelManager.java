@@ -1,5 +1,7 @@
 package cn.neyzoter.aiot.common.tensorflow;
 
+import jdk.nashorn.internal.objects.annotations.Getter;
+import jdk.nashorn.internal.objects.annotations.Setter;
 import org.tensorflow.*;
 
 import java.io.BufferedReader;
@@ -29,13 +31,19 @@ public class ModelManager implements Serializable {
     private int maxAliveTime;
 
     /**
+     * model manager's key
+     */
+    private String key;
+
+    /**
      * Class ModelManager build, maxAliveTime is 2
      * @param path model's path
      * @param tag model's tag
+     * @param k key
      */
-    public ModelManager (String path, String tag) throws Exception {
+    public ModelManager (String path, String tag, String k) throws Exception {
         try {
-            ModelManagerInit(path,tag,Integer.MAX_VALUE);
+            ModelManagerInit(path,tag,k,Integer.MAX_VALUE);
         }catch (Exception e) {
             throw e;
         }
@@ -44,11 +52,12 @@ public class ModelManager implements Serializable {
      * Class ModelManager build
      * @param path model's path
      * @param tag model's tag
+     * @param k key
      * @param maxAliveTime model's max alive time from last contact
      */
-    public ModelManager (String path, String tag, int maxAliveTime)  throws Exception{
+    public ModelManager (String path, String tag,String k, int maxAliveTime)  throws Exception{
         try {
-            ModelManagerInit(path,tag,maxAliveTime);
+            ModelManagerInit(path,tag,k,maxAliveTime);
         }catch (Exception e) {
             throw e;
         }
@@ -58,13 +67,15 @@ public class ModelManager implements Serializable {
      * ModelManager init func
      * @param path path
      * @param tag tag
+     * @param k key
      * @param maxAliveTime maxAliveTime
      */
-    private void ModelManagerInit (String path, String tag, int maxAliveTime) throws Exception{
+    private void ModelManagerInit (String path, String tag, String k, int maxAliveTime) throws Exception{
         try {
             this.loadModelBundle(path, tag);
             this.aliveTime = 0;
             this.maxAliveTime = maxAliveTime;
+            this.key = k;
         } catch (Exception e) {
             throw e;
         }
@@ -197,5 +208,21 @@ public class ModelManager implements Serializable {
     }
     public void setMaxAliveTime(int maxAliveTime) {
         this.maxAliveTime = maxAliveTime;
+    }
+
+    /**
+     * model manager's key
+     * @return String key
+     */
+    public String getKey() {
+        return key;
+    }
+
+    /**
+     * model manager's key
+     * @param key key
+     */
+    private void setKey(String key) {
+        this.key = key;
     }
 }
