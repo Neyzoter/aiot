@@ -1,6 +1,7 @@
 package cn.neyzoter.aiot.fddp.biz.service.bean;
 
 import cn.neyzoter.aiot.common.util.PropertiesUtil;
+import cn.neyzoter.aiot.fddp.biz.service.properties.PropertiesManager;
 import cn.neyzoter.aiot.fddp.biz.service.tensorflow.TfModelAliveCheck;
 import org.apache.commons.lang3.concurrent.BasicThreadFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,19 +15,24 @@ import java.util.concurrent.*;
  * @author Neyzoter Song
  * @date 2020-3-7
  */
-@ComponentScan("cn.neyzoter.aiot.common.util")
+@ComponentScan("cn.neyzoter.aiot.fddp.biz.service.properties")
 @Component
 public class ThreadPool {
     public static ScheduledExecutorService scheduledThreadPool;
 
-    private PropertiesUtil propertiesUtil;
+    private PropertiesManager propertiesUtil;
     @Autowired
-    ThreadPool (PropertiesUtil p) {
-        propertiesUtil = p;
+    ThreadPool (PropertiesManager propertiesUtil) {
+        this.propertiesUtil = propertiesUtil;
         scheduledThreadPool = new ScheduledThreadPoolExecutor(1,
                 new BasicThreadFactory.Builder().namingPattern("scheduled-pool-%d").daemon(true).build());
+        // alive tensorflow model check
         scheduledThreadPool.scheduleAtFixedRate(new TfModelAliveCheck(),0,
                 this.getPeriod(),this.getTimeUnit());
+        // properteis update
+        scheduledThreadPool.scheduleAtFixedRate(this.propertiesUtil, 0,
+                propertiesUtil.getPeriod(),
+                propertiesUtil.getUpdatePeriodUnit());
     }
 
     /**
@@ -34,15 +40,16 @@ public class ThreadPool {
      * @return {@link TimeUnit}
      */
     private TimeUnit getTimeUnit () {
-        String unit = propertiesUtil.readValue(PropertiesLables.THREADPOOL_SCHEDULED_EXECUTOR_UNIT);
+        String unit = this.propertiesUtil.readValue(PropertiesLables.THREADPOOL_SCHEDULED_EXECUTOR_UNIT);
         switch (unit) {
-            case PropertiesValueRange.THREADPOOL_SCHEDULED_EXECUTOR_UNIT_HOUR:
+            case PropertiesValueRange.UNIT_HOUR:
                 return TimeUnit.HOURS;
-            case PropertiesValueRange.THREADPOOL_SCHEDULED_EXECUTOR_UNIT_SECOND:
-                return TimeUnit.SECONDS;
-            case PropertiesValueRange.THREADPOOL_SCHEDULED_EXECUTOR_UNIT_MINUTTE:
-            default:
+            case PropertiesValueRange.UNIT_MINUTTE:
                 return TimeUnit.MINUTES;
+            case PropertiesValueRange.UNIT_SECOND:
+            default:
+                return TimeUnit.SECONDS;
+
         }
     }
 

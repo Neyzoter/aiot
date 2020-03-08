@@ -9,6 +9,7 @@ import java.util.Set;
 import cn.neyzoter.aiot.common.util.PropertiesUtil;
 import cn.neyzoter.aiot.dal.domain.vehicle.VehicleHttpPack;
 import cn.neyzoter.aiot.fddp.biz.service.bean.PropertiesLables;
+import cn.neyzoter.aiot.fddp.biz.service.bean.PropertiesValueRange;
 import cn.neyzoter.aiot.fddp.biz.service.influxdb.VPackInfluxPoster;
 import cn.neyzoter.aiot.fddp.biz.service.kafka.constant.KafkaConsumerGroup;
 import cn.neyzoter.aiot.fddp.biz.service.kafka.constant.KafkaTopic;
@@ -41,7 +42,7 @@ import org.apache.spark.streaming.Durations;
  * @author Neyzoter Song
  * @date 2020-2-17
  */
-@ComponentScan("cn.neyzoter.aiot.fddp.biz.service.influxdb,cn.neyzoter.aiot.fddp.biz.service.bean")
+@ComponentScan("cn.neyzoter.aiot.fddp.biz.service.influxdb,cn.neyzoter.aiot.fddp.biz.service.properties")
 @Component
 public class SparkStream implements Serializable {
     private static final long serialVersionUID = 8231463007986745839L;
@@ -59,7 +60,7 @@ public class SparkStream implements Serializable {
             // Configuration
             sparkConf = new SparkConf().setAppName(SparkStreamingConf.SPARK_STREAMING_NAME);
             String spark_master = propertiesUtil.readValue(PropertiesLables.SPARK_MASTER);
-            if (!SparkStreamingConf.APP_TEST_ON_IDEA.equals(spark_master)) {
+            if (!PropertiesValueRange.APP_TEST_ON_IDEA.equals(spark_master)) {
                 sparkConf.setMaster(spark_master);
             }
             topicsSet = new HashSet<>(Arrays.asList(KafkaTopic.TOPIC_VEHICLE_HTTP_PACKET_NAME));
@@ -79,7 +80,12 @@ public class SparkStream implements Serializable {
             JavaPairDStream<String, VehicleHttpPack> record = messages.mapToPair(
                     x -> new Tuple2<>(String.format(VID_KEY_PREFIX + x.key().replace("\"","")),
                             x.value())).reduceByKey((x1, x2) -> DataPreProcess.compact(x1, x2));
+            //count
             JavaDStream<Long> count = messages.count();
+
+//            // post to influxdb
+//            JavaPairDStream<String, VehicleHttpPack> record_post2Influx = record.mapValues(x -> vPackInfluxPoster.postVpack2InfluxDB(x));
+
             // outlier values process
             record = record.mapValues(x -> DataPreProcess.outlierHandling(x));
             // multi Sampling Rate Process

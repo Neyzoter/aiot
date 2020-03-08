@@ -6,10 +6,20 @@ package cn.neyzoter.aiot.fddp.biz.service.bean;
  * @date 2020-3-7
  */
 public class PropertiesValueRange {
-    // second
-    public static final String THREADPOOL_SCHEDULED_EXECUTOR_UNIT_SECOND = "S";
-    // minute
-    public static final String THREADPOOL_SCHEDULED_EXECUTOR_UNIT_MINUTTE = "M";
-    // hour
-    public static final String THREADPOOL_SCHEDULED_EXECUTOR_UNIT_HOUR = "H";
+    /**
+     * second
+     */
+    public static final String UNIT_SECOND = "s";
+    /**
+     * minute
+     */
+    public static final String UNIT_MINUTTE = "m";
+    /**
+     * hour
+     */
+    public static final String UNIT_HOUR = "H";
+    /**
+     * SPARK_MASTER is idea
+     */
+    public static final String APP_TEST_ON_IDEA = "IDEA";
 }

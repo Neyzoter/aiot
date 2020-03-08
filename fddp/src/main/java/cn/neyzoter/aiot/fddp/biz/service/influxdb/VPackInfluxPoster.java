@@ -18,7 +18,7 @@ import java.util.List;
  * @author Neyzoter Song
  * @date 2020-2-19
  */
-@ComponentScan("cn.neyzoter.aiot.fddp.biz.service.bean")
+@ComponentScan("cn.neyzoter.aiot.fddp.biz.service.properties")
 @Component
 public class VPackInfluxPoster implements Serializable {
     public static final Logger logger = LoggerFactory.getLogger(VPackInfluxPoster.class);

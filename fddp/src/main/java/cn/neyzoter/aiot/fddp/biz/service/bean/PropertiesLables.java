@@ -23,5 +23,11 @@ public class PropertiesLables {
     public static final String THREADPOOL_SCHEDULED_EXECUTOR_PERIOD = "threadpool.scheduled-executor.period";
     public static final String THREADPOOL_SCHEDULED_EXECUTOR_UNIT = "threadpool.scheduled-executor.unit";
 
+    // properties update period
+    public static final String PROPERTIES_UPDATE_PERIOD = "properties.update-period";
+    public static final String PROPERTIES_UPDATE_UNIT = "properties.update-unit";
+
+    public static final String TENSORFLOW_MODEL_PATH = "tensorflow.model.path";
+
 
 }

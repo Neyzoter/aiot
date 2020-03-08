@@ -1,6 +1,8 @@
 package cn.neyzoter.aiot.fddp.biz.service.tensorflow;
 
 import cn.neyzoter.aiot.common.tensorflow.ModelManager;
+import cn.neyzoter.aiot.common.util.PropertiesUtil;
+import cn.neyzoter.aiot.fddp.biz.service.bean.PropertiesLables;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
@@ -90,5 +92,15 @@ public class VehicleModelTable {
      */
     public void put (String key, String path, String tag) {
         modelMap.put(key, new ModelManager(path, tag));
+    }
+
+    /**
+     * get model path
+     * @param propertiesUtil properties util
+     * @return model path
+     */
+    public String getModelPath (PropertiesUtil propertiesUtil) {
+        String path = propertiesUtil.readValue(PropertiesLables.TENSORFLOW_MODEL_PATH);
+        return path;
     }
 }

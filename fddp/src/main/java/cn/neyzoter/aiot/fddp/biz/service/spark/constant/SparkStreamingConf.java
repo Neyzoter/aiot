@@ -7,5 +7,4 @@ package cn.neyzoter.aiot.fddp.biz.service.spark.constant;
  */
 public class SparkStreamingConf {
     public final static String SPARK_STREAMING_NAME = "VehicleHttpPacketDStream";
-    public final static String APP_TEST_ON_IDEA = "IDEA";
 }
