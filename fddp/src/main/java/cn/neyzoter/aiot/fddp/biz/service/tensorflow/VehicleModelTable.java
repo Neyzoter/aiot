@@ -110,23 +110,22 @@ public class VehicleModelTable implements Serializable {
     }
 
     /**
-     * put a model manager into map
+     * load and put a model manager into map
      * @param key key - vtype
      * @param path path of model
      * @param tag tag of model
      * @param time max alive time, if alive time bigger than time, the model will be GC
      */
-    public void put (String key, String path, String tag, int time) {
+    public void loadPut (String key, String path, String tag, int time) {
         try {
             logger.info(String.format("Start loading model: %s  tag: %s", path, tag));
             long startime = System.currentTimeMillis();
             ModelManager modelManager = new ModelManager(path, tag,key, time);
-            modelMap.put(key, modelManager);
+            this.putModelManager(key, modelManager);
             logger.info(String.format("Loaded model: %s  tag: %s finished in %d ms", path, tag, System.currentTimeMillis() - startime));
         } catch (Exception e) {
             logger.error("",e);
         }
-
     }
 
     /**
@@ -135,8 +134,8 @@ public class VehicleModelTable implements Serializable {
      * @param path path of model
      * @param tag tag of model
      */
-    public void put (String key, String path, String tag) {
-        this.put(key, path, tag, Integer.MAX_VALUE);
+    public void loadPut (String key, String path, String tag) {
+        this.loadPut(key, path, tag, Integer.MAX_VALUE);
     }
 
     /**

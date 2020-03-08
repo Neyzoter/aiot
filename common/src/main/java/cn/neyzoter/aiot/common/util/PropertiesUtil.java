@@ -3,6 +3,7 @@ package cn.neyzoter.aiot.common.util;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.Properties;
 
 /**
@@ -10,7 +11,8 @@ import java.util.Properties;
  * @author neyzoter song
  * @daa 2019-12-11
  */
-public class PropertiesUtil {
+public class PropertiesUtil implements Serializable {
+    private static final long serialVersionUID = -3031705469789764720L;
     /**
      * 属性
      */

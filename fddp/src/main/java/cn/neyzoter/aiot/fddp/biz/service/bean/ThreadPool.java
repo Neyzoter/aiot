@@ -31,7 +31,7 @@ public class ThreadPool {
                 new BasicThreadFactory.Builder().namingPattern("scheduled-pool-%d").daemon(true).build());
         // alive tensorflow model check
         VehicleModelTable table = tfModelAliveChecker.getVehicleModelTable();
-        table.put("mazida1020", table.getModelPath(propertiesUtil),
+        table.loadPut("mazida1020", table.getModelPath(propertiesUtil),
                 "mytag", table.getMaxAliveTime());
         scheduledThreadPool.scheduleAtFixedRate(tfModelAliveChecker,0,
                 table.getCheckPeriod(),table.getCheckTimeUnit());
