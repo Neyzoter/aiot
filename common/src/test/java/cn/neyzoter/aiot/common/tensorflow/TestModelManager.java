@@ -8,12 +8,18 @@ import org.junit.Test;
  * @date 2020-1-30
  */
 public class TestModelManager {
-    ModelManager diagnosisModel = new ModelManager("/home/scc/code/java/aiot/common/tf_model/saved_model/","mytag");
+    ModelManager diagnosisModel;
 //    ModelManager diagnosisModel = new ModelManager("/home/scc/code/java/aiot/common/tf_model/model2/","mytag");
     @Test
     public void testDiagnosisModel () {
-        System.out.println("==== testDiagnosisModel ====");
-        diagnosisModel.testModelBundle();
+        try {
+            diagnosisModel = new ModelManager("/home/scc/code/java/aiot/common/tf_model/saved_model/","mytag");
+            System.out.println("==== testDiagnosisModel ====");
+            diagnosisModel.testModelBundle();
+        }catch (Exception e) {
+            System.err.println(e);
+        }
+
     }
 
 }

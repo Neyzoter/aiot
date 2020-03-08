@@ -32,14 +32,17 @@ public class PropertiesManager extends PropertiesUtil implements Runnable{
      * @return {@link TimeUnit}
      */
     public TimeUnit getUpdatePeriodUnit () {
-        String unit = this.readValue(PropertiesLables.THREADPOOL_SCHEDULED_EXECUTOR_UNIT);
+        String unit = this.readValue(PropertiesLables.PROPERTIES_UPDATE_UNIT);
+        unit = unit.trim();
         switch (unit) {
             case PropertiesValueRange.UNIT_HOUR:
                 return TimeUnit.HOURS;
             case PropertiesValueRange.UNIT_SECOND:
                 return TimeUnit.SECONDS;
             case PropertiesValueRange.UNIT_MINUTTE:
+                return TimeUnit.MINUTES;
             default:
+                logger.warn("Period Unit Unrecognized， set as default MINUTES");
                 return TimeUnit.MINUTES;
         }
     }

@@ -33,8 +33,12 @@ public class ModelManager implements Serializable {
      * @param path model's path
      * @param tag model's tag
      */
-    public ModelManager (String path, String tag){
-        ModelManagerInit(path, tag, 2);
+    public ModelManager (String path, String tag) throws Exception {
+        try {
+            ModelManagerInit(path,tag,Integer.MAX_VALUE);
+        }catch (Exception e) {
+            throw e;
+        }
     }
     /**
      * Class ModelManager build
@@ -42,8 +46,12 @@ public class ModelManager implements Serializable {
      * @param tag model's tag
      * @param maxAliveTime model's max alive time from last contact
      */
-    public ModelManager (String path, String tag, int maxAliveTime){
-        ModelManagerInit(path,tag,maxAliveTime);
+    public ModelManager (String path, String tag, int maxAliveTime)  throws Exception{
+        try {
+            ModelManagerInit(path,tag,maxAliveTime);
+        }catch (Exception e) {
+            throw e;
+        }
     }
 
     /**
@@ -52,16 +60,13 @@ public class ModelManager implements Serializable {
      * @param tag tag
      * @param maxAliveTime maxAliveTime
      */
-    private void ModelManagerInit (String path, String tag, int maxAliveTime) {
-        System.out.println(String.format("Start loading model: %s  tag: %s", path, tag));
+    private void ModelManagerInit (String path, String tag, int maxAliveTime) throws Exception{
         try {
-            long time = System.currentTimeMillis();
             this.loadModelBundle(path, tag);
             this.aliveTime = 0;
             this.maxAliveTime = maxAliveTime;
-            System.out.println(String.format("Load model: %s  tag: %s finished with %d ms", path, tag, System.currentTimeMillis() - time));
         } catch (Exception e) {
-            System.err.println(e);
+            throw e;
         }
     }
 
@@ -150,6 +155,14 @@ public class ModelManager implements Serializable {
      */
     public boolean isTimeout () {
         return this.aliveTime > this.maxAliveTime;
+    }
+
+    /**
+     * if alive time is bigger than max alive time(set by user), that is timeout, need to be GC
+     * @return true or false
+     */
+    public boolean isTimeout (int time) {
+        return this.aliveTime > time;
     }
     /**
      * increase the alive time by 1
