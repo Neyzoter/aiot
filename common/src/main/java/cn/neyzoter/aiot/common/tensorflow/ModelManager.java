@@ -1,7 +1,7 @@
 package cn.neyzoter.aiot.common.tensorflow;
 
-import jdk.nashorn.internal.objects.annotations.Getter;
-import jdk.nashorn.internal.objects.annotations.Setter;
+import cn.neyzoter.aiot.common.util.PathUtil;
+import cn.neyzoter.aiot.common.util.PropertiesUtil;
 import org.tensorflow.*;
 
 import java.io.BufferedReader;
@@ -21,6 +21,11 @@ public class ModelManager implements Serializable {
      * model
      */
     private SavedModelBundle modelBundle;
+
+    /**
+     * model properteis
+     */
+    private PropertiesUtil propertiesUtil;
     /**
      * alive time from last contact, when data sended , alive time will update to be 0
      */
@@ -72,10 +77,12 @@ public class ModelManager implements Serializable {
      */
     private void ModelManagerInit (String path, String tag, String k, int maxAliveTime) throws Exception{
         try {
+            path = PathUtil.getPathEndWithSlash(path);
             this.loadModelBundle(path, tag);
             this.aliveTime = 0;
             this.maxAliveTime = maxAliveTime;
             this.key = k;
+            this.propertiesUtil = new PropertiesUtil(path + ModelPropertiesLabels.MODEL_PROPERTIES_NAME);
         } catch (Exception e) {
             throw e;
         }
@@ -224,5 +231,13 @@ public class ModelManager implements Serializable {
      */
     private void setKey(String key) {
         this.key = key;
+    }
+
+    /**
+     * get model's properties
+     * @return {@link PropertiesUtil}
+     */
+    public PropertiesUtil getPropertiesUtil() {
+        return propertiesUtil;
     }
 }

@@ -4,7 +4,7 @@ import cn.neyzoter.aiot.dal.domain.vehicle.RuntimeData;
 import cn.neyzoter.aiot.dal.domain.vehicle.VehicleHttpPack;
 import cn.neyzoter.aiot.fddp.biz.service.spark.exception.IllVehicleHttpPackTime;
 
-import javax.management.RuntimeMBeanException;
+import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.util.Iterator;
 import java.util.Map;
@@ -16,7 +16,9 @@ import java.util.SortedMap;
  * @author Neyzoter Song
  * @date 2020-2-19
  */
-public class DataPreProcess {
+public class DataPreProcess implements Serializable {
+
+    private static final long serialVersionUID = 2357018289949033614L;
 
     /**
      * compact two pack
@@ -66,9 +68,10 @@ public class DataPreProcess {
         Class clazz = VehicleHttpPack.class;
         Field[] fs = clazz.getDeclaredFields();
         SortedMap rtDataMap = pack.getVehicle().getRtDataMap();
-        Iterator<Map.Entry<String, RuntimeData>> iter = rtDataMap.entrySet().iterator();
+        @SuppressWarnings("unchecked")
+        Iterator<Map.Entry<Long, RuntimeData>> iter = rtDataMap.entrySet().iterator();
         for (;iter.hasNext();) {
-            Map.Entry<String, RuntimeData> entry = iter.next();
+            Map.Entry<Long, RuntimeData> entry = iter.next();
             RuntimeData rtData = entry.getValue();
             for (Field field : fs) {
                 field.setAccessible(true);
