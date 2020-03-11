@@ -3,7 +3,7 @@ package cn.neyzoter.aiot.common.tensorflow;
 import org.junit.Test;
 
 /**
- * 测试Tensorflow 模型管理
+ * test tensorflow model manager
  * @author Neyzoter Song
  * @date 2020-1-30
  */

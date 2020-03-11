@@ -9,6 +9,7 @@ import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Tensorflow Model Manager
@@ -26,6 +27,16 @@ public class ModelManager implements Serializable {
      * model properteis
      */
     private PropertiesUtil propertiesUtil;
+
+    /**
+     * max value map
+     */
+    private Map maxValueMap;
+
+    /**
+     * min value map
+     */
+    private Map minValueMap;
     /**
      * alive time from last contact, when data sended , alive time will update to be 0
      */
@@ -47,11 +58,7 @@ public class ModelManager implements Serializable {
      * @param k key
      */
     public ModelManager (String path, String tag, String k) throws Exception {
-        try {
-            ModelManagerInit(path,tag,k,Integer.MAX_VALUE);
-        }catch (Exception e) {
-            throw e;
-        }
+        ModelManagerInit(path,tag,k,Integer.MAX_VALUE);
     }
     /**
      * Class ModelManager build
@@ -61,11 +68,7 @@ public class ModelManager implements Serializable {
      * @param maxAliveTime model's max alive time from last contact
      */
     public ModelManager (String path, String tag,String k, int maxAliveTime)  throws Exception{
-        try {
-            ModelManagerInit(path,tag,k,maxAliveTime);
-        }catch (Exception e) {
-            throw e;
-        }
+        ModelManagerInit(path,tag,k,maxAliveTime);
     }
 
     /**
@@ -76,16 +79,15 @@ public class ModelManager implements Serializable {
      * @param maxAliveTime maxAliveTime
      */
     private void ModelManagerInit (String path, String tag, String k, int maxAliveTime) throws Exception{
-        try {
-            path = PathUtil.getPathEndWithSlash(path);
-            this.loadModelBundle(path, tag);
-            this.aliveTime = 0;
-            this.maxAliveTime = maxAliveTime;
-            this.key = k;
-            this.propertiesUtil = new PropertiesUtil(path + ModelPropertiesLabels.MODEL_PROPERTIES_NAME);
-        } catch (Exception e) {
-            throw e;
-        }
+        path = PathUtil.getPathEndWithSlash(path);
+        this.loadModelBundle(path, tag);
+        this.aliveTime = 0;
+        this.maxAliveTime = maxAliveTime;
+        this.key = k;
+        this.propertiesUtil = new PropertiesUtil(path + ModelPropertiesLabels.MODEL_PROPERTIES_NAME);
+        // below must put after propertiesUtil's init
+        this.updateMaxValueMap();
+        this.updateMinValueMap();
     }
 
     /**
@@ -239,5 +241,61 @@ public class ModelManager implements Serializable {
      */
     public PropertiesUtil getPropertiesUtil() {
         return propertiesUtil;
+    }
+
+    /**
+     * update properties util
+     */
+    public void updatePropertiesUtil (){
+        this.propertiesUtil.updateProps();
+    }
+
+    /**
+     * get max value map
+     * @return max value map
+     */
+    public Map getMaxValueMap() {
+        return maxValueMap;
+    }
+    /**
+     * set max value map
+     * @param map max value map
+     */
+    private void setMaxValueMap(Map map) {
+        this.maxValueMap = map;
+    }
+    /**
+     * update max value map from properties
+     * @return max value map
+     */
+    public Map updateMaxValueMap (){
+        String maxValues = propertiesUtil.readValue(ModelPropertiesLabels.MODLE_MAX_VALUE);
+        Map map = propertiesUtil.getPropertiesMap(maxValues);
+        this.setMaxValueMap(map);
+        return maxValueMap;
+    }
+    /**
+     * get min value map
+     * @return min value map
+     */
+    public Map getMinValueMap() {
+        return minValueMap;
+    }
+    /**
+     * set min value map
+     * @param map max value map
+     */
+    private void setMinValueMap(Map map) {
+        this.minValueMap = map;
+    }
+    /**
+     * update min value map from properties
+     * @return max value map
+     */
+    public Map updateMinValueMap (){
+        String minValues = propertiesUtil.readValue(ModelPropertiesLabels.MODLE_MIN_VALUE);
+        Map map = propertiesUtil.getPropertiesMap(minValues);
+        this.setMinValueMap(map);
+        return minValueMap;
     }
 }
