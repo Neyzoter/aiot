@@ -1,6 +1,5 @@
 package cn.neyzoter.aiot.fddp.biz.service.tensorflow;
 
-import cn.neyzoter.aiot.common.tensorflow.ModelManager;
 import cn.neyzoter.aiot.common.util.PropertiesUtil;
 import cn.neyzoter.aiot.fddp.biz.service.bean.PropertiesLables;
 import cn.neyzoter.aiot.fddp.biz.service.bean.PropertiesValueRange;
@@ -24,7 +23,7 @@ public class VehicleModelTable implements Serializable {
     private static final long serialVersionUID = 8236013173494095071L;
 
     public static final Logger logger = LoggerFactory.getLogger(VehicleModelTable.class);
-    private Map<String, ModelManager> modelMap;
+    private Map<String, TfModelManager> modelMap;
     private PropertiesUtil propertiesUtil;
 
     @Autowired
@@ -36,9 +35,9 @@ public class VehicleModelTable implements Serializable {
     /**
      * get a model manager
      * @param key key
-     * @return ModelManager {@link ModelManager}
+     * @return TfModelManager {@link TfModelManager}
      */
-    public ModelManager getModelManager(String key) {
+    public TfModelManager getModelManager(String key) {
         return modelMap.get(key);
     }
 
@@ -47,21 +46,21 @@ public class VehicleModelTable implements Serializable {
      * @param key key
      * @param manager value - manager
      */
-    public void putModelManager(String key, ModelManager manager) {
+    public void putModelManager(String key, TfModelManager manager) {
         modelMap.put(key, manager);
     }
 
     /**
      * check all model manager is time out or not, if time out , remove it
-     * do not use maxAliveTime of {@link ModelManager}, but use the maxAliveTime in properties file
+     * do not use maxAliveTime of {@link TfModelManager}, but use the maxAliveTime in properties file
      * @return {@link List} removed managers' key list
      */
     public List<String> aliveCheck () {
-        Iterator<Map.Entry<String, ModelManager>> iter = modelMap.entrySet().iterator();
+        Iterator<Map.Entry<String, TfModelManager>> iter = modelMap.entrySet().iterator();
         List<String> rmList = new LinkedList<>();
         int maxAliveTime = getMaxAliveTime();
         for (;iter.hasNext();) {
-            ModelManager manager = iter.next().getValue();
+            TfModelManager manager = iter.next().getValue();
             // if time out
             if (manager.isTimeout(maxAliveTime)) {
                 String key = iter.next().getKey();
@@ -75,18 +74,18 @@ public class VehicleModelTable implements Serializable {
 
     /**
      * inc all model manager and check, if timeout then rm<br/>
-     * do not use maxAliveTime of {@link ModelManager}, but use the maxAliveTime in properties file
+     * do not use maxAliveTime of {@link TfModelManager}, but use the maxAliveTime in properties file
      * @return {@link List} removed managers' key list
      */
     public List<String> aliveIncCheck () {
-        Iterator<Map.Entry<String, ModelManager>> iter = modelMap.entrySet().iterator();
+        Iterator<Map.Entry<String, TfModelManager>> iter = modelMap.entrySet().iterator();
         List<String> rmList = new LinkedList<>();
         // get max alive time from properties, properties update periodicity
         int maxAliveTime = getMaxAliveTime();
         // get the scheduled executor's period
         int incTime = getCheckPeriod();
         for (;iter.hasNext();) {
-            ModelManager manager = iter.next().getValue();
+            TfModelManager manager = iter.next().getValue();
             // inc the alive time
             manager.aliveTimeInc(incTime);
             // if time out
@@ -103,7 +102,7 @@ public class VehicleModelTable implements Serializable {
     /**
      * set max alive time
      * @param key key - vtype
-     * @param time time , unit is same with maxAliveTime of {@link ModelManager}
+     * @param time time , unit is same with maxAliveTime of {@link TfModelManager}
      */
     public void setMaxAliveTime (String key , int time) {
         modelMap.get(key).setMaxAliveTime(time);
@@ -120,7 +119,7 @@ public class VehicleModelTable implements Serializable {
         try {
             logger.info(String.format("Start loading model: %s  tag: %s", path, tag));
             long startime = System.currentTimeMillis();
-            ModelManager modelManager = new ModelManager(path, tag,key, time);
+            TfModelManager modelManager = new TfModelManager(path, tag,key, time);
             this.putModelManager(key, modelManager);
             logger.info(String.format("Loaded model: %s  tag: %s finished in %d ms", path, tag, System.currentTimeMillis() - startime));
         } catch (Exception e) {
@@ -139,12 +138,12 @@ public class VehicleModelTable implements Serializable {
     }
 
     /**
-     * get ModelManager and Reset it's aliveTime to zero
+     * get TfModelManager and Reset it's aliveTime to zero
      * @param key key
-     * @return {@link ModelManager}
+     * @return {@link TfModelManager}
      */
-    public ModelManager getModelManagerReset (String key) {
-        ModelManager modelManager = this.getModelManager(key);
+    public TfModelManager getModelManagerReset (String key) {
+        TfModelManager modelManager = this.getModelManager(key);
         // reset alive time
         modelManager.setAliveTime(0);
         return modelManager;

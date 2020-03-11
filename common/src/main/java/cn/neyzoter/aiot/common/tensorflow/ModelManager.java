@@ -31,12 +31,12 @@ public class ModelManager implements Serializable {
     /**
      * max value map
      */
-    private Map maxValueMap;
+    private Map<String, String> maxValueMap;
 
     /**
      * min value map
      */
-    private Map minValueMap;
+    private Map<String, String> minValueMap;
     /**
      * alive time from last contact, when data sended , alive time will update to be 0
      */
@@ -254,7 +254,7 @@ public class ModelManager implements Serializable {
      * get max value map
      * @return max value map
      */
-    public Map getMaxValueMap() {
+    public Map<String, String> getMaxValueMap() {
         return maxValueMap;
     }
     /**
@@ -265,10 +265,11 @@ public class ModelManager implements Serializable {
         this.maxValueMap = map;
     }
     /**
-     * update max value map from properties
+     * update max value map from disk
      * @return max value map
      */
-    public Map updateMaxValueMap (){
+    public Map<String, String> updateMaxValueMap (){
+        propertiesUtil.updateProps();
         String maxValues = propertiesUtil.readValue(ModelPropertiesLabels.MODLE_MAX_VALUE);
         Map map = propertiesUtil.getPropertiesMap(maxValues);
         this.setMaxValueMap(map);
@@ -278,7 +279,7 @@ public class ModelManager implements Serializable {
      * get min value map
      * @return min value map
      */
-    public Map getMinValueMap() {
+    public Map<String, String> getMinValueMap() {
         return minValueMap;
     }
     /**
@@ -289,10 +290,11 @@ public class ModelManager implements Serializable {
         this.minValueMap = map;
     }
     /**
-     * update min value map from properties
+     * update min value map from disk
      * @return max value map
      */
-    public Map updateMinValueMap (){
+    public Map<String, String> updateMinValueMap (){
+        propertiesUtil.updateProps();
         String minValues = propertiesUtil.readValue(ModelPropertiesLabels.MODLE_MIN_VALUE);
         Map map = propertiesUtil.getPropertiesMap(minValues);
         this.setMinValueMap(map);

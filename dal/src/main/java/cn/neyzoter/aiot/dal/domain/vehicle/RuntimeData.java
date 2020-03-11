@@ -5,6 +5,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import java.io.Serializable;
+import java.lang.reflect.Field;
 
 /**
  * All type runtime data for vehicle
@@ -14,7 +15,7 @@ import java.io.Serializable;
 @Setter
 @Getter
 @ToString
-public class RuntimeData implements Serializable {
+public class RuntimeData implements Serializable, RuntimeDataIf {
     private static final long serialVersionUID = 7876266795641274621L;
     protected Double val1;
     protected Double val2;
@@ -52,10 +53,40 @@ public class RuntimeData implements Serializable {
      * transform to fields, compatible to influx
      * @return String
      */
+    @Override
     public String toFields () {
         String str = this.toString();
         // match "RuntimeData(" or ")" or " "
         str = str.replaceAll("RuntimeData\\(| |\\)","");
         return str;
+    }
+
+    /**
+     * set val from String name
+     * @param val val
+     * @param valName valName
+     * @throws NoSuchFieldException no such field exception
+     * @throws IllegalAccessException illegal access exception
+     */
+    @Override
+    public void valFromStr (String val, String valName) throws NoSuchFieldException, IllegalAccessException{
+        Field field = this.getClass().getDeclaredField(valName);
+        boolean isAccessible = field.isAccessible();
+        try {
+            field.setAccessible(true);
+            if (field.getType().isAssignableFrom(Double.class)) {
+                field.set(this, Double.parseDouble(val));
+            } else if (field.getType().isAssignableFrom(Float.class)) {
+                field.set(this, Float.parseFloat(val));
+            } else if (field.getType().isAssignableFrom(Integer.class)) {
+                field.set(this, Integer.parseInt(val));
+            } else if (field.getType().isAssignableFrom(Long.class)) {
+                field.set(this, Long.parseLong(val));
+            } else if (field.getType().isAssignableFrom(String.class)) {
+                field.set(this, val);
+            }
+        } finally {
+            field.setAccessible(isAccessible);
+        }
     }
 }
