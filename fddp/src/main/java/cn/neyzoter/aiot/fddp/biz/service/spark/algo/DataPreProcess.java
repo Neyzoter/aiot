@@ -4,6 +4,9 @@ import cn.neyzoter.aiot.dal.domain.vehicle.RuntimeData;
 import cn.neyzoter.aiot.dal.domain.vehicle.VehicleHttpPack;
 import cn.neyzoter.aiot.fddp.biz.service.spark.exception.IllVehicleHttpPackTime;
 
+import javax.management.RuntimeMBeanException;
+import java.lang.reflect.Field;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 import java.util.SortedMap;
@@ -60,6 +63,27 @@ public class DataPreProcess {
      */
     public static VehicleHttpPack missingValueProcess (VehicleHttpPack pack) {
         // TODO
+        Class clazz = VehicleHttpPack.class;
+        Field[] fs = clazz.getDeclaredFields();
+        SortedMap rtDataMap = pack.getVehicle().getRtDataMap();
+        Iterator<Map.Entry<String, RuntimeData>> iter = rtDataMap.entrySet().iterator();
+        for (;iter.hasNext();) {
+            Map.Entry<String, RuntimeData> entry = iter.next();
+            RuntimeData rtData = entry.getValue();
+            for (Field field : fs) {
+                field.setAccessible(true);
+                try {
+                    // this field is null, we need to fill it
+                    if (field.get(rtData) == null) {
+                        // TODO
+                        // just set as zero
+                        field.set(rtData, 0.0);
+                    }
+                } catch (Exception e) {
+                    System.err.println(e);
+                }
+            }
+        }
         return pack;
     }
 
