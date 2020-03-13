@@ -4,6 +4,7 @@ tf_model/
 
 # file
 *.class
+*.jar
 
 # http request
 httpRequests/

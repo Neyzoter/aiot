@@ -1,6 +1,6 @@
 package cn.neyzoter.aiot.dal.domain.vehicle;
 
-import com.sun.istack.internal.NotNull;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * RuntimeData Interface, Data must implement this interface

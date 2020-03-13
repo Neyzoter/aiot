@@ -116,7 +116,7 @@ public class ModelManager implements Serializable {
 
             Session session = this.modelBundle.session();
             float[][][][] a = new float[5][30][30][3];
-            FileInputStream fin = new FileInputStream("/home/scc/code/java/aiot/common/tf_model/saved_model/train_data_20_txt.txt");
+            FileInputStream fin = new FileInputStream("/home/scc/code/java/aiot/common/tf_model/nescar/train_data_20_txt.txt");
             InputStreamReader reader = new InputStreamReader(fin);
             BufferedReader buffReader = new BufferedReader(reader);
             String line = buffReader.readLine();

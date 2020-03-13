@@ -8,9 +8,9 @@ import java.util.Map;
 import java.util.Properties;
 
 /**
- *
+ * properties Util
  * @author neyzoter song
- * @daa 2019-12-11
+ * @date 2019-12-11
  */
 public class PropertiesUtil implements Serializable {
     private static final long serialVersionUID = -3031705469789764720L;

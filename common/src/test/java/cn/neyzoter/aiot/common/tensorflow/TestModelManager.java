@@ -13,7 +13,7 @@ public class TestModelManager {
     @Test
     public void testDiagnosisModel () {
         try {
-            diagnosisModel = new ModelManager("/home/scc/code/java/aiot/common/tf_model/saved_model/","mytag", "mazida");
+            diagnosisModel = new ModelManager("/home/scc/code/java/aiot/common/tf_model/nescar/","mytag", "mazida");
             System.out.println("==== testDiagnosisModel ====");
             diagnosisModel.testModelBundle();
         }catch (Exception e) {
