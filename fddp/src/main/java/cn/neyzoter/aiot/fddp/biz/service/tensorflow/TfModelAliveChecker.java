@@ -1,6 +1,7 @@
 package cn.neyzoter.aiot.fddp.biz.service.tensorflow;
 
 import cn.neyzoter.aiot.common.util.PropertiesUtil;
+import cn.neyzoter.aiot.fddp.biz.service.properties.PropertiesManager;
 import lombok.Getter;
 import lombok.Setter;
 import org.slf4j.Logger;
@@ -18,15 +19,15 @@ import java.util.List;
  */
 @Setter
 @Getter
-@ComponentScan("cn.neyzoter.aiot.fddp.biz.service.tensorflow")
+@ComponentScan("cn.neyzoter.aiot.fddp.biz.service.tensorflow,cn.neyzoter.aiot.fddp.biz.service.properties")
 @Component
 public class TfModelAliveChecker implements Runnable{
     public static final Logger logger = LoggerFactory.getLogger(TfModelAliveChecker.class);
     private VehicleModelTable vehicleModelTable;
-    private PropertiesUtil propertiesUtil;
+    private PropertiesManager propertiesUtil;
 
     @Autowired
-    public TfModelAliveChecker (VehicleModelTable vehicleModelTable, PropertiesUtil p) {
+    public TfModelAliveChecker (VehicleModelTable vehicleModelTable, PropertiesManager p) {
         this.vehicleModelTable = vehicleModelTable;
         this.propertiesUtil = p;
     }

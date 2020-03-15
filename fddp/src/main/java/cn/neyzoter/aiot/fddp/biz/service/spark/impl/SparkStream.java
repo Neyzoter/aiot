@@ -6,8 +6,13 @@ import java.util.Arrays;
 import java.util.Map;
 import java.util.Set;
 
+import cn.neyzoter.aiot.common.data.serialization.SerializationUtil;
+import cn.neyzoter.aiot.common.tensorflow.ModelManager;
 import cn.neyzoter.aiot.common.util.PropertiesUtil;
+import cn.neyzoter.aiot.dal.dao.vehicle.Vehicle2InfluxDb;
+import cn.neyzoter.aiot.dal.domain.vehicle.RuntimeData;
 import cn.neyzoter.aiot.dal.domain.vehicle.VehicleHttpPack;
+import cn.neyzoter.aiot.dal.util.RestTemp;
 import cn.neyzoter.aiot.fddp.biz.service.bean.PropertiesLables;
 import cn.neyzoter.aiot.fddp.biz.service.bean.PropertiesValueRange;
 import cn.neyzoter.aiot.fddp.biz.service.influxdb.VPackInfluxPoster;
@@ -16,6 +21,7 @@ import cn.neyzoter.aiot.fddp.biz.service.kafka.constant.KafkaTopic;
 import cn.neyzoter.aiot.fddp.biz.service.kafka.impl.serialization.VehicleHttpPackDeserializer;
 import cn.neyzoter.aiot.fddp.biz.service.spark.algo.DataPreProcess;
 import cn.neyzoter.aiot.fddp.biz.service.spark.constant.SparkStreamingConf;
+import cn.neyzoter.aiot.fddp.biz.service.tensorflow.TfModelManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,7 +64,18 @@ public class SparkStream implements Serializable {
     public SparkStream(PropertiesUtil propertiesUtil, VPackInfluxPoster vPackInfluxPoster) {
         try {
             // Configuration
+            //// App name
             sparkConf = new SparkConf().setAppName(SparkStreamingConf.SPARK_STREAMING_NAME);
+            //// serialize
+            //// since spark 2.0.0, Kyro is internally used for simple class,
+            //// we should rigister our own classes to improve serializable efficiency
+            sparkConf.set("spark.serializer", "org.apache.spark.serializer.KryoSerializer");
+            sparkConf.set("spark.kryo.registrationRequired", "true");
+            Class[] classArray = {VehicleHttpPack.class,DataPreProcess.class,VehicleHttpPack.class, RestTemp.class,VPackInfluxPoster.class,
+                    RuntimeData.class, Vehicle2InfluxDb.class, SerializationUtil.class, TfModelManager.class, ModelManager.class,SparkStream.class,
+                    Long[].class};
+            sparkConf.registerKryoClasses(classArray);
+            //// spark master
             String spark_master = propertiesUtil.readValue(PropertiesLables.SPARK_MASTER);
             if (!PropertiesValueRange.APP_TEST_ON_IDEA.equals(spark_master)) {
                 sparkConf.setMaster(spark_master);

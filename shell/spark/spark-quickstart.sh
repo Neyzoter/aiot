@@ -9,5 +9,5 @@ echo "Started Spark Master OK"
 cat $SPARK_HOME/logs/*.out
 
 echo "Starging a Worker..."
-$SPARK_HOME/bin/spark-class org.apache.spark.deploy.worker.Worker spark://neyzoter:7077
+nohup $SPARK_HOME/bin/spark-class org.apache.spark.deploy.worker.Worker spark://neyzoter:7077 &
 echo "Started a Worker OK"

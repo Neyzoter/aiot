@@ -64,7 +64,6 @@ public class DataPreProcess implements Serializable {
      * @return {@link VehicleHttpPack}
      */
     public static VehicleHttpPack missingValueProcess (VehicleHttpPack pack) {
-        // TODO
         Class clazz = VehicleHttpPack.class;
         Field[] fs = clazz.getDeclaredFields();
         SortedMap rtDataMap = pack.getVehicle().getRtDataMap();
