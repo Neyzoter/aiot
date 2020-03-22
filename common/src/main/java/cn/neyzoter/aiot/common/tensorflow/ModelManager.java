@@ -37,6 +37,11 @@ public class ModelManager implements Serializable {
      * min value map
      */
     private Map<String, String> minValueMap;
+
+    /**
+     * normalized e
+     */
+    private Double normalizedE;
     /**
      * alive time from last contact, when data sended , alive time will update to be 0
      */
@@ -86,8 +91,20 @@ public class ModelManager implements Serializable {
         this.key = k;
         this.propertiesUtil = new PropertiesUtil(path + ModelPropertiesLabels.MODEL_PROPERTIES_NAME);
         // below must put after propertiesUtil's init
-        this.updateMaxValueMap();
-        this.updateMinValueMap();
+//        this.updateMaxValueMap();
+        String maxValues = propertiesUtil.readValue(ModelPropertiesLabels.MODLE_MAX_VALUE);
+        Map maxMap = propertiesUtil.getPropertiesMap(maxValues);
+        this.setMaxValueMap(maxMap);
+
+//        this.updateMinValueMap();
+        String minValues = propertiesUtil.readValue(ModelPropertiesLabels.MODLE_MIN_VALUE);
+        Map minMap = propertiesUtil.getPropertiesMap(minValues);
+        this.setMinValueMap(minMap);
+
+//        this.updateNormalizedE();
+        String eStr = propertiesUtil.readValue(ModelPropertiesLabels.MODLE_NORMALIZED_E);
+        Double e = Double.parseDouble(eStr);
+        this.setNormalizedE(e);
     }
 
     /**
@@ -299,5 +316,33 @@ public class ModelManager implements Serializable {
         Map map = propertiesUtil.getPropertiesMap(minValues);
         this.setMinValueMap(map);
         return minValueMap;
+    }
+
+    /**
+     * get normalized e
+     * @return normalizedE
+     */
+    public Double getNormalizedE() {
+        return normalizedE;
+    }
+
+    /**
+     * set normalized e
+     * @param normalizedE small constant for normalizing
+     */
+    public void setNormalizedE(Double normalizedE) {
+        this.normalizedE = normalizedE;
+    }
+
+    /**
+     * update normalizedE from disk
+     * @return normalizedE
+     */
+    public Double updateNormalizedE () {
+        propertiesUtil.updateProps();
+        String eStr = propertiesUtil.readValue(ModelPropertiesLabels.MODLE_NORMALIZED_E);
+        Double e = Double.parseDouble(eStr);
+        this.setNormalizedE(e);
+        return normalizedE;
     }
 }

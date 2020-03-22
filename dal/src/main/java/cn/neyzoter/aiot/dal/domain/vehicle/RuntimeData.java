@@ -15,7 +15,7 @@ import java.lang.reflect.Field;
 @Setter
 @Getter
 @ToString
-public class RuntimeData implements Serializable, RuntimeDataIf {
+public class RuntimeData implements Serializable, RuntimeDataIf<RuntimeData> {
     private static final long serialVersionUID = 7876266795641274621L;
     protected Double val1;
     protected Double val2;
@@ -69,7 +69,7 @@ public class RuntimeData implements Serializable, RuntimeDataIf {
      * @throws IllegalAccessException illegal access exception
      */
     @Override
-    public void valFromStr (String val, String valName) throws NoSuchFieldException, IllegalAccessException{
+    public void valFromStr (String val, String valName) throws NoSuchFieldException, IllegalAccessException {
         Field field = this.getClass().getDeclaredField(valName);
         boolean isAccessible = field.isAccessible();
         try {
@@ -88,5 +88,23 @@ public class RuntimeData implements Serializable, RuntimeDataIf {
         } finally {
             field.setAccessible(isAccessible);
         }
+    }
+
+    /**
+     * normalize
+     * @param minVal min val
+     * @param maxVal max val
+     * @param e small constant for normalizing
+     */
+    @Override
+    public void normalize(RuntimeData minVal, RuntimeData maxVal, Double e) {
+        Double delta = maxVal.val1 - minVal.val1 + e;
+        Double newVal = (this.getVal1() - minVal.getVal1()) / delta;
+        this.setVal1(newVal);
+        // TODO
+    }
+
+    public void normalize(RuntimeData minVal, RuntimeData deltaVal) {
+        // TODO
     }
 }

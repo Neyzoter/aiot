@@ -3,6 +3,7 @@ package cn.neyzoter.aiot.fddp.biz.service.tensorflow;
 import cn.neyzoter.aiot.common.tensorflow.ModelManager;
 import cn.neyzoter.aiot.dal.domain.vehicle.RuntimeData;
 import lombok.Getter;
+import lombok.Setter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -33,6 +34,15 @@ public class TfModelManager extends ModelManager implements Serializable {
     private RuntimeData minRtData;
 
     /**
+     * max rt data minus min rt data
+     */
+    @Getter
+    @Setter
+    private RuntimeData deltaRtData;
+
+
+
+    /**
      * Class ModelManager build
      * @param path model's path
      * @param tag model's tag
@@ -46,6 +56,7 @@ public class TfModelManager extends ModelManager implements Serializable {
         this.minRtData = new RuntimeData();
         this.updateMaxRtData();
         this.updateMinRtData();
+        this.updateDeltaRtData();
     }
 
     /**
@@ -77,6 +88,32 @@ public class TfModelManager extends ModelManager implements Serializable {
             this.minRtData.valFromStr(valVal, valName);
         }
         return this.minRtData;
+    }
+
+    /**
+     * update delta runtime data
+     * @return RuntimeData
+     * @throws Exception maxValueMap's size is not equal to minValueMap's
+     * @throws Exception minValueMap does not contain maxValueMap's key
+     */
+    public RuntimeData updateDeltaRtData () throws Exception  {
+        Iterator<Map.Entry<String,String>> maxIter = this.getMaxValueMap().entrySet().iterator();
+        if (this.getMaxValueMap().size() != this.getMinValueMap().size()) {
+            throw new Exception("maxValueMap's size is not equal to minValueMap's");
+        }
+        for ( ; maxIter.hasNext() ; ) {
+            Map.Entry<String, String> entry = maxIter.next();
+            if (!this.getMinValueMap().containsKey(entry.getKey())) {
+                throw  new Exception("minValueMap does not contain maxValueMap's key");
+            } else {
+                String minString = this.getMinValueMap().get(entry.getKey());
+                Double min = Double.parseDouble(minString);
+                Double max = Double.parseDouble(entry.getValue());
+                Double delta = max - min + this.getNormalizedE();
+                this.deltaRtData.valFromStr(entry.getKey(), delta.toString());
+            }
+        }
+        return this.deltaRtData;
     }
 
 }

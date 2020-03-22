@@ -1,6 +1,7 @@
 package cn.neyzoter.aiot.fddp.biz.service.spark.algo;
 
 import cn.neyzoter.aiot.dal.domain.vehicle.RuntimeData;
+import cn.neyzoter.aiot.dal.domain.vehicle.Vehicle;
 import cn.neyzoter.aiot.dal.domain.vehicle.VehicleHttpPack;
 import cn.neyzoter.aiot.fddp.biz.service.spark.exception.IllVehicleHttpPackTime;
 
@@ -96,6 +97,26 @@ public class DataPreProcess implements Serializable {
      */
     public static VehicleHttpPack multiSamplingRateProcess (VehicleHttpPack pack) {
         // TODO
+        return pack;
+    }
+
+    /**
+     * normalize the pack
+     * @param pack {@link VehicleHttpPack}
+     * @param maxRtD {@link RuntimeData} max RuntimeData
+     * @param minRtD {@link RuntimeData} min RuntimeData
+     * @return {@link VehicleHttpPack}
+     */
+    public static VehicleHttpPack normalize(VehicleHttpPack pack, RuntimeData maxRtD, RuntimeData minRtD) {
+        Iterator<Map.Entry<Long, RuntimeData>> iter = pack.getVehicle().getRtDataMap().entrySet().iterator();
+        for (;iter.hasNext();) {
+            Map.Entry<Long, RuntimeData> item = iter.next();
+            RuntimeData rtd = item.getValue();
+
+        }
+        // TODO
+        // ....
+
         return pack;
     }
 }

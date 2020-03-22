@@ -7,12 +7,12 @@ import org.jetbrains.annotations.NotNull;
  * @author Neyzoter Song
  * @date 2020-3-11
  */
-public interface RuntimeDataIf {
+public interface RuntimeDataIf<T> {
     /**
      * transform to fields, compatible to influx
      * @return String
      */
-    public String toFields () ;
+    String toFields () ;
 
     /**
      * set val from String name<br/>if your fields has different type var, need to take measures against the problem<br/> there is a simple example:<br/>
@@ -43,5 +43,13 @@ public interface RuntimeDataIf {
      * @throws NoSuchFieldException no such field exception
      * @throws IllegalAccessException illegal access exception
      */
-    public void valFromStr (@NotNull String val, @NotNull String valName) throws NoSuchFieldException, IllegalAccessException;
+    void valFromStr (@NotNull String val, @NotNull String valName) throws NoSuchFieldException, IllegalAccessException;
+
+    /**
+     * normalize the data
+     * @param val1 val1
+     * @param val2 val2
+     * @param e small constant for normalizing
+     */
+    void normalize (T val1, T val2, Double e) ;
 }
