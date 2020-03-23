@@ -17,38 +17,50 @@ import java.lang.reflect.Field;
 @ToString
 public class RuntimeData implements Serializable, RuntimeDataIf<RuntimeData> {
     private static final long serialVersionUID = 7876266795641274621L;
-    protected Double val1;
-    protected Double val2;
-    protected Double val3;
-    protected Double val4;
-    protected Double val5;
-    protected Double val6;
-    protected Double val7;
-    protected Double val8;
-    protected Double val9;
-    protected Double val10;
-    protected Double val11;
-    protected Double val12;
-    protected Double val13;
-    protected Double val14;
-    protected Double val15;
-    protected Double val16;
-    protected Double val17;
-    protected Double val18;
-    protected Double val19;
-    protected Double val20;
-    protected Double val21;
-    protected Double val22;
-    protected Double val23;
-    protected Double val24;
-    protected Double val25;
-    protected Double val26;
-    protected Double val27;
-    protected Double val28;
-    protected Double val29;
-    protected Double val30;
+    public Double val1;
+    public Double val2;
+    public Double val3;
+    public Double val4;
+    public Double val5;
+    public Double val6;
+    public Double val7;
+    public Double val8;
+    public Double val9;
+    public Double val10;
+    public Double val11;
+    public Double val12;
+    public Double val13;
+    public Double val14;
+    public Double val15;
+    public Double val16;
+    public Double val17;
+    public Double val18;
+    public Double val19;
+    public Double val20;
+    public Double val21;
+    public Double val22;
+    public Double val23;
+    public Double val24;
+    public Double val25;
+    public Double val26;
+    public Double val27;
+    public Double val28;
+    public Double val29;
+    public Double val30;
 
 
+    public RuntimeData () {
+        fieldsSetAccessible();
+    }
+    /**
+     * fields set accessible
+     */
+    public void fieldsSetAccessible () {
+        Field[] fields = this.getClass().getFields();
+        for (Field field : fields) {
+            field.setAccessible(true);
+        }
+    }
     /**
      * transform to fields, compatible to influx
      * @return String
@@ -97,14 +109,45 @@ public class RuntimeData implements Serializable, RuntimeDataIf<RuntimeData> {
      * @param e small constant for normalizing
      */
     @Override
-    public void normalize(RuntimeData minVal, RuntimeData maxVal, Double e) {
-        Double delta = maxVal.val1 - minVal.val1 + e;
-        Double newVal = (this.getVal1() - minVal.getVal1()) / delta;
-        this.setVal1(newVal);
-        // TODO
+    public void normalize(RuntimeData minVal, RuntimeData maxVal, Double e) throws Exception{
+        Field[] fields = this.getClass().getDeclaredFields();
+        Double delta;Double max;Double min;Double thisVal;
+        try {
+            for (Field field : fields) {
+                // except out of Double.class
+                if (field.getType().isAssignableFrom(Double.class)) {
+                    max = (Double) field.get(maxVal);
+                    min = (Double) field.get(minVal);
+                    thisVal = (Double) field.get(this);
+                    delta = max - min + e;
+                    field.set(this, (thisVal - min) / delta);
+                }
+            }
+        } catch (Exception ex ) {
+            throw ex;
+        }
     }
 
-    public void normalize(RuntimeData minVal, RuntimeData deltaVal) {
-        // TODO
+    /**
+     * normalize
+     * @param minVal min val
+     * @param deltaVal (max - min + e), e is a small constant for normalizing
+     */
+    public void normalize(RuntimeData minVal, RuntimeData deltaVal) throws Exception {
+        Field[] fields = this.getClass().getDeclaredFields();
+        Double delta;Double min;Double thisVal;
+        try {
+            for (Field field : fields) {
+                // except out of Double.class
+                if (field.getType().isAssignableFrom(Double.class)) {
+                    min = (Double) field.get(minVal);
+                    thisVal = (Double) field.get(this);
+                    delta = (Double) field.get(deltaVal);
+                    field.set(this, (thisVal - min) / delta);
+                }
+            }
+        } catch (Exception ex ) {
+            throw ex;
+        }
     }
 }

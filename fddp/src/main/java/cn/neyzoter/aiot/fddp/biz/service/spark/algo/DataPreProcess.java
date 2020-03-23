@@ -103,20 +103,21 @@ public class DataPreProcess implements Serializable {
     /**
      * normalize the pack
      * @param pack {@link VehicleHttpPack}
-     * @param maxRtD {@link RuntimeData} max RuntimeData
      * @param minRtD {@link RuntimeData} min RuntimeData
+     * @param deltaRtD {@link RuntimeData} max - min + e RuntimeData
      * @return {@link VehicleHttpPack}
      */
-    public static VehicleHttpPack normalize(VehicleHttpPack pack, RuntimeData maxRtD, RuntimeData minRtD) {
+    public static VehicleHttpPack normalize(VehicleHttpPack pack, RuntimeData minRtD, RuntimeData deltaRtD) throws Exception{
         Iterator<Map.Entry<Long, RuntimeData>> iter = pack.getVehicle().getRtDataMap().entrySet().iterator();
         for (;iter.hasNext();) {
             Map.Entry<Long, RuntimeData> item = iter.next();
             RuntimeData rtd = item.getValue();
-
+            try {
+                rtd.normalize(minRtD, deltaRtD);
+            } catch (Exception e) {
+                throw e;
+            }
         }
-        // TODO
-        // ....
-
         return pack;
     }
 }

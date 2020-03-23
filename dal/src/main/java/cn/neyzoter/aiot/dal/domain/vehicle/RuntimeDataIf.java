@@ -51,5 +51,5 @@ public interface RuntimeDataIf<T> {
      * @param val2 val2
      * @param e small constant for normalizing
      */
-    void normalize (T val1, T val2, Double e) ;
+    void normalize (T val1, T val2, Double e) throws Exception;
 }
