@@ -21,9 +21,13 @@ public class SerializationUtil implements Serializable {
         ByteArrayOutputStream baos = null;
         ObjectOutputStream oos = null;
         try{
+            // create byte array output stream
             baos = new ByteArrayOutputStream();
+            // create obj output stream, write into baos
             oos = new ObjectOutputStream(baos);
+            // write obj into baos
             oos.writeObject(obj);
+            // trans to byte[]
             byte[] bytes = baos.toByteArray();
             oos.close();
             return bytes;
@@ -36,9 +40,11 @@ public class SerializationUtil implements Serializable {
         ByteArrayInputStream bais = null;
         Object tmpObject = null;
         try {
-            // Deserialize
+            // trans to ByteArrayInputStream
             bais = new ByteArrayInputStream(bytes);
+            // trans to obj InputStream
             ObjectInputStream ois = new ObjectInputStream(bais);
+            // trans to obj
             tmpObject = (Object)ois.readObject();
             ois.close();
             return tmpObject;

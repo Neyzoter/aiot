@@ -14,7 +14,7 @@ import java.util.Map;
  * @date 2019/9/11
  */
 public class VehicleHttpPackDeserializer implements Deserializer<VehicleHttpPack> {
-    private final static Logger logger = LoggerFactory.getLogger(VehicleHttpPackSerializer.class);
+    private final static Logger logger = LoggerFactory.getLogger(VehicleHttpPackDeserializer.class);
     @Override
     public void configure(Map<String, ?> configs, boolean isKey) {
         // do nothing
