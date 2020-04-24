@@ -22,6 +22,8 @@ import cn.neyzoter.aiot.fddp.biz.service.kafka.impl.serialization.VehicleHttpPac
 import cn.neyzoter.aiot.fddp.biz.service.spark.algo.DataPreProcess;
 import cn.neyzoter.aiot.fddp.biz.service.spark.constant.SparkStreamingConf;
 import cn.neyzoter.aiot.fddp.biz.service.tensorflow.TfModelManager;
+import cn.neyzoter.aiot.fddp.biz.service.tensorflow.VehicleModelTable;
+import org.apache.spark.api.java.function.Function;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +43,7 @@ import org.apache.spark.streaming.kafka010.KafkaUtils;
 import org.apache.spark.streaming.kafka010.LocationStrategies;
 import org.apache.spark.streaming.Durations;
 
+import javax.xml.crypto.Data;
 
 
 /**
@@ -55,6 +58,12 @@ public class SparkStream implements Serializable {
     public final static Logger logger= LoggerFactory.getLogger(SparkStream.class);
     public final static String VID_KEY_PREFIX= "vid=";
     public final static int SPARK_STEAMING_DURATION_SECOND = 5;
+
+    /**
+     * 模型信息
+     */
+    @Autowired
+    private VehicleModelTable vehicleModelTable;
 
     SparkConf sparkConf;
     JavaStreamingContext jssc;
@@ -95,8 +104,8 @@ public class SparkStream implements Serializable {
                     ConsumerStrategies.Subscribe(topicsSet, kafkaParams));
             // compact packs group by vid_year_month_and_day
             JavaPairDStream<String, VehicleHttpPack> record = messages.mapToPair(
-                    x -> new Tuple2<>(String.format(VID_KEY_PREFIX + x.key().replace("\"","")),
-                            x.value())).reduceByKey((x1, x2) -> DataPreProcess.compact(x1, x2));
+                    x -> new Tuple2<>(VID_KEY_PREFIX + x.key().replace("\"",""),
+                            x.value())).reduceByKey(DataPreProcess::compact);
             //count
             JavaDStream<Long> count = messages.count();
 
@@ -104,9 +113,13 @@ public class SparkStream implements Serializable {
 //            JavaPairDStream<String, VehicleHttpPack> record_post2Influx = record.mapValues(x -> vPackInfluxPoster.postVpack2InfluxDB(x));
 
             // outlier values process
-            record = record.mapValues(x -> DataPreProcess.outlierHandling(x));
+            record = record.mapValues(DataPreProcess::outlierHandling);
             // multi Sampling Rate Process
-            record = record.mapValues(x -> DataPreProcess.multiSamplingRateProcess(x));
+            record = record.mapValues(DataPreProcess::multiSamplingRateProcess);
+            // normalize
+            record = record.mapValues(x -> DataPreProcess.normalize(x,
+                    vehicleModelTable.getModelManager(x.getVehicle().getVtype()).getMinRtData(),
+                    vehicleModelTable.getModelManager(x.getVehicle().getVtype()).getMaxRtData()));
             record.print();
             count.print();
 
