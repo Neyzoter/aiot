@@ -10,4 +10,5 @@ import java.io.Serializable;
  * @date 2020-2-26
  */
 public class RestTemp extends RestTemplate implements Serializable {
+    private static final long serialVersionUID = 2858219440433992489L;
 }

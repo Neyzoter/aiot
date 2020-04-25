@@ -56,26 +56,18 @@ public class SparkStream implements Serializable {
     public final static String VID_KEY_PREFIX= "vid=";
     public final static int SPARK_STEAMING_DURATION_SECOND = 5;
 
-    /**
-     * 模型信息
-     */
-    @Autowired
+    private JavaStreamingContext jssc;
+    private Set<String> topicsSet;
+    private Map<String, Object> kafkaParams;
     private VehicleModelTable vehicleModelTable;
-
-    SparkConf sparkConf;
-    JavaStreamingContext jssc;
-    Set<String> topicsSet;
-    Map<String, Object> kafkaParams;
     @Autowired
-    public SparkStream(PropertiesUtil propertiesUtil, VPackInfluxPoster vPackInfluxPoster) {
+    public SparkStream(PropertiesUtil propertiesUtil, VPackInfluxPoster vPackInfluxPoster, VehicleModelTable modelTable) {
+        this.vehicleModelTable = modelTable;
         try {
             conf(propertiesUtil);
-            JavaPairDStream<String, VehicleHttpPack> record = prepare(vPackInfluxPoster);
+            JavaPairDStream<String, VehicleHttpPack> record = prepare(vPackInfluxPoster, vehicleModelTable);
             record.print();
-
-            // Start the computation
-            jssc.start();
-            jssc.awaitTermination();
+            start();
         } catch (Exception e) {
             logger.error("", e);
         }
@@ -86,9 +78,9 @@ public class SparkStream implements Serializable {
      * config spark stream
      * @param propertiesUtil properties util
      */
-    public void conf (PropertiesUtil propertiesUtil) {
+    private void conf (PropertiesUtil propertiesUtil) {
         // App name
-        sparkConf = new SparkConf().setAppName(SparkStreamingConf.SPARK_STREAMING_NAME);
+        SparkConf sparkConf = new SparkConf().setAppName(SparkStreamingConf.SPARK_STREAMING_NAME);
         // serialize
         // since spark 2.0.0, Kyro is internally used for simple class,
         // we should rigister our own classes to improve serializable efficiency
@@ -105,7 +97,7 @@ public class SparkStream implements Serializable {
         }
         topicsSet = new HashSet<>(Arrays.asList(KafkaTopic.TOPIC_VEHICLE_HTTP_PACKET_NAME));
         jssc = new JavaStreamingContext(sparkConf, Durations.seconds(SPARK_STEAMING_DURATION_SECOND));
-        kafkaParams = new HashMap<>();
+        kafkaParams = new HashMap<>(10);
         kafkaParams.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, propertiesUtil.readValue(PropertiesLables.KAFKA_BOOTSTRAP_SERVER));
         kafkaParams.put(ConsumerConfig.GROUP_ID_CONFIG,KafkaConsumerGroup.GROUP_SPARK_CONSUME_VEHICLE_HTTP_PACKET);
         kafkaParams.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
@@ -116,7 +108,7 @@ public class SparkStream implements Serializable {
      * prepare
      * @return JavaPairDStream
      */
-    public JavaPairDStream<String, VehicleHttpPack> prepare (VPackInfluxPoster vPackInfluxPoster) {
+    private JavaPairDStream<String, VehicleHttpPack> prepare (VPackInfluxPoster vPackInfluxPoster, VehicleModelTable vehicleModelTable) {
         // Create direct kafka stream with brokers and topics
         JavaInputDStream<ConsumerRecord<String, VehicleHttpPack>> messages = KafkaUtils.createDirectStream(
                 jssc,
@@ -146,10 +138,19 @@ public class SparkStream implements Serializable {
 
     /**
      * flush to influxDB
-     * @param record
+     * @param record 记录
      */
-    public void flush2Influx (JavaPairDStream<String, VehicleHttpPack> record, VPackInfluxPoster vPackInfluxPoster) {
-        record.mapValues(x -> vPackInfluxPoster.postVpack2InfluxDB(x));
+    private void flush2Influx (JavaPairDStream<String, VehicleHttpPack> record, VPackInfluxPoster vPackInfluxPoster) {
+        record.mapValues(vPackInfluxPoster::postVpack2InfluxDB);
+    }
+
+    /**
+     * start the computation
+     */
+    private void start () {
+        // Start the computation
+        jssc.start();
+        jssc.awaitTermination();
     }
 
 }
