@@ -17,6 +17,7 @@ import java.lang.reflect.Field;
 @ToString
 public class RuntimeData implements Serializable, RuntimeDataIf<RuntimeData> {
     private static final long serialVersionUID = 7876266795641274621L;
+    public static final int VAR_NUM = 30;
     public Double val1;
     public Double val2;
     public Double val3;
@@ -71,6 +72,22 @@ public class RuntimeData implements Serializable, RuntimeDataIf<RuntimeData> {
         // match "RuntimeData(" or ")" or " "
         str = str.replaceAll("RuntimeData\\(| |\\)","");
         return str;
+    }
+
+    @Override
+    public Double[] toArray () throws Exception{
+        Double[] data = new Double[VAR_NUM];
+        try {
+            for (int i = 0; i < VAR_NUM ; i ++) {
+                // TODO
+                Field field = this.getClass().getDeclaredField("val" + i);
+                Double var = (Double) field.get(this);
+                data[i] = var;
+            }
+        } catch (Exception e) {
+            throw e;
+        }
+        return data;
     }
 
     /**

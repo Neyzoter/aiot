@@ -143,17 +143,50 @@ public class DataPreProcess implements Serializable {
         int winNum = Integer.parseInt(propertiesUtil.readValue(PropertiesLables.DATA_MATRIX_WIN_NUM));
         // max step
         int maxStep = Integer.parseInt(propertiesUtil.readValue(PropertiesLables.DATA_MATRIX_STEP));
+        // gap time between [X][feature num][feature num][i] and [X][feature num][feature num][i + 1]
+        int gapTime = Integer.parseInt(propertiesUtil.readValue(PropertiesLables.DATA_MATRIX_GAP_NUM));
         Double[][][][] matrix = new Double[maxStep][featureNum][featureNum][winNum];
+
+        // get data
+        Double[][] data = pack.getVehicle().toArrayT();
+        int dataNum = data[0].length;
 
         // get win
         String[] winStrs = propertiesUtil.getPropertiesList(propertiesUtil.readValue(PropertiesLables.DATA_MATRIX_WIN));
         if (winStrs.length != winNum) {
             throw new IllWinNum(winNum, winStrs.length);
         }
-        for (String winStr : winStrs) {
-            int winInt = Integer.parseInt(winStr);
-            // TODO
+
+//        // start time
+//        long start = pack.getVehicle().getRtDataMap().firstKey();
+//        // end time
+//        long end = pack.getVehicle().getRtDataMap().lastKey();
+        for (int step = 0 ; step < maxStep; step ++) {
+            for (int winIdx = 0; winIdx < winNum; winIdx ++) {
+                int winInt = Integer.parseInt(winStrs[winIdx]);
+                for (int i = 0; i < featureNum; i ++) {
+                    for (int j = i; j < featureNum ; j ++) {
+                        // must leave window
+                        for (int t = 0; t <= dataNum - winInt; t += gapTime) {
+//                            Double[] array1 = new Double[winInt];
+//                            Double[] array2 = new Double[winInt];
+//                            System.arraycopy(data[i], t, array1, 0, winInt);
+//                            System.arraycopy(data[j], t, array2, 0, winInt);
+                            for (int win = 0; win < winInt; win ++) {
+                                matrix[step][i][j][winIdx] += data[i][t + win] * data[j][t + win];
+                            }
+                            matrix[step][i][j][winIdx] /= winInt;
+                            matrix[step][j][i][winIdx] = matrix[step][i][j][winIdx];
+                            // TODO
+//                            matrix[step][i][j][winInt] = pack.getVehicle().getRtDataMap().get((Long) (start + t));
+                        }
+
+                    }
+                }
+                // TODO
+            }
         }
+
         return matrix;
     }
 

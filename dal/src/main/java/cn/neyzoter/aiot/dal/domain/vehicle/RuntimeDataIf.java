@@ -15,6 +15,12 @@ public interface RuntimeDataIf<T> {
     String toFields () ;
 
     /**
+     * transfrom to array
+     * @return Double
+     */
+    Double[] toArray () throws Exception;
+
+    /**
      * set val from String name<br/>if your fields has different type var, need to take measures against the problem<br/> there is a simple example:<br/>
      * <PRE>
      * public void valFromStr (String val, String valName) throws NoSuchFieldException, IllegalAccessException{

@@ -103,6 +103,45 @@ public class Vehicle implements Serializable {
     }
 
     /**
+     * transform to 2-array<br/>
+     * [time][var num]
+     * @return Double[][]
+     */
+    public Double[][] toArray () {
+        Iterator<Map.Entry<Long, RuntimeData>> iter = rtDataMap.entrySet().iterator();
+        int rtDataNum = rtDataMap.size();
+        Double[][] array = new Double[rtDataNum][RuntimeData.VAR_NUM];
+        for (int time = 0;time < rtDataNum; time ++) {
+            Map.Entry<Long, RuntimeData> entry = iter.next();
+            try {
+                Double[] arr = entry.getValue().toArray();
+                System.arraycopy(arr, 0, array[time], 0, RuntimeData.VAR_NUM);
+            } catch (Exception e) {
+                System.err.println(e);
+            }
+        }
+        return array;
+    }
+
+    /**
+     * transform to 2-array<br/>
+     * [var num][time]
+     * @return Double[][]
+     */
+    public Double[][] toArrayT () {
+        Double[][] array = toArray();
+        int timeNum = array.length;
+        int varNum = array[0].length;
+        Double[][] arrayT = new Double[varNum][timeNum];
+        for (int i = 0; i < timeNum; i ++) {
+            for (int j = 0; j < varNum; j ++) {
+                arrayT[j][i] = array[i][j];
+            }
+        }
+        return arrayT;
+    }
+
+    /**
      * get tags, compatible to influx
      * @return tags
      */
