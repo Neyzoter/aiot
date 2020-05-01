@@ -3,9 +3,7 @@ package cn.neyzoter.aiot.common.util;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.Serializable;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Properties;
+import java.util.*;
 
 /**
  * properties Util
@@ -90,6 +88,19 @@ public class PropertiesUtil implements Serializable {
             map.put(kvArray[0],kvArray[1]);
         }
         return map;
+    }
+
+    /**
+     * trans json format properties to list
+     * @param properties json format properties <br/> such as {0.12,2.2}
+     * @return String[]
+     */
+    public String[] getPropertiesList (String properties) {
+        properties = properties.trim();
+        // rm "{" and "}" and " "
+        properties = properties.replaceAll("[\\{|\\}| ]","");
+        // split
+        return properties.split(PROPERTIES_SEPERATOR);
     }
 
 }

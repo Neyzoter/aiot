@@ -1,9 +1,15 @@
 package cn.neyzoter.aiot.fddp.biz.service.spark.algo;
 
+import cn.neyzoter.aiot.common.util.PropertiesUtil;
 import cn.neyzoter.aiot.dal.domain.vehicle.RuntimeData;
-import cn.neyzoter.aiot.dal.domain.vehicle.Vehicle;
 import cn.neyzoter.aiot.dal.domain.vehicle.VehicleHttpPack;
+import cn.neyzoter.aiot.fddp.biz.service.bean.PropertiesLables;
+import cn.neyzoter.aiot.fddp.biz.service.properties.PropertiesManager;
 import cn.neyzoter.aiot.fddp.biz.service.spark.exception.IllVehicleHttpPackTime;
+import cn.neyzoter.aiot.fddp.biz.service.spark.exception.IllWinNum;
+import org.springframework.beans.factory.annotation.Autowired;
+import scala.Int;
+import scala.util.Try;
 
 import java.io.Serializable;
 import java.lang.reflect.Field;
@@ -20,6 +26,10 @@ import java.util.SortedMap;
 public class DataPreProcess implements Serializable {
 
     private static final long serialVersionUID = 2357018289949033614L;
+    /**
+     * properties
+     */
+    public static PropertiesUtil propertiesUtil = new PropertiesUtil(PropertiesLables.PROPERTIES_PATH);
 
     /**
      * compact two pack
@@ -119,6 +129,32 @@ public class DataPreProcess implements Serializable {
             }
         }
         return pack;
+    }
+
+    /**
+     * 转化为矩阵
+     * @param pack VehicleHttpPack
+     * @return 特征转化为相关矩阵
+     */
+    public static Double[][][][] trans2Matrix (VehicleHttpPack pack) throws IllWinNum{
+        // feature num
+        int featureNum = Integer.parseInt(propertiesUtil.readValue(PropertiesLables.DATA_MATRIX_FEATURE_NUM));
+        // win num
+        int winNum = Integer.parseInt(propertiesUtil.readValue(PropertiesLables.DATA_MATRIX_WIN_NUM));
+        // max step
+        int maxStep = Integer.parseInt(propertiesUtil.readValue(PropertiesLables.DATA_MATRIX_STEP));
+        Double[][][][] matrix = new Double[maxStep][featureNum][featureNum][winNum];
+
+        // get win
+        String[] winStrs = propertiesUtil.getPropertiesList(propertiesUtil.readValue(PropertiesLables.DATA_MATRIX_WIN));
+        if (winStrs.length != winNum) {
+            throw new IllWinNum(winNum, winStrs.length);
+        }
+        for (String winStr : winStrs) {
+            int winInt = Integer.parseInt(winStr);
+            // TODO
+        }
+        return matrix;
     }
 
 }

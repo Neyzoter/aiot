@@ -17,6 +17,7 @@ import java.util.concurrent.TimeUnit;
 @Component("propertiesUtil")
 public class PropertiesManager extends PropertiesUtil implements Runnable{
     public static final Logger logger = LoggerFactory.getLogger(PropertiesManager.class);
+    private static final long serialVersionUID = 3974266425966219580L;
 
     public PropertiesManager () {
         super(PropertiesLables.PROPERTIES_PATH);

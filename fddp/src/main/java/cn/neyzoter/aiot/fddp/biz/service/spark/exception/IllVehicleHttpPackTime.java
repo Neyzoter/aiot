@@ -10,7 +10,7 @@ public class IllVehicleHttpPackTime extends Exception {
     public static final String ILL_DAY = "Day";
     public static final String ILL_MONTH = "Month";
     public static final String ILL_YEAR = "Year";
-    String detail;
+    private String detail;
     public IllVehicleHttpPackTime(String timeUnit) {
         detail = timeUnit;
     }
@@ -20,7 +20,6 @@ public class IllVehicleHttpPackTime extends Exception {
 
     @Override
     public String toString () {
-        String exceptionMsg = String.format("Illegal VehicleHttpPack Time : %s", this.detail);
-        return exceptionMsg;
+        return String.format("Illegal VehicleHttpPack Time : %s", this.detail);
     }
 }

@@ -70,5 +70,30 @@ public class PropertiesLables {
      * scheduled executor running unit
      */
     public static final String TF_MODEL_CHECK_UNIT = "tensorflow.model.check-unit";
+    /**
+     * matrix max step<br/>
+     * matrix is (max-step,feature-num,feature-num,win-num)
+     */
+    public static final String DATA_MATRIX_STEP = "data.matrix.max-step";
+    /**
+     * matrix win num<br/>
+     * matrix is (max-step,feature-num,feature-num,win-num)
+     */
+    public static final String DATA_MATRIX_WIN_NUM = "data.matrix.win-num";
+    /**
+     * matrix win
+     */
+    public static final String DATA_MATRIX_WIN = "data.matrix.win";
+    /**
+     * matrix feature num<br/>
+     * matrix is (max-step,feature-num,feature-num,win-num)
+     */
+    public static final String DATA_MATRIX_FEATURE_NUM = "data.matrix.feature-num";
+
+    /**
+     * data trans to matrix with gap-time
+     */
+    public static final String DATA_MATRIX_GAP_NUM = "data.matrix.gat-time";
+
 
 }

@@ -147,10 +147,15 @@ public class SparkStream implements Serializable {
     /**
      * start the computation
      */
-    private void start () {
-        // Start the computation
-        jssc.start();
-        jssc.awaitTermination();
+    private void start () throws Exception{
+        try {
+            // Start the computation
+            jssc.start();
+            jssc.awaitTermination();
+        } catch (Exception e) {
+            throw e;
+        }
+
     }
 
 }
