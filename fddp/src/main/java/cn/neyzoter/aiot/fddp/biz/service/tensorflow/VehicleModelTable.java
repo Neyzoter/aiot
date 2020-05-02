@@ -142,7 +142,7 @@ public class VehicleModelTable implements Serializable {
      * @param key key
      * @return {@link TfModelManager}
      */
-    public TfModelManager getModelManagerReset (String key) {
+    public TfModelManager getModelManagerTimeReset (String key) {
         TfModelManager modelManager = this.getModelManager(key);
         // reset alive time
         modelManager.setAliveTime(0);

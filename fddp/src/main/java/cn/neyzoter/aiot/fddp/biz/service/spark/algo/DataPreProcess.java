@@ -3,11 +3,14 @@ package cn.neyzoter.aiot.fddp.biz.service.spark.algo;
 import cn.neyzoter.aiot.common.util.PropertiesUtil;
 import cn.neyzoter.aiot.dal.domain.feature.DataMatrix;
 import cn.neyzoter.aiot.dal.domain.feature.InputCorrMatrix;
+import cn.neyzoter.aiot.dal.domain.feature.OutputCorrMatrix;
 import cn.neyzoter.aiot.dal.domain.vehicle.RuntimeData;
 import cn.neyzoter.aiot.dal.domain.vehicle.VehicleHttpPack;
 import cn.neyzoter.aiot.fddp.biz.service.bean.PropertiesLables;
 import cn.neyzoter.aiot.fddp.biz.service.spark.exception.IllVehicleHttpPackTime;
 import cn.neyzoter.aiot.fddp.biz.service.spark.exception.IllWinNum;
+import cn.neyzoter.aiot.fddp.biz.service.tensorflow.TfModelManager;
+import cn.neyzoter.aiot.fddp.biz.service.tensorflow.VehicleModelTable;
 
 import java.io.Serializable;
 import java.lang.reflect.Field;
@@ -138,7 +141,9 @@ public class DataPreProcess implements Serializable {
      */
     public static DataMatrix toDataMatrix (VehicleHttpPack pack) {
         Double[][] arrayT =  pack.getVehicle().toArrayT();
-        return new DataMatrix(arrayT, pack.getVehicle().getRtDataMap().firstKey());
+        Long startTime = pack.getVehicle().getRtDataMap().firstKey();
+        String vType = pack.getVehicle().getVtype();
+        return new DataMatrix(arrayT, startTime, vType);
     }
 
     /**
@@ -182,7 +187,54 @@ public class DataPreProcess implements Serializable {
                 }
             }
         }
-        return new InputCorrMatrix(matrix, dataMatrix.getStartTime());
+        Long startTime = dataMatrix.getStartTime();
+        String vType = dataMatrix.getVtype();
+        return new InputCorrMatrix(matrix,startTime ,vType);
     }
 
+    public static OutputCorrMatrix toCorrMatrixLoss (InputCorrMatrix input, VehicleModelTable vehicleModelTable) {
+        Long startTime = input.getStartTime();
+        String vType = input.getVtype();
+        TfModelManager tfModelManager = vehicleModelTable.getModelManager(vType);
+        Double[][][][] inputMatrix = input.getMatrix();
+        int featureNum1 = inputMatrix[0].length;
+        int featureNum2 = inputMatrix[0][0].length;
+        assert featureNum1 == featureNum2;
+        int winNum = inputMatrix[0][0][0].length;
+        // output matrix [1][featureNum1][featureNum1][winNum] such as [1][30][30][5]
+        Double[][][][] output = tfModelManager.getOutput(inputMatrix, 1, featureNum1, winNum);
+        // which step to be used to compute loss , which is start from 1, end wich max step, need to -1
+        int evalStep = Integer.parseInt(propertiesUtil.readValue(PropertiesLables.DATA_MATRIX_STEP_TO_COMPUTE_LOSS)) - 1;
+        Double[][][][] evalInput = new Double[1][featureNum1][featureNum1][winNum];
+        System.arraycopy(evalInput[0], 0, inputMatrix[evalStep], 0, featureNum1*featureNum1*winNum );
+        Double[][][][] loss = getMatrixLoss(evalInput, output);
+        return new OutputCorrMatrix(loss, startTime, vType);
+    }
+
+    /**
+     * get matrix loss, which will pow to be abs
+     * @param input input
+     * @param output output
+     * @return Double[][][][]
+     */
+    private static Double[][][][] getMatrixLoss (Double[][][][] input, Double[][][][] output) {
+        int d1 = input.length; assert d1 == output.length;
+        int d2 = input[0].length; assert d2 == output[0].length;
+        int d3 = input[0][0].length; assert d3 == output[0][0].length;
+        int d4 = input[0][0][0].length; assert d4 == output[0][0][0].length;
+        Double[][][][] loss = new Double[d1][d2][d3][d4];
+        for (int stepIdx = 0; stepIdx < d1; stepIdx ++) {
+            for (int featureNum1Idx = 0; featureNum1Idx < d2; featureNum1Idx ++) {
+                for (int featureNum2Idx = 0; featureNum2Idx < d3; featureNum2Idx ++) {
+                    for (int winNumIdx = 0; winNumIdx < d4; winNumIdx ++) {
+                        // loss
+                        loss[stepIdx][featureNum1Idx][featureNum2Idx][winNumIdx] -= input[stepIdx][featureNum1Idx][featureNum2Idx][winNumIdx];
+                        // square to be fabs
+                        loss[stepIdx][featureNum1Idx][featureNum2Idx][winNumIdx] = Math.pow(loss[stepIdx][featureNum1Idx][featureNum2Idx][winNumIdx], 2);
+                    }
+                }
+            }
+        }
+        return loss;
+    }
 }

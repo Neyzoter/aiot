@@ -12,6 +12,7 @@ import cn.neyzoter.aiot.common.util.PropertiesUtil;
 import cn.neyzoter.aiot.dal.dao.vehicle.Vehicle2InfluxDb;
 import cn.neyzoter.aiot.dal.domain.feature.DataMatrix;
 import cn.neyzoter.aiot.dal.domain.feature.InputCorrMatrix;
+import cn.neyzoter.aiot.dal.domain.feature.OutputCorrMatrix;
 import cn.neyzoter.aiot.dal.domain.vehicle.RuntimeData;
 import cn.neyzoter.aiot.dal.domain.vehicle.VehicleHttpPack;
 import cn.neyzoter.aiot.dal.util.RestTemp;
@@ -67,8 +68,9 @@ public class SparkStream implements Serializable {
         this.vehicleModelTable = modelTable;
         try {
             conf(propertiesUtil);
-            JavaPairDStream<String, VehicleHttpPack> record = prepare(vPackInfluxPoster, vehicleModelTable);
-            record.print();
+            JavaPairDStream<String, InputCorrMatrix> input = prepare(vPackInfluxPoster, vehicleModelTable);
+            JavaPairDStream<String, OutputCorrMatrix> loss = compute(input, vehicleModelTable);
+            loss.print();
             start();
         } catch (Exception e) {
             logger.error("", e);
@@ -110,7 +112,7 @@ public class SparkStream implements Serializable {
      * prepare
      * @return JavaPairDStream
      */
-    private JavaPairDStream<String, VehicleHttpPack> prepare (VPackInfluxPoster vPackInfluxPoster, VehicleModelTable vehicleModelTable) {
+    private JavaPairDStream<String, InputCorrMatrix> prepare (VPackInfluxPoster vPackInfluxPoster, VehicleModelTable vehicleModelTable) {
         // Create direct kafka stream with brokers and topics
         JavaInputDStream<ConsumerRecord<String, VehicleHttpPack>> messages = KafkaUtils.createDirectStream(
                 jssc,
@@ -137,7 +139,19 @@ public class SparkStream implements Serializable {
                 vehicleModelTable.getModelManager(x.getVehicle().getVtype()).getMaxRtData()));
         JavaPairDStream<String, DataMatrix> dataMatrix = record.mapValues(DataPreProcess::toDataMatrix);
         JavaPairDStream<String, InputCorrMatrix> corrMatrix = dataMatrix.mapValues(DataPreProcess::toInputCorrMatrix);
-        return record;
+
+        return corrMatrix;
+    }
+
+    /**
+     * compute loss
+     * @param input input
+     * @param vehicleModelTable vehicleModelTable
+     * @return
+     */
+    private JavaPairDStream<String, OutputCorrMatrix> compute (JavaPairDStream<String, InputCorrMatrix> input, VehicleModelTable vehicleModelTable) {
+        JavaPairDStream<String, OutputCorrMatrix> corrMatrixLoss = input.mapValues(x -> DataPreProcess.toCorrMatrixLoss(x, vehicleModelTable));
+        return corrMatrixLoss;
     }
 
     /**

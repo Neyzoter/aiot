@@ -18,6 +18,9 @@ import java.util.Map;
  */
 public class ModelManager implements Serializable {
     private static final long serialVersionUID = 4361723474900005046L;
+
+    private static final String OPERATION_DATA_INPUT = "data_input";
+    private static final String OPERATION_DATA_OUTPUT = "data_output";
     /**
      * model
      */
@@ -123,7 +126,25 @@ public class ModelManager implements Serializable {
         return this.modelBundle;
     }
 
-
+    /**
+     * compute the result
+     * @param input data
+     * @param step result 0-Dimension
+     * @param featureNum result 1-Dimension and 2-Dimension
+     * @param winSize result 3-Dimension
+     * @return result
+     */
+    public Double[][][][] getOutput (Double[][][][] input, int step, int featureNum, int winSize) {
+        long time = System.currentTimeMillis();
+        Session session = this.modelBundle.session();
+        Tensor inputTensor = Tensor.create(input);
+        List<Tensor<?>> outList = session.runner().feed(OPERATION_DATA_INPUT, inputTensor).fetch(OPERATION_DATA_OUTPUT).run();
+        System.out.print(String.format("data_output is %s , compute with %d ms\n" , outList.toString() ,System.currentTimeMillis() - time) );
+        Tensor outTs = outList.get(0);
+        Double[][][][] outMatrix = new Double[step][featureNum][featureNum][winSize];
+        outTs.copyTo(outMatrix);
+        return outMatrix;
+    }
     /**
      * test model
      *
@@ -163,7 +184,7 @@ public class ModelManager implements Serializable {
             System.out.println(String.format("x1 : %d , x2 : %d , x3 : %d , x4 : %d",x1, x2,x3,x4));
             long time = System.currentTimeMillis();
             Tensor input_x = Tensor.create(a);
-            List<Tensor<?>> out = session.runner().feed("data_input", input_x).fetch("data_output").run();
+            List<Tensor<?>> out = session.runner().feed(OPERATION_DATA_INPUT, input_x).fetch(OPERATION_DATA_OUTPUT).run();
             System.out.print(String.format("data_output is %s , compute with %d ms\n" , out.toString() ,System.currentTimeMillis() - time) );
             for (Tensor s : out) {
                 float[][][][] t = new float[1][30][30][3];

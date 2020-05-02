@@ -5,26 +5,25 @@ import lombok.Getter;
 import java.io.Serializable;
 
 /**
- * Input Correlation Matrix
+ * Output Correlation Matrix
  * @author Charles Song
  * @date 2020-5-2
  */
-public class InputCorrMatrix implements Serializable {
-    private static final long serialVersionUID = 5428219142630863963L;
+public class OutputCorrMatrix implements Serializable {
+    private static final long serialVersionUID = -8398064420352090633L;
     @Getter
-    private Double[][][][] matrix;
+    private Double[][][][] corrMatrix;
     @Getter
     private Long startTime;
     @Getter
     private String vtype;
-
     /**
-     * Input Correlation Matrix
+     * Output Correlation Matrix
      * @param matrix correlation matrix
      * @param startTime start time
      */
-    public InputCorrMatrix (Double[][][][] matrix, Long startTime, String type) {
-        this.matrix = matrix;
+    public OutputCorrMatrix (Double[][][][] matrix, Long startTime, String type) {
+        this.corrMatrix = matrix;
         this.startTime = startTime;
         this.vtype = type;
     }

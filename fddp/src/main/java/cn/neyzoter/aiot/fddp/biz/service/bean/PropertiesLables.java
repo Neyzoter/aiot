@@ -76,6 +76,10 @@ public class PropertiesLables {
      */
     public static final String DATA_MATRIX_STEP = "data.matrix.max-step";
     /**
+     * which step to be used to compute loss 1-DATA_MATRIX_STEP, not start from 0
+     */
+    public static final String DATA_MATRIX_STEP_TO_COMPUTE_LOSS = "data.matrix.step-to-compute-loss";
+    /**
      * matrix win num<br/>
      * matrix is (max-step,feature-num,feature-num,win-num)
      */

@@ -19,8 +19,11 @@ public class DataMatrix implements Serializable {
      */
     @Getter
     private Long startTime;
-    public DataMatrix (Double[][] data, Long startTime) {
+    @Getter
+    private String vtype;
+    public DataMatrix (Double[][] data, Long startTime, String type) {
         this.matrix = data;
         this.startTime = startTime;
+        this.vtype = type;
     }
 }
