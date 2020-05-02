@@ -10,6 +10,8 @@ import cn.neyzoter.aiot.common.data.serialization.SerializationUtil;
 import cn.neyzoter.aiot.common.tensorflow.ModelManager;
 import cn.neyzoter.aiot.common.util.PropertiesUtil;
 import cn.neyzoter.aiot.dal.dao.vehicle.Vehicle2InfluxDb;
+import cn.neyzoter.aiot.dal.domain.feature.DataMatrix;
+import cn.neyzoter.aiot.dal.domain.feature.InputCorrMatrix;
 import cn.neyzoter.aiot.dal.domain.vehicle.RuntimeData;
 import cn.neyzoter.aiot.dal.domain.vehicle.VehicleHttpPack;
 import cn.neyzoter.aiot.dal.util.RestTemp;
@@ -133,6 +135,8 @@ public class SparkStream implements Serializable {
         record = record.mapValues(x -> DataPreProcess.normalize(x,
                 vehicleModelTable.getModelManager(x.getVehicle().getVtype()).getMinRtData(),
                 vehicleModelTable.getModelManager(x.getVehicle().getVtype()).getMaxRtData()));
+        JavaPairDStream<String, DataMatrix> dataMatrix = record.mapValues(DataPreProcess::toDataMatrix);
+        JavaPairDStream<String, InputCorrMatrix> corrMatrix = dataMatrix.mapValues(DataPreProcess::toInputCorrMatrix);
         return record;
     }
 

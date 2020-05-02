@@ -1,15 +1,13 @@
 package cn.neyzoter.aiot.fddp.biz.service.spark.algo;
 
 import cn.neyzoter.aiot.common.util.PropertiesUtil;
+import cn.neyzoter.aiot.dal.domain.feature.DataMatrix;
+import cn.neyzoter.aiot.dal.domain.feature.InputCorrMatrix;
 import cn.neyzoter.aiot.dal.domain.vehicle.RuntimeData;
 import cn.neyzoter.aiot.dal.domain.vehicle.VehicleHttpPack;
 import cn.neyzoter.aiot.fddp.biz.service.bean.PropertiesLables;
-import cn.neyzoter.aiot.fddp.biz.service.properties.PropertiesManager;
 import cn.neyzoter.aiot.fddp.biz.service.spark.exception.IllVehicleHttpPackTime;
 import cn.neyzoter.aiot.fddp.biz.service.spark.exception.IllWinNum;
-import org.springframework.beans.factory.annotation.Autowired;
-import scala.Int;
-import scala.util.Try;
 
 import java.io.Serializable;
 import java.lang.reflect.Field;
@@ -17,6 +15,8 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 import java.util.SortedMap;
+
+import static jdk.nashorn.internal.objects.NativeError.printStackTrace;
 
 /**
  * Data Pre Process Class
@@ -29,7 +29,7 @@ public class DataPreProcess implements Serializable {
     /**
      * properties
      */
-    public static PropertiesUtil propertiesUtil = new PropertiesUtil(PropertiesLables.PROPERTIES_PATH);
+    private static PropertiesUtil propertiesUtil = new PropertiesUtil(PropertiesLables.PROPERTIES_PATH);
 
     /**
      * compact two pack
@@ -93,7 +93,7 @@ public class DataPreProcess implements Serializable {
                         field.set(rtData, 0.0);
                     }
                 } catch (Exception e) {
-                    System.err.println(e);
+                    printStackTrace(e);
                 }
             }
         }
@@ -132,11 +132,21 @@ public class DataPreProcess implements Serializable {
     }
 
     /**
-     * 转化为矩阵
+     * trans to Double[][]
      * @param pack VehicleHttpPack
+     * @return Double[][]
+     */
+    public static DataMatrix toDataMatrix (VehicleHttpPack pack) {
+        Double[][] arrayT =  pack.getVehicle().toArrayT();
+        return new DataMatrix(arrayT, pack.getVehicle().getRtDataMap().firstKey());
+    }
+
+    /**
+     * trans to InputCorrMatrix, which can input to Model directly
+     * @param dataMatrix DataMatrix
      * @return 特征转化为相关矩阵
      */
-    public static Double[][][][] trans2Matrix (VehicleHttpPack pack) throws IllWinNum{
+    public static InputCorrMatrix toInputCorrMatrix (DataMatrix dataMatrix) throws IllWinNum{
         // feature num
         int featureNum = Integer.parseInt(propertiesUtil.readValue(PropertiesLables.DATA_MATRIX_FEATURE_NUM));
         // win num
@@ -148,8 +158,8 @@ public class DataPreProcess implements Serializable {
         Double[][][][] matrix = new Double[maxStep][featureNum][featureNum][winNum];
 
         // get data
-        Double[][] data = pack.getVehicle().toArrayT();
-        int dataNum = data[0].length;
+        int dataNum = dataMatrix.getMatrix()[0].length;
+        Double[][] data = dataMatrix.getMatrix();
 
         // get win
         String[] winStrs = propertiesUtil.getPropertiesList(propertiesUtil.readValue(PropertiesLables.DATA_MATRIX_WIN));
@@ -157,37 +167,22 @@ public class DataPreProcess implements Serializable {
             throw new IllWinNum(winNum, winStrs.length);
         }
 
-//        // start time
-//        long start = pack.getVehicle().getRtDataMap().firstKey();
-//        // end time
-//        long end = pack.getVehicle().getRtDataMap().lastKey();
-        for (int step = 0 ; step < maxStep; step ++) {
-            for (int winIdx = 0; winIdx < winNum; winIdx ++) {
-                int winInt = Integer.parseInt(winStrs[winIdx]);
-                for (int i = 0; i < featureNum; i ++) {
-                    for (int j = i; j < featureNum ; j ++) {
-                        // must leave window
-                        for (int t = 0; t <= dataNum - winInt; t += gapTime) {
-//                            Double[] array1 = new Double[winInt];
-//                            Double[] array2 = new Double[winInt];
-//                            System.arraycopy(data[i], t, array1, 0, winInt);
-//                            System.arraycopy(data[j], t, array2, 0, winInt);
-                            for (int win = 0; win < winInt; win ++) {
-                                matrix[step][i][j][winIdx] += data[i][t + win] * data[j][t + win];
-                            }
-                            matrix[step][i][j][winIdx] /= winInt;
-                            matrix[step][j][i][winIdx] = matrix[step][i][j][winIdx];
-                            // TODO
-//                            matrix[step][i][j][winInt] = pack.getVehicle().getRtDataMap().get((Long) (start + t));
+        for (int winIdx = 0; winIdx < winNum; winIdx ++) {
+            int winInt = Integer.parseInt(winStrs[winIdx]);
+            for (int i = 0; i < featureNum; i ++) {
+                for (int j = i; j < featureNum ; j ++) {
+                    // must leave window
+                    for (int t = 0, step = 0; t <= dataNum - winInt && step < maxStep; t += gapTime, step ++) {
+                        for (int win = 0; win < winInt; win ++) {
+                            matrix[step][i][j][winIdx] += data[i][t + win] * data[j][t + win];
                         }
-
+                        matrix[step][i][j][winIdx] /= winInt;
+                        matrix[step][j][i][winIdx] = matrix[step][i][j][winIdx];
                     }
                 }
-                // TODO
             }
         }
-
-        return matrix;
+        return new InputCorrMatrix(matrix, dataMatrix.getStartTime());
     }
 
 }
