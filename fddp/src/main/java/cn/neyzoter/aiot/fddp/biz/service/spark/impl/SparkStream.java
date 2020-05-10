@@ -156,7 +156,7 @@ public class SparkStream implements Serializable {
 
     /**
      * flush to influxDB
-     * @param record 记录
+     * @param record record
      */
     private void flush2Influx (JavaPairDStream<String, VehicleHttpPack> record, VPackInfluxPoster vPackInfluxPoster) {
         record.mapValues(vPackInfluxPoster::postVpack2InfluxDB);
