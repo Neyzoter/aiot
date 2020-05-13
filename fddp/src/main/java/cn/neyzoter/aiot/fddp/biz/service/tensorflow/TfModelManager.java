@@ -54,6 +54,7 @@ public class TfModelManager extends ModelManager implements Serializable {
         super(path,tag,k,maxAliveTime);
         this.maxRtData = new RuntimeData();
         this.minRtData = new RuntimeData();
+        this.deltaRtData = new RuntimeData();
         this.updateMaxRtData();
         this.updateMinRtData();
         this.updateDeltaRtData();
@@ -110,7 +111,7 @@ public class TfModelManager extends ModelManager implements Serializable {
                 Double min = Double.parseDouble(minString);
                 Double max = Double.parseDouble(entry.getValue());
                 Double delta = max - min + this.getNormalizedE();
-                this.deltaRtData.valFromStr(entry.getKey(), delta.toString());
+                this.deltaRtData.valFromStr(delta.toString(), entry.getKey());
             }
         }
         return this.deltaRtData;

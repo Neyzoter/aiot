@@ -92,7 +92,7 @@ public class SparkStream implements Serializable {
         sparkConf.set("spark.kryo.registrationRequired", "true");
         Class[] classArray = {VehicleHttpPack.class,DataPreProcess.class,VehicleHttpPack.class, RestTemp.class,VPackInfluxPoster.class,
                 RuntimeData.class, Vehicle2InfluxDb.class, SerializationUtil.class, TfModelManager.class, ModelManager.class,SparkStream.class,
-                Long[].class};
+                Long[].class}; // , SavedModelBundle.class, Object.class, Session.class, Graph.class
         sparkConf.registerKryoClasses(classArray);
         // spark master
         String sparkMaster = propertiesUtil.readValue(PropertiesLables.SPARK_MASTER);

@@ -192,6 +192,12 @@ public class DataPreProcess implements Serializable {
         return new InputCorrMatrix(matrix,startTime ,vType);
     }
 
+    /**
+     * trans to correlation matrix loss
+     * @param input input matrix
+     * @param vehicleModelTable vehicle algo model table contains all models
+     * @return output matrix loss to input matrix
+     */
     public static OutputCorrMatrix toCorrMatrixLoss (InputCorrMatrix input, VehicleModelTable vehicleModelTable) {
         Long startTime = input.getStartTime();
         String vType = input.getVtype();

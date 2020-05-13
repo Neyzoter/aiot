@@ -59,6 +59,13 @@
             <artifactId>spark-streaming-kafka-0-10_2.11</artifactId>
             <version>2.4.3</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.bahir/spark-streaming-mqtt -->
+        <dependency>
+            <groupId>org.apache.bahir</groupId>
+            <artifactId>spark-streaming-mqtt_2.11</artifactId>
+            <version>2.4.0</version>
+        </dependency>
+
 
         <dependency>
             <groupId>junit</groupId>

@@ -24,7 +24,7 @@ public class ModelManager implements Serializable {
     /**
      * model
      */
-    private SavedModelBundle modelBundle;
+    transient private SavedModelBundle modelBundle;
 
     /**
      * model properteis

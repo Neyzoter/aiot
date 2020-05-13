@@ -1,6 +1,5 @@
 package cn.neyzoter.aiot.fddp.biz.service.bean;
 
-import cn.neyzoter.aiot.dal.domain.vehicle.VehicleHttpPack;
 import cn.neyzoter.aiot.fddp.biz.service.properties.PropertiesManager;
 import cn.neyzoter.aiot.fddp.biz.service.tensorflow.TfModelAliveChecker;
 import cn.neyzoter.aiot.fddp.biz.service.tensorflow.VehicleModelTable;
@@ -11,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 
-import java.lang.reflect.Field;
 import java.util.concurrent.*;
 
 /**

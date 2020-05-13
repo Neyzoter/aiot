@@ -119,7 +119,7 @@ public class VehicleModelTable implements Serializable {
         try {
             logger.info(String.format("Start loading model: %s  tag: %s", path, tag));
             long startime = System.currentTimeMillis();
-            TfModelManager modelManager = new TfModelManager(path, tag,key, time);
+            TfModelManager modelManager = new TfModelManager(path, tag, key, time);
             this.putModelManager(key, modelManager);
             logger.info(String.format("Loaded model: %s  tag: %s finished in %d ms", path, tag, System.currentTimeMillis() - startime));
         } catch (Exception e) {
