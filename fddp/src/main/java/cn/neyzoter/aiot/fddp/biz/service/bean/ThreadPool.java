@@ -1,8 +1,8 @@
 package cn.neyzoter.aiot.fddp.biz.service.bean;
 
 import cn.neyzoter.aiot.fddp.biz.service.properties.PropertiesManager;
-import cn.neyzoter.aiot.fddp.biz.service.tensorflow.TfModelAliveChecker;
-import cn.neyzoter.aiot.fddp.biz.service.tensorflow.VehicleModelTable;
+import cn.neyzoter.aiot.fddp.biz.service.tensorflow.RtDataBoundAliveChecker;
+import cn.neyzoter.aiot.fddp.biz.service.tensorflow.RtDataBoundTable;
 import org.apache.commons.lang3.concurrent.BasicThreadFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,17 +25,16 @@ public class ThreadPool {
 
     private PropertiesManager propertiesUtil;
     @Autowired
-    ThreadPool (PropertiesManager propertiesUtil, TfModelAliveChecker tfModelAliveChecker) {
+    ThreadPool (PropertiesManager propertiesUtil, RtDataBoundAliveChecker rtDataBoundAliveChecker) {
         this.propertiesUtil = propertiesUtil;
         scheduledThreadPool = new ScheduledThreadPoolExecutor(1,
                 new BasicThreadFactory.Builder().namingPattern("scheduled-pool-%d").daemon(true).build());
-        // alive tensorflow model check
-        VehicleModelTable table = tfModelAliveChecker.getVehicleModelTable();
-        table.loadPut("mazida1020", table.getModelPath(propertiesUtil),
-                "mytag", table.getMaxAliveTime());
-        scheduledThreadPool.scheduleAtFixedRate(tfModelAliveChecker,0,
+        // alive tensorflow bound check
+        RtDataBoundTable table = rtDataBoundAliveChecker.getRtDataBoundTable();
+        table.loadPut("mazida1020", table.getBoundPath(propertiesUtil), table.getMaxAliveTime());
+        scheduledThreadPool.scheduleAtFixedRate(rtDataBoundAliveChecker,0,
                 table.getCheckPeriod(),table.getCheckTimeUnit());
-        logger.info(String.format("TF Model Checker period : %d, Unit : %s", table.getCheckPeriod(),table.getCheckTimeUnit().toString() ));
+        logger.info(String.format("Bound Checker period : %d, Unit : %s", table.getCheckPeriod(),table.getCheckTimeUnit().toString() ));
         // properteis update
         scheduledThreadPool.scheduleAtFixedRate(this.propertiesUtil, 0,
                 propertiesUtil.getPeriod(),
@@ -43,5 +42,22 @@ public class ThreadPool {
         logger.info(String.format("Properties Update period : %d, Unit : %s", propertiesUtil.getPeriod(), propertiesUtil.getUpdatePeriodUnit() ));
     }
 
-
+//    @Autowired
+//    ThreadPool (PropertiesManager propertiesUtil, TfModelAliveChecker tfModelAliveChecker) {
+//        this.propertiesUtil = propertiesUtil;
+//        scheduledThreadPool = new ScheduledThreadPoolExecutor(1,
+//                new BasicThreadFactory.Builder().namingPattern("scheduled-pool-%d").daemon(true).build());
+//        // alive tensorflow model check
+//        VehicleModelTable table = tfModelAliveChecker.getVehicleModelTable();
+//        table.loadPut("mazida1020", table.getModelPath(propertiesUtil),
+//                "mytag", table.getMaxAliveTime());
+//        scheduledThreadPool.scheduleAtFixedRate(tfModelAliveChecker,0,
+//                table.getCheckPeriod(),table.getCheckTimeUnit());
+//        logger.info(String.format("TF Model Checker period : %d, Unit : %s", table.getCheckPeriod(),table.getCheckTimeUnit().toString() ));
+//        // properteis update
+//        scheduledThreadPool.scheduleAtFixedRate(this.propertiesUtil, 0,
+//                propertiesUtil.getPeriod(),
+//                propertiesUtil.getUpdatePeriodUnit());
+//        logger.info(String.format("Properties Update period : %d, Unit : %s", propertiesUtil.getPeriod(), propertiesUtil.getUpdatePeriodUnit() ));
+//    }
 }

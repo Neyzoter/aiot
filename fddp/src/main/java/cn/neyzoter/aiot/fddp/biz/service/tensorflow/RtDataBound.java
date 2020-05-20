@@ -1,6 +1,7 @@
 package cn.neyzoter.aiot.fddp.biz.service.tensorflow;
 
-import cn.neyzoter.aiot.common.tensorflow.ModelManager;
+import cn.neyzoter.aiot.common.tensorflow.ModelPropertiesLabels;
+import cn.neyzoter.aiot.common.tensorflow.RtdataConfiger;
 import cn.neyzoter.aiot.dal.domain.vehicle.RuntimeData;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,16 +13,13 @@ import java.util.Iterator;
 import java.util.Map;
 
 /**
- * Tensorflow model manager
- * @author Neyzoter Song
- * @date 2020-3-11
- * @deprecated
+ * Rt data bound
+ * @author Charles Song
+ * @date 2020-5-20
  */
-public class TfModelManager extends ModelManager implements Serializable {
-
-    private static final long serialVersionUID = 428505691794702481L;
-
-    public static final Logger logger = LoggerFactory.getLogger(TfModelManager.class);
+public class RtDataBound extends RtdataConfiger implements Serializable {
+    private static final long serialVersionUID = -1764585966084767L;
+    public static final Logger logger = LoggerFactory.getLogger(RtDataBound.class);
     /**
      * max Runtime data
      */
@@ -41,18 +39,14 @@ public class TfModelManager extends ModelManager implements Serializable {
     @Setter
     private RuntimeData deltaRtData;
 
-
-
     /**
-     * Class ModelManager build
-     * @param path model's path
-     * @param tag model's tag
+     * create runtime data bound
+     * @param path path of the model.properties
      * @param k key
-     * @param maxAliveTime model's max alive time from last contact
-     * @exception {@link Exception}
+     * @param maxAliveTime max alive time after not been used
      */
-    public TfModelManager (String path, String tag, String k, int maxAliveTime) throws Exception {
-        super(path,tag,k,maxAliveTime);
+    RtDataBound (String path, String k, int maxAliveTime) throws Exception  {
+        super(path,k,maxAliveTime);
         this.maxRtData = new RuntimeData();
         this.minRtData = new RuntimeData();
         this.deltaRtData = new RuntimeData();
@@ -60,7 +54,6 @@ public class TfModelManager extends ModelManager implements Serializable {
         this.updateMinRtData();
         this.updateDeltaRtData();
     }
-
     /**
      * update max runtime data
      * @return max {@link RuntimeData}

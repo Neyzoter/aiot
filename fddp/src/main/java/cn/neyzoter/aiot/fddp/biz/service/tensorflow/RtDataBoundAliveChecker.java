@@ -1,5 +1,6 @@
 package cn.neyzoter.aiot.fddp.biz.service.tensorflow;
 
+
 import cn.neyzoter.aiot.fddp.biz.service.properties.PropertiesManager;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,32 +13,29 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 /**
- * Tensorflow Model Alive check
- * @author Neyzoter Song
- * @date 2020-3-7
- * @deprecated
+ * RtDataBound Alive check
+ * @author Charles Song
+ * @date 2020-05-20
  */
 @Setter
 @Getter
-//@ComponentScan("cn.neyzoter.aiot.fddp.biz.service.tensorflow,cn.neyzoter.aiot.fddp.biz.service.properties")
-//@Component
-public class TfModelAliveChecker implements Runnable{
-    public static final Logger logger = LoggerFactory.getLogger(TfModelAliveChecker.class);
-    private VehicleModelTable vehicleModelTable;
+@ComponentScan("cn.neyzoter.aiot.fddp.biz.service.tensorflow,cn.neyzoter.aiot.fddp.biz.service.properties")
+@Component
+public class RtDataBoundAliveChecker implements Runnable{
+    public static final Logger logger = LoggerFactory.getLogger(RtDataBoundAliveChecker.class);
+    private RtDataBoundTable rtDataBoundTable;
     private PropertiesManager propertiesUtil;
-
     @Autowired
-    public TfModelAliveChecker (VehicleModelTable vehicleModelTable, PropertiesManager p) {
-        this.vehicleModelTable = vehicleModelTable;
-        this.propertiesUtil = p;
+    public RtDataBoundAliveChecker (RtDataBoundTable rtDataBoundTable, PropertiesManager propertiesUtil) {
+        this.rtDataBoundTable = rtDataBoundTable;
+        this.propertiesUtil = propertiesUtil;
     }
     @Override
     public void run () {
         // check all manager is alive, if not, rm it
-        List<String> rmList = vehicleModelTable.aliveIncCheck();
+        List<String> rmList = rtDataBoundTable.aliveIncCheck();
         for (String vtype : rmList) {
             logger.info(String.format("  %s ModelManager has been timeout", vtype));
         }
     }
-
 }

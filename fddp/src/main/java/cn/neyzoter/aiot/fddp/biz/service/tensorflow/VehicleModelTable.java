@@ -17,8 +17,9 @@ import java.util.concurrent.TimeUnit;
  * vehicle model table
  * @author Neyzoter Song
  * @date 2020-3-7
+ * @deprecated
  */
-@Component
+//@Component
 public class VehicleModelTable implements Serializable {
     private static final long serialVersionUID = 8236013173494095071L;
 
