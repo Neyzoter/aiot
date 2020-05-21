@@ -56,21 +56,9 @@ public class PropertiesLables {
     public static final String PROPERTIES_UPDATE_UNIT = "properties.update-unit";
 
     /**
-     * tensorflow model path
+     * data bound path
      */
-    public static final String TENSORFLOW_MODEL_PATH = "tensorflow.model.path";
-    /**
-     * tensorflow model max alive time
-     */
-    public static final String TENSORFLOW_MODEL_MAX_ALIVE_TIME = "tensorflow.model.max-alive-time";
-    /**
-     * scheduled executor running interval , the unit also can be set.
-     */
-    public static final String TF_MODEL_CHECK_PERIOD = "tensorflow.model.check-period";
-    /**
-     * scheduled executor running unit
-     */
-    public static final String TF_MODEL_CHECK_UNIT = "tensorflow.model.check-unit";
+    public static final String DATA_BOUND_PATH = "data.bound.path";
     /**
      * matrix max step<br/>
      * matrix is (max-step,feature-num,feature-num,win-num)

@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
  * @author Neyzoter Song
  * @date 2020-38
  */
-@Component("propertiesUtil")
+@Component("propertiesManager")
 public class PropertiesManager extends PropertiesUtil implements Runnable{
     public static final Logger logger = LoggerFactory.getLogger(PropertiesManager.class);
     private static final long serialVersionUID = 3974266425966219580L;

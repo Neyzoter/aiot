@@ -29,7 +29,7 @@ public class PropertiesUtil implements Serializable {
      * load properties file
      */
     public PropertiesUtil(String path){
-            this.updateProps(path);
+        this.updateProps(path);
     }
 
     /**

@@ -1,8 +1,6 @@
 package cn.neyzoter.aiot.fddp.biz.service.bean;
 
 import cn.neyzoter.aiot.fddp.biz.service.properties.PropertiesManager;
-import cn.neyzoter.aiot.fddp.biz.service.tensorflow.RtDataBoundAliveChecker;
-import cn.neyzoter.aiot.fddp.biz.service.tensorflow.RtDataBoundTable;
 import org.apache.commons.lang3.concurrent.BasicThreadFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,16 +23,10 @@ public class ThreadPool {
 
     private PropertiesManager propertiesUtil;
     @Autowired
-    ThreadPool (PropertiesManager propertiesUtil, RtDataBoundAliveChecker rtDataBoundAliveChecker) {
+    ThreadPool (PropertiesManager propertiesUtil) {
         this.propertiesUtil = propertiesUtil;
         scheduledThreadPool = new ScheduledThreadPoolExecutor(1,
                 new BasicThreadFactory.Builder().namingPattern("scheduled-pool-%d").daemon(true).build());
-        // alive tensorflow bound check
-        RtDataBoundTable table = rtDataBoundAliveChecker.getRtDataBoundTable();
-        table.loadPut("mazida1020", table.getBoundPath(propertiesUtil), table.getMaxAliveTime());
-        scheduledThreadPool.scheduleAtFixedRate(rtDataBoundAliveChecker,0,
-                table.getCheckPeriod(),table.getCheckTimeUnit());
-        logger.info(String.format("Bound Checker period : %d, Unit : %s", table.getCheckPeriod(),table.getCheckTimeUnit().toString() ));
         // properteis update
         scheduledThreadPool.scheduleAtFixedRate(this.propertiesUtil, 0,
                 propertiesUtil.getPeriod(),

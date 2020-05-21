@@ -164,7 +164,7 @@ public class VehicleModelTable implements Serializable {
      * @return model path
      */
     public String getModelPath (PropertiesUtil propertiesUtil) {
-        String path = propertiesUtil.readValue(PropertiesLables.TENSORFLOW_MODEL_PATH);
+        String path = propertiesUtil.readValue(PropertiesLables.DATA_BOUND_PATH);
         return path;
     }
 
@@ -173,7 +173,7 @@ public class VehicleModelTable implements Serializable {
      * @return {@link TimeUnit}
      */
     public TimeUnit getCheckTimeUnit () {
-        String unit = this.propertiesUtil.readValue(PropertiesLables.TF_MODEL_CHECK_UNIT);
+        String unit = this.propertiesUtil.readValue(PropertiesLables.DATA_BOUND_PATH);
         unit = unit.trim();
         switch (unit) {
             case PropertiesValueRange.UNIT_HOUR:
@@ -194,7 +194,7 @@ public class VehicleModelTable implements Serializable {
      * @return period
      */
     public int getCheckPeriod () {
-        String period = this.propertiesUtil.readValue(PropertiesLables.TF_MODEL_CHECK_PERIOD);
+        String period = this.propertiesUtil.readValue(PropertiesLables.INFLUXDB_PRECISION);
         return Integer.parseInt(period);
     }
 
@@ -203,7 +203,7 @@ public class VehicleModelTable implements Serializable {
      * @return maxAliveTime
      */
     public int getMaxAliveTime () {
-        String period = this.propertiesUtil.readValue(PropertiesLables.TENSORFLOW_MODEL_MAX_ALIVE_TIME);
+        String period = this.propertiesUtil.readValue(PropertiesLables.INFLUXDB_PRECISION);
         return Integer.parseInt(period);
     }
 }

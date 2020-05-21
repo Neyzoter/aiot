@@ -35,4 +35,17 @@ public class PathUtil {
         }
         return path;
     }
+
+    /**
+     * get filename with no ex
+     * @param fileName file name
+     * @return filename with no ex
+     */
+    public static String getFileNameNoEx (String fileName) {
+        int dot = fileName.lastIndexOf(".");
+        if ((dot >-1) && (dot < (fileName.length()))) {
+            return fileName.substring(0, dot);
+        }
+        return fileName;
+    }
 }
