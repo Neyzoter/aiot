@@ -1,0 +1,1 @@
+$KAKFA_HOME/bin/kafka-console-consumer.sh --bootstrap-server Kafka-1:9092 --topic VehicleHttpPack
