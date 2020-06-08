@@ -51,8 +51,8 @@ import org.apache.spark.streaming.Durations;
  * @author Neyzoter Song
  * @date 2020-2-17
  */
-@ComponentScan("cn.neyzoter.aiot.fddp.biz.service.influxdb,cn.neyzoter.aiot.fddp.biz.service.properties")
-@Component
+//@ComponentScan("cn.neyzoter.aiot.fddp.biz.service.influxdb,cn.neyzoter.aiot.fddp.biz.service.properties")
+//@Component
 public class SparkStream implements Serializable {
     private static final long serialVersionUID = 8231463007986745839L;
     public final static Logger logger= LoggerFactory.getLogger(SparkStream.class);

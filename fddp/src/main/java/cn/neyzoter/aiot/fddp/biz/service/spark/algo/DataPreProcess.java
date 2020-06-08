@@ -9,6 +9,7 @@ import cn.neyzoter.aiot.dal.domain.vehicle.VehicleHttpPack;
 import cn.neyzoter.aiot.fddp.biz.service.bean.PropertiesLables;
 import cn.neyzoter.aiot.fddp.biz.service.spark.exception.IllVehicleHttpPackTime;
 import cn.neyzoter.aiot.fddp.biz.service.spark.exception.IllWinNum;
+import cn.neyzoter.aiot.fddp.biz.service.tensorflow.RtDataBoundMap;
 import cn.neyzoter.aiot.fddp.biz.service.tensorflow.TfModelManager;
 import cn.neyzoter.aiot.fddp.biz.service.tensorflow.VehicleModelTable;
 
@@ -117,18 +118,19 @@ public class DataPreProcess implements Serializable {
      * normalize the pack
      * @param pack {@link VehicleHttpPack}
      * @param minRtD {@link RuntimeData} min RuntimeData
-     * @param deltaRtD {@link RuntimeData} max - min + e RuntimeData
+     * @param maxRtD {@link RuntimeData} max
+     * @param e {@link RuntimeData} small num
      * @return {@link VehicleHttpPack}
      */
-    public static VehicleHttpPack normalize(VehicleHttpPack pack, RuntimeData minRtD, RuntimeData deltaRtD) throws Exception{
+    public static VehicleHttpPack normalize(VehicleHttpPack pack, RuntimeData minRtD, RuntimeData maxRtD, Double e) throws Exception{
         Iterator<Map.Entry<Long, RuntimeData>> iter = pack.getVehicle().getRtDataMap().entrySet().iterator();
         for (;iter.hasNext();) {
             Map.Entry<Long, RuntimeData> item = iter.next();
             RuntimeData rtd = item.getValue();
             try {
-                rtd.normalize(minRtD, deltaRtD);
-            } catch (Exception e) {
-                throw e;
+                rtd.normalize(minRtD, maxRtD, e);
+            } catch (Exception ex) {
+                throw ex;
             }
         }
         return pack;
@@ -195,20 +197,18 @@ public class DataPreProcess implements Serializable {
     /**
      * trans to correlation matrix loss
      * @param input input matrix
-     * @param vehicleModelTable vehicle algo model table contains all models
      * @return output matrix loss to input matrix
      */
-    public static OutputCorrMatrix toCorrMatrixLoss (InputCorrMatrix input, VehicleModelTable vehicleModelTable) {
+    public static OutputCorrMatrix toCorrMatrixLoss (InputCorrMatrix input) {
         Long startTime = input.getStartTime();
         String vType = input.getVtype();
-        TfModelManager tfModelManager = vehicleModelTable.getModelManager(vType);
         Double[][][][] inputMatrix = input.getMatrix();
         int featureNum1 = inputMatrix[0].length;
         int featureNum2 = inputMatrix[0][0].length;
         assert featureNum1 == featureNum2;
         int winNum = inputMatrix[0][0][0].length;
-        // output matrix [1][featureNum1][featureNum1][winNum] such as [1][30][30][5]
-        Double[][][][] output = tfModelManager.getOutput(inputMatrix, 1, featureNum1, winNum);
+        // TODO call TensorFlow Serving
+        Double[][][][] output = inputMatrix;
         // which step to be used to compute loss , which is start from 1, end wich max step, need to -1
         int evalStep = Integer.parseInt(propertiesUtil.readValue(PropertiesLables.DATA_MATRIX_STEP_TO_COMPUTE_LOSS)) - 1;
         Double[][][][] evalInput = new Double[1][featureNum1][featureNum1][winNum];

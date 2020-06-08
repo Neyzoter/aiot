@@ -1,1 +1,1 @@
-$KAKFA_HOME/bin/kafka-console-producer.sh --broker-list Project2Aliserver:9092 --topic VehicleHttpPack
+$KAKFA_HOME/bin/kafka-console-producer.sh --broker-list Kafka-1:9092 --topic VehicleHttpPack

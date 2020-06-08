@@ -137,6 +137,12 @@ public class RuntimeData implements Serializable, RuntimeDataIf<RuntimeData> {
                     min = (Double) field.get(minVal);
                     thisVal = (Double) field.get(this);
                     delta = max - min + e;
+                    // TODO 暂时当作最小值处理，实际上应该提前做缺失值处理
+                    if (thisVal == null) {
+                        System.out.println("[Exception] RuntimeData Has NULL var");
+                        System.out.println(this.toString());
+                        thisVal = min;
+                    }
                     field.set(this, (thisVal - min) / delta);
                 }
             }

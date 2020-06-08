@@ -48,7 +48,7 @@ public class VehicleController {
     @RequestMapping(value = "/vehicleHttpPack", method = RequestMethod.POST)
     public Object sendData(@RequestBody VehicleHttpPack vehicleHttpPack) {
         try {
-            int partition = PartitionAllocator.allocateByRemainder(vehicleHttpPack.getVehicle().getVtype().hashCode(), kafkaTemplate.partitionsFor(KafkaTopic.TOPIC_VEHICLE_HTTP_PACKET_NAME).size());
+            int partition = PartitionAllocator.allocateByRemainder(Math.abs(vehicleHttpPack.getVehicle().getVtype().hashCode()), kafkaTemplate.partitionsFor(KafkaTopic.TOPIC_VEHICLE_HTTP_PACKET_NAME).size());
             kafkaTemplate.send(KafkaTopic.TOPIC_VEHICLE_HTTP_PACKET_NAME , partition ,vehicleHttpPack.getVehicle().getVid() ,vehicleHttpPack);
             // TODO
             // 返回最近一次的故障诊断结果
