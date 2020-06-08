@@ -9,9 +9,6 @@ import cn.neyzoter.aiot.dal.domain.vehicle.VehicleHttpPack;
 import cn.neyzoter.aiot.fddp.biz.service.bean.PropertiesLables;
 import cn.neyzoter.aiot.fddp.biz.service.spark.exception.IllVehicleHttpPackTime;
 import cn.neyzoter.aiot.fddp.biz.service.spark.exception.IllWinNum;
-import cn.neyzoter.aiot.fddp.biz.service.tensorflow.RtDataBoundMap;
-import cn.neyzoter.aiot.fddp.biz.service.tensorflow.TfModelManager;
-import cn.neyzoter.aiot.fddp.biz.service.tensorflow.VehicleModelTable;
 
 import java.io.Serializable;
 import java.lang.reflect.Field;
