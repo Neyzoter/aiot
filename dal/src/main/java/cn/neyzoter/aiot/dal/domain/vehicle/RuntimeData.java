@@ -80,7 +80,7 @@ public class RuntimeData implements Serializable, RuntimeDataIf<RuntimeData> {
         try {
             for (int i = 0; i < VAR_NUM ; i ++) {
                 // TODO
-                Field field = this.getClass().getDeclaredField("val" + i);
+                Field field = this.getClass().getDeclaredField("val" + (i + 1));
                 Double var = (Double) field.get(this);
                 data[i] = var;
             }

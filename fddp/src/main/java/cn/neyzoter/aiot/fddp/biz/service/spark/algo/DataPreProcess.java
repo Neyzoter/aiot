@@ -164,6 +164,16 @@ public class DataPreProcess implements Serializable {
         int gapTime = Integer.parseInt(propertiesUtil.readValue(PropertiesLables.DATA_MATRIX_GAP_NUM));
         Double[][][][] matrix = new Double[maxStep][featureNum][featureNum][winNum];
 
+        // matrix init below
+//        for (int i = 0; i < maxStep; i ++) {
+//            for (int j = 0; j < featureNum; j ++) {
+//                for (int k = 0;k < featureNum; k ++) {
+//                    for (int l = 0; l < winNum; l ++) {
+//                        matrix[i][j][k][l] = 0.0;
+//                    }
+//                }
+//            }
+//        }
         // get data
         int dataNum = dataMatrix.getMatrix()[0].length;
         Double[][] data = dataMatrix.getMatrix();
@@ -181,6 +191,10 @@ public class DataPreProcess implements Serializable {
                     // must leave window
                     for (int t = 0, step = 0; t <= dataNum - winInt && step < maxStep; t += gapTime, step ++) {
                         for (int win = 0; win < winInt; win ++) {
+                            // init matrix
+                            if (win == 0) {
+                                matrix[step][i][j][winIdx] = 0.0;
+                            }
                             matrix[step][i][j][winIdx] += data[i][t + win] * data[j][t + win];
                         }
                         matrix[step][i][j][winIdx] /= winInt;
@@ -207,14 +221,41 @@ public class DataPreProcess implements Serializable {
         int featureNum2 = inputMatrix[0][0].length;
         assert featureNum1 == featureNum2;
         int winNum = inputMatrix[0][0][0].length;
-        // TODO call TensorFlow Serving
-        Double[][][][] output = inputMatrix;
+        Double[][][][] output = getOutput(inputMatrix);
         // which step to be used to compute loss , which is start from 1, end wich max step, need to -1
         int evalStep = Integer.parseInt(propertiesUtil.readValue(PropertiesLables.DATA_MATRIX_STEP_TO_COMPUTE_LOSS)) - 1;
         Double[][][][] evalInput = new Double[1][featureNum1][featureNum1][winNum];
-        System.arraycopy(evalInput[0], 0, inputMatrix[evalStep], 0, featureNum1*featureNum1*winNum );
+        // get evaluate step data
+        for (int i = 0; i < featureNum1; i ++) {
+            for (int j = 0; j < featureNum2; j ++) {
+                for (int k = 0; k < winNum; k ++) {
+                    evalInput[0][i][j][k] = inputMatrix[evalStep][i][j][k];
+                }
+            }
+        }
+//        System.arraycopy(evalInput[0], 0, inputMatrix[evalStep], 0, featureNum1*featureNum1*winNum );
         Double[][][][] loss = getMatrixLoss(evalInput, output);
         return new OutputCorrMatrix(loss, startTime, vType);
+    }
+
+    /**
+     * call TensorFlow Serving
+     * @param input model input
+     * @return output
+     */
+    public static Double[][][][] getOutput (Double[][][][] input) {
+        // TODO
+        Double[][][][] output = new Double[input.length][input[0].length][input[0][0].length][input[0][0][0].length];
+        for (int i = 0; i < input.length; i ++) {
+            for (int j = 0; j < input[0].length; j ++) {
+                for (int k = 0; k < input[0][0].length; k ++) {
+                    for (int l = 0; l < input[0][0][0].length; l ++) {
+                        output[i][j][k][l] = input[i][j][k][l] + Math.pow(-1, l) * Math.random();
+                    }
+                }
+            }
+        }
+        return output;
     }
 
     /**
@@ -228,7 +269,7 @@ public class DataPreProcess implements Serializable {
         int d2 = input[0].length; assert d2 == output[0].length;
         int d3 = input[0][0].length; assert d3 == output[0][0].length;
         int d4 = input[0][0][0].length; assert d4 == output[0][0][0].length;
-        Double[][][][] loss = new Double[d1][d2][d3][d4];
+        Double[][][][] loss = output;
         for (int stepIdx = 0; stepIdx < d1; stepIdx ++) {
             for (int featureNum1Idx = 0; featureNum1Idx < d2; featureNum1Idx ++) {
                 for (int featureNum2Idx = 0; featureNum2Idx < d3; featureNum2Idx ++) {
