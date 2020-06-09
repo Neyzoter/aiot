@@ -1,0 +1,11 @@
+# 说明
+# 本次实验：生产者为阿里云服务器（学生机1核2G内存），消费者为在阿里云（2核4G内存）运行的1个broker
+# 生产者崩溃
+
+$ ./kafka-producer-perf-test.sh --topic test_perf1 --num-records 1000000 --record-size 1000  --throughput 50000 --producer-props bootstrap.servers=Kafka-1:9092
+
+OpenJDK 64-Bit Server VM warning: If the number of processors is expected to increase from one, then you should configure the number of parallel GC threads appropriately using -XX:ParallelGCThreads=N
+176249 records sent, 35235.7 records/sec (33.60 MB/sec), 710.3 ms avg latency, 1065.0 ms max latency.
+192384 records sent, 38476.8 records/sec (36.69 MB/sec), 847.7 ms avg latency, 1221.0 ms max latency.
+342576 records sent, 68515.2 records/sec (65.34 MB/sec), 499.8 ms avg latency, 1036.0 ms max latency.
+Killed

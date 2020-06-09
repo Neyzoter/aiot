@@ -1,0 +1,20 @@
+# 说明
+# 本次实验：生产者为笔记本电脑，消费者为在阿里云运行的三台broker，阿里云性能2核4G内存
+
+$ ./kafka-producer-perf-test.sh --topic test_perf --num-records 100000 --record-size 1000  --throughput 2000 --producer-props bootstrap.servers=Kafka-1:9092
+
+结果
+
+[2020-06-09 08:24:54,549] WARN [Producer clientId=producer-1] Error while fetching metadata with correlation id 1 : {test_perf=LEADER_NOT_AVAILABLE} (org.apache.kafka.clients.NetworkClient)
+[2020-06-09 08:24:54,727] WARN [Producer clientId=producer-1] Error while fetching metadata with correlation id 3 : {test_perf=LEADER_NOT_AVAILABLE} (org.apache.kafka.clients.NetworkClient)
+9987 records sent, 1997.4 records/sec (1.90 MB/sec), 66.6 ms avg latency, 762.0 ms max latency.
+9845 records sent, 1966.6 records/sec (1.88 MB/sec), 19.8 ms avg latency, 230.0 ms max latency.
+10040 records sent, 2007.6 records/sec (1.91 MB/sec), 58.0 ms avg latency, 246.0 ms max latency.
+10051 records sent, 2009.4 records/sec (1.92 MB/sec), 62.9 ms avg latency, 425.0 ms max latency.
+10047 records sent, 2008.2 records/sec (1.92 MB/sec), 60.7 ms avg latency, 633.0 ms max latency.
+10060 records sent, 2011.6 records/sec (1.92 MB/sec), 68.1 ms avg latency, 619.0 ms max latency.
+10007 records sent, 2001.0 records/sec (1.91 MB/sec), 64.0 ms avg latency, 425.0 ms max latency.
+9797 records sent, 1959.4 records/sec (1.87 MB/sec), 60.9 ms avg latency, 432.0 ms max latency.
+10171 records sent, 2034.2 records/sec (1.94 MB/sec), 55.6 ms avg latency, 243.0 ms max latency.
+9944 records sent, 1934.6 records/sec (1.85 MB/sec), 60.7 ms avg latency, 418.0 ms max latency.
+100000 records sent, 1991.555803 records/sec (1.90 MB/sec), 57.86 ms avg latency, 762.00 ms max latency, 13 ms 50th, 211 ms 95th, 369 ms 99th, 569 ms 99.9th.

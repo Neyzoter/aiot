@@ -1,0 +1,46 @@
+# 说明
+# 本次实验：生产者为阿里云服务器（学生机1核2G内存），消费者为在阿里云（2核4G内存）运行的1个broker
+
+$ ./kafka-producer-perf-test.sh --topic test_perf1 --num-records 1000000 --record-size 1000  --throughput 5000 --producer-props bootstrap.servers=Kafka-1:9092
+
+OpenJDK 64-Bit Server VM warning: If the number of processors is expected to increase from one, then you should configure the number of parallel GC threads appropriately using -XX:ParallelGCThreads=N
+24992 records sent, 4997.4 records/sec (4.77 MB/sec), 18.0 ms avg latency, 446.0 ms max latency.
+24985 records sent, 4993.0 records/sec (4.76 MB/sec), 4.0 ms avg latency, 16.0 ms max latency.
+25045 records sent, 5009.0 records/sec (4.78 MB/sec), 2.4 ms avg latency, 12.0 ms max latency.
+25005 records sent, 5000.0 records/sec (4.77 MB/sec), 1.1 ms avg latency, 14.0 ms max latency.
+25010 records sent, 5001.0 records/sec (4.77 MB/sec), 1.2 ms avg latency, 13.0 ms max latency.
+25005 records sent, 5001.0 records/sec (4.77 MB/sec), 1.1 ms avg latency, 13.0 ms max latency.
+24995 records sent, 4999.0 records/sec (4.77 MB/sec), 18.4 ms avg latency, 340.0 ms max latency.
+25005 records sent, 5000.0 records/sec (4.77 MB/sec), 1.2 ms avg latency, 14.0 ms max latency.
+25010 records sent, 5001.0 records/sec (4.77 MB/sec), 1.1 ms avg latency, 15.0 ms max latency.
+25005 records sent, 5001.0 records/sec (4.77 MB/sec), 1.1 ms avg latency, 16.0 ms max latency.
+25010 records sent, 5001.0 records/sec (4.77 MB/sec), 1.1 ms avg latency, 14.0 ms max latency.
+25000 records sent, 4999.0 records/sec (4.77 MB/sec), 1.1 ms avg latency, 15.0 ms max latency.
+25005 records sent, 5001.0 records/sec (4.77 MB/sec), 1.1 ms avg latency, 15.0 ms max latency.
+25005 records sent, 5001.0 records/sec (4.77 MB/sec), 1.1 ms avg latency, 15.0 ms max latency.
+25005 records sent, 5001.0 records/sec (4.77 MB/sec), 1.0 ms avg latency, 10.0 ms max latency.
+25010 records sent, 5000.0 records/sec (4.77 MB/sec), 1.0 ms avg latency, 13.0 ms max latency.
+25010 records sent, 5001.0 records/sec (4.77 MB/sec), 1.1 ms avg latency, 15.0 ms max latency.
+25005 records sent, 5000.0 records/sec (4.77 MB/sec), 1.0 ms avg latency, 15.0 ms max latency.
+25005 records sent, 5001.0 records/sec (4.77 MB/sec), 16.8 ms avg latency, 337.0 ms max latency.
+25000 records sent, 5000.0 records/sec (4.77 MB/sec), 1.1 ms avg latency, 15.0 ms max latency.
+25010 records sent, 5001.0 records/sec (4.77 MB/sec), 1.0 ms avg latency, 14.0 ms max latency.
+25005 records sent, 5000.0 records/sec (4.77 MB/sec), 1.1 ms avg latency, 15.0 ms max latency.
+25005 records sent, 5000.0 records/sec (4.77 MB/sec), 1.1 ms avg latency, 10.0 ms max latency.
+25010 records sent, 5001.0 records/sec (4.77 MB/sec), 1.0 ms avg latency, 9.0 ms max latency.
+25000 records sent, 4999.0 records/sec (4.77 MB/sec), 1.2 ms avg latency, 42.0 ms max latency.
+25010 records sent, 5001.0 records/sec (4.77 MB/sec), 1.0 ms avg latency, 14.0 ms max latency.
+25005 records sent, 5000.0 records/sec (4.77 MB/sec), 1.1 ms avg latency, 13.0 ms max latency.
+25005 records sent, 5000.0 records/sec (4.77 MB/sec), 1.0 ms avg latency, 13.0 ms max latency.
+25010 records sent, 5000.0 records/sec (4.77 MB/sec), 1.1 ms avg latency, 12.0 ms max latency.
+25010 records sent, 5001.0 records/sec (4.77 MB/sec), 1.0 ms avg latency, 15.0 ms max latency.
+25005 records sent, 5000.0 records/sec (4.77 MB/sec), 2.2 ms avg latency, 101.0 ms max latency.
+25000 records sent, 5000.0 records/sec (4.77 MB/sec), 1.1 ms avg latency, 12.0 ms max latency.
+25005 records sent, 5001.0 records/sec (4.77 MB/sec), 1.1 ms avg latency, 15.0 ms max latency.
+25005 records sent, 5001.0 records/sec (4.77 MB/sec), 1.1 ms avg latency, 15.0 ms max latency.
+25005 records sent, 5001.0 records/sec (4.77 MB/sec), 1.1 ms avg latency, 13.0 ms max latency.
+25010 records sent, 5001.0 records/sec (4.77 MB/sec), 1.1 ms avg latency, 15.0 ms max latency.
+25010 records sent, 5001.0 records/sec (4.77 MB/sec), 2.3 ms avg latency, 107.0 ms max latency.
+25010 records sent, 5000.0 records/sec (4.77 MB/sec), 1.1 ms avg latency, 15.0 ms max latency.
+25000 records sent, 5000.0 records/sec (4.77 MB/sec), 1.1 ms avg latency, 15.0 ms max latency.
+1000000 records sent, 4999.625028 records/sec (4.77 MB/sec), 2.48 ms avg latency, 446.00 ms max latency, 1 ms 50th, 2 ms 95th, 15 ms 99th, 265 ms 99.9th.
