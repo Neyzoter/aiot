@@ -1,7 +1,5 @@
 package cn.neyzoter.aiot.fddp.biz.service.bean;
 
-import org.springframework.beans.factory.annotation.Value;
-
 /**
  * properties lables
  * @author Neyzoter Song
@@ -12,8 +10,7 @@ public class PropertiesLables {
      * properties path
      */
     // TODO
-//    @Value("${fddp.properties.path}")
-    public static final String PROPERTIES_PATH = "/home/scc/code/java/aiot/fddp/fddp.properties";
+    public static final String PROPERTIES_PATH = "/home/scc/code/java/aiot/fddp/fddp.properties" ;
 
     /**
      * influxdb host
