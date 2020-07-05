@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="23c1b6a3-a88d-412b-a194-bead14c68f99" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fddp/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/fddp/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fddp/src/main/java/cn/neyzoter/aiot/fddp/biz/service/bean/PropertiesLables.java" beforeDir="false" afterPath="$PROJECT_DIR$/fddp/src/main/java/cn/neyzoter/aiot/fddp/biz/service/bean/PropertiesLables.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fddp/src/main/java/cn/neyzoter/aiot/fddp/biz/service/spark/impl/Streaming.java" beforeDir="false" afterPath="$PROJECT_DIR$/fddp/src/main/java/cn/neyzoter/aiot/fddp/biz/service/spark/impl/Streaming.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fddp/src/main/java/cn/neyzoter/aiot/fddp/biz/service/tensorflow/RtDataBoundMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/fddp/src/main/java/cn/neyzoter/aiot/fddp/biz/service/tensorflow/RtDataBoundMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fddp/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/fddp/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fddp/src/test/java/cn/neyzoter/aiot/fddp/biz/service/tensorflow/TestRtDataBoundMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/fddp/src/test/java/cn/neyzoter/aiot/fddp/biz/service/tensorflow/TestRtDataBoundMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iov/src/main/java/cn/neyzoter/aiot/iov/biz/service/kafka/constant/KafkaTopic.java" beforeDir="false" afterPath="$PROJECT_DIR$/iov/src/main/java/cn/neyzoter/aiot/iov/biz/service/kafka/constant/KafkaTopic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shell/spark/spark-on-docker/spark-on-docker.sh" beforeDir="false" afterPath="$PROJECT_DIR$/shell/spark/spark-on-docker/spark-on-docker.sh" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -35,19 +28,19 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/fddp/src/main/java/cn/neyzoter/aiot/fddp/biz/service/bean/PropertiesLables.java">
+        <entry file="file://$PROJECT_DIR$/fddp/src/main/java/cn/neyzoter/aiot/fddp/biz/service/kafka/constant/KafkaContainer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="15" column="95" selection-start-line="15" selection-start-column="95" selection-end-line="15" selection-end-column="95" />
+            <state relative-caret-position="60">
+              <caret line="4" column="65" selection-start-line="4" selection-start-column="65" selection-end-line="4" selection-end-column="65" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/fddp/src/main/java/cn/neyzoter/aiot/fddp/biz/service/kafka/constant/KafkaContainer.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/shell/spark/spark-on-docker/docker-compose.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="58" lean-forward="true" selection-start-line="4" selection-start-column="58" selection-end-line="4" selection-end-column="58" />
+            <state relative-caret-position="413">
+              <caret line="85" column="33" lean-forward="true" selection-start-line="85" selection-start-column="33" selection-end-line="85" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -55,17 +48,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/fddp/src/main/java/cn/neyzoter/aiot/fddp/biz/service/spark/algo/DataPreProcess.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
+            <state relative-caret-position="15">
               <caret line="10" column="56" selection-start-line="10" selection-start-column="56" selection-end-line="10" selection-end-column="56" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/fddp/src/main/java/cn/neyzoter/aiot/fddp/biz/service/spark/impl/Streaming.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" column="45" selection-start-line="8" selection-start-column="45" selection-end-line="8" selection-end-column="45" />
             </state>
           </provider>
         </entry>
@@ -74,7 +58,7 @@
         <entry file="file://$PROJECT_DIR$/fddp/src/main/java/cn/neyzoter/aiot/fddp/biz/service/tensorflow/RtDataBoundMap.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="219">
-              <caret line="24" column="62" selection-start-line="24" selection-start-column="62" selection-end-line="24" selection-end-column="62" />
+              <caret line="24" column="56" selection-start-line="24" selection-start-column="56" selection-end-line="24" selection-end-column="56" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -85,8 +69,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/fddp/src/main/java/cn/neyzoter/aiot/fddp/FddpApplication.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="20" column="1" lean-forward="true" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
+            <state relative-caret-position="135">
+              <caret line="9" column="41" selection-start-line="9" selection-start-column="41" selection-end-line="9" selection-end-column="41" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -112,11 +96,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/fddp/src/main/resources/application.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="86" lean-forward="true" selection-start-line="16" selection-start-column="86" selection-end-line="16" selection-end-column="86" />
+            <state relative-caret-position="210">
+              <caret line="14" column="63" selection-start-line="14" selection-start-column="63" selection-end-line="14" selection-end-column="63" />
             </state>
           </provider>
         </entry>
@@ -199,7 +183,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/common/src/main/java/org/tensorflow/Session.java" />
         <option value="$PROJECT_DIR$/common/src/main/java/cn/neyzoter/aiot/common/tensorflow/RtdataBound.java" />
         <option value="$PROJECT_DIR$/common/src/main/java/cn/neyzoter/aiot/common/tensorflow/RtdataConfiger.java" />
         <option value="$PROJECT_DIR$/fddp/src/main/java/cn/neyzoter/aiot/fddp/biz/service/tensorflow/TfModelManager.java" />
@@ -250,6 +233,7 @@
         <option value="$PROJECT_DIR$/fddp/src/main/java/cn/neyzoter/aiot/fddp/biz/service/spark/impl/Streaming.java" />
         <option value="$PROJECT_DIR$/fddp/src/main/java/cn/neyzoter/aiot/fddp/biz/service/bean/PropertiesLables.java" />
         <option value="$PROJECT_DIR$/fddp/src/main/resources/application.properties" />
+        <option value="$PROJECT_DIR$/shell/spark/spark-on-docker/spark-on-docker.sh" />
       </list>
     </option>
   </component>
@@ -295,14 +279,17 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="aiot" type="b2602c69:ProjectViewProjectNode" />
               <item name="aiot" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="aiot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="aiot" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="aiot" type="b2602c69:ProjectViewProjectNode" />
@@ -434,10 +421,30 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="aiot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="aiot" type="462c0819:PsiDirectoryNode" />
+              <item name="shell" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="aiot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="aiot" type="462c0819:PsiDirectoryNode" />
+              <item name="shell" type="462c0819:PsiDirectoryNode" />
+              <item name="spark" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="aiot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="aiot" type="462c0819:PsiDirectoryNode" />
+              <item name="shell" type="462c0819:PsiDirectoryNode" />
+              <item name="spark" type="462c0819:PsiDirectoryNode" />
+              <item name="spark-on-docker" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -465,11 +472,11 @@
     <property name="settings.editor.selected.configurable" value="settings.github" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/shell/spark/spark-on-docker" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/fddp/evaluation/presure_test" />
       <recent name="$PROJECT_DIR$/fddp/evaluation/presure_test/img" />
-      <recent name="$PROJECT_DIR$/fddp/evaluation/spark_test" />
-      <recent name="$PROJECT_DIR$/fddp/evaluation" />
+      <recent name="$PROJECT_DIR$/common/tf_model/nescar" />
+      <recent name="$PROJECT_DIR$/shell/monitor" />
       <recent name="$PROJECT_DIR$/maybe_useful" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -479,11 +486,11 @@
       <recent name="cn.neyzoter.aiot.dal.domain.vehicle" />
       <recent name="cn.neyzoter.aiot.fddp.biz.service.kafka.constant" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/fddp/evaluation/presure_test" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/shell/spark/spark-on-docker" />
       <recent name="$PROJECT_DIR$/fddp/evaluation/presure_test/img" />
-      <recent name="$PROJECT_DIR$/common/tf_model/nescar" />
-      <recent name="$PROJECT_DIR$/shell/monitor" />
+      <recent name="$PROJECT_DIR$/fddp/evaluation/spark_test" />
+      <recent name="$PROJECT_DIR$/fddp/evaluation" />
       <recent name="$PROJECT_DIR$/maybe_useful" />
     </key>
   </component>
@@ -852,7 +859,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="668725000" />
+    <option name="totallyTimeSpent" value="669177000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -877,7 +884,7 @@
       <window_info id="Web" order="7" sideWeight="0.5011442" side_tool="true" weight="0.14018692" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.34964323" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.7157779" weight="0.4393476" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.7157779" visible="true" weight="0.18960245" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4986256" weight="0.5351682" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -885,12 +892,12 @@
       <window_info anchor="bottom" id="TODO" order="7" weight="0.21202855" />
       <window_info anchor="bottom" id="Spring" order="8" weight="0.18960245" />
       <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.74161625" weight="0.56269115" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50137436" side_tool="true" visible="true" weight="0.30071357" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5002749" side_tool="true" weight="0.4617737" />
       <window_info anchor="bottom" id="Docker" order="11" sideWeight="0.49972513" weight="0.26197758" />
       <window_info anchor="bottom" id="Java Enterprise" order="12" weight="0.24974516" />
       <window_info anchor="bottom" id="Database Changes" order="13" />
-      <window_info anchor="bottom" id="Version Control" order="14" weight="0.21610601" />
-      <window_info anchor="bottom" id="Messages" order="15" sideWeight="0.4986256" visible="true" weight="0.30071357" />
+      <window_info anchor="bottom" id="Version Control" order="14" sideWeight="0.49972513" weight="0.5198777" />
+      <window_info anchor="bottom" id="Messages" order="15" sideWeight="0.4986256" weight="0.30071357" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.24958768" />
@@ -1206,24 +1213,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/shell/spark/spark-on-docker/docker-compose.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="728">
-          <caret line="137" column="23" selection-start-line="137" selection-start-column="23" selection-end-line="137" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/shell/spark/spark-on-docker/hadoop.env">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
           <caret line="21" column="78" selection-start-line="21" selection-start-column="78" selection-end-line="21" selection-end-column="78" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/shell/spark/spark-on-docker/spark-on-docker.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
         </state>
       </provider>
     </entry>
@@ -1258,11 +1251,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/fddp/src/main/java/cn/neyzoter/aiot/fddp/biz/service/tensorflow/VehicleModelTable.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="24" lean-forward="true" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="180">
+          <caret line="12" column="43" selection-start-line="12" selection-start-column="43" selection-end-line="12" selection-end-column="43" />
         </state>
       </provider>
     </entry>
@@ -1299,7 +1289,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/fddp/src/main/java/cn/neyzoter/aiot/fddp/biz/service/bean/PropertiesLables.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
+        <state relative-caret-position="180">
           <caret line="15" column="95" selection-start-line="15" selection-start-column="95" selection-end-line="15" selection-end-column="95" />
         </state>
       </provider>
@@ -1321,28 +1311,28 @@
     <entry file="file://$PROJECT_DIR$/fddp/src/main/java/cn/neyzoter/aiot/fddp/biz/service/kafka/constant/KafkaContainer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
-          <caret line="4" column="58" lean-forward="true" selection-start-line="4" selection-start-column="58" selection-end-line="4" selection-end-column="58" />
+          <caret line="4" column="65" selection-start-line="4" selection-start-column="65" selection-end-line="4" selection-end-column="65" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/fddp/src/main/java/cn/neyzoter/aiot/fddp/biz/service/spark/algo/DataPreProcess.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
+        <state relative-caret-position="15">
           <caret line="10" column="56" selection-start-line="10" selection-start-column="56" selection-end-line="10" selection-end-column="56" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/fddp/src/main/java/cn/neyzoter/aiot/fddp/biz/service/spark/impl/Streaming.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="45" selection-start-line="8" selection-start-column="45" selection-end-line="8" selection-end-column="45" />
+        <state relative-caret-position="150">
+          <caret line="10" column="55" selection-start-line="10" selection-start-column="55" selection-end-line="10" selection-end-column="55" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/fddp/src/main/java/cn/neyzoter/aiot/fddp/biz/service/tensorflow/RtDataBoundMap.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="219">
-          <caret line="24" column="62" selection-start-line="24" selection-start-column="62" selection-end-line="24" selection-end-column="62" />
+          <caret line="24" column="56" selection-start-line="24" selection-start-column="56" selection-end-line="24" selection-end-column="56" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1351,8 +1341,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/fddp/src/main/java/cn/neyzoter/aiot/fddp/FddpApplication.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="1" lean-forward="true" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
+        <state relative-caret-position="135">
+          <caret line="9" column="41" selection-start-line="9" selection-start-column="41" selection-end-line="9" selection-end-column="41" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1361,8 +1351,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/fddp/src/main/resources/application.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="86" lean-forward="true" selection-start-line="16" selection-start-column="86" selection-end-line="16" selection-end-column="86" />
+        <state relative-caret-position="210">
+          <caret line="14" column="63" selection-start-line="14" selection-start-column="63" selection-end-line="14" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/shell/spark/spark-on-docker/spark-on-docker.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="66" selection-start-column="66" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/shell/spark/spark-on-docker/docker-compose.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="413">
+          <caret line="85" column="33" lean-forward="true" selection-start-line="85" selection-start-column="33" selection-end-line="85" selection-end-column="33" />
         </state>
       </provider>
     </entry>
