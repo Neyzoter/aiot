@@ -7,11 +7,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="fddp" />
-        <module name="common" />
-        <module name="dal" />
         <module name="iov" />
+        <module name="fddp" />
+        <module name="wordcount" />
+        <module name="common" />
         <module name="uop" />
+        <module name="dal" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -27,6 +28,7 @@
       <module name="iov" options="-parameters" />
       <module name="pop" options="-parameters" />
       <module name="uop" options="-parameters" />
+      <module name="wordcount" options="-parameters" />
     </option>
   </component>
 </project>

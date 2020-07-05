@@ -36,10 +36,10 @@ docker exec namenode hdfs dfs -mkdir /input \
 ```bash
 # 注意：/root/jars/sparkwordcount-1.0-SNAPSHOT.jar 不需要更改为实际绝对路径
 sudo docker exec -it master spark-submit \
---class com.bolingcavalry.sparkwordcount.WordCount \
+--class cn.neyzoter.aiot.wc.WordCount \
 --executor-memory 512m \
 --total-executor-cores 2 \
-/root/jars/sparkwordcount-1.0-SNAPSHOT.jar \
+/root/jars/wordcount-1.0-SNAPSHOT.jar \
 namenode \
 8020 \
 HappyJack.txt
