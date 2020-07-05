@@ -18,6 +18,7 @@ public class KafkaTopic {
      * automatically add topics to the broker
      */
     public NewTopic topicVehicleHttpPack () {
-        return new NewTopic(KafkaTopic.TOPIC_VEHICLE_HTTP_PACKET_NAME,3,(short)2);
+//        return new NewTopic(KafkaTopic.TOPIC_VEHICLE_HTTP_PACKET_NAME,3,(short)2);
+        return new NewTopic(KafkaTopic.TOPIC_VEHICLE_HTTP_PACKET_NAME,1,(short)1);
     }
 }

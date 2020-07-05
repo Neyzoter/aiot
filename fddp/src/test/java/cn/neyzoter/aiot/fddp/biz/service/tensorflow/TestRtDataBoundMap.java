@@ -16,7 +16,7 @@ public class TestRtDataBoundMap {
     @Autowired
     public void testBoundMapRead () {
         PropertiesManager p = new PropertiesManager();
-        RtDataBoundMap<String, RtDataBound> boundMap = new RtDataBoundMap<>(p);
+        RtDataBoundMap boundMap = new RtDataBoundMap(p);
         Iterator<Map.Entry<String, RtDataBound>> iter = boundMap.entrySet().iterator();
         for (;iter.hasNext();) {
             Map.Entry<String, RtDataBound> entry = iter.next();

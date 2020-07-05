@@ -6,4 +6,4 @@
     
 * Deploy App on Spark
     
-    `shell/submit-app.sh`
+    `shell/spark/submit-app.sh`

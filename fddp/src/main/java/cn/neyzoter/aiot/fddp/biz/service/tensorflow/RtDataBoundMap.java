@@ -1,6 +1,5 @@
 package cn.neyzoter.aiot.fddp.biz.service.tensorflow;
 
-import cn.neyzoter.aiot.common.tensorflow.ModelPropertiesLabels;
 import cn.neyzoter.aiot.common.util.PathUtil;
 import cn.neyzoter.aiot.common.util.PropertiesUtil;
 import cn.neyzoter.aiot.fddp.biz.service.bean.PropertiesLables;
@@ -23,7 +22,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * @date 2020-5-20
  */
 @Component
-public class RtDataBoundMap<K extends String, V extends RtDataBound> extends ConcurrentHashMap<K, V> {
+public class RtDataBoundMap extends ConcurrentHashMap<String, RtDataBound> {
     private static final long serialVersionUID = -4477300658723541224L;
     public static final Logger logger = LoggerFactory.getLogger(RtDataBoundMap.class);
 
@@ -33,12 +32,10 @@ public class RtDataBoundMap<K extends String, V extends RtDataBound> extends Con
         Iterator<Map.Entry<String, String>> iter = absPaths.entrySet().iterator();
         for (;iter.hasNext();) {
             Map.Entry<String, String> entry = iter.next();
-            @SuppressWarnings("unchecked")
-            K vtype = (K) PathUtil.getFileNameNoEx(entry.getKey());
+            String vtype = PathUtil.getFileNameNoEx(entry.getKey());
             String absFilePath = entry.getValue();
             PropertiesUtil boundProp = new PropertiesUtil(absFilePath);
-            @SuppressWarnings("unchecked")
-            V data = (V) new RtDataBound(vtype, boundProp);
+            RtDataBound data = new RtDataBound(vtype, boundProp);
             this.put(vtype, data);
         }
     }

@@ -1,16 +1,10 @@
 package cn.neyzoter.aiot.fddp.biz.service.spark.impl;
 
-import cn.neyzoter.aiot.common.data.serialization.SerializationUtil;
-import cn.neyzoter.aiot.common.tensorflow.ModelManager;
 import cn.neyzoter.aiot.common.util.PropertiesUtil;
-import cn.neyzoter.aiot.dal.dao.vehicle.Vehicle2InfluxDb;
 import cn.neyzoter.aiot.dal.domain.feature.DataMatrix;
 import cn.neyzoter.aiot.dal.domain.feature.InputCorrMatrix;
 import cn.neyzoter.aiot.dal.domain.feature.OutputCorrMatrix;
-import cn.neyzoter.aiot.dal.domain.vehicle.RuntimeData;
-import cn.neyzoter.aiot.dal.domain.vehicle.Vehicle;
 import cn.neyzoter.aiot.dal.domain.vehicle.VehicleHttpPack;
-import cn.neyzoter.aiot.dal.util.RestTemp;
 import cn.neyzoter.aiot.fddp.biz.service.bean.PropertiesLables;
 import cn.neyzoter.aiot.fddp.biz.service.bean.PropertiesValueRange;
 import cn.neyzoter.aiot.fddp.biz.service.influxdb.VPackInfluxPoster;
@@ -21,8 +15,6 @@ import cn.neyzoter.aiot.fddp.biz.service.spark.algo.DataPreProcess;
 import cn.neyzoter.aiot.fddp.biz.service.spark.constant.SparkStreamingConf;
 import cn.neyzoter.aiot.fddp.biz.service.tensorflow.RtDataBound;
 import cn.neyzoter.aiot.fddp.biz.service.tensorflow.RtDataBoundMap;
-import cn.neyzoter.aiot.fddp.biz.service.tensorflow.TfModelManager;
-import cn.neyzoter.aiot.fddp.biz.service.tensorflow.VehicleModelTable;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.common.serialization.StringDeserializer;
