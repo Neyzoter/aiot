@@ -4,6 +4,7 @@ import cn.neyzoter.aiot.common.util.PropertiesUtil;
 import cn.neyzoter.aiot.dal.domain.feature.DataMatrix;
 import cn.neyzoter.aiot.dal.domain.feature.InputCorrMatrix;
 import cn.neyzoter.aiot.dal.domain.feature.OutputCorrMatrix;
+import cn.neyzoter.aiot.dal.domain.vehicle.RuntimeData;
 import cn.neyzoter.aiot.dal.domain.vehicle.VehicleHttpPack;
 import cn.neyzoter.aiot.fddp.biz.service.bean.PropertiesLables;
 import cn.neyzoter.aiot.fddp.biz.service.bean.PropertiesValueRange;
@@ -13,7 +14,6 @@ import cn.neyzoter.aiot.fddp.biz.service.kafka.constant.KafkaTopic;
 import cn.neyzoter.aiot.fddp.biz.service.kafka.impl.serialization.VehicleHttpPackDeserializer;
 import cn.neyzoter.aiot.fddp.biz.service.spark.algo.DataPreProcess;
 import cn.neyzoter.aiot.fddp.biz.service.spark.constant.SparkStreamingConf;
-import cn.neyzoter.aiot.fddp.biz.service.tensorflow.RtDataBound;
 import cn.neyzoter.aiot.fddp.biz.service.tensorflow.RtDataBoundMap;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
@@ -127,10 +127,16 @@ public class Streaming implements Serializable {
         // multi Sampling Rate Process
         record = record.mapValues(DataPreProcess::multiSamplingRateProcess);
         // normalize
+        // TODO 后期重新打开
+//        record = record.mapValues(x -> DataPreProcess.normalize(x,
+//                (rtDataBoundMap.get(x.getVehicle().getVtype())).getMinRtData(),
+//                (rtDataBoundMap.get(x.getVehicle().getVtype())).getMaxRtData(),
+//                (rtDataBoundMap.get(x.getVehicle().getVtype())).getNormalizedE()));
         record = record.mapValues(x -> DataPreProcess.normalize(x,
-                ((RtDataBound)rtDataBoundMap.get(x.getVehicle().getVtype())).getMinRtData(),
-                ((RtDataBound)rtDataBoundMap.get(x.getVehicle().getVtype())).getMaxRtData(),
-                ((RtDataBound)rtDataBoundMap.get(x.getVehicle().getVtype())).getNormalizedE()));
+                new RuntimeData(),
+                new RuntimeData(),
+                0.0001));
+
         JavaPairDStream<String, DataMatrix> dataMatrix = record.mapValues(DataPreProcess::toDataMatrix);
         JavaPairDStream<String, InputCorrMatrix> corrMatrix = dataMatrix.mapValues(DataPreProcess::toInputCorrMatrix);
 

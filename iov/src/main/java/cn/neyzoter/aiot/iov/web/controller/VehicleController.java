@@ -23,6 +23,11 @@ public class VehicleController {
     @Autowired
     private KafkaTemplate kafkaTemplate;
 
+    public static long startime;
+    public static long endtime;
+    public static boolean start = false;
+    public static long num = 0;
+    public static boolean stopprint = false;
 
 
     /**
@@ -47,6 +52,17 @@ public class VehicleController {
      */
     @RequestMapping(value = "/vehicleHttpPack", method = RequestMethod.POST)
     public Object sendData(@RequestBody VehicleHttpPack vehicleHttpPack) {
+        if (!start) {
+            start = true;
+            startime = System.currentTimeMillis();
+            endtime = startime + 1000 * 10;
+        } else {
+            if (endtime < System.currentTimeMillis() && !stopprint) {
+                logger.info("Package num : " + num + "\nRPS : " + num / 10);
+                stopprint = true;
+            }
+        }
+        num ++;
         try {
             int partition = PartitionAllocator.allocateByRemainder(Math.abs(vehicleHttpPack.getVehicle().getVtype().hashCode()), kafkaTemplate.partitionsFor(KafkaTopic.TOPIC_VEHICLE_HTTP_PACKET_NAME).size());
             kafkaTemplate.send(KafkaTopic.TOPIC_VEHICLE_HTTP_PACKET_NAME , partition ,vehicleHttpPack.getVehicle().getVid() ,vehicleHttpPack);
