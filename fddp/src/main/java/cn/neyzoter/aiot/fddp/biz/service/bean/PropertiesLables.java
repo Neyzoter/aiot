@@ -10,7 +10,7 @@ public class PropertiesLables {
      * properties path
      */
     // TODO
-    public static final String PROPERTIES_PATH = "/home/scc/code/java/aiot/fddp/fddp.properties" ;
+    public static final String PROPERTIES_PATH = "/Users/neyzoter/code/java/aiot/fddp/fddp.properties" ;
 
     /**
      * influxdb host

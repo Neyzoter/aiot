@@ -137,6 +137,27 @@ public class Streaming implements Serializable {
         return corrMatrix;
     }
 
+    public JavaPairDStream<String, VehicleHttpPack> testPrepare(RtDataBoundMap rtDataBoundMap) {
+        JavaInputDStream<ConsumerRecord<String, VehicleHttpPack>> messages = KafkaUtils.createDirectStream(
+                jssc,
+                LocationStrategies.PreferConsistent(),
+                ConsumerStrategies.Subscribe(topicsSet, kafkaParams));
+        // compact packs group by vid_year_month_and_day
+        JavaPairDStream<String, VehicleHttpPack> record = messages.mapToPair(
+                x -> new Tuple2<>(VID_KEY_PREFIX + x.key().replace("\"",""),
+                        x.value())).reduceByKey(DataPreProcess::compact);
+        //count
+        JavaDStream<Long> count = messages.count();
+        count.print();
+
+//            // post to influxdb
+//            flush2Influx(record, vPackInfluxPoster);
+
+        // outlier values process
+        record = record.mapValues(DataPreProcess::outlierHandling);
+        return record;
+    }
+
     /**
      * compute loss
      * @param input input

@@ -53,6 +53,7 @@ public class PropertiesManager extends PropertiesUtil implements Runnable{
      * @return update period
      */
     public long getPeriod () {
+        System.out.println(this.getProps().toString());
         String period = this.readValue(PropertiesLables.PROPERTIES_UPDATE_PERIOD);
         return Long.parseLong(period);
     }

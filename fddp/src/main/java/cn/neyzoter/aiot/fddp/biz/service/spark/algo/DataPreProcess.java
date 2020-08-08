@@ -66,7 +66,7 @@ public class DataPreProcess implements Serializable {
     public static VehicleHttpPack outlierHandling (VehicleHttpPack pack) {
         // TODO
         SortedMap rtDataMap = pack.getVehicle().getRtDataMap();
-
+        System.out.println(pack.toString());
         return pack;
     }
 

@@ -52,6 +52,7 @@ public class VehicleController {
             kafkaTemplate.send(KafkaTopic.TOPIC_VEHICLE_HTTP_PACKET_NAME , partition ,vehicleHttpPack.getVehicle().getVid() ,vehicleHttpPack);
             // TODO
             // 返回最近一次的故障诊断结果
+            System.out.println("Get One Pack!");
             return IovHttpRtn.OK;
         } catch (Exception e) {
             logger.error("", e);
