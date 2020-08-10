@@ -85,6 +85,8 @@ public class Streaming implements Serializable {
         // since spark 2.0.0, Kyro is internally used for simple class,
         // we should rigister our own classes to improve serializable efficiency
         sparkConf.set("spark.serializer", "org.apache.spark.serializer.KryoSerializer");
+        // 设置和集群核心数相同
+        sparkConf.set("spark.default.parallelism", "8");
         // use kryo
 //        sparkConf.set("spark.kryo.registrationRequired", "true");
 //        Class[] classArray = {VehicleHttpPack.class,DataPreProcess.class,VehicleHttpPack.class, RestTemp.class,VPackInfluxPoster.class,
@@ -123,9 +125,6 @@ public class Streaming implements Serializable {
         JavaDStream<Long> count = messages.count();
         count.print();
 
-//            // post to influxdb
-//            flush2Influx(record, vPackInfluxPoster);
-
         // outlier values process
         record = record.mapValues(DataPreProcess::outlierHandling);
         // multi Sampling Rate Process
@@ -153,9 +152,6 @@ public class Streaming implements Serializable {
         //count
         JavaDStream<Long> count = messages.count();
         count.print();
-
-//            // post to influxdb
-//            flush2Influx(record, vPackInfluxPoster);
 
         // outlier values process
         record = record.mapValues(DataPreProcess::outlierHandling);
@@ -206,6 +202,7 @@ public class Streaming implements Serializable {
 
     /**
      * flush to influxDB
+     * @deprecated 通过Kafka生产者将数据写入到influxDB中
      * @param record record
      */
     private void flush2Influx (JavaPairDStream<String, VehicleHttpPack> record, VPackInfluxPoster vPackInfluxPoster) {
