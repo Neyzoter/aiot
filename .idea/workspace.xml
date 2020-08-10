@@ -20,21 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="23c1b6a3-a88d-412b-a194-bead14c68f99" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/common.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dal/dal.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fddp/fddp.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fddp/fddp.properties" beforeDir="false" afterPath="$PROJECT_DIR$/fddp/fddp.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fddp/src/main/java/cn/neyzoter/aiot/fddp/biz/service/bean/PropertiesLables.java" beforeDir="false" afterPath="$PROJECT_DIR$/fddp/src/main/java/cn/neyzoter/aiot/fddp/biz/service/bean/PropertiesLables.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fddp/src/main/java/cn/neyzoter/aiot/fddp/biz/service/properties/PropertiesManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/fddp/src/main/java/cn/neyzoter/aiot/fddp/biz/service/properties/PropertiesManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fddp/src/main/java/cn/neyzoter/aiot/fddp/biz/service/spark/algo/DataPreProcess.java" beforeDir="false" afterPath="$PROJECT_DIR$/fddp/src/main/java/cn/neyzoter/aiot/fddp/biz/service/spark/algo/DataPreProcess.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fddp/src/main/java/cn/neyzoter/aiot/fddp/biz/service/spark/impl/Streaming.java" beforeDir="false" afterPath="$PROJECT_DIR$/fddp/src/main/java/cn/neyzoter/aiot/fddp/biz/service/spark/impl/Streaming.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iov/iov.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iov/src/main/java/cn/neyzoter/aiot/iov/web/controller/VehicleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/iov/src/main/java/cn/neyzoter/aiot/iov/web/controller/VehicleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uop/uop.iml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -453,7 +440,8 @@
       <workItem from="1596532247495" duration="1343000" />
       <workItem from="1596543995388" duration="721000" />
       <workItem from="1596671696569" duration="221000" />
-      <workItem from="1596760183069" duration="6563000" />
+      <workItem from="1596760183069" duration="7268000" />
+      <workItem from="1596892849402" duration="2960000" />
     </task>
     <servers />
   </component>
@@ -528,54 +516,54 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1398" height="614" key="GridCell.Tab.0.bottom" timestamp="1596853299796">
+    <state width="1398" height="389" key="GridCell.Tab.0.bottom" timestamp="1596858283274">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="614" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1596853299796" />
-    <state width="1398" height="614" key="GridCell.Tab.0.center" timestamp="1596853299791">
+    <state width="1398" height="389" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1596858283274" />
+    <state width="1398" height="389" key="GridCell.Tab.0.center" timestamp="1596858283273">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="614" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1596853299791" />
-    <state width="1398" height="614" key="GridCell.Tab.0.left" timestamp="1596853299789">
+    <state width="1398" height="389" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1596858283273" />
+    <state width="1398" height="389" key="GridCell.Tab.0.left" timestamp="1596858283272">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="614" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1596853299789" />
-    <state width="1398" height="614" key="GridCell.Tab.0.right" timestamp="1596853299794">
+    <state width="1398" height="389" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1596858283272" />
+    <state width="1398" height="389" key="GridCell.Tab.0.right" timestamp="1596858283274">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="614" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1596853299794" />
-    <state width="1398" height="614" key="GridCell.Tab.1.bottom" timestamp="1596853299803">
+    <state width="1398" height="389" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1596858283274" />
+    <state width="1398" height="389" key="GridCell.Tab.1.bottom" timestamp="1596858283277">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="614" key="GridCell.Tab.1.bottom/0.0.1440.900@0.0.1440.900" timestamp="1596853299803" />
-    <state width="1398" height="614" key="GridCell.Tab.1.center" timestamp="1596853299800">
+    <state width="1398" height="389" key="GridCell.Tab.1.bottom/0.0.1440.900@0.0.1440.900" timestamp="1596858283277" />
+    <state width="1398" height="389" key="GridCell.Tab.1.center" timestamp="1596858283276">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="614" key="GridCell.Tab.1.center/0.0.1440.900@0.0.1440.900" timestamp="1596853299800" />
-    <state width="1398" height="614" key="GridCell.Tab.1.left" timestamp="1596853299799">
+    <state width="1398" height="389" key="GridCell.Tab.1.center/0.0.1440.900@0.0.1440.900" timestamp="1596858283276" />
+    <state width="1398" height="389" key="GridCell.Tab.1.left" timestamp="1596858283275">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="614" key="GridCell.Tab.1.left/0.0.1440.900@0.0.1440.900" timestamp="1596853299799" />
-    <state width="1398" height="614" key="GridCell.Tab.1.right" timestamp="1596853299802">
+    <state width="1398" height="389" key="GridCell.Tab.1.left/0.0.1440.900@0.0.1440.900" timestamp="1596858283275" />
+    <state width="1398" height="389" key="GridCell.Tab.1.right" timestamp="1596858283276">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="614" key="GridCell.Tab.1.right/0.0.1440.900@0.0.1440.900" timestamp="1596853299802" />
-    <state width="1398" height="389" key="GridCell.Tab.2.bottom" timestamp="1596852983534">
+    <state width="1398" height="389" key="GridCell.Tab.1.right/0.0.1440.900@0.0.1440.900" timestamp="1596858283276" />
+    <state width="1398" height="389" key="GridCell.Tab.2.bottom" timestamp="1596858283279">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="389" key="GridCell.Tab.2.bottom/0.0.1440.900@0.0.1440.900" timestamp="1596852983534" />
-    <state width="1398" height="389" key="GridCell.Tab.2.center" timestamp="1596852983532">
+    <state width="1398" height="389" key="GridCell.Tab.2.bottom/0.0.1440.900@0.0.1440.900" timestamp="1596858283279" />
+    <state width="1398" height="389" key="GridCell.Tab.2.center" timestamp="1596858283278">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="389" key="GridCell.Tab.2.center/0.0.1440.900@0.0.1440.900" timestamp="1596852983532" />
-    <state width="1398" height="389" key="GridCell.Tab.2.left" timestamp="1596852983531">
+    <state width="1398" height="389" key="GridCell.Tab.2.center/0.0.1440.900@0.0.1440.900" timestamp="1596858283278" />
+    <state width="1398" height="389" key="GridCell.Tab.2.left" timestamp="1596858283277">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="389" key="GridCell.Tab.2.left/0.0.1440.900@0.0.1440.900" timestamp="1596852983531" />
-    <state width="1398" height="389" key="GridCell.Tab.2.right" timestamp="1596852983533">
+    <state width="1398" height="389" key="GridCell.Tab.2.left/0.0.1440.900@0.0.1440.900" timestamp="1596858283277" />
+    <state width="1398" height="389" key="GridCell.Tab.2.right" timestamp="1596858283278">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="389" key="GridCell.Tab.2.right/0.0.1440.900@0.0.1440.900" timestamp="1596852983533" />
+    <state width="1398" height="389" key="GridCell.Tab.2.right/0.0.1440.900@0.0.1440.900" timestamp="1596858283278" />
     <state x="221" y="89" key="SettingsEditor" timestamp="1596803155210">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -584,6 +572,10 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="421" y="205" width="598" height="490" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1596802390201" />
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1596854247871">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1596854247871" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/aiot$TestVehicleHttpPackSerializer.ic" NAME="TestVehicleHttpPackSerializer Coverage Results" MODIFIED="1568958743250" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

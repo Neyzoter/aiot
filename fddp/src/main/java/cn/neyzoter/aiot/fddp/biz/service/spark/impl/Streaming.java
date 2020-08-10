@@ -35,6 +35,9 @@ import org.springframework.stereotype.Component;
 import scala.Serializable;
 import scala.Tuple2;
 
+import java.io.PrintWriter;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.*;
 
 
@@ -61,6 +64,7 @@ public class Streaming implements Serializable {
         try {
             conf(propertiesUtil);
             JavaPairDStream<String, InputCorrMatrix> input = prepare(vPackInfluxPoster, rtDataBoundMap);
+
             JavaPairDStream<String, OutputCorrMatrix> loss = compute(input);
             loss.print();
             start();
@@ -166,6 +170,38 @@ public class Streaming implements Serializable {
     private JavaPairDStream<String, OutputCorrMatrix> compute (JavaPairDStream<String, InputCorrMatrix> input) {
         JavaPairDStream<String, OutputCorrMatrix> corrMatrixLoss = input.mapValues(x -> DataPreProcess.toCorrMatrixLoss(x));
         return corrMatrixLoss;
+    }
+
+    /**
+     * 将输入的相关矩阵发送到tensorflow serving
+     * @param input 输入相关矩阵
+     */
+    public void tfserving(JavaPairDStream<String, InputCorrMatrix> input) {
+        input.foreachRDD(rdd -> rdd.foreachPartition(partitionRecords -> {
+            partitionRecords.forEachRemaining(System.out::println);
+        }));
+//        input.foreachRDD(rdd -> rdd.foreachPartition(partitionRecords -> {
+//            // 建立连接
+//            String urlNameString = "tf-serving:9091";
+//            URL realUrl = new URL(urlNameString);
+//            // 打开和URL之间的连接
+//            URLConnection connection = realUrl.openConnection();
+//            // 设置通用的请求属性
+//            connection.setRequestProperty("accept", "*/*");
+//            connection.setRequestProperty("connection", "Keep-Alive");
+//            connection.setRequestProperty("user-agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1;SV1)");
+//            // 发送POST请求必须设置如下两行
+//            connection.setDoOutput(true);
+//            connection.setDoInput(true);
+//            // 获取URLConnection对象对应的输出流
+//            PrintWriter out = new PrintWriter(connection.getOutputStream());
+//            // flush输出流的缓冲
+//            out.flush();
+//            // 建立实际的连接
+//            connection.connect();
+//            // 发送数据
+//            partitionRecords.forEachRemaining(record -> connection);
+//        }));
     }
 
     /**
