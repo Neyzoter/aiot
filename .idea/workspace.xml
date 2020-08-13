@@ -21,7 +21,11 @@
   <component name="ChangeListManager">
     <list default="true" id="23c1b6a3-a88d-412b-a194-bead14c68f99" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dal/src/main/java/cn/neyzoter/aiot/dal/dao/vehicle/Vehicle2InfluxDb.java" beforeDir="false" afterPath="$PROJECT_DIR$/dal/src/main/java/cn/neyzoter/aiot/dal/dao/vehicle/Vehicle2InfluxDb.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fddp/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/fddp/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fddp/src/main/java/cn/neyzoter/aiot/fddp/biz/service/spark/impl/Streaming.java" beforeDir="false" afterPath="$PROJECT_DIR$/fddp/src/main/java/cn/neyzoter/aiot/fddp/biz/service/spark/impl/Streaming.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shell/spark/spark-on-docker/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/shell/spark/spark-on-docker/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shell/spark/spark-on-docker/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/shell/spark/spark-on-docker/docker-compose.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,12 +61,6 @@
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="1" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="55" />
-    <option name="y" value="-4" />
-    <option name="width" value="1865" />
-    <option name="height" value="1084" />
-  </component>
   <component name="ProjectId" id="1fczcCCR1s7LDckw2Y8EOmMBOO8" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -80,7 +78,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/iov/src/main/java/cn/neyzoter/aiot/iov" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -96,12 +94,15 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/shell/spark/spark-on-docker/img" />
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="cn.neyzoter.aiot.fddp" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/iov/src/main/java/cn/neyzoter/aiot/iov" />
       <recent name="$PROJECT_DIR$/shell/spark/spark-on-docker" />
+      <recent name="$PROJECT_DIR$/shell/spark/spark-on-docker/img" />
+      <recent name="$PROJECT_DIR$/fddp/evaluation/presure_test" />
       <recent name="$PROJECT_DIR$/fddp/evaluation/presure_test/img" />
-      <recent name="$PROJECT_DIR$/fddp/evaluation/spark_test" />
-      <recent name="$PROJECT_DIR$/fddp/evaluation" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="cn.neyzoter.aiot.fddp.biz.service.spark.impl" />
@@ -110,12 +111,12 @@
       <recent name="cn.neyzoter.aiot.dal.domain.vehicle" />
       <recent name="cn.neyzoter.aiot.fddp.biz.service.kafka.constant" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/shell/spark/spark-on-docker" />
+    <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/shell/spark/spark-on-docker/img" />
-      <recent name="$PROJECT_DIR$/fddp/evaluation/presure_test" />
+      <recent name="$PROJECT_DIR$/shell/spark/spark-on-docker" />
       <recent name="$PROJECT_DIR$/fddp/evaluation/presure_test/img" />
-      <recent name="$PROJECT_DIR$/common/tf_model/nescar" />
+      <recent name="$PROJECT_DIR$/fddp/evaluation/spark_test" />
+      <recent name="$PROJECT_DIR$/fddp/evaluation" />
     </key>
   </component>
   <component name="RestClientSettings">
@@ -213,17 +214,17 @@
     </option>
   </component>
   <component name="RunManager" selected="Spring Boot.FddpApplication">
-    <configuration name="TestRtDataBoundAliveChecker" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="WordCount" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="cn.neyzoter.aiot.fddp.WordCount" />
       <module name="fddp" />
+      <option name="PROGRAM_PARAMETERS" value="hdfs 8020 HappyJack.txt" />
+      <option name="VM_PARAMETERS" value="-Dspark.master=local[6]" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="cn.neyzoter.aiot.fddp.biz.service.tensorflow.*" />
+          <option name="PATTERN" value="cn.neyzoter.aiot.fddp.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="cn.neyzoter.aiot.fddp.biz.service.tensorflow" />
-      <option name="MAIN_CLASS_NAME" value="cn.neyzoter.aiot.fddp.biz.service.tensorflow.TestRtDataBoundAliveChecker" />
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -299,7 +300,7 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.TestRtDataBoundAliveChecker" />
+      <item itemvalue="Application.WordCount" />
       <item itemvalue="JUnit.TestRtDataBoundAliveChecker.testChecker" />
       <item itemvalue="JUnit.TestRtDataBoundMap" />
       <item itemvalue="JUnit.TestRtDataBoundMap.testBoundMapRead" />
@@ -309,10 +310,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Spring Boot.FddpApplication" />
+        <item itemvalue="Application.WordCount" />
         <item itemvalue="JUnit.TestRtDataBoundMap.testBoundMapRead" />
         <item itemvalue="JUnit.TestRtDataBoundMap" />
         <item itemvalue="JUnit.TestRtDataBoundAliveChecker.testChecker" />
-        <item itemvalue="JUnit.TestRtDataBoundAliveChecker" />
       </list>
     </recent_temporary>
   </component>
@@ -441,7 +442,8 @@
       <workItem from="1596543995388" duration="721000" />
       <workItem from="1596671696569" duration="221000" />
       <workItem from="1596760183069" duration="7268000" />
-      <workItem from="1596892849402" duration="3730000" />
+      <workItem from="1596892849402" duration="3802000" />
+      <workItem from="1597038620319" duration="17714000" />
     </task>
     <servers />
   </component>
@@ -516,38 +518,54 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1398" height="389" key="GridCell.Tab.0.bottom" timestamp="1596858283274">
+    <state x="218" y="146" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1597224761787">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="389" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1596858283274" />
-    <state width="1398" height="389" key="GridCell.Tab.0.center" timestamp="1596858283273">
+    <state x="218" y="146" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900@0.0.1440.900" timestamp="1597224761787" />
+    <state x="490" y="326" width="460" height="256" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1597223162265">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="389" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1596858283273" />
-    <state width="1398" height="389" key="GridCell.Tab.0.left" timestamp="1596858283272">
+    <state x="490" y="326" width="460" height="256" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1440.900@0.0.1440.900" timestamp="1597223162265" />
+    <state width="1398" height="211" key="GridCell.Tab.0.bottom" timestamp="1597229098237">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="389" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1596858283272" />
-    <state width="1398" height="389" key="GridCell.Tab.0.right" timestamp="1596858283274">
+    <state width="1398" height="211" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1597229098237" />
+    <state width="1398" height="448" key="GridCell.Tab.0.bottom/0.23.1440.804@0.23.1440.804" timestamp="1597228589198" />
+    <state width="1398" height="211" key="GridCell.Tab.0.center" timestamp="1597229098236">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="389" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1596858283274" />
-    <state width="1398" height="389" key="GridCell.Tab.1.bottom" timestamp="1596858283277">
+    <state width="1398" height="211" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1597229098236" />
+    <state width="1398" height="448" key="GridCell.Tab.0.center/0.23.1440.804@0.23.1440.804" timestamp="1597228589196" />
+    <state width="1398" height="211" key="GridCell.Tab.0.left" timestamp="1597229098236">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="389" key="GridCell.Tab.1.bottom/0.0.1440.900@0.0.1440.900" timestamp="1596858283277" />
-    <state width="1398" height="389" key="GridCell.Tab.1.center" timestamp="1596858283276">
+    <state width="1398" height="211" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1597229098236" />
+    <state width="1398" height="448" key="GridCell.Tab.0.left/0.23.1440.804@0.23.1440.804" timestamp="1597228589195" />
+    <state width="1398" height="211" key="GridCell.Tab.0.right" timestamp="1597229098237">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="389" key="GridCell.Tab.1.center/0.0.1440.900@0.0.1440.900" timestamp="1596858283276" />
-    <state width="1398" height="389" key="GridCell.Tab.1.left" timestamp="1596858283275">
+    <state width="1398" height="211" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1597229098237" />
+    <state width="1398" height="448" key="GridCell.Tab.0.right/0.23.1440.804@0.23.1440.804" timestamp="1597228589197" />
+    <state width="1398" height="211" key="GridCell.Tab.1.bottom" timestamp="1597229098239">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="389" key="GridCell.Tab.1.left/0.0.1440.900@0.0.1440.900" timestamp="1596858283275" />
-    <state width="1398" height="389" key="GridCell.Tab.1.right" timestamp="1596858283276">
+    <state width="1398" height="211" key="GridCell.Tab.1.bottom/0.0.1440.900@0.0.1440.900" timestamp="1597229098239" />
+    <state width="1398" height="448" key="GridCell.Tab.1.bottom/0.23.1440.804@0.23.1440.804" timestamp="1597228589202" />
+    <state width="1398" height="211" key="GridCell.Tab.1.center" timestamp="1597229098238">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="389" key="GridCell.Tab.1.right/0.0.1440.900@0.0.1440.900" timestamp="1596858283276" />
+    <state width="1398" height="211" key="GridCell.Tab.1.center/0.0.1440.900@0.0.1440.900" timestamp="1597229098238" />
+    <state width="1398" height="448" key="GridCell.Tab.1.center/0.23.1440.804@0.23.1440.804" timestamp="1597228589200" />
+    <state width="1398" height="211" key="GridCell.Tab.1.left" timestamp="1597229098238">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="211" key="GridCell.Tab.1.left/0.0.1440.900@0.0.1440.900" timestamp="1597229098238" />
+    <state width="1398" height="448" key="GridCell.Tab.1.left/0.23.1440.804@0.23.1440.804" timestamp="1597228589199" />
+    <state width="1398" height="211" key="GridCell.Tab.1.right" timestamp="1597229098238">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="211" key="GridCell.Tab.1.right/0.0.1440.900@0.0.1440.900" timestamp="1597229098238" />
+    <state width="1398" height="448" key="GridCell.Tab.1.right/0.23.1440.804@0.23.1440.804" timestamp="1597228589201" />
     <state width="1398" height="389" key="GridCell.Tab.2.bottom" timestamp="1596858283279">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -568,14 +586,14 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="221" y="89" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1596803155210" />
-    <state x="421" y="205" width="598" height="490" key="find.popup" timestamp="1596802390201">
+    <state x="421" y="205" width="598" height="490" key="find.popup" timestamp="1597224324032">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="421" y="205" width="598" height="490" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1596802390201" />
-    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1596854247871">
+    <state x="421" y="205" width="598" height="490" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1597224324032" />
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1597227605396">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1596854247871" />
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1597227605396" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/aiot$TestVehicleHttpPackSerializer.ic" NAME="TestVehicleHttpPackSerializer Coverage Results" MODIFIED="1568958743250" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

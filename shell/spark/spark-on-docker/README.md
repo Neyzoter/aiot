@@ -24,7 +24,8 @@ jar包编写和编译：https://blog.csdn.net/boling_cavalry/article/details/867
 ```bash
 # 将txt文件拷贝到hdfs
 # docker-compose.yml 已经将宿主机的input_files目录挂载到namenode容器上了
-# 一下指令将容器内的文件上传到hdfs中
+# 以下指令将容器内的文件上传到hdfs中
+## 创建/input文件夹；将文件HappyJack.txt拷贝到hdfs的/input文件夹
 docker exec namenode hdfs dfs -mkdir /input \
 && docker exec namenode hdfs dfs -put /input_files/HappyJack.txt /input
 ```
@@ -35,6 +36,9 @@ docker exec namenode hdfs dfs -mkdir /input \
 
 ```bash
 # 注意：/root/jars/sparkwordcount-1.0-SNAPSHOT.jar 不需要更改为实际绝对路径
+## sparkwordcount-1.0-SNAPSHOT的三个参数：namenode表示hdfsHost；
+##   8020：hdfsPort（具体端口在hadoop.env）；HappyJack.txt：要处理的文件对象
+##   url：String hdfsBasePath = "hdfs://" + hdfsHost + ":" + hdfsPort;
 sudo docker exec -it master spark-submit \
 --class com.bolingcavalry.sparkwordcount.WordCount \
 --executor-memory 512m \
@@ -55,6 +59,16 @@ HappyJack.txt
 docker exec namenode hdfs dfs -cat /output/20200705121744/part-00000
 ```
 
-## 3. 性能优化
+## 3. 参考
 
-https://blog.csdn.net/boling_cavalry/article/details/87438666
+Spark集群简单搭建：https://blog.csdn.net/boling_cavalry/article/details/86851069
+
+性能优化：https://blog.csdn.net/boling_cavalry/article/details/87438666
+
+WordCount应用：https://blog.csdn.net/boling_cavalry/article/details/86776746
+
+## 4. 可视化
+
+HDFS(共3个datanode) : aliyun:50070
+
+Spark : aliyun:8080

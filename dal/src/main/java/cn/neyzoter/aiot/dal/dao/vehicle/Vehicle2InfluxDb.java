@@ -23,7 +23,8 @@ public class Vehicle2InfluxDb implements Serializable {
      */
     public final static String HEADERS_AUTHORIZATION_TOKEN_PREFIX = "Token ";
     /**
-     * influxdb format
+     * influxdb format<br>
+     * V2版本和InfluxDB 1.8+兼容
      */
     public final static String INFLUXDB_V2_URL_FORMAT = "http://%s:%s/api/v2/write?org=%s&bucket=%s&precision=%s";
 
@@ -419,7 +420,7 @@ public class Vehicle2InfluxDb implements Serializable {
      * @param measurements measurement array
      * @param tagses tags array
      * @param fieldses fields array
-     * @param timestamp timestamp array
+     * @param timestamps timestamp array
      * @return {@link ResponseEntity}
      * @throws Exception Length of the parameters arrays is not equal
      */

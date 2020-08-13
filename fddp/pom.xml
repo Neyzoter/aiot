@@ -12,6 +12,9 @@
     <artifactId>fddp</artifactId>
     <packaging>jar</packaging>
 
+    <properties>
+        <hadoop.version>2.7.1</hadoop.version>
+    </properties>
     <dependencies>
         <dependency>
             <groupId>cn.neyzoter</groupId>
@@ -64,6 +67,13 @@
             <groupId>org.apache.bahir</groupId>
             <artifactId>spark-streaming-mqtt_2.11</artifactId>
             <version>2.4.0</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.apache.hadoop/hadoop-client -->
+        <dependency>
+            <groupId>org.apache.hadoop</groupId>
+            <artifactId>hadoop-client</artifactId>
+            <version>${hadoop.version}</version>
         </dependency>
 
 

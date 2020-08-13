@@ -7,6 +7,7 @@ import cn.neyzoter.aiot.dal.domain.feature.OutputCorrMatrix;
 import cn.neyzoter.aiot.dal.domain.vehicle.VehicleHttpPack;
 import cn.neyzoter.aiot.fddp.biz.service.bean.PropertiesLables;
 import cn.neyzoter.aiot.fddp.biz.service.bean.PropertiesValueRange;
+import cn.neyzoter.aiot.fddp.biz.service.hadoop.hdfs.HdfsUtil;
 import cn.neyzoter.aiot.fddp.biz.service.influxdb.VPackInfluxPoster;
 import cn.neyzoter.aiot.fddp.biz.service.kafka.constant.KafkaConsumerGroup;
 import cn.neyzoter.aiot.fddp.biz.service.kafka.constant.KafkaTopic;
@@ -15,15 +16,14 @@ import cn.neyzoter.aiot.fddp.biz.service.spark.algo.DataPreProcess;
 import cn.neyzoter.aiot.fddp.biz.service.spark.constant.SparkStreamingConf;
 import cn.neyzoter.aiot.fddp.biz.service.tensorflow.RtDataBound;
 import cn.neyzoter.aiot.fddp.biz.service.tensorflow.RtDataBoundMap;
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.fs.Path;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.apache.spark.SparkConf;
 import org.apache.spark.streaming.Durations;
-import org.apache.spark.streaming.api.java.JavaDStream;
-import org.apache.spark.streaming.api.java.JavaInputDStream;
-import org.apache.spark.streaming.api.java.JavaPairDStream;
-import org.apache.spark.streaming.api.java.JavaStreamingContext;
+import org.apache.spark.streaming.api.java.*;
 import org.apache.spark.streaming.kafka010.ConsumerStrategies;
 import org.apache.spark.streaming.kafka010.KafkaUtils;
 import org.apache.spark.streaming.kafka010.LocationStrategies;
@@ -35,6 +35,7 @@ import org.springframework.stereotype.Component;
 import scala.Serializable;
 import scala.Tuple2;
 
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URL;
 import java.net.URLConnection;
@@ -63,10 +64,13 @@ public class Streaming implements Serializable {
         this.rtDataBoundMap = rtDataBoundMap;
         try {
             conf(propertiesUtil);
-            JavaPairDStream<String, InputCorrMatrix> input = prepare(vPackInfluxPoster, rtDataBoundMap);
 
-            JavaPairDStream<String, OutputCorrMatrix> loss = compute(input);
-            loss.print();
+            testPrepare(rtDataBoundMap);
+
+//            JavaPairDStream<String, InputCorrMatrix> input = prepare(vPackInfluxPoster, rtDataBoundMap);
+//
+//            JavaPairDStream<String, OutputCorrMatrix> loss = compute(input);
+//            loss.print();
             start();
         } catch (Exception e) {
             logger.error("", e);
@@ -140,6 +144,18 @@ public class Streaming implements Serializable {
         return corrMatrix;
     }
 
+    public static void hdfsStream(JavaStreamingContext jssc) {
+        String hdfsFile = "hdfs://hdfs:8020/input/";//checkpoint存放数据的文件夹
+        JavaDStream<String> jds = jssc.textFileStream(hdfsFile);
+        jds.print();
+//        jds.foreachRDD(System.out::println);
+    }
+
+    public static void hdfsRead() {
+        String hdfsFile = "hdfs://hdfs:8020/input/hhh.txt";
+        HdfsUtil hdfsUtil = new HdfsUtil();
+        hdfsUtil.readHDFSFile(hdfsFile);
+    }
     public JavaPairDStream<String, VehicleHttpPack> testPrepare(RtDataBoundMap rtDataBoundMap) {
         JavaInputDStream<ConsumerRecord<String, VehicleHttpPack>> messages = KafkaUtils.createDirectStream(
                 jssc,
@@ -155,6 +171,23 @@ public class Streaming implements Serializable {
 
         // outlier values process
         record = record.mapValues(DataPreProcess::outlierHandling);
+
+        // 测试hdfs
+//        hdfsStream(jssc);
+        hdfsRead();
+        Configuration conf = new Configuration();
+        conf.set("fs.default.name", "hdfs://hdfs:8020");
+        conf.set("fs.defaultFS", "hdfs://hdfs:8020");
+        conf.set("mapreduce.jobtracker.address", "hdfs://hdfs");
+        conf.addResource(new Path("/etc/hadoop/conf/core-site.xml"));
+        conf.addResource(new Path("/etc/hadoop/conf/hdfs-site.xml"));
+        String remoteFilePath = "/input/hhh.txt"; // HDFS路径
+        try {
+            HdfsUtil.cat(conf, remoteFilePath);
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+
         return record;
     }
 
